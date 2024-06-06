@@ -5,14 +5,14 @@ define('DB_USER', 'root');
 define('DB_PASSWORD', '');
 
 class Database1 {
-    private static $instance = null;
-    private $conn;
-    private $host = "localhost:3307";
-    private $db_name = "servicio_autobuses";
-    private $username = "root";
-    private $password = "";
+    public static $instance = null;
+    public $conn;
+    public $host = "localhost:3307";
+    public $db_name = "servicio_autobuses";
+    public $username = "root";
+    public $password = "";
 
-    private function __construct() {
+    public function __construct() {
         try {
             $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
