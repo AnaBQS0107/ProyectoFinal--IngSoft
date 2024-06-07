@@ -3,16 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="../img/icono.png"> 
+    <link rel="icon" type="image/png" href="../img/icono.png">
+    <link rel="stylesheet" href="Estilos/login.css">
+
     <title>Login</title>
+    
 </head>
 <body>
+
+<img src="../img/Background-peaje-random.jpg" alt="Peaje" class="background">
+
     <form method="post" action="../Controlador/Login.php?action=login">
-        <label for="cedula">Cedula:</label>
-        <input type="text" id="cedula" name="cedula" required><br>
-        <label for="contrasena">Contraseña:</label>
-        <input type="password" id="contrasena" name="contrasena" required><br>
-        <button type="submit">Login</button>
+
+
+        <label for="cedula" class="label_login">Cedula:</label>
+        <input type="text" id="cedula" name="cedula" placeholder="306220410" class="input_login" required>
+
+        <label for="contrasena" class="label_login">Contraseña:</label>
+        <input type="password" id="contrasena" name="contrasena" placeholder="********" class="input_login" required>
+
+        <button type="submit" class="button_login">Login</button>
     </form>
 </body>
 </html>

@@ -2,10 +2,10 @@
 require_once '../Config/config.php';
 
 class Database {
-    public static $instance = null;
-    public $conn;
+    private static $instance = null;
+    private $conn;
 
-    public function __construct() {
+    private function __construct() {
         try {
             $this->conn = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASSWORD);
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -31,7 +31,7 @@ class Database {
 
 
 class Cobro {
-    public $conn;
+    private $conn;
 
     public function __construct($conn) {
         $this->conn = $conn;
@@ -52,10 +52,10 @@ class Cobro {
 }
 
 class TrabajadoresTabla {
-    public $db;
+    private $db;
 
     public function __construct() {
-        $database = new Database();
+        $database = new Database1();
         $this->db = $database->getConnection();
     }
 
@@ -85,8 +85,8 @@ class TrabajadoresTabla {
 }
 
 class Rol {
-    public $conn;
-    public $table_name = "roles";
+    private $conn;
+    private $table_name = "roles";
 
     public function __construct($db) {
         $this->conn = $db;
@@ -109,8 +109,8 @@ class Rol {
 }
 
 class Estacion {
-    public $conn;
-    public $table_name = "estaciones";
+    private $conn;
+    private $table_name = "estaciones";
 
     public function __construct($db) {
         $this->conn = $db;
@@ -137,9 +137,9 @@ class Estacion {
 
 class TrabajadoresInfo
 {
-    public $db;
-    public $estacion;
-    public $rol;
+    private $db;
+    private $estacion;
+    private $rol;
 
     public function __construct()
     {

@@ -1,7 +1,7 @@
 <?php
 include_once '../Config/config.php';
 
-try {    
+try {
  
     $host = "localhost:3307";
     $db_name = "servicio_autobuses";
@@ -14,7 +14,7 @@ try {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
+
     $cedula = $_POST['Cedula'];
     $contrasena = $_POST['Contrasena'];
     $nombre = $_POST['Nombre'];
@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $estacion_id = $_POST['Estacion_ID'];
     $rol_id = $_POST['Roles']; 
 
-  
+
     $sql = "INSERT INTO trabajadores (Cedula, Contrasena, Nombre, Apellido1, Apellido2, Correo_Electronico,  Estacion_ID, Rol_ID)
             VALUES (:cedula, :contrasena, :nombre, :apellido1, :apellido2, :email,  :Estacion_ID, :Rol_ID)";
     $stmt = $conn->prepare($sql);
