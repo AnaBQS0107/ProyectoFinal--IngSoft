@@ -19,6 +19,7 @@ class Database1 {
             $this->conn->exec("set names utf8");
         } catch (PDOException $exception) {
             echo "Error de conexión: " . $exception->getMessage();
+            echo "Error de conexión: " . $exception->getMessage();
         }
     }
 
