@@ -33,6 +33,6 @@ class Database1 {
         return $this->conn;
     }
 
-    echo "Error de conexión: " . $exception->getMessage();
+    echo "prueba 2: " . $exception->getMessage();
 }
 ?>
