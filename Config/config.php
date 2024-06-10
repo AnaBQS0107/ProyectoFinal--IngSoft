@@ -32,5 +32,7 @@ class Database1 {
     public function getConnection() {
         return $this->conn;
     }
+
+    echo "Error de conexión: " . $exception->getMessage();
 }
 ?>
