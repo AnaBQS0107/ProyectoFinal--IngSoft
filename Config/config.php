@@ -32,7 +32,5 @@ class Database1 {
     public function getConnection() {
         return $this->conn;
     }
-
-    echo "prueba 2: " . $exception->getMessage();
 }
 ?>
