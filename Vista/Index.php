@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<img src="../img/Background-peaje-random.jpg" alt="Peaje" class="background">
+<img src="../img/FondoLogin.jpg" alt="Peaje" class="background">
 
     <form method="post" action="../Controlador/Login.php?action=login">
 
@@ -22,7 +22,7 @@
         <label for="contrasena" class="label_login">Contraseña:</label>
         <input type="password" id="contrasena" name="contrasena" placeholder="********" class="input_login" required>
 
-        <button type="submit" class="button_login">Login</button>
+        <button type="submit" class="button_login">Iniciar Sesión</button>
     </form>
 </body>
 </html>
