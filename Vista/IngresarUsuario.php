@@ -9,7 +9,7 @@ require_once '../Modelo/Ingreso_Usuario.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PassWize - Registro</title>
-    <link rel="stylesheet" href="Estilos/nuevoIngreso.css">
+    <link rel="stylesheet" href="Estilos/IngresarUsuario.css">
     <link rel="icon" type="image/png" href="../img/icono.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -85,7 +85,7 @@ require_once '../Modelo/Ingreso_Usuario.php';
                 <div class="invalid-tooltip"></div>
             </div>
             <div class="div_btn">
-              <center><button type="submit" class="btn_registrar">Registrar</button></center>  
+              <button type="submit" class="btn_registrar">Registrar</button>
             </div>
         </form>
     </div>
