@@ -119,7 +119,7 @@ $trabajadoresTabla = new TrabajadoresTabla();
                 <?php endif; ?>
             </tbody>
         </table>
-        <center><a href="../Vista/Form_NuevoIngreso.php" class="btn btn-info" role="button">Crear Nuevo Usuario</a></center>
+        <center><a href="../Vista/IngresarUsuario.php" class="btn btn-info" role="button">Crear Nuevo Usuario</a></center>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
