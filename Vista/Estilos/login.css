@@ -1,79 +1,58 @@
 body {
+    margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
 }
 
 .background {
-    position: fixed; /* Fija la imagen, de modo que no se mueva con el scroll */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Asegura que la imagen cubra completamente el espacio sin distorsionarse */
-    z-index: -1; /* Coloca la imagen detrás de los otros elementos */
- 
+    max-width: 50%;
+    height: auto;
+    margin-right: 20px;
 }
 
-
-form {
-    background-color: rgba(255, 255, 255, 0.975);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.login-form {
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    max-width: 400px;
-    box-sizing: border-box;
-    position: relative; /* Importante para que z-index funcione */
-    z-index: 10; /* Asegura que el formulario está sobre otros elementos */
 }
+
 .label_login {
-    display: block;
-    font-family: 'Helvetica', 'Arial', sans-serif;
-    font-weight: bold;
     margin-bottom: 5px;
+    font-weight: bold;
 }
 
-.input_login[type="text"],
-.input_login[type="password"] {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-button {
-    width: 100%;
+.input_login {
+    margin-bottom: 15px;
     padding: 10px;
-    background-color: #45a049;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+}
+
+.button_login {
+    padding: 10px 20px;
+    background-color: #005B52;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
 }
 
-button:hover {
-    background-color: #9fc131;
-}
-
-/* Ajustes responsivos */
-@media (max-width: 600px) {
-    form {
-        padding: 15px;
-    }
-
-    .input_login[type="text"],
-    .input_login[type="password"] {
-        padding: 10px;
-    }
-
-    button {
-        padding: 12px;
-    }
+.button_login:hover {
+    background-color: #004d40;
 }

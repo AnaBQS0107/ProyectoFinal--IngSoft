@@ -296,7 +296,7 @@
     }
     </style>
     <div class="div_btn">
-        <center> <button type="submit" class="btn_asignar">Asignar un nuevo aguinaldo</button></center>
+        <center> <button type="submit" class="btn_asignar">Asignar un nuevo empleado</button></center>
     </div>
     <br>
     <div class="div_btn">

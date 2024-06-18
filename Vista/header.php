@@ -41,7 +41,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
                     <li class="nav-item"><a class="nav-link" href="../Vista/IngresarUsuario.php">Ingresar usuario</a></li>
                     <li class="nav-item"><a class="nav-link" href="../Vista/ListaDeEmpleados.php">Lista de Empleados</a></li>
                     <li class="nav-item"><a class="nav-link" href="../Vista/CobrosPeaje.php">Cobrar Peajes</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../Vista/Filtros.php">Conteo de Peajes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../Vista/TablaCobros.php">Conteo de Peajes</a></li>
                 </ul>
             </div>
        
