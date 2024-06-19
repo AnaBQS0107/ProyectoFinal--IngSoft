@@ -19,7 +19,7 @@
 
     .navbar {
         display: flex;
-        justify-content: space-between;
+        jutify-content: space-between;
         align-items: center;
         background-color: #005c53;
         padding: 10px;
@@ -211,7 +211,7 @@
 
 <body>
     <?php include_once '../Vista/header.php'; ?>
-    <br> <br> <br> <br>
+    <br> <br> <br> 
     <form method="post">
         <label>Nombre:</label>
         <input type="text" name="Nombre" value="<?php echo isset($empleado['Nombre']) ? $empleado['Nombre'] : ''; ?>">

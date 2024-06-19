@@ -10,7 +10,6 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* Estilos del navbar */
 .navbar {
     display: flex;
     justify-content: space-between;
