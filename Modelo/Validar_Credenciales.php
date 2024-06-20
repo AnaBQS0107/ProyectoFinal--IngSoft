@@ -1,4 +1,6 @@
 <?php
+// Validar_Credenciales.php
+
 require_once '../Config/config.php';
 
 class ValidarCredenciales {
@@ -9,11 +11,17 @@ class ValidarCredenciales {
         $this->db = $database->getConnection();
     }
 
-
-    public function login($cedula, $contrasena) {
+    public function login($Persona_Cedula, $contrasena) {
         try {
-            $stmt = $this->db->prepare("SELECT Nombre, Rol_ID FROM trabajadores WHERE Cedula = :cedula AND Contrasena = :contrasena");
-            $stmt->bindParam(':cedula', $cedula);
+            $stmt = $this->db->prepare("
+                SELECT p.Nombre AS Nombre, r.Nombre_Rol AS Nombre_Rol
+                FROM Empleados e 
+                INNER JOIN Persona p ON e.Persona_Cedula = p.Cedula 
+                INNER JOIN Usuarios u ON p.Cedula = u.Empleados_Persona_Cedula 
+                INNER JOIN Roles r ON e.Roles_idRoles = r.idRoles
+                WHERE u.Contraseña = :contrasena AND e.Persona_Cedula = :Persona_Cedula
+            ");
+            $stmt->bindParam(':Persona_Cedula', $Persona_Cedula);
             $stmt->bindParam(':contrasena', $contrasena);
             $stmt->execute();
 
@@ -28,14 +36,14 @@ class ValidarCredenciales {
         }
     }
 
-    public function getRoleName($roleId) {
+    public function getRoleName($idRoles) {
         try {
-            $stmt = $this->db->prepare("SELECT Tipo_De_Rol FROM roles WHERE ID = :roleId");
-            $stmt->bindParam(':roleId', $roleId);
+            $stmt = $this->db->prepare("SELECT Nombre_Rol FROM roles WHERE ID = :idRoles");
+            $stmt->bindParam(':idRoles', $idRoles);
             $stmt->execute();
 
             if ($stmt->rowCount() > 0) {
-                return $stmt->fetch(PDO::FETCH_ASSOC)['Tipo_De_Rol'];
+                return $stmt->fetch(PDO::FETCH_ASSOC)['Nombre_Rol'];
             } else {
                 return null;
             }

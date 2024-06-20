@@ -1,4 +1,5 @@
 <?php
+
 session_start(); 
 
 require_once '../Modelo/Validar_Credenciales.php';
@@ -11,25 +12,18 @@ class AuthController {
     }
 
     public function login() {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['cedula'], $_POST['contrasena'])) {
-            $cedula = $_POST['cedula'];
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['Persona_Cedula'], $_POST['contrasena'])) {
+            $Persona_Cedula = $_POST['Persona_Cedula'];
             $contrasena = $_POST['contrasena'];
 
-            $user = $this->ValidarCredenciales->login($cedula, $contrasena);
+            $user = $this->ValidarCredenciales->login($Persona_Cedula, $contrasena);
 
             if ($user) {
-                $nombre = $user['Nombre'];
-                $rol = $user['Rol_ID'];
-                $nombre_rol = $this->ValidarCredenciales->getRoleName($rol);
-
-               
                 $_SESSION['user'] = [
-                    'nombre' => $nombre,
-                    'rol_id' => $rol,
-                    'nombre_rol' => $nombre_rol
+                    'Nombre' => $user['Nombre'],
+                    'Nombre_Rol' => $user['Nombre_Rol']
                 ];
 
-              
                 header("Location: ../Vista/Inicio.php");
                 exit();
             } else {
@@ -41,39 +35,37 @@ class AuthController {
     }
 
     public function logout() {
-       
         session_unset();
         session_destroy();
-        echo "Sesión cerrada.";
+        header("Location: ../Vista/Index.php");
+        exit();
     }
 
     public function checkSession() {
         if (isset($_SESSION['user'])) {
             $user = $_SESSION['user'];
-            echo "Usuario: " . $user['nombre'] . "<br>";
-            echo "Rol: " . $user['nombre_rol'] . "<br>";
+            echo "Usuario: " . htmlspecialchars($user['Nombre']) . "<br>";
+            echo "Rol: " . htmlspecialchars($user['Nombre_Rol']) . "<br>";
         } else {
             echo "No hay usuario conectado.";
         }
     }
 }
 
-$controller = new AuthController();
-
 if (isset($_GET['action'])) {
-    switch ($_GET['action']) {
-        case 'login':
-            $controller->login();
-            break;
-        case 'logout':
-            $controller->logout();
-            break;
-        case 'check':
-            $controller->checkSession();
-            break;
-        default:
-            echo "Acción no válida.";
-            break;
+    $action = $_GET['action'];
+    $authController = new AuthController();
+
+    if ($action == 'login') {
+        $authController->login();
+    } elseif ($action == 'logout') {
+        $authController->logout();
+    } elseif ($action == 'checkSession') {
+        $authController->checkSession();
+    } else {
+        echo "Acción no válida.";
     }
+} else {
+    echo "No se recibió ninguna acción.";
 }
 ?>

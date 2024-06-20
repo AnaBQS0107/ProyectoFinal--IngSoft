@@ -20,9 +20,9 @@
                 <h1>PassWize</h1>
             </center>
 
-            <label for="cedula" class="label_login">Cédula:</label>
+            <label for="Persona_Cedula" class="label_login">Cédula:</label>
             <br><br>
-            <input type="text" id="cedula" name="cedula" placeholder="306220410" class="input_login" required>
+            <input type="text" id="Persona_Cedula" name="Persona_Cedula" placeholder="306220410" class="input_login" required>
 
             <label for="contrasena" class="label_login">Contraseña:</label>
             <br><br>
