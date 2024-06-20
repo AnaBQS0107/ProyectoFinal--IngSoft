@@ -54,6 +54,7 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Tipo de Vehiculo</th>
+                    <th scope="col">Fecha</th>
                     <th scope="col">Código</th>
                     <th scope="col">Monto</th>
                     <th scope="col">Persona que lo tramita</th>

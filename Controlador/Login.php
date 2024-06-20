@@ -1,5 +1,4 @@
 <?php
-
 session_start(); 
 
 require_once '../Modelo/Validar_Credenciales.php';
@@ -15,15 +14,17 @@ class AuthController {
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['Persona_Cedula'], $_POST['contrasena'])) {
             $Persona_Cedula = $_POST['Persona_Cedula'];
             $contrasena = $_POST['contrasena'];
-
+    
             $user = $this->ValidarCredenciales->login($Persona_Cedula, $contrasena);
-
+    
             if ($user) {
                 $_SESSION['user'] = [
                     'Nombre' => $user['Nombre'],
-                    'Nombre_Rol' => $user['Nombre_Rol']
+                    'Nombre_Rol' => $user['Nombre_Rol'],
+                    'Persona_Cedula' => $user['Persona_Cedula'] 
                 ];
 
+                // Redirect to home page after successful login
                 header("Location: ../Vista/Inicio.php");
                 exit();
             } else {
@@ -44,7 +45,10 @@ class AuthController {
     public function checkSession() {
         if (isset($_SESSION['user'])) {
             $user = $_SESSION['user'];
+
+            // Output user information for debugging
             echo "Usuario: " . htmlspecialchars($user['Nombre']) . "<br>";
+            echo "Cédula: " . htmlspecialchars($user['Persona_Cedula']) . "<br>";
             echo "Rol: " . htmlspecialchars($user['Nombre_Rol']) . "<br>";
         } else {
             echo "No hay usuario conectado.";

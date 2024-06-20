@@ -1,6 +1,6 @@
 <?php
 class Database {
-    private $host = "localhost:3307";
+    private $host = "localhost:3307"; // Ajusta el puerto si es necesario
     private $db_name = "servicio_autobuses";
     private $username = "root";
     private $password = "";
@@ -17,12 +17,25 @@ class Database {
     }
 }
 
+$cobros = []; 
 $database = new Database();
 $conn = $database->getConnection();
 
 if ($conn) {
     try {
-        $query = "SELECT Tipo_De_Vehiculo, Codigo, Monto, Tramitador, Estacion FROM cobros";
+        $query = "SELECT 
+                    cp.idCobrosPeaje, 
+                    cp.Fecha, 
+                    ep.Nombre AS EstacionPeaje, 
+                    cp.Empleados_Persona_Cedula, 
+                    tv.Tipo AS TipoVehiculo, 
+                    cp.TipoVehiculo_Codigo, 
+                    cp.TipoVehiculo_Tarifa 
+                  FROM 
+                    CobrosPeaje cp
+                    INNER JOIN TipoVehiculo tv ON cp.TipoVehiculo_idTipoVehiculo = tv.idTipoVehiculo
+                    INNER JOIN EstacionesPeaje ep ON cp.EstacionesPeaje_idEstacionesPeaje = ep.idEstacionesPeaje";
+
         $stmt = $conn->prepare($query);
         $stmt->execute();
         $cobros = $stmt->fetchAll(PDO::FETCH_ASSOC);

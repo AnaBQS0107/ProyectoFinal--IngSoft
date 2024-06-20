@@ -1,11 +1,10 @@
 <?php
-
 require_once '../Controlador/Cobro.php';
+
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +12,6 @@ require_once '../Controlador/Cobro.php';
     <link rel="icon" type="image/png" href="../img/icono.png">
     <link rel="stylesheet" href="Estilos/TablaCobros.css">
 </head>
-
 <body>
     <header>
         <?php include 'header.php'; ?>
@@ -21,46 +19,50 @@ require_once '../Controlador/Cobro.php';
     <br><br>
     <div class="container mt-5">
         <br><br><br><br>
-        <center><h1>Lista de Cobros</h1></center>
+        <center>
+            <h1>Lista de Cobros</h1>
+        </center>
         <div class="table-container">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Tipo de vehiculo</th>
-                    <th scope="col">Código</th>
-                    <th scope="col">Monto</th>
-                    <th scope="col">Persona que tramita</th>
-                    <th scope="col">Estación</th>
-                    <th scope="col">Acciones</th>
-
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($cobros as $cobro): ?>
+            <table class="table">
+                <thead>
                     <tr>
-                        <td><?php echo $cobro['Tipo_De_Vehiculo']; ?></td>
-                        <td><?php echo $cobro['Codigo']; ?></td>
-                        <td><?php echo $cobro['Monto']; ?></td>
-                        <td><?php echo $cobro['Tramitador']; ?></td>
-                        <td><?php echo $cobro['Estacion']; ?></td>
-                        <td class="actions">
-                        <button class="btn-edit">Editar</button>
-                        <button class="btn-delete">Eliminar</button>
-                    </td>
+                        <th scope="col">ID Cobro</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">ID Estación</th>
+                        <th scope="col">Cédula Empleado</th>
+                        <th scope="col">Tipo de Vehiculo</th>
+                        <th scope="col">Código</th>
+                        <th scope="col">Tarifa</th>
+                        <th scope="col">Acciones</th>
                     </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-        <br><br>
-        <div class="div_btn">
-        <center> <button type="submit" class="btn_asignar">Asignar un nuevo cobro</button></center>
+                </thead>
+                <tbody>
+                    <?php foreach ($cobros as $cobro): ?>
+                        <tr>
+                            <td><?php echo $cobro['idCobrosPeaje']; ?></td>
+                            <td><?php echo $cobro['Fecha']; ?></td>
+                            <td><?php echo $cobro['EstacionPeaje']; ?></td>
+                            <td><?php echo $cobro['Empleados_Persona_Cedula']; ?></td>
+                            <td><?php echo $cobro['TipoVehiculo']; ?></td>
+                            <td><?php echo $cobro['TipoVehiculo_Codigo']; ?></td>
+                            <td><?php echo $cobro['TipoVehiculo_Tarifa']; ?></td>       
+                            <td class="actions">
+                                <button class="btn-edit">Editar</button>
+                                <button class="btn-delete">Eliminar</button>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+            <br><br>
+            <div class="div_btn">
+                <center> <button type="submit" class="btn_asignar">Asignar un nuevo cobro</button></center>
+            </div>
+            <br>
+            <div class="div_btn">
+                <center> <button type="submit" class="btn_registrar">Exportar PDF</button></center>
+            </div>
+        </div>
     </div>
-    <br>
-    <div class="div_btn">
-        <center> <button type="submit" class="btn_registrar">Exportar PDF</button></center>
-    </div>
-    </div>
-
 </body>
-
 </html>
