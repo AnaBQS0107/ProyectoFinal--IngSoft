@@ -7,14 +7,21 @@ function obtenerConexion() {
     return $database->getConnection();
 }
 
-// Función para obtener información del empleado por ID
-function obtenerEmpleadoPorId($id_empleado) {
+function obtenerEmpleadoPorId($cedula) {
     $conn = obtenerConexion();
 
     try {
-        $query = "SELECT * FROM trabajadores WHERE ID = :id";
+        $query = "SELECT p.Nombre, p.Primer_Apellido, p.Segundo_Apellido, e.Correo_Electronico, 
+                         est.Nombre as NombreEstacion, e.EstacionesPeaje_idEstacionesPeaje, 
+                         r.Nombre_Rol as NombreRol, e.Roles_idRoles, u.Contraseña
+                  FROM persona p
+                  INNER JOIN empleados e ON p.Cedula = e.Persona_Cedula
+                  LEFT JOIN usuarios u ON e.Persona_Cedula = u.Empleados_Persona_Cedula
+                  LEFT JOIN estacionespeaje est ON e.EstacionesPeaje_idEstacionesPeaje = est.idEstacionesPeaje
+                  LEFT JOIN roles r ON e.Roles_idRoles = r.idRoles
+                  WHERE p.Cedula = :id";
         $stmt = $conn->prepare($query);
-        $stmt->bindParam(':id', $id_empleado);
+        $stmt->bindParam(':id', $cedula);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     } catch (PDOException $exception) {
@@ -23,29 +30,45 @@ function obtenerEmpleadoPorId($id_empleado) {
     }
 }
 
-// Función para actualizar la información del empleado
-function actualizarEmpleado($id_empleado, $datos) {
+
+// Función para actualizar la información del empleado por ID
+function actualizarEmpleado($cedula, $datos) {
     $conn = obtenerConexion();
 
     try {
-        $query = "UPDATE trabajadores SET Nombre = :nombre, Cedula = :cedula, Contrasena = :contrasena, Apellido1 = :apellido1, Apellido2 = :apellido2, Correo_Electronico = :correo,  Estacion_ID = :estacion_id, Rol_ID = :rol_id WHERE ID = :id";
-        $stmt = $conn->prepare($query);
-
-        $stmt->bindParam(':nombre', $datos['Nombre']);
-        $stmt->bindParam(':cedula', $datos['Cedula']);
-        $stmt->bindParam(':contrasena', $datos['Contrasena']);
-        $stmt->bindParam(':apellido1', $datos['Apellido1']);
-        $stmt->bindParam(':apellido2', $datos['Apellido2']);
-        $stmt->bindParam(':correo', $datos['Correo_Electronico']);
-        $stmt->bindParam(':estacion_id', $datos['Estacion_ID']);
-        $stmt->bindParam(':rol_id', $datos['Roles']);
-        $stmt->bindParam(':id', $id_empleado);
-
-        return $stmt->execute();
-    } catch (PDOException $exception) {
-        echo "Error: " . $exception->getMessage();
+        // Actualizar tabla persona
+        $sql_persona = "UPDATE persona SET Nombre = :nombre, Primer_Apellido = :apellido1, Segundo_Apellido = :apellido2 WHERE Cedula = :cedula";
+        $stmt_persona = $conn->prepare($sql_persona);
+        $stmt_persona->bindParam(':nombre', $datos['nombre']);
+        $stmt_persona->bindParam(':apellido1', $datos['apellido1']);
+        $stmt_persona->bindParam(':apellido2', $datos['apellido2']);
+        $stmt_persona->bindParam(':cedula', $cedula);
+        $stmt_persona->execute();
+    
+        // Actualizar tabla empleados
+        $sql_empleados = "UPDATE empleados SET Correo_Electronico = :correo, EstacionesPeaje_idEstacionesPeaje = :estacionID, Roles_idRoles = :rolID WHERE Persona_Cedula = :cedula";
+        $stmt_empleados = $conn->prepare($sql_empleados);
+        $stmt_empleados->bindParam(':correo', $datos['Correo']);
+        $stmt_empleados->bindParam(':estacionID', $datos['Estacion_ID']);
+        $stmt_empleados->bindParam(':rolID', $datos['Rol_ID']); // Aquí se usa el valor del rol
+        $stmt_empleados->bindParam(':cedula', $cedula);
+        $stmt_empleados->execute();
+    
+        // Actualizar tabla usuarios (si existe)
+        if (isset($datos['Contrasena'])) {
+            $sql_usuarios = "UPDATE usuarios SET Contraseña = :contrasena WHERE Empleados_Persona_Cedula = :cedula";
+            $stmt_usuarios = $conn->prepare($sql_usuarios);
+            $stmt_usuarios->bindParam(':contrasena', $datos['Contrasena']);
+            $stmt_usuarios->bindParam(':cedula', $cedula);
+            $stmt_usuarios->execute();
+        }
+    
+        return true; // Retorna true si todas las actualizaciones fueron exitosas
+    } catch (PDOException $e) {
+        echo "Error al actualizar el empleado: " . $e->getMessage();
         return false;
     }
+    
 }
 
 // Inicio del manejo de la petición

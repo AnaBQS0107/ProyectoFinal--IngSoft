@@ -58,16 +58,16 @@ $trabajadoresTabla = new TrabajadoresTabla();
                     <td><?php echo $trabajadoresTabla->obtenerTipoDeRol($usuario['Rol_ID']); ?></td>
                     <td>
                         <div class="button-container">
-                            <a href="../Controlador/EditarUsuario.php?id=<?php echo $usuario['ID']; ?>"
+                            <a href="../Controlador/EditarUsuario.php?id=<?php echo $usuario['Cedula']; ?>"
                                 class="btn-edit">Editar</a>
-                            <a href="#" data-id="<?php echo $usuario['ID']; ?>" class="btn-delete">Eliminar</a>
+                            <a href="#" data-Cedula="<?php echo $usuario['Cedula']; ?>" class="btn-delete">Eliminar</a>
                         </div>
                     </td>
                 </tr>
                 <?php endforeach; ?>
                 <?php else : ?>
                 <tr>
-                    <td colspan="10">No hay datos disponibles</td>
+                    <td colspan="9">No hay datos disponibles</td>
                 </tr>
                 <?php endif; ?>
             </tbody>
@@ -75,8 +75,8 @@ $trabajadoresTabla = new TrabajadoresTabla();
         <br><br>
         <div class="div_btn">
             <center>
-                <button type="button" class="btn_asignar" onclick="location.href='../Vista/IngresarUsuario.php'">Asignar
-                    un nuevo empleado</button>
+                <button type="button" class="btn_asignar"
+                    onclick="location.href='../Vista/IngresarUsuario.php'">Asignar un nuevo empleado</button>
             </center>
         </div>
 
@@ -87,50 +87,52 @@ $trabajadoresTabla = new TrabajadoresTabla();
     </div>
 
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        document.querySelectorAll('.btn-delete').forEach(link => {
-            link.addEventListener('click', function(event) {
-                event.preventDefault();
-                const employeeId = this.getAttribute('data-id');
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.btn-delete').forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            const employeeCedula = this.getAttribute('data-Cedula');
 
-                swal({
-                    title: "¿Seguro que deseas borrar este usuario?",
-                    text: "Una vez eliminado no podrás recuperarlo",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-                }).then((willDelete) => {
-                    if (willDelete) {
-                        fetch(`../Controlador/EliminarEmpleado.php?id=${employeeId}`, {
-                                method: 'GET'
-                            })
-                            .then(response => response.text())
-                            .then(data => {
-                                if (data.trim() === 'success') {
-                                    swal("Usuario eliminado con éxito", {
-                                        icon: "success",
-                                    }).then(() => {
-                                        location.reload();
-                                    });
-                                } else {
-                                    swal("No se pudo eliminar este usuario", {
-                                        icon: "error",
-                                    });
-                                }
-                            })
-                            .catch(error => {
-                                swal("Error: " + error, {
+            swal({
+                title: "¿Seguro que deseas borrar este usuario?",
+                text: "Una vez eliminado no podrás recuperarlo",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            }).then((willDelete) => {
+                if (willDelete) {
+                    fetch(`../Controlador/EliminarEmpleado.php?Cedula=${employeeCedula}`, {
+                            method: 'GET'
+                        })
+                        .then(response => response.text())
+                        .then(data => {
+                            if (data.trim() === 'success') {
+                                swal("Usuario eliminado con éxito", {
+                                    icon: "success",
+                                }).then(() => {
+                                    location.reload();
+                                });
+                            } else {
+                                swal("No se pudo eliminar este usuario", {
                                     icon: "error",
                                 });
+                            }
+                        })
+                        .catch(error => {
+                            swal("Error al intentar eliminar el usuario", {
+                                icon: "error",
                             });
-                    } else {
-                        swal("El usuario permanecerá en la base de datos");
-                    }
-                });
+                        });
+                } else {
+                    swal("El usuario permanecerá en la base de datos");
+                }
             });
         });
     });
-    </script>
+});
+</script>
+
+
 </body>
 
 </html>

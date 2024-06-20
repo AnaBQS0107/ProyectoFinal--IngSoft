@@ -5,6 +5,7 @@ require_once '../Controlador/Cobro.php';
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +13,7 @@ require_once '../Controlador/Cobro.php';
     <link rel="icon" type="image/png" href="../img/icono.png">
     <link rel="stylesheet" href="Estilos/TablaCobros.css">
 </head>
+
 <body>
     <header>
         <?php include 'header.php'; ?>
@@ -38,26 +40,29 @@ require_once '../Controlador/Cobro.php';
                 </thead>
                 <tbody>
                     <?php foreach ($cobros as $cobro): ?>
-                        <tr>
-                            <td><?php echo $cobro['idCobrosPeaje']; ?></td>
-                            <td><?php echo $cobro['Fecha']; ?></td>
-                            <td><?php echo $cobro['EstacionPeaje']; ?></td>
-                            <td><?php echo $cobro['Empleados_Persona_Cedula']; ?></td>
-                            <td><?php echo $cobro['TipoVehiculo']; ?></td>
-                            <td><?php echo $cobro['TipoVehiculo_Codigo']; ?></td>
-                            <td><?php echo $cobro['TipoVehiculo_Tarifa']; ?></td>       
-                            <td class="actions">
-                                <button class="btn-edit">Editar</button>
-                                <button class="btn-delete">Eliminar</button>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td><?php echo $cobro['idCobrosPeaje']; ?></td>
+                        <td><?php echo $cobro['Fecha']; ?></td>
+                        <td><?php echo $cobro['EstacionPeaje']; ?></td>
+                        <td><?php echo $cobro['Empleados_Persona_Cedula']; ?></td>
+                        <td><?php echo $cobro['TipoVehiculo']; ?></td>
+                        <td><?php echo $cobro['TipoVehiculo_Codigo']; ?></td>
+                        <td><?php echo $cobro['TipoVehiculo_Tarifa']; ?></td>
+                        <td class="actions">
+                            <button class="btn-edit">Editar</button>
+                            <button class="btn-delete">Eliminar</button>
+                        </td>
+                    </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
             <br><br>
             <div class="div_btn">
-                <center> <button type="submit" class="btn_asignar">Asignar un nuevo cobro</button></center>
+                <center>
+                    <a href="../Vista/CobrosPeaje.php" class="btn_asignar"  style="text-decoration: none;">Asignar un nuevo cobro</a>
+                </center>
             </div>
+
             <br>
             <div class="div_btn">
                 <center> <button type="submit" class="btn_registrar">Exportar PDF</button></center>
@@ -65,4 +70,5 @@ require_once '../Controlador/Cobro.php';
         </div>
     </div>
 </body>
+
 </html>

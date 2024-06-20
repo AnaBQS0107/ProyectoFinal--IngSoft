@@ -1,3 +1,7 @@
+<?php
+require_once '../Modelo/Ingreso_Usuario.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -193,6 +197,15 @@
         font-size: 14px;
     }
 
+    .select_registro {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
     button {
         background-color: #4CAF50;
         color: white;
@@ -211,38 +224,46 @@
 
 <body>
     <?php include_once '../Vista/header.php'; ?>
-    <br> <br> <br> 
+    <br> <br> <br>
     <form method="post">
-        <label>Nombre:</label>
-        <input type="text" name="Nombre" value="<?php echo isset($empleado['Nombre']) ? $empleado['Nombre'] : ''; ?>">
-        <br>
-        <label>Cédula:</label>
-        <input type="text" name="Cedula" value="<?php echo isset($empleado['Cedula']) ? $empleado['Cedula'] : ''; ?>">
-        <br>
-        <label>Contraseña:</label>
-        <input type="password" name="Contrasena"
-            value="<?php echo isset($empleado['Contrasena']) ? $empleado['Contrasena'] : ''; ?>">
-        <br>
-        <label>Apellido 1:</label>
-        <input type="text" name="Apellido1"
-            value="<?php echo isset($empleado['Apellido1']) ? $empleado['Apellido1'] : ''; ?>">
-        <br>
-        <label>Apellido 2:</label>
-        <input type="text" name="Apellido2"
-            value="<?php echo isset($empleado['Apellido2']) ? $empleado['Apellido2'] : ''; ?>">
-        <br>
-        <label>Correo Electrónico:</label>
-        <input type="text" name="Correo_Electronico"
-            value="<?php echo isset($empleado['Correo_Electronico']) ? $empleado['Correo_Electronico'] : ''; ?>">
-        <br>
-        <label>Estación ID:</label>
-        <input type="text" name="Estacion_ID"
-            value="<?php echo isset($empleado['Estacion_ID']) ? $empleado['Estacion_ID'] : ''; ?>">
-        <br>
-        <label>Rol ID:</label>
-        <input type="text" name="Roles" value="<?php echo isset($empleado['Rol_ID']) ? $empleado['Rol_ID'] : ''; ?>">
-        <br> <br>
-        <center><button type="submit" class="btn btn-primary">Actualizar</button></center>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" value="<?php echo htmlspecialchars($empleado['Nombre']); ?>"
+            required><br><br>
+
+        <label for="apellido1">Primer Apellido:</label>
+        <input type="text" id="apellido1" name="apellido1"
+            value="<?php echo htmlspecialchars($empleado['Primer_Apellido']); ?>" required><br><br>
+
+        <label for="apellido2">Segundo Apellido:</label>
+        <input type="text" id="apellido2" name="apellido2"
+            value="<?php echo htmlspecialchars($empleado['Segundo_Apellido']); ?>" required><br><br>
+
+        <label for="Correo">Correo Electrónico:</label>
+        <input type="text" id="Correo" name="Correo"
+            value="<?php echo htmlspecialchars($empleado['Correo_Electronico']); ?>" required><br><br>
+
+
+        <div class="col-md-3 position-relative">
+            <label for="estacion" class="form-label">Estación a la que pertenece</label>
+            <select id="rol" name="Estacion_ID" required class="select_registro">
+                <option value="1">Alajuela</option>
+                <option value="2">Heredia</option>
+            </select>
+        </div>
+        <div class="col-md-3 position-relative">
+            <label for="rol" class="form-label">Rol al que pertenece</label>
+            <select id="rol" name="Rol_ID" required class="select_registro">
+                <option value="1">TI</option>
+                <option value="2">Cajero</option>
+                <option value="3">Jefe</option>
+                <option value="4">Recursos Humanos</option>
+            </select>
+
+            <label for="Contrasena">Contraseña:</label>
+            <input type="password" id="Contrasena" name="Contrasena"
+                value="<?php echo htmlspecialchars($empleado['Contraseña']); ?>" required><br><br>
+
+           <center><button type="submit">Guardar Cambios</button></center>
     </form>
 </body>
 
