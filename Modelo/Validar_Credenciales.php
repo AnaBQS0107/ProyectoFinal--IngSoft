@@ -52,5 +52,32 @@ class ValidarCredenciales {
             return null;
         }
     }
+
+    public function getEstacionesPeaje($Nombre) {
+        try {
+            $stmt = $this->db->prepare("
+                SELECT e.EstacionesPeaje_idEstacionesPeaje, ep.Nombre AS Nombre_Estacion, p.Nombre AS Nombre_Empleado
+                FROM Empleados e
+                LEFT JOIN EstacionesPeaje ep ON e.EstacionesPeaje_idEstacionesPeaje = ep.idEstacionesPeaje
+                INNER JOIN Persona p ON e.Persona_Cedula = p.Cedula
+                WHERE p.Nombre = :Nombre
+            ");
+            $stmt->bindParam(':Nombre', $Nombre);
+            $stmt->execute();
+    
+            if ($stmt->rowCount() > 0) {
+                return $stmt->fetch(PDO::FETCH_ASSOC);
+            } else {
+                return null; // Retornar null si no se encontraron resultados
+            }
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return null;
+        }
+    }
+    
+    
+    
 }
+
 ?>
