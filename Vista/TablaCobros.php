@@ -24,6 +24,12 @@ require_once '../Controlador/Cobro.php';
         <center>
             <h1>Lista de Cobros</h1>
         </center>
+        <br>
+        <center>
+        <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Buscar empleado...">
+    <button type="button" id="searchButton">Buscar</button></center>
+</div>
         <div class="table-container">
             <table class="table">
                 <thead>
@@ -50,7 +56,7 @@ require_once '../Controlador/Cobro.php';
                         <td><?php echo $cobro['TipoVehiculo_Tarifa']; ?></td>
                         <td class="actions">
                             <button class="btn-edit">Editar</button>
-                            <button class="btn-delete">Eliminar</button>
+                            <button class="btn-delete" onclick="confirmarEliminar(<?php echo $cobro['idCobrosPeaje']; ?>)">Eliminar</button>
                         </td>
                     </tr>
                     <?php endforeach; ?>
@@ -69,6 +75,7 @@ require_once '../Controlador/Cobro.php';
             </div>
         </div>
     </div>
+    <script src="../JS/CobrosCRUD.js"></script>
 </body>
 
 </html>

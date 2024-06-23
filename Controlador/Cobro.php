@@ -1,24 +1,8 @@
 <?php
-class Database {
-    private $host = "localhost:3307"; // Ajusta el puerto si es necesario
-    private $db_name = "servicio_autobuses";
-    private $username = "root";
-    private $password = "";
-
-    public function getConnection() {
-        try {
-            $conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            return $conn;
-        } catch(PDOException $e) {
-            echo "Error de conexión: " . $e->getMessage();
-            return null;
-        }
-    }
-}
+require_once '../Config/config.php'; 
 
 $cobros = []; 
-$database = new Database();
+$database = new Database1();
 $conn = $database->getConnection();
 
 if ($conn) {
@@ -45,4 +29,39 @@ if ($conn) {
 } else {
     echo "No se pudo establecer la conexión.";
 }
+
+function eliminarCobro($idCobro) {
+    $database = new Database1();
+    $conn = $database->getConnection();
+
+    if ($conn) {
+        try {
+            $query = "DELETE FROM CobrosPeaje WHERE idCobrosPeaje = :idCobro";
+            $stmt = $conn->prepare($query);
+            $stmt->bindParam(':idCobro', $idCobro, PDO::PARAM_INT);
+            $stmt->execute();
+            return true; 
+        } catch (PDOException $e) {
+            echo "Error al eliminar cobro: " . $e->getMessage();
+            return false; 
+        }
+    } else {
+        echo "No se pudo establecer la conexión.";
+        return false;
+    }
+}
+
+if (isset($_GET['eliminarCobro'])) {
+    $idCobro = $_GET['eliminarCobro'];
+    if (eliminarCobro($idCobro)) {
+  
+        header("Location: TablaCobros.php");
+        exit();
+    } else {
+        echo "Error al intentar eliminar el cobro.";
+    }
+}
 ?>
+
+
+

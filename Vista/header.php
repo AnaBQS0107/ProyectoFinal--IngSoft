@@ -38,10 +38,23 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
                     </li>
                 <?php endif; ?>
                 <li class="nav-item"><a class="nav-link" href="../Vista/Inicio.php">Página Principal</a></li>
+                <li class="nav-item"><a class="nav-link" href="../Vista/CobrosPeaje.php">Gestionar Cobros</a></li>
+                <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMantenimiento" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Mantenimiento
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMantenimiento">
+                                <a class="dropdown-item" href="../Vista/ListaDeEmpleados.php">Tabla Empleados</a>
+                                <a class="dropdown-item" href="../Vista/TablaCobros.php">Tabla Cobros de Peaje</a>
+                                <a class="dropdown-item" href="../Vista/TablaRoles.php">Tabla Roles</a>
+                                <a class="dropdown-item" href="../Vista/TablaMontoVehiculos.php">Tabla Montos</a>
+                            </div>
+                        </li>
+     
                 <li class="nav-item"><a class="nav-link" href="../Vista/IngresarUsuario.php">Ingresar usuario</a></li>
-                <li class="nav-item"><a class="nav-link" href="../Vista/ListaDeEmpleados.php">Lista de Empleados</a></li>
-                <li class="nav-item"><a class="nav-link" href="../Vista/CobrosPeaje.php">Cobrar Peajes</a></li>
-                <li class="nav-item"><a class="nav-link" href="../Vista/TablaCobros.php">Conteo de Peajes</a></li>
+            
+              
             </ul>
         </div>
     </nav>
