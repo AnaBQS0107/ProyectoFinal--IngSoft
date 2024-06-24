@@ -95,6 +95,7 @@ $trabajadoresTabla = new TrabajadoresTabla();
 
 
     <script src="../JS/EmpleadosCRUD.js"></script>
+    <?php include 'Footer.php'; ?>
 </body>
 
 </html>
