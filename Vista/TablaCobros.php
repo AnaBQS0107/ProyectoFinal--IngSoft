@@ -64,13 +64,6 @@ require_once '../Controlador/Cobro.php';
             </table>
             <br><br>
             <div class="div_btn">
-                <center>
-                    <a href="../Vista/CobrosPeaje.php" class="btn_asignar"  style="text-decoration: none;">Asignar un nuevo cobro</a>
-                </center>
-            </div>
-
-            <br>
-            <div class="div_btn">
                 <center> <button type="submit" class="btn_registrar">Exportar PDF</button></center>
             </div>
         </div>
