@@ -232,9 +232,7 @@
         padding: 10px;
     }
     </style>
-    <div class="div_btn">
-        <center> <button type="submit" class="btn_asignar">Asignar un nuevo aguinaldo</button></center>
-    </div>
+
     <br>
     <div class="div_btn">
         <center> <button type="submit" class="btn_registrar">Exportar PDF</button></center>
