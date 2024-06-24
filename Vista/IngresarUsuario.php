@@ -21,38 +21,37 @@ require_once '../Modelo/Ingreso_Usuario.php';
 
     <div class="container">
         <form method="post" action="../Controlador/TrabajadoresInfo.php" class="row g-3 needs-validation" novalidate>
-            <div class="col-md-4 position-relative">
+            <div class="input-group-horizontal">
+                <div class="col-md-3 position-relative">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" class="input_registro" id="nombre" name="Nombre" required>
+                    <div class="valid-tooltip"></div>
+                </div>
+                <div class="col-md-3 position-relative">
+                    <label for="apellido1" class="form-label">Primer Apellido</label>
+                    <input type="text" class="input_registro" id="apellido1" name="Apellido1" required>
+                </div>
+                <div class="col-md-3 position-relative">
+                    <label for="segundo_apellido" class="form-label">Segundo Apellido</label>
+                    <input type="text" class="input_registro" id="segundo_apellido" name="Apellido2" required>
+                    <div class="valid-tooltip"></div>
+                </div>
+            </div>
+
+            
+        <form method="post" action="../Controlador/TrabajadoresInfo.php" class="row g-3 needs-validation" novalidate>
+            <div class="col-md-3 position-relative">
                 <label for="cedula" class="form-label">Ingrese su Cedula</label>
                 <input type="text" class="input_registro" placeholder="104120845" id="cedula" name="Cedula" required>
                 <div class="valid-tooltip"></div>
             </div>
-            <div class="col-md-4 position-relative">
+            <div class="col-md-3 position-relative">
                 <label for="contrasena" class="form-label">Ingrese su contraseña</label>
                 <input type="password" class="input_registro" placeholder="********" id="contrasena" name="Contrasena"
                     required>
                 <div class="valid-tooltip"></div>
             </div>
-            <div class="col-md-4 position-relative">
-                <label for="nombre" class="form-label">Nombre</label>
-                <input type="text" class="input_registro" id="nombre" name="Nombre" required>
-                <div class="valid-tooltip"></div>
-            </div>
             <div class="col-md-3 position-relative">
-                <label for="apellido1" class="form-label">Primer Apellido</label>
-                <input type="text" class="input_registro" id="apellido1" name="Apellido1" required>
-            </div>
-
-            <div class="col-md-4 position-relative">
-                <label for="segundo_apellido" class="form-label">Segundo Apellido</label>
-                <input type="text" class="input_registro" id="segundo_apellido" name="Apellido2" required>
-                <div class="valid-tooltip"></div>
-            </div>
-            <div class="col-md-4 position-relative">
-                <label for="SalarioBase" class="form-label">Salario Base</label>
-                <input type="text" class="input_registro" id="SalarioBase" name="SalarioBase" required>
-                <div class="valid-tooltip"></div>
-            </div>
-            <div class="col-md-4 position-relative">
                 <label for="email" class="form-label">Correo Electronico</label>
                 <div class="input-group has-validation">
                     <input type="email" class="input_registro" placeholder="correoejemploi@gmail.com" id="email"
@@ -60,6 +59,13 @@ require_once '../Modelo/Ingreso_Usuario.php';
                     <div class="invalid-tooltip"></div>
                 </div>
             </div>
+           
+            <div class="col-md-2 position-relative">
+                <label for="SalarioBase" class="form-label">Salario Base</label>
+                <input type="text" class="input_registro" id="SalarioBase" name="SalarioBase" required>
+                <div class="valid-tooltip"></div>
+            </div>
+          
             <div class="col-md-3 position-relative">
                 <label for="Fecha" class="form-label">Fecha de Entrada</label>
                 <input type="date" class="form-control" id="Fecha" name="Fecha" required>

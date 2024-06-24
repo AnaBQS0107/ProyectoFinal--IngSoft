@@ -21,6 +21,11 @@ form label {
     font-weight: bold;
 }
 
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
 
 .input_registro[type="text"],
 .input_registro[type="password"],
