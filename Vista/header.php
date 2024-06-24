@@ -28,12 +28,12 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
             <ul>
                 <?php if ($user && isset($user['Nombre'], $user['Nombre_Rol'])) : ?>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" onmouseover="expandDropdownMenu()">
+                        <a class="nav-link dropdown-toggle" href="#" role="button">
                             <?php echo htmlspecialchars($user['Nombre']); ?> (<?php echo htmlspecialchars($user['Nombre_Rol']); ?>)
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">Perfil</a></li>
-                            <li><a class="dropdown-item" href="../Vista/Index.php">Cerrar sesión</a></li>
+                            <li><a class="dropdown-item" href="../Controlador/AuthController.php?action=logout">Cerrar sesión</a></li>
                         </ul>
                     </li>
                 <?php endif; ?>
@@ -64,14 +64,11 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
 </header>
 
 
+
 <script>
     function toggleMenu() {
         var navbarLinks = document.getElementById("navbarLinks");
-        if (navbarLinks.style.display === "flex") {
-            navbarLinks.style.display = "none";
-        } else {
-            navbarLinks.style.display = "flex";
-        }
+        navbarLinks.style.display = navbarLinks.style.display === "flex" ? "none" : "flex";
     }
 
     document.addEventListener("DOMContentLoaded", function() {
@@ -81,10 +78,10 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
         hamburgerMenu.addEventListener("click", function() {
             if (navbarLinks.classList.contains("active")) {
                 navbarLinks.classList.remove("active");
-                document.body.style.overflow = "auto"; // Restaurar desplazamiento del cuerpo
+                document.body.style.overflow = "auto";
             } else {
                 navbarLinks.classList.add("active");
-                document.body.style.overflow = "hidden"; // Ocultar desplazamiento del cuerpo
+                document.body.style.overflow = "hidden";
             }
         });
 
@@ -101,6 +98,5 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
         });
     });
 </script>
-
 </body>
 </html>
