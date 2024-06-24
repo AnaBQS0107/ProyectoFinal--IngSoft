@@ -16,7 +16,7 @@ $roles = $controller->obtenerRoles();
     <title>PassWize - Roles</title>
     <link rel="icon" type="image/png" href="../img/icono.png">
     <link rel="stylesheet" href="Estilos/TablaEmpleados.css">
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 
 <body>
@@ -50,8 +50,8 @@ $roles = $controller->obtenerRoles();
                         <td><?php echo $rol['idRoles']; ?></td>
                         <td><?php echo $rol['Nombre_Rol']; ?></td>
                         <td class="actions">
-                            <button class="btn-edit">Editar</button>
-                            <button class="btn-delete">Eliminar</button>
+                        <button class="btn-edit" data-idRol="<?php echo $rol['idRoles']; ?>">Editar</button>
+                            <button class="btn-delete" >Eliminar</button>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -66,13 +66,13 @@ $roles = $controller->obtenerRoles();
         <div class="div_btn">
             <center>
                 <!-- Enlace para añadir nuevo rol, ajusta según necesites -->
-                <button type="button" class="btn_asignar" onclick="location.href='../Vista/AgregarRol.php'">Agregar un nuevo rol</button>
+                <button type="button" class="btn_asignar" onclick="location.href='../Vista/IngresarRoles.php'">Agregar un nuevo rol</button>
             </center>
         </div>
         <br>
     </div>
 
-    <script src="../JS/EmpleadosCRUD.js"></script>
+    <script src="../JS/Roles.js"></script>
 </body>
 
 </html>
