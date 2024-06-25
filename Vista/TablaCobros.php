@@ -76,6 +76,7 @@ require_once '../Controlador/Cobro.php';
         </div>
     </div>
     <script src="../JS/CobrosCRUD.js"></script>
+    <?php include 'Footer.php'; ?>
 </body>
 
 </html>

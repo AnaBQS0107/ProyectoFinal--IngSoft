@@ -142,9 +142,8 @@
             </tbody>
         </table>
     </div>
-<<<<<<< HEAD
     <br>
-=======
+
     <style>
     <style>body {
         font-family: Arial, sans-serif;
@@ -252,10 +251,10 @@
         padding: 10px;
     }
     </style>
->>>>>>> 2d5161e56d1feb2b7d2c797ab7ffa1c5416d2696
     <div class="div_btn">
         <center> <button type="submit" class="btn_registrar">Exportar PDF</button></center>
     </div>
+    <?php include 'Footer.php'; ?>
 </body>
 
 </html>
