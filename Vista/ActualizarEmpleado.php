@@ -246,8 +246,11 @@ require_once '../Modelo/Ingreso_Usuario.php';
         <div class="col-md-3 position-relative">
             <label for="estacion" class="form-label">Estación a la que pertenece</label>
             <select id="rol" name="Estacion_ID" required class="select_registro">
-                <option value="1">Alajuela</option>
+            <option value="1">Alajuela</option>
                 <option value="2">Heredia</option>
+                <option value="3">Guanacaste</option>
+                <option value="4">Puntarenas</option>
+                <option value="5">San José</option>
             </select>
         </div>
         <div class="col-md-3 position-relative">

@@ -54,9 +54,7 @@ require_once '../Modelo/Ingreso_Usuario.php';
             <div class="col-md-3 position-relative">
                 <label for="email" class="form-label">Correo Electronico</label>
                 <div class="input-group has-validation">
-                    <input type="email" class="input_registro" placeholder="correoejemploi@gmail.com" id="email"
-                        name="Correo_Electronico" aria-describedby="validationTooltipUsernamePrepend" required>
-                    <div class="invalid-tooltip"></div>
+                    <input type="email" class="input_registro" placeholder="correoejemplo@gmail.com" id="email" name="Correo_Electronico" required>
                 </div>
             </div>
            

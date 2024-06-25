@@ -34,10 +34,10 @@
                 <tr>
 
                     <td>Ana</td>
-                    <td>Gamboa</td>
-                    <td>Duarte</td>
-                    <td>15/01/2020</td>
-                    <td>30/02/2023</td>
+                    <td>González</td>
+                    <td>Calvo</td>
+                    <td>30/02/2020</td>
+                    <td>01/04/2024</td>
                     <td>Despido</td>
                     <td>₡450,500</td>
                     <td class="actions">
@@ -50,9 +50,9 @@
                     <td>Octavio</td>
                     <td>Grillo</td>
                     <td>Rojas</td>
-                    <td>30/03/2013</td>
-                    <td>22/10/2023</td>
-                    <td>Pensión</td>
+                    <td>22/10/2022</td>
+                    <td>09/08/2023</td>
+                    <td>Despido</td>
                     <td>₡950,300</td>
                     <td class="actions">
                         <button class="btn-edit">Editar</button>
@@ -64,9 +64,9 @@
                     <td>Elena</td>
                     <td>Zamora</td>
                     <td>Picado</td>
-                    <td>20/05/2022</td>
                     <td>15/10/2023</td>
-                    <td>Renuncia</td>
+                    <td>02/03/2024</td>
+                    <td>Pensión</td>
                     <td>₡310,000</td>
                     <td class="actions">
                         <button class="btn-edit">Editar</button>
@@ -75,13 +75,55 @@
                 </tr>
                 <tr>
 
-                    <td>Daniel</td>
-                    <td>Alvarado</td>
-                    <td>Campos</td>
-                    <td>19/01/2022</td>
+                    <td>Valeria</td>
+                    <td>Víquez</td>
+                    <td>Barquero</td>
                     <td>05/07/2023</td>
-                    <td>Despido</td>
+                    <td>05/06/2024</td>
+                    <td>Renuncia</td>
                     <td>₡560,300</td>
+                    <td class="actions">
+                        <button class="btn-edit">Editar</button>
+                        <button class="btn-delete">Eliminar</button>
+                    </td>
+                </tr>
+                <tr>
+
+                    <td>Mariana</td>
+                    <td>Soto</td>
+                    <td>Ledezma</td>
+                    <td>02/08/2020</td>
+                    <td>07/07/2024</td>
+                    <td>Pensión</td>
+                    <td>₡890,908</td>
+                    <td class="actions">
+                        <button class="btn-edit">Editar</button>
+                        <button class="btn-delete">Eliminar</button>
+                    </td>
+                </tr>
+                <tr>
+
+                    <td>Fernanda</td>
+                    <td>Castro</td>
+                    <td>Rodríguez</td>
+                    <td>15/09/2018</td>
+                    <td>23/09/2020</td>
+                    <td>Despido</td>
+                    <td>₡670,987</td>
+                    <td class="actions">
+                        <button class="btn-edit">Editar</button>
+                        <button class="btn-delete">Eliminar</button>
+                    </td>
+                </tr>
+                <tr>
+
+                    <td>Oscar</td>
+                    <td>Ulate</td>
+                    <td>Brenes</td>
+                    <td>13/09/2021</td>
+                    <td>18/09/2023</td>
+                    <td>Renuncia</td>
+                    <td>₡567,907</td>
                     <td class="actions">
                         <button class="btn-edit">Editar</button>
                         <button class="btn-delete">Eliminar</button>
@@ -90,12 +132,13 @@
             </tbody>
         </table>
     </div>
-    
+
 
     <br>
     <div class="div_btn">
-        <center>    <button type="submit" class="btn_registrar">Exportar PDF</button></center>
+        <center> <button type="submit" class="btn_registrar">Exportar PDF</button></center>
     </div>
+    <br><br>
     <?php include 'Footer.php'; ?>
 </body>
 

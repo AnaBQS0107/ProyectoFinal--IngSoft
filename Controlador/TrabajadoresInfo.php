@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $estacion_id = $_POST['Estacion_ID'];
     $rol_id = $_POST['Rol_ID'];
     $fechaIngreso = $_POST['Fecha'];
-    $salarioBase = $_POST['SalarioBase']; // Assuming this input exists
+    $salarioBase = $_POST['SalarioBase'];
 
     try {
         // Begin transaction
@@ -40,21 +40,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt_persona->execute();
 
         // Insert into empleados table
-        $sql_empleados = "INSERT INTO empleados (Fecha_Ingreso, Persona_Cedula, Roles_idRoles, SalarioBase, EstacionesPeaje_idEstacionesPeaje)
-                          VALUES (:fechaIngreso, :cedula, :rol_id, :salarioBase, :estacion_id)";
+        $sql_empleados = "INSERT INTO empleados (Fecha_Ingreso, Persona_Cedula, Roles_idRoles, SalarioBase, EstacionesPeaje_idEstacionesPeaje, Correo_Electronico)
+                          VALUES (:fechaIngreso, :cedula, :rol_id, :salarioBase, :estacion_id, :email)";
         $stmt_empleados = $conn->prepare($sql_empleados);
         $stmt_empleados->bindParam(':fechaIngreso', $fechaIngreso);
         $stmt_empleados->bindParam(':cedula', $cedula);
         $stmt_empleados->bindParam(':rol_id', $rol_id);
         $stmt_empleados->bindParam(':salarioBase', $salarioBase);
         $stmt_empleados->bindParam(':estacion_id', $estacion_id);
+        $stmt_empleados->bindParam(':email', $email);
         $stmt_empleados->execute();
 
         // Insert into usuarios table
         $sql_usuarios = "INSERT INTO usuarios (Contraseña, Empleados_Persona_Cedula)
                          VALUES (:contrasena, :cedula)";
         $stmt_usuarios = $conn->prepare($sql_usuarios);
-        $stmt_usuarios->bindParam(':contrasena',$contrasena);
+        $stmt_usuarios->bindParam(':contrasena', $contrasena);
         $stmt_usuarios->bindParam(':cedula', $cedula);
         $stmt_usuarios->execute();
 
