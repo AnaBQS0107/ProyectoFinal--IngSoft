@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.btn-delete').forEach(link => {
         link.addEventListener('click', function(event) {
@@ -16,7 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     fetch(`../Controlador/EliminarEmpleado.php?Cedula=${employeeCedula}`, {
                             method: 'GET'
                         })
-                        .then(response => response.text())
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('No se pudo completar la solicitud de eliminación');
+                            }
+                            return response.text();
+                        })
                         .then(data => {
                             if (data.trim() === 'success') {
                                 swal("Usuario eliminado con éxito", {
@@ -34,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             swal("Error al intentar eliminar el usuario", {
                                 icon: "error",
                             });
+                            console.error('Error:', error.message); // Loguear el error en la consola para depuración
                         });
                 } else {
                     swal("El usuario permanecerá en la base de datos");
