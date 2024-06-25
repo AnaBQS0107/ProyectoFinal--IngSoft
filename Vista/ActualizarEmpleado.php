@@ -265,6 +265,7 @@ require_once '../Modelo/Ingreso_Usuario.php';
 
            <center><button type="submit">Guardar Cambios</button></center>
     </form>
+    <?php include 'Footer.php'; ?>
 </body>
 
 </html>
