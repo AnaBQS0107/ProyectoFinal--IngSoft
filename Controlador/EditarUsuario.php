@@ -25,13 +25,12 @@ function obtenerEmpleadoPorId($cedula) {
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     } catch (PDOException $exception) {
-        echo "Error: " . $exception->getMessage();
+        // Manejo del error en caso de falla en la consulta
+        error_log("Error al obtener empleado por ID: " . $exception->getMessage());
         return false;
     }
 }
 
-
-// Función para actualizar la información del empleado por ID
 function actualizarEmpleado($cedula, $datos) {
     $conn = obtenerConexion();
 
@@ -65,10 +64,10 @@ function actualizarEmpleado($cedula, $datos) {
     
         return true; // Retorna true si todas las actualizaciones fueron exitosas
     } catch (PDOException $e) {
-        echo "Error al actualizar el empleado: " . $e->getMessage();
+        // Manejo del error en caso de falla en la actualización
+        error_log("Error al actualizar empleado: " . $e->getMessage());
         return false;
     }
-    
 }
 
 // Inicio del manejo de la petición
@@ -80,11 +79,13 @@ if (isset($_GET['id'])) {
         $actualizacion_exitosa = actualizarEmpleado($id_empleado, $_POST);
 
         if ($actualizacion_exitosa) {
-            echo "Empleado actualizado exitosamente.";
-            echo '<script>setTimeout(function(){ location.reload(); }, 2000);</script>';
+            // Redirigir a la lista de empleados después de actualizar
+            header("Location: ../Vista/ListaDeEmpleados.php");
             exit;
         } else {
-            echo "Error al actualizar el empleado.";
+            // Manejar el caso de error de actualización (puedes redirigir a otra página de error si lo deseas)
+            echo "Hubo un error al actualizar el empleado.";
+            exit;
         }
     } else {
         // Si es una petición GET, mostrar el formulario para editar el empleado
@@ -92,12 +93,14 @@ if (isset($_GET['id'])) {
         if ($empleado) {
             include_once '../Vista/ActualizarEmpleado.php'; // Incluir el formulario de actualización
         } else {
+            // Manejar el caso de empleado no encontrado (puedes redirigir a otra página de error si lo deseas)
             echo "Empleado no encontrado.";
+            exit;
         }
     }
 } else {
     // Si no se proporcionó un ID válido, redirigir a la lista de empleados
-    header("Location: ../Vista/ListaDeEmpleados");
+    header("Location: ../Vista/ListaDeEmpleados.php");
     exit;
 }
 ?>

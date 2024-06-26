@@ -71,46 +71,48 @@ require_once '../Controlador/TrabajadoresInfo.php';
             <div class="col-md-3 position-relative">
                 <label for="estacion" class="form-label">Estación a la que pertenece</label>
                 <select class="select_registro" id="estacion" name="Estacion_ID" required>
-                    <option selected disabled value="">Seleccione...</option>
-                    <?php
-        if ($resultEstaciones && count($resultEstaciones) > 0) {
-            foreach ($resultEstaciones as $row) {
-                echo '<option value="' . $row["idEstacionesPeaje"] . '">' . $row["Nombre"] . '</option>';
-            }
-        } else {
-            echo '<option disabled>No hay estaciones disponibles</option>';
-        }
-        ?>
+                    <?php if ($resultEstaciones && count($resultEstaciones) > 0) : ?>
+                    <?php foreach ($resultEstaciones as $row) : ?>
+                    <?php $selected = ($row['idEstacionesPeaje'] == $empleado['Estacion_ID']) ? 'selected' : ''; ?>
+                    <option value="<?php echo $row["idEstacionesPeaje"]; ?>" <?php echo $selected; ?>>
+                        <?php echo $row["Nombre"]; ?>
+                    </option>
+                    <?php endforeach; ?>
+                    <?php else : ?>
+                    <option disabled>No hay estaciones disponibles</option>
+                    <?php endif; ?>
                 </select>
             </div>
-
 
             <div class="col-md-3 position-relative">
                 <label for="rol" class="form-label">Rol al que pertenece</label>
                 <select class="select_registro" id="rol" name="Rol_ID" required>
-                    <option selected disabled value="">Seleccione...</option>
-                    <?php
-        if ($resultRoles && count($resultRoles) > 0) {
-            foreach ($resultRoles as $row) {
-                echo '<option value="' . $row["idRoles"] . '">' . $row["Nombre_Rol"] . '</option>';
-            }
-        } else {
-            echo '<option disabled>No hay roles disponibles</option>';
-        }
-        ?>
+                    <?php if ($resultRoles && count($resultRoles) > 0) : ?>
+                    <?php foreach ($resultRoles as $row) : ?>
+                    <?php $selected = ($row['idRoles'] == $empleado['Rol_ID']) ? 'selected' : ''; ?>
+                    <option value="<?php echo $row["idRoles"]; ?>" <?php echo $selected; ?>>
+                        <?php echo $row["Nombre_Rol"]; ?>
+                    </option>
+                    <?php endforeach; ?>
+                    <?php else : ?>
+                    <option disabled>No hay roles disponibles</option>
+                    <?php endif; ?>
                 </select>
-                <div class="invalid-tooltip"></div>
             </div>
-            <center>
-                <div class="div_btn">
-                    <button type="submit" class="btn_registrar">Registrar</button>
-                </div>
-            </center>
-        </form>
+
+
+            <div class="invalid-tooltip"></div>
+    </div>
+    <center>
+        <div class="div_btn">
+            <button type="submit" class="btn_registrar">Registrar</button>
+        </div>
+    </center>
+    </form>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="scripts/registro.js"></script>
+    <script src="../JS/EmpleadosCRUD.js"></script>
 
     <?php include 'Footer.php'; ?>
 </body>

@@ -176,16 +176,7 @@ class TrabajadoresInfo {
         $stmt->bindParam(':estacion_id', $data['Estacion_ID']);
         $stmt->bindParam(':rol_id', $data['Rol_ID']);
     
-        try {
-            if ($stmt->execute()) {
-                echo "Registro exitoso!";
-            } else {
-                echo "Error al registrar.";
-            }
-        } catch (PDOException $e) {
-            echo "Error al insertar registro: " . $e->getMessage() . "<br>";
-            echo "Detalles del error: " . json_encode($stmt->errorInfo());
-        }
+
     }
     
 }
