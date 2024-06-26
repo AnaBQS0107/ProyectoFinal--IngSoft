@@ -2,7 +2,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="Estilos/Footer.css">
     <div class="footer-icon-container">
-        <a href="#"><img src="../img/icono.png" alt="Logo" class="footer-icon"></a>
     </div>
     <div class="container">
         <div class="footer-content">
