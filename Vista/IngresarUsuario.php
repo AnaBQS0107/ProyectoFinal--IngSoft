@@ -1,5 +1,5 @@
-<?php
-require_once '../Modelo/Ingreso_Usuario.php';
+<?php 
+require_once '../Controlador/TrabajadoresInfo.php';
 ?>
 
 <!DOCTYPE html>
@@ -12,6 +12,7 @@ require_once '../Modelo/Ingreso_Usuario.php';
     <link rel="stylesheet" href="Estilos/IngresarUsuario.css">
     <link rel="icon" type="image/png" href="../img/icono.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -20,9 +21,10 @@ require_once '../Modelo/Ingreso_Usuario.php';
     </header>
 
     <div class="container">
-        <form method="post" action="../Controlador/TrabajadoresInfo.php" class="row g-3 needs-validation" novalidate>
+        <form id="registroForm" method="post" class="row g-3 needs-validation" novalidate>
             <div class="input-group-horizontal">
                 <div class="col-md-3 position-relative">
+                    <br><br><br>
                     <label for="nombre" class="form-label">Nombre</label>
                     <input type="text" class="input_registro" id="nombre" name="Nombre" required>
                     <div class="valid-tooltip"></div>
@@ -38,10 +40,8 @@ require_once '../Modelo/Ingreso_Usuario.php';
                 </div>
             </div>
 
-            
-        <form method="post" action="../Controlador/TrabajadoresInfo.php" class="row g-3 needs-validation" novalidate>
             <div class="col-md-3 position-relative">
-                <label for="cedula" class="form-label">Ingrese su Cedula</label>
+                <label for="cedula" class="form-label">Ingrese su Cédula</label>
                 <input type="text" class="input_registro" placeholder="104120845" id="cedula" name="Cedula" required>
                 <div class="valid-tooltip"></div>
             </div>
@@ -52,18 +52,17 @@ require_once '../Modelo/Ingreso_Usuario.php';
                 <div class="valid-tooltip"></div>
             </div>
             <div class="col-md-3 position-relative">
-                <label for="email" class="form-label">Correo Electronico</label>
+                <label for="email" class="form-label">Correo Electrónico</label>
                 <div class="input-group has-validation">
-                    <input type="email" class="input_registro" placeholder="correoejemplo@gmail.com" id="email" name="Correo_Electronico" required>
+                    <input type="email" class="input_registro" placeholder="correoejemplo@gmail.com" id="email"
+                        name="Correo_Electronico" required>
                 </div>
             </div>
-           
             <div class="col-md-2 position-relative">
                 <label for="SalarioBase" class="form-label">Salario Base</label>
                 <input type="text" class="input_registro" id="SalarioBase" name="SalarioBase" required>
                 <div class="valid-tooltip"></div>
             </div>
-          
             <div class="col-md-3 position-relative">
                 <label for="Fecha" class="form-label">Fecha de Entrada</label>
                 <input type="date" class="form-control" id="Fecha" name="Fecha" required>
@@ -84,6 +83,8 @@ require_once '../Modelo/Ingreso_Usuario.php';
         ?>
                 </select>
             </div>
+
+
             <div class="col-md-3 position-relative">
                 <label for="rol" class="form-label">Rol al que pertenece</label>
                 <select class="select_registro" id="rol" name="Rol_ID" required>
@@ -105,9 +106,12 @@ require_once '../Modelo/Ingreso_Usuario.php';
                     <button type="submit" class="btn_registrar">Registrar</button>
                 </div>
             </center>
-
+        </form>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="scripts/registro.js"></script>
+
     <?php include 'Footer.php'; ?>
 </body>
 

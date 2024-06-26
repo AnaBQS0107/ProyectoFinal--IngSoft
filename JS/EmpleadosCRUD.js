@@ -74,3 +74,42 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+ 
+document.getElementById('registroForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const formData = new FormData(this);
+
+    fetch('../Controlador/TrabajadoresInfo.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            Swal.fire({
+                title: '¡Registro exitoso!',
+                text: data.message,
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then(() => {
+                location.reload();
+            });
+        } else {
+            Swal.fire({
+                title: 'Error',
+                text: data.message,
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        }
+    })
+    .catch(error => {
+        Swal.fire({
+            title: 'Error',
+            text: 'Error al enviar los datos',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+        console.error('Error:', error);
+    });
+});

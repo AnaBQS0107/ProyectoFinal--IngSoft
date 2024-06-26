@@ -1,5 +1,6 @@
 <?php
 require_once '../Modelo/Ingreso_Usuario.php';
+require_once '../Controlador/TrabajadoresInfo.php';
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +24,7 @@ require_once '../Modelo/Ingreso_Usuario.php';
 
     .navbar {
         display: flex;
-        jutify-content: space-between;
+        justify-content: space-between;
         align-items: center;
         background-color: #005c53;
         padding: 10px;
@@ -33,83 +34,87 @@ require_once '../Modelo/Ingreso_Usuario.php';
         left: 0;
         z-index: 1000;
     }
+
     footer {
-    background-color: #005c53;
-    color: white  !important;
-    padding: 20px 0;
-    position: relative;
-  }
-  
-  .container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .footer-content {
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-  }
-  
-  .about-us, .contact {
-    flex: 1;
-    min-width: 200px;
-    text-align: center;
-    margin: 10px;
-  }
-  
-  .contact p {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 10px;
-  }
-  
-  .contact i {
-    margin-right: 10px;
-    font-size: 1.2em;
-  }
-  
-  .footer-icon-container {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-  }
-  
-  .footer-icon {
-    max-width: 150px;
-    height: auto;
-  }
-  .footer-icon-container {
-    position: absolute;
-    top: 30px;
-    left: 90px; 
-  }
-  @media (max-width: 768px) {
-    .footer-content {
-        flex-direction: column;
-        align-items: center;
+        background-color: #005c53;
+        color: white !important;
+        padding: 20px 0;
+        position: relative;
     }
-    
-    .footer-icon-container {
-        position: static;
-        text-align: center;
+
+    .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .footer-content {
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+        flex-wrap: wrap;
         margin-bottom: 20px;
     }
-  }
-  
-  .footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: #333;
-    color: white !important;
-    text-align: center;
-    padding: 10px 0;
-  }
+
+    .about-us,
+    .contact {
+        flex: 1;
+        min-width: 200px;
+        text-align: center;
+        margin: 10px;
+    }
+
+    .contact p {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    .contact i {
+        margin-right: 10px;
+        font-size: 1.2em;
+    }
+
+    .footer-icon-container {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+    }
+
+    .footer-icon {
+        max-width: 150px;
+        height: auto;
+    }
+
+    .footer-icon-container {
+        position: absolute;
+        top: 30px;
+        left: 90px;
+    }
+
+    @media (max-width: 768px) {
+        .footer-content {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-icon-container {
+            position: static;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    }
+
+    .footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: #333;
+        color: white !important;
+        text-align: center;
+        padding: 10px 0;
+    }
 
     .navbar-container {
         display: flex;
@@ -275,13 +280,13 @@ require_once '../Modelo/Ingreso_Usuario.php';
     }
 
     .select_registro {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    font-size: 14px;
-}
+        width: calc(100% - 20px);
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        font-size: 14px;
+    }
 
     button {
         background-color: #4CAF50;
@@ -304,50 +309,69 @@ require_once '../Modelo/Ingreso_Usuario.php';
     <br> <br> <br>
     <form method="post">
         <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" value="<?php echo htmlspecialchars($empleado['Nombre']); ?>"
+        <input type="text" id="nombre" name="nombre"
+            value="<?php echo isset($empleado['Nombre']) ? htmlspecialchars($empleado['Nombre']) : ''; ?>"
             required><br><br>
 
         <label for="apellido1">Primer Apellido:</label>
         <input type="text" id="apellido1" name="apellido1"
-            value="<?php echo htmlspecialchars($empleado['Primer_Apellido']); ?>" required><br><br>
+            value="<?php echo isset($empleado['Primer_Apellido']) ? htmlspecialchars($empleado['Primer_Apellido']) : ''; ?>"
+            required><br><br>
 
         <label for="apellido2">Segundo Apellido:</label>
         <input type="text" id="apellido2" name="apellido2"
-            value="<?php echo htmlspecialchars($empleado['Segundo_Apellido']); ?>" required><br><br>
+            value="<?php echo isset($empleado['Segundo_Apellido']) ? htmlspecialchars($empleado['Segundo_Apellido']) : ''; ?>"
+            required><br><br>
 
         <label for="Correo">Correo Electrónico:</label>
         <input type="text" id="Correo" name="Correo"
-            value="<?php echo htmlspecialchars($empleado['Correo_Electronico']); ?>" required><br><br>
-
+            value="<?php echo isset($empleado['Correo_Electronico']) ? htmlspecialchars($empleado['Correo_Electronico']) : ''; ?>"
+            required><br><br>
 
         <div class="col-md-3 position-relative">
             <label for="estacion" class="form-label">Estación a la que pertenece</label>
-            <select id="rol" name="Estacion_ID" required class="select_registro">
-            <option value="1">Alajuela</option>
-                <option value="2">Heredia</option>
-                <option value="3">Guanacaste</option>
-                <option value="4">Puntarenas</option>
-                <option value="5">San José</option>
+            <select class="select_registro" id="estacion" name="Estacion_ID" required>
+                <option selected disabled value="">Seleccione...</option>
+                <?php
+        if ($resultEstaciones && count($resultEstaciones) > 0) {
+            foreach ($resultEstaciones as $row) {
+                $selected = ($row['idEstacionesPeaje'] == $empleado['Estacion_ID']) ? 'selected' : '';
+                echo '<option value="' . $row["idEstacionesPeaje"] . '" ' . $selected . '>' . $row["Nombre"] . '</option>';
+            }
+        } else {
+            echo '<option disabled>No hay estaciones disponibles</option>';
+        }
+        ?>
             </select>
         </div>
+
         <div class="col-md-3 position-relative">
             <label for="rol" class="form-label">Rol al que pertenece</label>
-            <select id="rol" name="Rol_ID" required class="select_registro">
-                <option value="1">TI</option>
-                <option value="2">Cajero</option>
-                <option value="3">Jefe</option>
-                <option value="4">Recursos Humanos</option>
+            <select class="select_registro" id="rol" name="Rol_ID" required>
+                <option selected disabled value="">Seleccione...</option>
+                <?php
+        if ($resultRoles && count($resultRoles) > 0) {
+            foreach ($resultRoles as $row) {
+                $selected = ($row['idRoles'] == $empleado['Rol_ID']) ? 'selected' : '';
+                echo '<option value="' . $row["idRoles"] . '" ' . $selected . '>' . $row["Nombre_Rol"] . '</option>';
+            }
+        } else {
+            echo '<option disabled>No hay roles disponibles</option>';
+        }
+        ?>
             </select>
+        </div>
 
-            <label for="Contrasena">Contraseña:</label>
-            <input type="password" id="Contrasena" name="Contrasena"
-                value="<?php echo htmlspecialchars($empleado['Contraseña']); ?>" required><br><br>
 
-           <center><button type="submit">Guardar Cambios</button></center>
+        <label for="Contrasena">Contraseña:</label>
+        <input type="password" id="Contrasena" name="Contrasena"
+            value="<?php echo isset($empleado['Contraseña']) ? htmlspecialchars($empleado['Contraseña']) : ''; ?>"
+            required><br><br>
+
+        <center><button type="submit">Guardar Cambios</button></center>
     </form>
-</div>
-  
-</body> 
-<br><br>
- <?php include 'Footer.php'; ?>
+    <br><br>
+    <?php include '../Vista/Footer.php'; ?>
+</body>
+
 </html>
