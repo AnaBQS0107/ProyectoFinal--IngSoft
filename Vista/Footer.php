@@ -19,7 +19,7 @@
         </div>
         <div class="row">
             <div class="col-md-12 text-center">
-                <center><p>&copy; <?php echo date('Y'); ?>2024 PassWize. Todos los derechos reservados.</p></center>
+                <center><p>&copy; <?php echo date('Y'); ?> PassWize. Todos los derechos reservados.</p></center>
             </div>
         </div>
     </div>

@@ -12,6 +12,7 @@ require_once '../Controlador/Cobro.php';
     <title>Lista de Cobros</title>
     <link rel="icon" type="image/png" href="../img/icono.png">
     <link rel="stylesheet" href="Estilos/TablaCobros.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 
 <body>

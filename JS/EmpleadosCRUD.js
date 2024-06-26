@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.btn-delete').forEach(link => {
         link.addEventListener('click', function(event) {
@@ -16,7 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     fetch(`../Controlador/EliminarEmpleado.php?Cedula=${employeeCedula}`, {
                             method: 'GET'
                         })
-                        .then(response => response.text())
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('No se pudo completar la solicitud de eliminación');
+                            }
+                            return response.text();
+                        })
                         .then(data => {
                             if (data.trim() === 'success') {
                                 swal("Usuario eliminado con éxito", {
@@ -34,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             swal("Error al intentar eliminar el usuario", {
                                 icon: "error",
                             });
+                            console.error('Error:', error.message); // Loguear el error en la consola para depuración
                         });
                 } else {
                     swal("El usuario permanecerá en la base de datos");
@@ -69,3 +74,42 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+ 
+document.getElementById('registroForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const formData = new FormData(this);
+
+    fetch('../Controlador/TrabajadoresInfo.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            Swal.fire({
+                title: '¡Registro exitoso!',
+                text: data.message,
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then(() => {
+                location.reload();
+            });
+        } else {
+            Swal.fire({
+                title: 'Error',
+                text: data.message,
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        }
+    })
+    .catch(error => {
+        Swal.fire({
+            title: 'Error',
+            text: 'Error al enviar los datos',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+        console.error('Error:', error);
+    });
+});

@@ -34,7 +34,30 @@ function confirmarEliminar(idCobro) {
     })
     .then((willDelete) => {
         if (willDelete) {
-            window.location.href = `TablaCobros.php?eliminarCobro=${idCobro}`;
+            fetch(`TablaCobros.php?eliminarCobro=${idCobro}`, {
+                method: 'GET'
+            })
+            .then(response => response.text())
+            .then(data => {
+                if (data.trim() === 'success') {
+                    swal("Cobro eliminado exitosamente", {
+                        icon: "success",
+                    }).then(() => {
+                        // Redirigir a una página o refrescar la misma página
+                        window.location.href = 'TablaCobros.php'; // Redirigir a la página de tabla de cobros
+                    });
+                } else {
+                    swal("No se pudo eliminar el cobro", {
+                        icon: "error",
+                    });
+                }
+            })
+            .catch(error => {
+                swal("Error al intentar eliminar el cobro", {
+                    icon: "error",
+                });
+                console.error('Error:', error.message);
+            });
         } else {
             swal("El cobro no ha sido eliminado.");
         }
