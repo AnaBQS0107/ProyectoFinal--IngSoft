@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="../img/icono.png">
     <link rel="stylesheet" href="Estilos/login.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Login</title>
 
 </head>
@@ -32,9 +33,21 @@
             <br> <br> 
             <center> <button type="submit" class="button_login">Iniciar Sesión</button></center>
 
-        </form>
-    </div>
+            </form>
 
+<?php
+session_start();
+if (isset($_SESSION['error'])) {
+    $error = $_SESSION['error'];
+    unset($_SESSION['error']);
+    echo "<script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: '$error',
+        });
+    </script>";
+}
+?>
 </body>
-
 </html>
