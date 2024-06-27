@@ -18,7 +18,7 @@
     </header>
     <br><br><br>
     <br><br>
-    <main>
+    
     <section class="hero">
     <div class="hero-text">
         <center><h1 style="font-size: 4em; font-weight: bold;">PassWize</h1></center>
@@ -30,22 +30,6 @@
         <img src="../img/fondo.svg" alt="Ilustración">
       </div>
     </section>
-  </main>
-
-
-<footer>
-<div class="footer-container">
-            <div class="footer-column">
-                <h3>Sobre nosotros</h3>
-                <p>PassWize es un servicio de gestión de peajes diseñado para facilitar tu viaje.</p>
-            </div>
-            <div class="footer-column">
-                <h3>Contacto</h3>
-                <p>Teléfono: 123456789</p>
-                <p>Email: soporte@passwize.com</p>
-            </div>
-        </div>
-        <center> <p>© 2024 PassWize. Todos los derechos reservados.</p> </center>
-</footer>
+    <?php include 'Footer.php'; ?>
 </body>
 </html>
