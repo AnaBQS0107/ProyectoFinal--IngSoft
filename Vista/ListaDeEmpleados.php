@@ -21,6 +21,7 @@ $trabajadoresTabla = new TrabajadoresTabla();
     <title>PassWize - Registro</title>
     <link rel="icon" type="image/png" href="../img/icono.png">
     <link rel="stylesheet" href="Estilos/TablaEmpleados.css">
+    <link rel="stylesheet" href="Estilos/Footer.css">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
@@ -90,12 +91,25 @@ $trabajadoresTabla = new TrabajadoresTabla();
             </center>
         </div>
 
-        <br>
+        <br><br><br><br>
     </div>
 
 
     <script src="../JS/EmpleadosCRUD.js"></script>
-    <?php include 'Footer.php'; ?>
+    <footer>
+<div class="footer-container">
+            <div class="footer-column">
+                <h3>Sobre nosotros</h3>
+                <p>PassWize es un servicio de gestión de peajes diseñado para facilitar tu viaje.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Contacto</h3>
+                <p>Teléfono: 123456789</p>
+                <p>Email: soporte@passwize.com</p>
+            </div>
+        </div>
+        <center> <p>© 2024 PassWize. Todos los derechos reservados.</p> </center>
+</footer>
 </body>
 
 </html>

@@ -1,0 +1,297 @@
+/* Reset de estilos y configuración básica */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos del navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #005c53;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+/* Estilos del contenedor del navbar */
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* Estilos del logo */
+.navbar-brand img {
+    border-radius: 5px;
+}
+
+/* Estilos del título */
+.navbar-title {
+    color: #fff;
+    text-decoration: none;
+    font-size: 23px;
+}
+
+/* Estilos del botón de menú */
+.hamburger-menu {
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+    border: 2.5px solid #9fc13152; /* Borde transparente */
+    border-radius: 7px; /* Bordes curvos */
+    padding: 7px; /* Añade un poco de espacio interior */
+    padding-top: 1px;
+    padding-bottom: 1px;
+    margin-right: 10px; /* Mueve el botón 10px a la izquierda */
+}
+
+.hamburger-menu:hover {
+    background-color: #9fc13152;
+}
+
+/* Estilos del menú desplegable */
+.navbar-links {
+    font-size: 16px;
+    font-weight: 200;
+    display: none;
+    position: absolute;
+    top: calc(100%); /* Ajusta la distancia desde la parte superior */
+    right: 0px; /* Alinea a la derecha */
+    background-color: #003b36;
+    z-index: 999; /* Asegura que esté por encima de otros elementos */
+    border-radius: 5px;
+    transition: height 0.3s; /* Añade una transición suave */
+    width: auto; /* Anchura fija para el menú desplegable */
+    height: 500%;
+}
+
+/* Estilos de la lista de elementos del menú */
+.navbar-links ul {
+    list-style: none;
+    flex-direction: column;
+    width: 100%;
+    padding-top: 10px; /* Añade relleno para separar los elementos del menú */
+    text-align: center; /* Centra el texto */
+}
+
+/* Estilos de los elementos de la lista */
+.navbar-links ul li {
+    text-align: center;
+    padding: 10px;
+    left: auto; /* Ajusta la posición a la izquierda */
+    right: 10px; /* Ajusta la posición a la derecha */
+}
+
+
+/* Estilos de los enlaces en la lista */
+.navbar-links ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    display: block;
+    text-align: center; /* Centra el texto */
+}
+
+/* Estilos al pasar el mouse sobre los enlaces */
+.navbar-links ul li a:hover {
+    color: #fff;
+    background-color: #015e569c;
+    border-radius: 5px;
+}
+
+/* Estilos del menú desplegable del elemento de menú */
+.nav-item.dropdown .dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #9fc13152;
+    border: none;
+    margin-top: 10px;
+    left: auto; /* Ajusta la posición a la izquierda */
+    right: 0px; /* Ajusta la posición a la derecha */
+    max-height: 0; /* Altura inicial del menú desplegable */
+    overflow: hidden; /* Oculta el contenido que exceda la altura máxima */
+    transition: max-height 0.3s ease; /* Transición suave de la altura */
+}
+
+/* Mostrar el menú desplegable cuando se pasa el mouse sobre el elemento de menú */
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+    max-height: 200px; /* Altura máxima del menú desplegable */
+    margin-top: 5px; /* Ajusta el margen superior */
+}
+
+/* Ajuste de posición de otros elementos cuando se muestra el menú desplegable */
+.nav-item.dropdown:hover ~ .nav-item {
+    transform: translateY(126px); /* Ajusta la distancia para mover los elementos */
+}
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 90%;
+    margin: 100px;
+    padding: 20px;
+   
+}
+
+.custom-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two equal columns */
+    gap: 10px;
+}
+
+.input_registro[type="text"],
+.input_registro[type="password"],
+.input_registro[type="email"] {
+    width: 300px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-bottom: 2px solid #9fc13148;
+    background-color: transparent; /* Hace que el fondo sea transparente */
+    transition: border-bottom-color 0.3s; /* Transición suave para el color del borde */
+    box-sizing: border-box;
+}
+
+/* Estilos para resaltar el borde y el fondo cuando están seleccionados */
+.input_registro[type="text"]:focus,
+.input_registro[type="password"]:focus,
+.input_registro[type="email"]:focus {
+    border-bottom-color: #005c53bd; /* Cambia el color del borde inferior cuando se selecciona */
+    background-color: #f4f4f4; /* Cambia el color de fondo cuando se selecciona */
+    outline: none; /* Eliminar el contorno predeterminado en algunos navegadores */
+   
+}
+
+/* Estilo para el placeholder */
+.input_registro[type="text"]::placeholder,
+.input_registro[type="password"]::placeholder,
+.input_registro[type="email"]::placeholder {
+    color: #050404; /* Color del texto del placeholder */
+}
+
+/* Estilo base para el select */
+.select_registro {
+    width: 310px;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-bottom: 2px solid #9fc13148;
+    color: #333;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-sizing: border-box;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+/* Estilos para resaltar el borde cuando está enfocado */
+.select_registro:focus {
+    border-color: #005c53bd;
+    box-shadow: 0 0 5px rgba(0, 92, 83, 0.3);
+    outline: none;
+}
+
+/* Estilos para las opciones del select */
+.select_registro option {
+    padding: 10px;
+    background-color: #fff;
+    color: #333;
+}
+
+/* Estilo para placeholder de opción deshabilitada */
+.select_registro option[disabled] {
+    color: #aaa;
+}
+
+/* Opciones estilizadas */
+.select_registro option:hover {
+    background-color: #eee;
+    color: #000;
+}
+
+/* Agregar flecha personalizada usando pseudo-elemento */
+.select_registro::after {
+    content: '▼';
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 12px;
+    color: #333;
+}
+
+
+
+/* Estilo general para el contenedor de los botones */
+.div_btn {
+    text-align: center;
+    margin: 10px 0; /* Reduce el margen para mover los botones más arriba */
+  }
+  
+  /* Estilo general para todos los botones */
+  .div_btn button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  /* Estilo específico para el botón "Calcular" */
+  .btn_calcular {
+    background-color: #9fc131; /* Verde */
+    color: white;
+  }
+  
+  .btn_calcular:hover {
+    background-color: #baed2e; /* Verde más oscuro */
+    transform: scale(1.05)
+  }
+  
+  /* Estilo específico para el botón "Continuar" */
+  .btn_continuar {
+    background-color: #9fc131; /* Azul */
+    color: white;
+  }
+  
+  .btn_continuar:hover {
+    background-color:  #baed2e; /* Azul más oscuro */
+    transform: scale(1.05);
+  }
+
+
+ 
+
+/* Media query para ajustar estilos en pantallas más pequeñas */
+@media (max-width: 768px) {
+    .container {
+        margin-top: 60px;
+    }
+
+    form {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+

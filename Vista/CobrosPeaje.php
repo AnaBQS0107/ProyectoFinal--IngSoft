@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cobros -- PassWize</title>
     <link rel="icon" type="image/png" href="../img/icono.png">
-    <link rel="stylesheet" href="Estilos/CobrosPeaje.css">
+    <link rel="stylesheet" href="/Estilos/CobrosPeaje.css">
+    <link rel="stylesheet" href="Estilos/Footer.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
@@ -15,7 +16,7 @@
     <header>
         <?php include 'header.php'; ?>
     </header>
-    <br><br><br><br>
+    <br><br><br><br><br><br><br><br>
     <center>
         <h5>¿Cuál tipo de vehiculo pasará por la estación?</h5>
     </center>
@@ -66,6 +67,7 @@
         </table>
         <br>
         <center><button type="button" class="btn btn-success" onclick="confirmarPago()">Aceptar pago</button></center>
+        <br><br>
     </form>
 
     <script>
@@ -115,9 +117,21 @@
             });
         }
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-   
+    
+    <footer>
+<div class="footer-container">
+            <div class="footer-column">
+                <h3>Sobre nosotros</h3>
+                <p>PassWize es un servicio de gestión de peajes diseñado para facilitar tu viaje.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Contacto</h3>
+                <p>Teléfono: 123456789</p>
+                <p>Email: soporte@passwize.com</p>
+            </div>
+        </div>
+<center><p>© 2024 PassWize. Todos los derechos reservados.</p><center>
+        
+</footer>
 </body>
-<br><br>
-<?php include 'Footer.php'; ?>
 </html>

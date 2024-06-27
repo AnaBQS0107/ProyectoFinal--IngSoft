@@ -19,7 +19,8 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
             <a class="navbar-brand" href="../Vista/Inicio.php">
                 <img src="../img/icono.png" alt="IconoPassWize" width="85" height="55">
             </a>
-            <a class="navbar-title" href="#">Servicio de Peajes PassWize</a>
+            <a class="navbar-title">Servicio de Peajes PassWize</a>
+            
             <div class="hamburger-menu" onclick="toggleMenu()">
                 &#9776;
             </div>
@@ -39,6 +40,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
                 <?php endif; ?>
                 <li class="nav-item"><a class="nav-link" href="../Vista/Inicio.php">Página Principal</a></li>
                 <li class="nav-item"><a class="nav-link" href="../Vista/CobrosPeaje.php">Gestionar Cobros</a></li>
+                <li class="nav-item"><a class="nav-link" href="../Vista/Liquidaciones.php">Calcular Liquidaciones</a></li>
                 <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMantenimiento" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -40,7 +40,7 @@
     align-items: center;
   }
   
-  .logo {
+  .icono {
     font-size: 24px;
     font-weight: bold;
   }
@@ -80,10 +80,3 @@
     height: auto;
   }
   
-  /* Pie de página */
-  footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
-  }

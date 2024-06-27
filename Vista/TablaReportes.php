@@ -139,7 +139,6 @@
         <center> <button type="submit" class="btn_registrar">Exportar PDF</button></center>
     </div>
     <br><br>
-    <?php include 'Footer.php'; ?>
 </body>
 
 </html>

@@ -25,6 +25,5 @@
         </form>
     </div>
     <script src="../JS/Roles.js"></script> 
-    <?php include 'Footer.php'; ?>
 </body>
 </html>
