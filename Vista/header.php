@@ -53,6 +53,9 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
                                 <a class="dropdown-item" href="../Vista/TablaAguinaldos.php">Tabla Aguinaldos</a>
                                 <a class="dropdown-item" href="../Vista/TablaReportes.php">Tabla Liquidaciones</a>
                                 <a class="dropdown-item" href="../Vista/TablaVehiculos.php">Tabla Vehiculos</a>
+                                <a class="dropdown-item" href="../Vista/ActualizarMonto.php">Actualizar Monto</a>
+                                <a class="dropdown-item" href="../Vista/HorasExtras.php">Horas Extras</a>
+                                <a class="dropdown-item" href="../Vista/ActualizarEmpleado.php">Actualizar Empleado</a>
                             </div>
                         </li>
      
