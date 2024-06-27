@@ -1,15 +1,27 @@
+<?php
+require_once '../Controlador/Cobro.php';
+?>
+
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de Horas Extras</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="../img/icono.png">
+    <link rel="stylesheet" href="Estilos/CalculadoraExtras.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
+
 <body>
-    <div class="container">
+    <header>
+        <?php include 'header.php'; ?>
+    </header>
+    
+    <div class="container-Caluladora-Extras">
         <h1>Calculadora de Horas Extras</h1>
-        <form action="calculo.php" method="POST">
+        <form action="../Controlador/calculoExtras.php" method="POST">
             <label for="salario">Salario por hora ordinaria (en colones):</label>
             <input type="number" id="salario" name="salario" required>
             <label for="horas">Número de horas extras trabajadas:</label>
@@ -23,6 +35,9 @@
                 echo '</div>';
             }
         ?>
-    </div>
+    </div>    
+
+    <?php include 'Footer.php'; ?>
 </body>
+
 </html>

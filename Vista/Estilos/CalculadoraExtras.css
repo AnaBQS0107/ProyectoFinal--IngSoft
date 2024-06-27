@@ -8,7 +8,7 @@ body {
     margin: 0;
 }
 
-.container {
+.container-Caluladora-Extras {
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
@@ -17,24 +17,24 @@ body {
     text-align: center;
 }
 
-h1 {
+.container-Caluladora-Extras h1 {
     margin-bottom: 20px;
 }
 
-label {
+.container-Caluladora-Extras label {
     display: block;
     margin-bottom: 5px;
 }
 
-input {
-    width: 100%;
+.container-Caluladora-Extras input {
+    width: 90%;
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-button {
+.container-Caluladora-Extras button {
     background-color: #4CAF50;
     color: white;
     padding: 10px 15px;
@@ -44,7 +44,7 @@ button {
     width: 100%;
 }
 
-button:hover {
+.container-Caluladora-Extras button:hover {
     background-color: #45a049;
 }
 
