@@ -19,6 +19,8 @@ require_once '../Controlador/Cobro.php';
         <?php include 'header.php'; ?>
     </header>
     
+    <container class="Contenido-Extras">
+
     <div class="container-Caluladora-Extras">
         <h1>Calculadora de Horas Extras</h1>
         <form action="../Controlador/calculoExtras.php" method="POST">
@@ -36,8 +38,10 @@ require_once '../Controlador/Cobro.php';
             }
         ?>
     </div>    
-
+    </container>
+    <footer class="footer-Calc-Extras">
     <?php include 'Footer.php'; ?>
+    </footer>
 </body>
 
 </html>
