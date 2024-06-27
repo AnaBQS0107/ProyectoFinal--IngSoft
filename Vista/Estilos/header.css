@@ -36,22 +36,11 @@ body {
     border-radius: 5px;
 }
 
-/* Estilos de los enlaces siempre visibles */
-.navbar-links-left {
-    display: flex;
-    align-items: center;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.navbar-links-left .nav-item {
-    margin-right: 20px;
-}
-
-.navbar-links-left .nav-link {
+/* Estilos del título */
+.navbar-title {
+    color: #fff;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 23px;
 }
 
 /* Estilos del botón de menú */
@@ -133,7 +122,7 @@ body {
 /* Mostrar el menú desplegable cuando se pasa el mouse sobre el elemento de menú */
 .nav-item.dropdown:hover .dropdown-menu {
     display: block;
-    max-height: 5000px; /* Aumenta el valor para permitir más elementos visibles */
+    max-height: 200px;
 }
 
 /* Ajustes para dispositivos móviles */
@@ -168,11 +157,7 @@ body {
     }
 
     .nav-item.dropdown:hover .dropdown-menu {
-        max-height: 5000px; /* Aumenta el valor para permitir más elementos visibles */
+        max-height: 200px;
         margin-top: 0;
-    }
-
-    .navbar-links-left {
-        display: none;
     }
 }
