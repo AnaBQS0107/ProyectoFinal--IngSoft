@@ -1,0 +1,64 @@
+/* Archivo: Estilos/ActualizarMonto.css */
+
+/* Estilo general del formulario */
+form {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width:30%;
+    margin: auto;
+}
+
+/* Estilo de los elementos del formulario */
+.form-group {
+    margin-bottom: 10px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Estilo del botón */
+.styled-button {
+    background-color: #4CAF50; /* Verde */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px; /* Bordes redondeados */
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+
+.styled-button:hover {
+    background-color: #45a049; /* Verde más oscuro al pasar el cursor */
+}
+
+/* Estilo del título */
+h1 {
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Centrar el formulario */
+center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
