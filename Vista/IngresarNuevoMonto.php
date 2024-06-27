@@ -31,7 +31,7 @@ if (isset($_GET['idTipoVehiculo'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PassWize - Formulario Vehículo</title>
     <link rel="icon" type="image/png" href="../img/icono.png">
-    <link rel="stylesheet" href="Estilos/IngresarRol.css">
+    <link rel="stylesheet" href="Estilos/NuevoMonto.css">
     <link rel="stylesheet" href="Estilos/Footer.css">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
@@ -42,7 +42,7 @@ if (isset($_GET['idTipoVehiculo'])) {
     </header>
     <br><br><br><br>
     <center>
-        <h1><?php echo $idTipoVehiculo ? 'Editar Tipo de Vehículo' : 'Agregar Tipo de Vehículo'; ?></h1>
+        <h1><?php echo $idTipoVehiculo ? 'Editar Tipo de Vehículo' : 'Ingresar Nuevo Monto'; ?></h1>
     </center>
     <br>
     <center>
