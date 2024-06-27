@@ -14,6 +14,7 @@ require_once '../Controlador/ObtenerMontosPeaje.php';
     <title>PassWize - Tipos de Vehículo</title>
     <link rel="icon" type="image/png" href="../img/icono.png">
     <link rel="stylesheet" href="Estilos/TablaEmpleados.css">
+    <link rel="stylesheet" href="Estilos/Footer.css">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </head>
@@ -76,7 +77,6 @@ require_once '../Controlador/ObtenerMontosPeaje.php';
     </div>
 
     <script src="../JS/EmpleadosCRUD.js"></script>
-    <?php include 'Footer.php'; ?>
 </body>
 
 </html>
