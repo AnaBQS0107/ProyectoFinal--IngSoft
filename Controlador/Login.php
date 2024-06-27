@@ -14,24 +14,28 @@ class AuthController {
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['Persona_Cedula'], $_POST['contrasena'])) {
             $Persona_Cedula = $_POST['Persona_Cedula'];
             $contrasena = $_POST['contrasena'];
-    
+
             $user = $this->ValidarCredenciales->login($Persona_Cedula, $contrasena);
-    
+
             if ($user) {
                 $_SESSION['user'] = [
                     'Nombre' => $user['Nombre'],
                     'Nombre_Rol' => $user['Nombre_Rol'],
-                    'Persona_Cedula' => $user['Persona_Cedula'] 
+                    'Persona_Cedula' => $user['Persona_Cedula']
                 ];
 
                 // Redirect to home page after successful login
                 header("Location: ../Vista/Inicio.php");
                 exit();
             } else {
-                echo "Credenciales inválidas. Acceso denegado.";
+                $_SESSION['error'] = "Credenciales inválidas. Acceso denegado.";
+                header("Location: ../Vista/Index.php");
+                exit();
             }
         } else {
-            echo "Error: No se recibieron los datos del formulario.";
+            $_SESSION['error'] = "Error: No se recibieron los datos del formulario.";
+            header("Location: ../Vista/Index.php");
+            exit();
         }
     }
 

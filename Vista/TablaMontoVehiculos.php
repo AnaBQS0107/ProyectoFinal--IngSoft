@@ -2,7 +2,7 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-require_once '../Controlador/ObtenerMontosPeaje.php';
+require_once '../Modelo/ObtenerMontosPeaje.php';
 ?>
 
 <!DOCTYPE html>
@@ -16,6 +16,7 @@ require_once '../Controlador/ObtenerMontosPeaje.php';
     <link rel="stylesheet" href="Estilos/TablaEmpleados.css">
     <link rel="stylesheet" href="Estilos/Footer.css">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
 </head>
 
@@ -54,8 +55,8 @@ require_once '../Controlador/ObtenerMontosPeaje.php';
                         <td><?php echo $tipo['Tipo']; ?></td>
                         <td><?php echo $tipo['Tarifa']; ?></td>
                         <td class="actions">
-                            <button class="btn-edit">Editar</button>
-                            <button class="btn-delete">Eliminar</button>
+                        <button class="btn-edit" onclick="location.href='../Vista/ActualizarMonto.php?idTipoVehiculo=<?php echo $tipo['idTipoVehiculo']; ?>'">Editar</button>
+                        <button class="btn-delete" onclick="confirmDelete(<?php echo $tipo['idTipoVehiculo']; ?>)">Eliminar</button>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -69,14 +70,13 @@ require_once '../Controlador/ObtenerMontosPeaje.php';
         <br><br>
         <div class="div_btn">
             <center>
-                <!-- Enlace para agregar un nuevo tipo de vehículo, ajusta según sea necesario -->
-                <button type="button" class="btn_asignar" onclick="location.href='../Vista/AgregarTipoVehiculo.php'">Agregar un nuevo tipo de vehículo</button>
+                <button type="button" class="btn_asignar" onclick="location.href='../Vista/IngresarNuevoMonto.php'">Agregar un nuevo tipo de vehículo</button>
             </center>
         </div>
         <br>
     </div>
 
-    <script src="../JS/EmpleadosCRUD.js"></script>
+    <script src="../JS/MontosCRUD.js"></script>
     <?php include 'Footer.php'; ?>
 </body>
 
