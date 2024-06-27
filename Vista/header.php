@@ -40,6 +40,9 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
                 <li class="nav-item"><a class="nav-link" href="../Vista/Inicio.php">Página Principal</a></li>
                 <li class="nav-item"><a class="nav-link" href="../Vista/CobrosPeaje.php">Gestionar Cobros</a></li>
                 <li class="nav-item"><a class="nav-link" href="../Vista/Liquidaciones.php">Calcular Liquidaciones</a></li>
+                <li class="nav-item"><a class="nav-link" href="../Vista/CalculadoraExtras.php">Calcular Extras</a></li>
+                <li class="nav-item"><a class="nav-link" href="../Vista/ActualizarMonto.php">Actualizar Monto</a></li>
+                <li class="nav-item"><a class="nav-link" href="../Vista/ActualizarEmpleado.php">Actualizar Empleado</a></li>
                 <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMantenimiento" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -53,9 +56,6 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
                                 <a class="dropdown-item" href="../Vista/TablaAguinaldos.php">Tabla Aguinaldos</a>
                                 <a class="dropdown-item" href="../Vista/TablaReportes.php">Tabla Liquidaciones</a>
                                 <a class="dropdown-item" href="../Vista/TablaVehiculos.php">Tabla Vehiculos</a>
-                                <a class="dropdown-item" href="../Vista/ActualizarMonto.php">Actualizar Monto</a>
-                                <a class="dropdown-item" href="../Vista/HorasExtras.php">Horas Extras</a>
-                                <a class="dropdown-item" href="../Vista/ActualizarEmpleado.php">Actualizar Empleado</a>
                             </div>
                         </li>
      
