@@ -19,6 +19,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
             <a class="navbar-brand" href="../Vista/Inicio.php">
                 <img src="../img/icono.png" alt="IconoPassWize" width="85" height="55">
             </a>
+            
             <a class="navbar-title">Servicio de Peajes PassWize</a>
             
             <div class="hamburger-menu" onclick="toggleMenu()">
