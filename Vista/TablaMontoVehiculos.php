@@ -77,6 +77,7 @@ require_once '../Controlador/ObtenerMontosPeaje.php';
     </div>
 
     <script src="../JS/EmpleadosCRUD.js"></script>
+    <?php include 'Footer.php'; ?>
 </body>
 
 </html>

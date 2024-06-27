@@ -24,6 +24,7 @@
             <input type="submit" value="Agregar Rol" class="btn_registrar">
         </form>
     </div>
-    <script src="../JS/Roles.js"></script> 
+    <script src="../JS/Roles.js"></script>
+    <?php include 'Footer.php'; ?>
 </body>
 </html>
