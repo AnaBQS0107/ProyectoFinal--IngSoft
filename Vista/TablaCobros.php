@@ -12,6 +12,7 @@ require_once '../Controlador/Cobro.php';
     <title>Lista de Cobros</title>
     <link rel="icon" type="image/png" href="../img/icono.png">
     <link rel="stylesheet" href="Estilos/TablaCobros.css">
+    <link rel="stylesheet" href="Estilos/Footer.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 
@@ -65,9 +66,6 @@ require_once '../Controlador/Cobro.php';
             </table>
             <br><br>
             <div class="div_btn">
-                <center>
-                    <a href="../Vista/CobrosPeaje.php" class="btn_asignar"  style="text-decoration: none;">Asignar un nuevo cobro</a>
-                </center>
             </div>
 
             <br>
@@ -77,7 +75,21 @@ require_once '../Controlador/Cobro.php';
         </div>
     </div>
     <script src="../JS/CobrosCRUD.js"></script>
-    <?php include 'Footer.php'; ?>
+    
+    <footer>
+<div class="footer-container">
+            <div class="footer-column">
+                <h3>Sobre nosotros</h3>
+                <p>PassWize es un servicio de gestión de peajes diseñado para facilitar tu viaje.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Contacto</h3>
+                <p>Teléfono: 123456789</p>
+                <p>Email: soporte@passwize.com</p>
+            </div>
+        </div>
+        <center> <p>© 2024 PassWize. Todos los derechos reservados.</p> </center>
+</footer>
 </body>
 
 </html>

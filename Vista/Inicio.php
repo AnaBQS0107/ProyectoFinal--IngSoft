@@ -8,6 +8,7 @@
     <title>Página Principal</title>
     <link rel="icon" type="image/png" href="../img/icono.png"> 
     <link rel="stylesheet" href="Estilos/Inicio.css">
+    <link rel="stylesheet" href="Estilos/Footer.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
@@ -30,8 +31,21 @@
       </div>
     </section>
   </main>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <?php include 'Footer.php'; ?>
-</body>
 
+
+<footer>
+<div class="footer-container">
+            <div class="footer-column">
+                <h3>Sobre nosotros</h3>
+                <p>PassWize es un servicio de gestión de peajes diseñado para facilitar tu viaje.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Contacto</h3>
+                <p>Teléfono: 123456789</p>
+                <p>Email: soporte@passwize.com</p>
+            </div>
+        </div>
+        <center> <p>© 2024 PassWize. Todos los derechos reservados.</p> </center>
+</footer>
+</body>
 </html>

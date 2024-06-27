@@ -117,6 +117,7 @@ form label {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    margin-top: -30px; /* Añadir margen superior negativo para mover hacia arriba */
 }
 
 .btn_registrar:hover {
