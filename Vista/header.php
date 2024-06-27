@@ -43,6 +43,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
                 <li class="nav-item"><a class="nav-link" href="../Vista/CalculadoraExtras.php">Calcular Extras</a></li>
                 <li class="nav-item"><a class="nav-link" href="../Vista/ActualizarMonto.php">Actualizar Monto</a></li>
                 <li class="nav-item"><a class="nav-link" href="../Vista/ActualizarEmpleado.php">Actualizar Empleado</a></li>
+                <li class="nav-item"><a class="nav-link" href="../Vista/IngresarNuevoMonto.php">Nuevo Monto</a></li>
                 <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMantenimiento" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
