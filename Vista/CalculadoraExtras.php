@@ -1,4 +1,9 @@
 <?php
+
+//
+//
+//Borrar este archivo si lo de Horas extras funciona!!!! Esto era solo la calculadora
+
 require_once '../Controlador/Cobro.php';
 ?>
 

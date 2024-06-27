@@ -4,8 +4,6 @@ define('DB_NAME', 'servicio_autobuses');
 define('DB_USER', 'root');
 define('DB_PASSWORD', '');
 
-
-
 class Database1 {
     public static $instance = null;
     public $conn;
@@ -26,7 +24,7 @@ class Database1 {
 
     public static function getInstance() {
         if (self::$instance == null) {
-            self::$instance = new Database();
+            self::$instance = new Database1();
         }
         return self::$instance;
     }
@@ -35,11 +33,7 @@ class Database1 {
         return $this->conn;
     }
 }
-?>
 
-<?php
-
-// Función para conectar a la base de datos
 function getConnection() {
     try {
         $conn = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASSWORD);
