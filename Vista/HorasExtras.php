@@ -98,7 +98,7 @@ require_once '../Controlador/HorasExtrasMensuales.php';
 }
 
     function fetchStartedOvertime() {
-        $.get('../Controlador/HorasExtrasIniciadas.php', {
+        $.get('../Controlador/InicioHorasExtras.php', {
             user_id: userId
         }, function(data) {
             try {
@@ -108,7 +108,7 @@ require_once '../Controlador/HorasExtrasMensuales.php';
                     $('#overtime-data').append(`
                         <tr>
                             <td>${entry.Hora_Inicio}</td>
-                            <td>${entry.Hora_Fin ? entry.Hora_Fin : '-'}</td>
+                            <td>${entry.Hora_Salida ? entry.Hora_Salida : '-'}</td>
                             <td>${entry.Monto ? entry.Monto : '-'}</td>
                         </tr>
                     `);
