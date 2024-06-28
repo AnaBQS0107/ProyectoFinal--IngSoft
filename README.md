@@ -33,7 +33,7 @@ Para instalar y configurar el proyecto, sigue estos pasos:
 
 1. Inicia el servidor web.
 2. Abre tu navegador y navega a `http://localhost/ProyectoFinal--IngSoft`.
-3. Usa las opciones del menú para gestionar las reservas de ProyectoFinal--IngSoft.
+3. Usa las opciones del menú para gestionar los registros de ProyectoFinal--IngSoft.
 
 ## Licencia
 
