@@ -49,7 +49,7 @@ function actualizarEmpleado($cedula, $datos) {
         $stmt_empleados = $conn->prepare($sql_empleados);
         $stmt_empleados->bindParam(':correo', $datos['Correo']);
         $stmt_empleados->bindParam(':estacionID', $datos['Estacion_ID']);
-        $stmt_empleados->bindParam(':rolID', $datos['Rol_ID']); // Aquí se usa el valor del rol
+        $stmt_empleados->bindParam(':rolID', $datos['Rol_ID']);
         $stmt_empleados->bindParam(':cedula', $cedula);
         $stmt_empleados->execute();
     
@@ -69,6 +69,7 @@ function actualizarEmpleado($cedula, $datos) {
         return false;
     }
 }
+
 
 // Inicio del manejo de la petición
 if (isset($_GET['id'])) {

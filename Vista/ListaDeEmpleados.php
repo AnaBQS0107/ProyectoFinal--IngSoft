@@ -69,8 +69,7 @@ $trabajadoresTabla = new TrabajadoresTabla();
                     <td><?php echo $trabajadoresTabla->obtenerTipoDeRol($usuario['Rol_ID']); ?></td>
                     <td>
                         <div class="button-container">
-                            <a href="../Controlador/EditarUsuario.php?id=<?php echo $usuario['Cedula']; ?>"
-                                class="btn-edit">Editar</a>
+                        <a href="ActualizarEmpleado.php?id=<?php echo  $usuario['Cedula']; ?>"  class="btn-edit">Editar</a>
                             <a href="#" data-Cedula="<?php echo $usuario['Cedula']; ?>" class="btn-delete">Eliminar</a>
                         </div>
                     </td>
