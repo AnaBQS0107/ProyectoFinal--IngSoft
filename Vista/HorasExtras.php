@@ -25,11 +25,12 @@ require_once '../Controlador/HorasExtrasMensuales.php';
     <div class="container-HorasExtras">
         <h1>Contador de horas extras</h1>
         <button id="start-overtime">Inicio Horas Extra</button>
-        <button id="end-overtime">Fin Horas Extra</button>
+        <button id="end-overtime" disabled>Fin Horas Extra</button>
         <h2>Total Mensual: <span id="monthly-total">0</span> colones</h2>
         <table>
             <thead>
                 <tr>
+                    <th>Fecha</th>
                     <th>Hora de inicio</th>
                     <th>Hora de finalización</th>
                     <th>Monto</th>
@@ -45,83 +46,83 @@ require_once '../Controlador/HorasExtrasMensuales.php';
     </footer>
 
     <script>
-    // Obtener el ID del usuario desde PHP (podría ser a través de una variable PHP)
-    const userId =
-        <?php echo isset($_SESSION['user']['Persona_Cedula']) ? $_SESSION['user']['Persona_Cedula'] : 'null'; ?>;
+    const userId = <?php echo isset($_SESSION['user']['Persona_Cedula']) ? $_SESSION['user']['Persona_Cedula'] : 'null'; ?>;
 
-    // Llamar a la función fetchMonthlyTotal al cargar la página
     $(document).ready(function() {
-        fetchMonthlyTotal();
-    });
+    fetchMonthlyTotal();
+    fetchOvertimeData();
+});
 
-    $('#start-overtime').click(function() {
-        $.post('../Controlador/InicioHorasExtras.php', function(response) {
-            // Mostrar mensaje de éxito o error usando SweetAlert2
-            Swal.fire('Inicio Horas Extra', response.message, response.error ? 'error' : 'success');
-
-            // Actualizar el total mensual de horas extras después de iniciar
-            fetchMonthlyTotal();
-
-            // Actualizar la tabla de horas extras iniciadas
-            fetchStartedOvertime();
-        }).fail(function(jqXHR, textStatus, errorThrown) {
-            // Manejar errores de la solicitud AJAX
-            console.error("Error en la solicitud AJAX:", textStatus, errorThrown);
-            Swal.fire('Error', 'Error en la solicitud AJAX', 'error');
-        });
-    });
-
-    function fetchMonthlyTotal() {
-    $.get('../Controlador/HorasExtrasMensuales.php', {
-        user_id: userId
-    }, function(data) {
-        try {
-            const result = JSON.parse(data);
-            if (result.hasOwnProperty('monthly_total')) {
-                if (result.monthly_total !== null) {
-                    $('#monthly-total').text(result.monthly_total);
-                } else {
-                    $('#monthly-total').text('0');
-                }
-            } else {
-                console.error("La respuesta JSON no contiene 'monthly_total':", result);
-                Swal.fire('Error', 'Respuesta inesperada del servidor', 'error');
-            }
-        } catch (error) {
-            console.error("Error al parsear respuesta JSON:", error);
-            Swal.fire('Error', 'Error al procesar la respuesta del servidor', 'error');
+$('#start-overtime').click(function() {
+    $.post('../Controlador/InicioHorasExtras.php', { user_id: userId }, function(response) {
+        if (response.error) {
+            Swal.fire('Error', response.message, 'error');
+        } else {
+            Swal.fire('Inicio Horas Extra', response.message, 'success');
+            $('#start-overtime').prop('disabled', true);
+            $('#end-overtime').prop('disabled', false);
+            fetchOvertimeData();
         }
-    }).fail(function(jqXHR, textStatus, errorThrown) {
+        fetchMonthlyTotal();
+    }, 'json').fail(function(jqXHR, textStatus, errorThrown) {
+        console.error("Error en la solicitud AJAX:", textStatus, errorThrown);
+        Swal.fire('Error', 'Error en la solicitud AJAX', 'error');
+    });
+});
+
+$('#end-overtime').click(function() {
+    $.post('../Controlador/FinHorasExtras.php', { user_id: userId }, function(response) {
+        if (response.error) {
+            Swal.fire('Error', response.message, 'error');
+        } else {
+            Swal.fire('Fin Horas Extra', response.message, 'success');
+            $('#start-overtime').prop('disabled', false);
+            $('#end-overtime').prop('disabled', true);
+            fetchOvertimeData();
+        }
+        fetchMonthlyTotal();
+    }, 'json').fail(function(jqXHR, textStatus, errorThrown) {
+        console.error("Error en la solicitud AJAX:", textStatus, errorThrown);
+        Swal.fire('Error', 'Error en la solicitud AJAX', 'error');
+    });
+});
+
+function fetchMonthlyTotal() {
+    $.get('../Controlador/HorasExtrasMensuales.php', { user_id: userId }, function(data) {
+        if (data.error) {
+            Swal.fire('Error', data.message, 'error');
+        } else {
+            $('#monthly-total').text(data.monthly_total);
+        }
+    }, 'json').fail(function(jqXHR, textStatus, errorThrown) {
         console.error("Error en la solicitud AJAX:", textStatus, errorThrown);
         Swal.fire('Error', 'Error en la solicitud AJAX', 'error');
     });
 }
 
-    function fetchStartedOvertime() {
-        $.get('../Controlador/InicioHorasExtras.php', {
-            user_id: userId
-        }, function(data) {
-            try {
-                const overtimeData = JSON.parse(data);
-                $('#overtime-data').empty(); // Limpiar tabla antes de agregar nuevos datos
-                overtimeData.forEach(function(entry) {
-                    $('#overtime-data').append(`
-                        <tr>
-                            <td>${entry.Hora_Inicio}</td>
-                            <td>${entry.Hora_Salida ? entry.Hora_Salida : '-'}</td>
-                            <td>${entry.Monto ? entry.Monto : '-'}</td>
-                        </tr>
-                    `);
-                });
-            } catch (error) {
-                console.error("Error al parsear respuesta JSON:", error);
-                Swal.fire('Error', 'Error al procesar la respuesta del servidor', 'error');
-            }
-        }).fail(function(jqXHR, textStatus, errorThrown) {
-            console.error("Error en la solicitud AJAX:", textStatus, errorThrown);
-            Swal.fire('Error', 'Error en la solicitud AJAX', 'error');
-        });
-    }
+function fetchOvertimeData() {
+    $.get('../Controlador/ObtenerHorasExtras.php', { user_id: userId }, function(data) {
+        $('#overtime-data').empty();
+        if (Array.isArray(data)) {
+            data.forEach(function(entry) {
+                $('#overtime-data').append(`
+                    <tr>
+                        <td>${entry.Fecha}</td>
+                        <td>${entry.Hora_Inicio}</td>
+                        <td>${entry.Hora_Salida ? entry.Hora_Salida : '-'}</td>
+                        <td>${entry.Monto ? entry.Monto : '-'}</td>
+                    </tr>
+                `);
+            });
+        } else {
+            console.error("Los datos recibidos no son un array:", data);
+            Swal.fire('Error', 'Datos recibidos no son un array', 'error');
+        }
+    }, 'json').fail(function(jqXHR, textStatus, errorThrown) {
+        console.error("Error en la solicitud AJAX:", textStatus, errorThrown);
+        Swal.fire('Error', 'Error en la solicitud AJAX', 'error');
+    });
+}
     </script>
 </body>
 
