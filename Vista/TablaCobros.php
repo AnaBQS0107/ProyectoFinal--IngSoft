@@ -1,6 +1,19 @@
 <?php
 require_once '../Controlador/Cobro.php';
 
+$cobroController = new Cobro();
+$cobros = $cobroController->getAllCobros();
+
+if (isset($_GET['eliminarCobro'])) {
+    $idCobro = $_GET['eliminarCobro'];
+    $result = $cobroController->eliminarCobro($idCobro);
+    if ($result === true) {
+        echo 'success';
+    } else {
+        echo $result;
+    }
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -57,7 +70,7 @@ require_once '../Controlador/Cobro.php';
                         <td><?php echo $cobro['TipoVehiculo_Codigo']; ?></td>
                         <td><?php echo $cobro['TipoVehiculo_Tarifa']; ?></td>
                         <td class="actions">
-                            <button class="btn-edit">Editar</button>
+                        <a href="EditarCobro.php?id=<?php echo $cobro['idCobrosPeaje']; ?>" class="btn-edit" style="text-decoration: none; color: white;">Editar</a>
                             <button class="btn-delete" onclick="confirmarEliminar(<?php echo $cobro['idCobrosPeaje']; ?>)">Eliminar</button>
                         </td>
                     </tr>
@@ -74,7 +87,9 @@ require_once '../Controlador/Cobro.php';
             </div>
         </div>
     </div>
-    <script src="../JS/CobrosCRUD.js"></script>
+    <script src="../JS/CobrosCRUD.js">
+        
+    </script>
     <?php include 'Footer.php'; ?>
 </body>
 
