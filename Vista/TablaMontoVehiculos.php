@@ -26,7 +26,7 @@ require_once '../Modelo/ObtenerMontosPeaje.php';
     </header>
     <br><br><br><br>
     <center>
-        <h1> Tipos de Vehículo </h1>
+        <h1> Montos de vehiculos </h1>
     </center>
     <br>
     <center>

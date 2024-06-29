@@ -25,42 +25,52 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 function confirmarEliminar(idCobro) {
-    swal({
+    Swal.fire({
         title: "¿Estás seguro?",
         text: "Una vez eliminado, no podrás recuperar este cobro.",
         icon: "warning",
-        buttons: true,
-        dangerMode: true,
-    })
-    .then((willDelete) => {
-        if (willDelete) {
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, eliminar!',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
             fetch(`TablaCobros.php?eliminarCobro=${idCobro}`, {
                 method: 'GET'
             })
             .then(response => response.text())
             .then(data => {
                 if (data.trim() === 'success') {
-                    swal("Cobro eliminado exitosamente", {
-                        icon: "success",
-                    }).then(() => {
-                        // Redirigir a una página o refrescar la misma página
-                        window.location.href = 'TablaCobros.php'; // Redirigir a la página de tabla de cobros
+                    Swal.fire(
+                        'Eliminado!',
+                        'El cobro ha sido eliminado exitosamente.',
+                        'success'
+                    ).then(() => {
+                        window.location.href = 'TablaCobros.php';
                     });
                 } else {
-                    swal("No se pudo eliminar el cobro", {
-                        icon: "error",
-                    });
+                    Swal.fire(
+                        'Error!',
+                        `No se pudo eliminar el cobro: ${data}`,
+                        'error'
+                    );
                 }
             })
             .catch(error => {
-                swal("Error al intentar eliminar el cobro", {
-                    icon: "error",
-                });
+                Swal.fire(
+                    'Error!',
+                    'Error al intentar eliminar el cobro.',
+                    'error'
+                );
                 console.error('Error:', error.message);
             });
         } else {
-            swal("El cobro no ha sido eliminado.");
+            Swal.fire(
+                'Cancelado',
+                'El cobro no ha sido eliminado.',
+                'info'
+            );
         }
     });
 }
-
