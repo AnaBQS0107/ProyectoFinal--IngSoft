@@ -1,0 +1,16 @@
+.mini-table {
+    margin-top: 20px;
+}
+
+.mini-table table {
+    width: 300px;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+.mini-table table th,
+.mini-table table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}

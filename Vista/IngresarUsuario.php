@@ -22,10 +22,9 @@ require_once '../Controlador/TrabajadoresInfo.php';
     </header>
 
     <div class="container">
-        <form id="registroForm" method="post" class="row g-3 needs-validation" novalidate>
-            <div class="input-group-horizontal">
+        <form id="registroForm" method="post" class="row g-3 needs-validation" novalidate style= "margin-left: 250px;">
+            
                 <div class="col-md-3 position-relative">
-                    <br><br><br>
                     <label for="nombre" class="form-label">Nombre</label>
                     <input type="text" class="input_registro" id="nombre" name="Nombre" required>
                     <div class="valid-tooltip"></div>
@@ -39,7 +38,7 @@ require_once '../Controlador/TrabajadoresInfo.php';
                     <input type="text" class="input_registro" id="segundo_apellido" name="Apellido2" required>
                     <div class="valid-tooltip"></div>
                 </div>
-            </div>
+            
 
             <div class="col-md-3 position-relative">
                 <label for="cedula" class="form-label">Ingrese su Cédula</label>
@@ -59,7 +58,7 @@ require_once '../Controlador/TrabajadoresInfo.php';
                         name="Correo_Electronico" required>
                 </div>
             </div>
-            <div class="col-md-2 position-relative">
+            <div class="col-md-3 position-relative">
                 <label for="SalarioBase" class="form-label">Salario Base</label>
                 <input type="text" class="input_registro" id="SalarioBase" name="SalarioBase" required>
                 <div class="valid-tooltip"></div>

@@ -33,26 +33,8 @@ if (isset($_GET['submit'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consulta de Cobros</title>
     <link rel="icon" type="image/png" href="../img/icono.png">
-    <link rel="stylesheet" href="Estilos/TablaCobros.css">
     <link rel="stylesheet" href="Estilos/Footer.css">
-    <style>
-    .mini-table {
-        margin-top: 20px;
-    }
-
-    .mini-table table {
-        width: 300px;
-        border-collapse: collapse;
-        margin-bottom: 10px;
-    }
-
-    .mini-table table th,
-    .mini-table table td {
-        border: 1px solid #ddd;
-        padding: 8px;
-        text-align: center;
-    }
-    </style>
+    <link rel="stylesheet" href="Estilos/TablaCobros.css">
 </head>
 
 <body>
@@ -151,7 +133,11 @@ if (isset($_GET['submit'])) {
 
     </div>
     <script src="../JS/CobrosCRUD.js"></script>
+
+    <footer>
     <?php include 'Footer.php'; ?>
+    </footer>
+    
 </body>
 
 </html>

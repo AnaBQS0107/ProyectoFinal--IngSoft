@@ -77,7 +77,12 @@ require_once '../Modelo/ObtenerMontosPeaje.php';
     </div>
 
     <script src="../JS/MontosCRUD.js"></script>
+    
+    <br>
+    <footer>
     <?php include 'Footer.php'; ?>
+    </footer>
+    
 </body>
 
 </html>

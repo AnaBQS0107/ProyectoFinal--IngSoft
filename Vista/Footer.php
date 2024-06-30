@@ -1,6 +1,11 @@
-<footer>
+<html>
+    <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="Estilos/Footer.css">
+    </head>
+    <body>
+    <footer>
+    
     <div class="container-footer">
         <div class="footer-content">
             <div class="column">
@@ -17,4 +22,7 @@
             <p>&copy; <?php echo date('Y'); ?> PassWize. Todos los derechos reservados.</p>
         </div>
     </div>
-</footer>
+</footer>        
+</body>
+</html>
+

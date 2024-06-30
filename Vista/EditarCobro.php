@@ -45,17 +45,20 @@ if (isset($_GET['id'])) {
     <link rel="stylesheet" href="Estilos/EditarCobro.css">
 </head>
 
-<?php include 'Header.php'; ?>
+<header>
+    <?php include 'Header.php'; ?>
+</header>
+
 <body>
     <br><br><br><br><br><br><br><br>
-    <div class="container">
+    <div>
         <h1>Editar Cobro</h1>
         <form action="../Controlador/ActualizarCobro.php" method="POST">
             <input type="hidden" name="idCobrosPeaje" value="<?php echo $cobro['idCobrosPeaje']; ?>">
             <label for="Fecha">Fecha:</label>
             <input type="date" id="Fecha" name="Fecha" value="<?php echo $cobro['Fecha']; ?>">
             <label for="EstacionesPeaje_idEstacionesPeaje">ID Estación:</label>
-            <input type="text" id="EstacionesPeaje_idEstacionesPeaje" name="EstacionesPeaje_idEstacionesPeaje" value="<?php echo $cobro['EstacionesPeaje_idEstacionesPeaje']; ?>">
+            <input type="text" id="EstacionesPeaje_idEstacionesPeaje" name="EstacionesPeaje_idEstacionesPeaje" value="<?php echo $estacion['EstacionesPeaje_idEstacionesPeaje']; ?>">
             <label for="Empleados_Persona_Cedula">Cédula Empleado:</label>
             <input type="text" id="Empleados_Persona_Cedula" name="Empleados_Persona_Cedula" value="<?php echo $cobro['Empleados_Persona_Cedula']; ?>">
             <label for="TipoVehiculo_idTipoVehiculo">Tipo de Vehiculo:</label>
@@ -68,9 +71,11 @@ if (isset($_GET['id'])) {
         </form>
     </div>
 
-    
+    <footer>
     <?php include 'Footer.php'; ?>
-   
+    </footer>
+    
+    
 
 </body>
 </html>

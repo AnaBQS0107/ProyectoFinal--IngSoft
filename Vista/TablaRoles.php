@@ -72,7 +72,12 @@ $roles = $controller->obtenerRoles();
         <br>
     </div>
     <script src="../JS/Roles.js"></script>
-    <?php include 'Footer.php'; ?>
+    
+    <br>
+    <footer>
+        <?php include 'Footer.php'; ?>
+    </footer>
+    
 </body>
 
 </html>
