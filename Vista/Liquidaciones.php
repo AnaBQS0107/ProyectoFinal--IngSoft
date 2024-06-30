@@ -18,8 +18,8 @@
     <center>
         <h1>Calcular liquidaciones</h1>
     </center>
-    <div class="container">
-        <form>
+    <div>
+        <form  class="container">
             
             <div class="row">
                 <div class="col-md-2 position-relative">
@@ -119,7 +119,10 @@
         });
     </script>
 
-<?php include 'Footer.php'; ?>
+    <footer>
+    <?php include 'Footer.php'; ?>
+    </footer>    
+
 </body>
 
 </html>

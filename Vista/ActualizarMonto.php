@@ -28,7 +28,6 @@ if (isset($_GET['idTipoVehiculo'])) {
     <title>PassWize - Actualizar Monto</title>
     <link rel="icon" type="image/png" href="../img/icono.png">
     <link rel="stylesheet" href="Estilos/ActualizarMonto.css">
-    <link rel="stylesheet" href="Estilos/Footer.css">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
@@ -36,6 +35,7 @@ if (isset($_GET['idTipoVehiculo'])) {
     <header>
         <?php include 'header.php'; ?>
     </header>
+
     <br><br><br><br><br><br>
     <center>
         <h1><?php echo $idTipoVehiculo ? 'Actualizar Monto del Vehículo' : 'Agregar Monto del Vehículo'; ?></h1>
@@ -52,7 +52,11 @@ if (isset($_GET['idTipoVehiculo'])) {
         </form>
     </center>
     <br><br> <br><br>
-    <?php include 'Footer.php'; ?>
+
+    <footer class= "footer-Act-Monto">
+        <?php include 'Footer.php'; ?>
+    </footer>
+    
 </body>
 
 </html>

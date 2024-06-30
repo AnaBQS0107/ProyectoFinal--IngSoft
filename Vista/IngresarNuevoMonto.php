@@ -64,7 +64,11 @@ if (isset($_GET['idTipoVehiculo'])) {
         </form>
     </center>
     <br>
-    <?php include 'Footer.php'; ?>
+    
+    <footer>
+        <?php include 'Footer.php'; ?>
+    </footer>
+    
 </body>
 
 </html>

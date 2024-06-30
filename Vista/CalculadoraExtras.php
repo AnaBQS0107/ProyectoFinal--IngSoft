@@ -40,7 +40,7 @@ require_once '../Controlador/Cobro.php';
     </div>    
     </container>
     <footer class="footer-Calc-Extras">
-    <?php include 'Footer.php'; ?>
+        <?php include 'Footer.php'; ?>
     </footer>
 </body>
 
