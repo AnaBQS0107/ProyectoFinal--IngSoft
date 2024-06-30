@@ -24,13 +24,24 @@ if (isset($_POST['user_id'])) {
             $idExtras = $extra['idExtras'];
             $horaInicio = $extra['Hora_Inicio'];
 
+            // Calculate the duration
+            $horaInicioDateTime = new DateTime($horaInicio);
+            $horaFinDateTime = new DateTime($end_time);
+            $interval = $horaInicioDateTime->diff($horaFinDateTime);
+            $minutos = ($interval->h * 60) + $interval->i;
+
+            $horasCumplidas = ($minutos >= 45) ? ceil($minutos / 60) : 0;
+
             // Calculate the amount
             $sql = "SELECT SalarioBase FROM empleados WHERE Persona_Cedula = ?";
             $stmt = $conn->prepare($sql);
             $stmt->execute([$user_id]);
             $salariobase = $stmt->fetchColumn();
 
-            $monto = (strtotime($end_time) - strtotime($horaInicio)) / 3600 * $salariobase * 1.5;
+            $horaOrdinaria = $salariobase / 160;
+            $mitadHoraOrdinaria = $horaOrdinaria / 2;
+            $porHoraExtra = $horaOrdinaria + $mitadHoraOrdinaria;
+            $monto = ($horasCumplidas * $porHoraExtra);
 
             // Update the ongoing overtime entry
             $sql = "UPDATE extras SET Hora_Salida = ?, Monto = ? WHERE idExtras = ?";
