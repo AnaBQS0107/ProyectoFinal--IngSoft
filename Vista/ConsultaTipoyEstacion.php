@@ -34,7 +34,7 @@ if (isset($_GET['submit'])) {
     <title>Consulta de Cobros</title>
     <link rel="icon" type="image/png" href="../img/icono.png">
     <link rel="stylesheet" href="Estilos/Footer.css">
-    <link rel="stylesheet" href="Estilos/TablaCobros.css">
+    <link rel="stylesheet" href="Estilos/TipoEstacion.css">
 </head>
 
 <body>

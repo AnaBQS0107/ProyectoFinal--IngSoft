@@ -1,16 +1,134 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+table {
+    width: 100%;
+    margin: 20px 0;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid white;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #005c53;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
 .mini-table {
     margin-top: 20px;
 }
 
-.mini-table table {
-    width: 300px;
-    border-collapse: collapse;
-    margin-bottom: 10px;
+button {
+    background-color: #005c53;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
 }
 
-.mini-table table th,
-.mini-table table td {
-    border: 1px solid #ddd;
-    padding: 8px;
+button:hover {
+    background-color: #005c53;
+}
+
+select, input[type="text"] {
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+label {
+    margin-top: 10px;
+    display: inline-block;
+}
+
+footer {
+    background-color: #333;
+    color: white;
     text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+header a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    table, th, td {
+        display: block;
+        width: 100%;
+    }
+
+    th, td {
+        padding: 15px;
+        text-align: left;
+    }
+
+    .mini-table {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .mini-table table {
+        width: 100%;
+    }
+
+    button {
+        width: 100%;
+        padding: 15px;
+        margin: 10px 0;
+    }
 }
