@@ -85,8 +85,8 @@ require_once '../Controlador/TrabajadoresInfo.php';
             </div>
 
             <div class="col-md-3 position-relative">
-                <label for="rol" class="form-label">Rol al que pertenece</label>
-                <select class="select_registro" id="rol" name="Rol_ID" required>
+            <label for="rol" class="form-label" style=; >Rol al que pertenece</label> 
+           <select class="select_registro" id="rol" name="Rol_ID" required>+
                     <?php if ($resultRoles && count($resultRoles) > 0) : ?>
                     <?php foreach ($resultRoles as $row) : ?>
                     <?php $selected = ($row['idRoles'] == $empleado['Rol_ID']) ? 'selected' : ''; ?>
