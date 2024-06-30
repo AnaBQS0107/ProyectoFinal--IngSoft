@@ -109,7 +109,11 @@ require_once '../Modelo/Ingreso_Usuario.php';
     });
     </script>
     <br>
+
+    <footer>
     <?php include 'Footer.php'; ?>
+    </footer>
+
 </body>
 
 </html>
