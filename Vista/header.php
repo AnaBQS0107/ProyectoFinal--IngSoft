@@ -33,7 +33,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
                             <?php echo htmlspecialchars($user['Nombre']); ?> (<?php echo htmlspecialchars($user['Nombre_Rol']); ?>)
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="../Controlador/AuthController.php?action=logout">Cerrar sesión</a></li>
+                            <li><a class="dropdown-item" href="../Controlador/Login.php?action=logout">Cerrar sesión</a></li>
                         </ul>
                     </li>
                 <?php endif; ?>
