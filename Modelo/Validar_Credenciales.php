@@ -1,6 +1,4 @@
 <?php
-// Validar_Credenciales.php
-
 require_once '../Config/config.php';
 
 class ValidarCredenciales {
@@ -11,12 +9,14 @@ class ValidarCredenciales {
         $this->db = $database->getConnection();
     }
 
-    public function login($Persona_Cedula, $contrasena) {
+    function login($Persona_Cedula, $contrasena) {
         try {
+            error_log("Executing login with Cedula: $Persona_Cedula and Contraseña: $contrasena");
+
             $stmt = $this->db->prepare("
-                SELECT p.Nombre AS Nombre, r.Nombre_Rol AS Nombre_Rol
+                SELECT p.Nombre AS Nombre, r.Nombre_Rol AS Nombre_Rol, p.Cedula AS Persona_Cedula
                 FROM Empleados e 
-                INNER JOIN Persona p ON e.Persona_Cedula = p.Cedula 
+                INNER JOIN persona p ON e.Persona_Cedula = p.Cedula 
                 INNER JOIN Usuarios u ON p.Cedula = u.Empleados_Persona_Cedula 
                 INNER JOIN Roles r ON e.Roles_idRoles = r.idRoles
                 WHERE u.Contraseña = :contrasena AND e.Persona_Cedula = :Persona_Cedula
@@ -26,12 +26,15 @@ class ValidarCredenciales {
             $stmt->execute();
 
             if ($stmt->rowCount() > 0) {
-                return $stmt->fetch(PDO::FETCH_ASSOC);
+                $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                error_log("Login result: " . print_r($result, true)); // Depuración
+                return $result;
             } else {
+                error_log("No rows found for login query."); // Depuración
                 return false;
             }
         } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
+            error_log("Error: " . $e->getMessage());
             return false;
         }
     }
@@ -53,18 +56,35 @@ class ValidarCredenciales {
         }
     }
 
+    public function getPersonaCedula($usuario_id) {
+        try {
+            $stmt = $this->db->prepare("SELECT Empleados_Persona_Cedula FROM Usuarios WHERE idUsuario = :usuario_id");
+            $stmt->bindParam(':usuario_id', $usuario_id);
+            $stmt->execute();
+
+            if ($stmt->rowCount() > 0) {
+                return $stmt->fetch(PDO::FETCH_ASSOC)['Empleados_Persona_Cedula'];
+            } else {
+                return null;
+            }
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return null;
+        }
+    }
+
     public function getEstacionesPeaje($Nombre) {
         try {
             $stmt = $this->db->prepare("
                 SELECT e.EstacionesPeaje_idEstacionesPeaje, ep.Nombre AS Nombre_Estacion, p.Nombre AS Nombre_Empleado
                 FROM Empleados e
                 LEFT JOIN EstacionesPeaje ep ON e.EstacionesPeaje_idEstacionesPeaje = ep.idEstacionesPeaje
-                INNER JOIN Persona p ON e.Persona_Cedula = p.Cedula
+                INNER JOIN persona p ON e.Persona_Cedula = p.Cedula
                 WHERE p.Nombre = :Nombre
             ");
             $stmt->bindParam(':Nombre', $Nombre);
             $stmt->execute();
-    
+
             if ($stmt->rowCount() > 0) {
                 return $stmt->fetch(PDO::FETCH_ASSOC);
             } else {
@@ -75,9 +95,5 @@ class ValidarCredenciales {
             return null;
         }
     }
-    
-    
-    
 }
-
 ?>

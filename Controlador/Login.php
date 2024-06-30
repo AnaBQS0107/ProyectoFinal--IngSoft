@@ -1,13 +1,15 @@
 <?php
-session_start(); 
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 require_once '../Modelo/Validar_Credenciales.php';
 
 class AuthController {
-    private $ValidarCredenciales;
+    private $Validar_Credenciales;
 
     public function __construct() {
-        $this->ValidarCredenciales = new ValidarCredenciales();
+        $this->Validar_Credenciales = new ValidarCredenciales();
     }
 
     public function login() {
@@ -15,16 +17,22 @@ class AuthController {
             $Persona_Cedula = $_POST['Persona_Cedula'];
             $contrasena = $_POST['contrasena'];
 
-            $user = $this->ValidarCredenciales->login($Persona_Cedula, $contrasena);
+            // Depuración
+            error_log("Cedula: " . $Persona_Cedula);
+            error_log("Contraseña: " . $contrasena);
+
+            $user = $this->Validar_Credenciales->login($Persona_Cedula, $contrasena);
 
             if ($user) {
+                error_log("User found: " . print_r($user, true));
+
                 $_SESSION['user'] = [
                     'Nombre' => $user['Nombre'],
                     'Nombre_Rol' => $user['Nombre_Rol'],
                     'Persona_Cedula' => $user['Persona_Cedula']
                 ];
 
-                // Redirect to home page after successful login
+                // Redirigir a la página de inicio después de un login exitoso
                 header("Location: ../Vista/Inicio.php");
                 exit();
             } else {
@@ -50,7 +58,7 @@ class AuthController {
         if (isset($_SESSION['user'])) {
             $user = $_SESSION['user'];
 
-            // Output user information for debugging
+            // Mostrar información del usuario para depuración
             echo "Usuario: " . htmlspecialchars($user['Nombre']) . "<br>";
             echo "Cédula: " . htmlspecialchars($user['Persona_Cedula']) . "<br>";
             echo "Rol: " . htmlspecialchars($user['Nombre_Rol']) . "<br>";

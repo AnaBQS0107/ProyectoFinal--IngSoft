@@ -1,21 +1,62 @@
 <?php
-include 'config.php';
-
-$user_id = $_POST['user_id'];
-$end_time = date('Y-m-d H:i:s');
-
-$sql = "UPDATE Overtime SET end_time = '$end_time' WHERE user_id = '$user_id' AND end_time IS NULL";
-
-if ($conn->query($sql) === TRUE) {
-    $calculateHoursWorked = "UPDATE Overtime SET hours_worked = TIMESTAMPDIFF(HOUR, start_time, end_time) WHERE user_id = '$user_id' AND end_time = '$end_time'";
-    if ($conn->query($calculateHoursWorked) === TRUE) {
-        echo "Overtime ended and hours calculated";
-    } else {
-        echo "Error: Conexión fallida" . $calculateHoursWorked . "<br>" . $conn->error;
-    }
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
 }
 
-$conn->close();
+header('Content-Type: application/json');
+
+require_once '../Config/config.php';
+
+if (isset($_POST['user_id'])) {
+    $user_id = $_POST['user_id'];
+
+    try {
+        $conn = getConnection();
+        $end_time = date('Y-m-d H:i:s');
+        
+        // Query to get the ongoing overtime entry
+        $sql = "SELECT idExtras, Hora_Inicio FROM extras WHERE Empleados_Persona_Cedula = ? AND Hora_Salida IS NULL ORDER BY Hora_Inicio DESC LIMIT 1";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$user_id]);
+        $extra = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($extra) {
+            $idExtras = $extra['idExtras'];
+            $horaInicio = $extra['Hora_Inicio'];
+
+            // Calculate the duration
+            $horaInicioDateTime = new DateTime($horaInicio);
+            $horaFinDateTime = new DateTime($end_time);
+            $interval = $horaInicioDateTime->diff($horaFinDateTime);
+            $minutos = ($interval->h * 60) + $interval->i;
+
+            $horasCumplidas = ($minutos >= 45) ? ceil($minutos / 60) : 0;
+
+            // Calculate the amount
+            $sql = "SELECT SalarioBase FROM empleados WHERE Persona_Cedula = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute([$user_id]);
+            $salariobase = $stmt->fetchColumn();
+
+            $horaOrdinaria = $salariobase / 160;
+            $mitadHoraOrdinaria = $horaOrdinaria / 2;
+            $porHoraExtra = $horaOrdinaria + $mitadHoraOrdinaria;
+            $monto = ($horasCumplidas * $porHoraExtra);
+
+            // Update the ongoing overtime entry
+            $sql = "UPDATE extras SET Hora_Salida = ?, Monto = ? WHERE idExtras = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute([$end_time, $monto, $idExtras]);
+            echo json_encode(["message" => "Fin de horas extra registrado correctamente"]);
+        } else {
+            echo json_encode(["error" => true, "message" => "No se encontró un registro de horas extras en progreso"]);
+        }
+    } catch (PDOException $e) {
+        echo json_encode(["error" => true, "message" => "Error al registrar fin de horas extra: " . $e->getMessage()]);
+    } finally {
+        $conn = null;
+    }
+} else {
+    echo json_encode(["error" => true, "message" => "Usuario no autenticado. Inicie sesión para finalizar horas extra."]);
+}
 ?>

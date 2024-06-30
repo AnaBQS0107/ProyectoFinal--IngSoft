@@ -1,5 +1,6 @@
 <?php
 require_once '../Modelo/Ingreso_Usuario.php';
+require_once '../Controlador/EditarUsuario.php';
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +12,7 @@ require_once '../Modelo/Ingreso_Usuario.php';
     <title>PassWize - Actualizar Usuario</title>
     <link rel="icon" type="image/png" href="../img/icono.png">
     <link rel="stylesheet" href="Estilos/ActualizarEmpleado.css">
-    
+
 
 </head>
 
@@ -40,35 +41,27 @@ require_once '../Modelo/Ingreso_Usuario.php';
             required><br><br>
 
         <div class="col-md-3 position-relative">
-            <label for="estacion" class="form-label">Estación a la que pertenece</label>
-            <select class="select_registro" id="estacion" name="Estacion_ID" required>
-                <?php if ($resultEstaciones && count($resultEstaciones) > 0) : ?>
-                <?php foreach ($resultEstaciones as $row) : ?>
-                <?php $selected = ($row['idEstacionesPeaje'] == $empleado['Estacion_ID']) ? 'selected' : ''; ?>
-                <option value="<?php echo $row["idEstacionesPeaje"]; ?>" <?php echo $selected; ?>>
-                    <?php echo $row["Nombre"]; ?></option>
+            <label for="estacion">Estación de Peaje:</label>
+            <select class="form-select select_registro"  id="estacion"  type="text" name="Estacion_ID" required>
+                <?php foreach ($resultEstaciones as $rowEstacion) : ?>
+                <?php $selectedEstacion = ($rowEstacion['idEstacionesPeaje'] == $empleado['EstacionesPeaje_idEstacionesPeaje']) ? 'selected' : ''; ?>
+                <option value="<?php echo $rowEstacion['idEstacionesPeaje']; ?>" <?php echo $selectedEstacion; ?>>
+                    <?php echo htmlspecialchars($rowEstacion['Nombre']); ?>
+                </option>
                 <?php endforeach; ?>
-                <?php else : ?>
-                <option disabled>No hay estaciones disponibles</option>
-                <?php endif; ?>
             </select>
-        </div>
 
-        <div class="col-md-3 position-relative">
-            <label for="rol" class="form-label">Rol al que pertenece</label>
-            <select class="select_registro" id="rol" name="Rol_ID" required>
-                <?php if ($resultRoles && count($resultRoles) > 0) : ?>
-                <?php foreach ($resultRoles as $row) : ?>
-                <?php $selected = ($row['idRoles'] == $empleado['Rol_ID']) ? 'selected' : ''; ?>
-                <option value="<?php echo $row["idRoles"]; ?>" <?php echo $selected; ?>>
-                    <?php echo $row["Nombre_Rol"]; ?></option>
-                <?php endforeach; ?>
-                <?php else : ?>
-                <option disabled>No hay roles disponibles</option>
-                <?php endif; ?>
-            </select>
-        </div>
-
+            <div class="col-md-3 position-relative">
+            <label for="rol">Rol:</label>
+            <select class="form-select select_registro" id="rol" name="Rol_ID" required>
+        <?php foreach ($resultRoles as $rowRol) : ?>
+            <?php $selectedRol = ($rowRol['idRoles'] == $empleado['Roles_idRoles']) ? 'selected' : ''; ?>
+            <option value="<?php echo $rowRol['idRoles']; ?>" <?php echo $selectedRol; ?>>
+                <?php echo htmlspecialchars($rowRol['Nombre_Rol']); ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+</div>
 
         <label for="Contrasena">Contraseña:</label>
         <input type="password" id="Contrasena" name="Contrasena"
@@ -78,7 +71,7 @@ require_once '../Modelo/Ingreso_Usuario.php';
         <center><button type="submit" id="submitBtn">Guardar Cambios</button></center>
     </form>
     <br><br>
-   
+
 
     <!-- Script de SweetAlert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>

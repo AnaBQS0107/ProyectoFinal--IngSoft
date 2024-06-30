@@ -42,7 +42,7 @@ if (isset($_GET['idTipoVehiculo'])) {
     </header>
     <br><br><br><br>
     <center>
-        <h1><?php echo $idTipoVehiculo ? 'Editar Tipo de Vehículo' : 'Ingresar Nuevo Monto'; ?></h1>
+        <h1><?php echo $idTipoVehiculo ? 'Editar Tipo de Vehículo' : 'Ingresar Nuevo Tipo de Vehículo'; ?></h1>
     </center>
     <br>
     <center>
