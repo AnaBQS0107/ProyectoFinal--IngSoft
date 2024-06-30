@@ -45,6 +45,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
                         Acciones
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownAcciones">
+                        <a class="dropdown-item" href="../Vista/EditarCobro.php">Editar Cobro</a>
                         <a class="dropdown-item" href="../Vista/CobrosPeaje.php">Gestionar Cobros</a>
                         <a class="dropdown-item" href="../Vista/Liquidaciones.php">Calcular Liquidaciones</a>
                         <a class="dropdown-item" href="../Vista/HorasExtras.php">Calcular Extras</a>
