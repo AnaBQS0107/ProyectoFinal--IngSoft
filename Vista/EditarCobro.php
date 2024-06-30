@@ -44,6 +44,7 @@ if (isset($_GET['id'])) {
     <title>Editar Cobro</title>
     <link rel="stylesheet" href="Estilos/EditarCobro.css">
 </head>
+
 <?php include 'Header.php'; ?>
 <body>
     <br><br><br><br><br><br><br><br>
@@ -63,12 +64,17 @@ if (isset($_GET['id'])) {
             <input type="text" id="TipoVehiculo_Codigo" name="TipoVehiculo_Codigo" value="<?php echo $cobro['TipoVehiculo_Codigo']; ?>">
             <label for="TipoVehiculo_Tarifa">Tarifa:</label>
             <input type="text" id="TipoVehiculo_Tarifa" name="TipoVehiculo_Tarifa" value="<?php echo $cobro['TipoVehiculo_Tarifa']; ?>">
-            <button type="button" id="btnActualizar">Actualizar</button>
+           <center> <button type="button" id="btnActualizar">Actualizar</button> </center>
         </form>
     </div>
+
+    
     <?php include 'Footer.php'; ?>
+   
+
 </body>
 </html>
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
 document.getElementById('btnActualizar').addEventListener('click', function() {
