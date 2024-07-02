@@ -1,6 +1,4 @@
-/* TrabajadoresporEstacion.css */
 
-/* Estilos generales */
 body {
     font-family: Arial, sans-serif;
     background-color: white;
@@ -48,7 +46,7 @@ button {
 }
 
 button:hover {
-    background-color: #8fafd2;
+    background-color: #d8d0d0;
 }
 
 /* Estilos para la tabla */
@@ -62,6 +60,7 @@ th, td {
     padding: 12px;
     text-align: left;
     border-bottom: 1px solid #ddd;
+    border: 1px solid rgb(239, 234, 234);
 }
 
 th {

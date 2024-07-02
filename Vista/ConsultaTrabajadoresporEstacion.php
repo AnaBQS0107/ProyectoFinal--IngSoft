@@ -52,7 +52,7 @@ $resultEstaciones = $trabajadoresTabla->obtenerEstaciones();
         <table>
             <thead>
                 <tr>
-                    <th>Cédula</th>
+                   <th>Cédula</th>
                     <th>Nombre</th>
                     <th>Primer Apellido</th>
                     <th>Segundo Apellido</th>
