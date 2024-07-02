@@ -71,7 +71,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownReportes">
                         <a class="dropdown-item" href="../Vista/ReporteCobroMes.php">Cobro Tipo de Vehículo por mes</a>
-                        <a class="dropdown-item" href="#">Reporte 2</a>
+                        <a class="dropdown-item" href="../Vista/ReporteCobroporEstacion.php">Cobro por estación</a>
                         <a class="dropdown-item" href="#">Reporte 3</a>
                         <!-- Agrega aquí más opciones de reportes según tus necesidades -->
                     </div>
