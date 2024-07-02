@@ -12,8 +12,6 @@ $sumasPorTipoYEstacion = [];
 if (isset($_GET['submit'])) {
     $tipoVehiculoId = $_GET['tipoVehiculo'];
     $estacionPeajeId = $_GET['estacionPeaje'];
-
-    // Verifica si se seleccionó tanto tipo de vehículo como estación de peaje
     if (!empty($tipoVehiculoId) && !empty($estacionPeajeId)) {
         $cobros = $cobroController->getCobrosPorTipoVehiculoYEstacion($tipoVehiculoId, $estacionPeajeId);
         $sumasPorTipoYEstacion = $cobroController->getSumaTarifasPorTipoVehiculoYEstacion($tipoVehiculoId, $estacionPeajeId);

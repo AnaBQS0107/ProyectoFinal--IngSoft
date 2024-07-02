@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <br><br><br><br><br><br><br>
     <title>Consulta de Cobros por Trabajador</title>
+    <link rel="icon" type="image/png" href="../img/icono.png">
     <style>
         table {
             width: 100%;

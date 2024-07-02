@@ -55,6 +55,16 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
                         <a class="dropdown-item" href="../Vista/IngresarNuevoMonto.php">Nuevo Vehículo</a>
                         
                     </div>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownReportes" role="button"
+   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="far fa-file-alt"></i> Reportes
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownReportes">
+    <a class="dropdown-item" href="#">Reporte 1</a>
+    <a class="dropdown-item" href="#">Reporte 2</a>
+    <a class="dropdown-item" href="#">Reporte 3</a>
+    <!-- Agrega aquí más opciones de reportes según tus necesidades -->
+</div>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownConsultas" role="button"
@@ -65,6 +75,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
                         <a class="dropdown-item" href="../Vista/ConsultaTipoyEstacion.php">Tipo y Estación</a>
                         <a class="dropdown-item" href="../Vista/ConsultaTrabajadoresporEstacion.php">Trabajadores por Estacion</a>
                         <a class="dropdown-item" href="../Vista/ConsultaCobrosporTrabajador.php">Cobros por trabajador</a>
+                        <a class="dropdown-item" href="../Vista/ConsultaMontoAlMes.php">Monto cobrado por mes</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
