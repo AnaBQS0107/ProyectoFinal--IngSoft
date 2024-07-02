@@ -4,25 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Estilos/CobrosTrabajador.css">
-    <br><br><br><br><br><br><br>
+    <br><br><br><br>
     <title>Consulta de Cobros por Trabajador</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        table, th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        form {
-            margin-bottom: 20px;
-        }
-    </style>
 </head>
 <header>
     <?php include 'Header.php'; ?>
@@ -30,7 +13,6 @@
 <body>
     
    <center><h1>Consulta de Cobros por Trabajador</h1>
-<br>
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="GET">
         <label for="search">Buscar por Nombre o Cédula:</label>
         <input type="text" id="search" name="search">
