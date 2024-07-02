@@ -1,163 +1,105 @@
-/* Reset de estilos y configuración básica */
-* {
+:root {
+    --color-primary: #DBF226;
+    --color-white: #e9e9e9;
+    --color-black: #141d28;
+    --color-black-1: #212b38;
+  }
+  
+  * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-/* Estilos generales del cuerpo */
-body {
-    font-family: Arial, sans-serif;
-}
-
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #005c53;
-    padding: 10px;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-}
-
-/* Estilos del contenedor del navbar */
-.navbar-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-/* Estilos del logo */
-.navbar-brand img {
-    border-radius: 5px;
-}
-
-/* Estilos del título */
-.navbar-title {
-    color: #fff;
-    text-decoration: none;
-    font-size: 23px;
-}
-
-/* Estilos del botón de menú */
-.hamburger-menu {
+  }
+  
+  body {
+    font-family: sans-serif;
+   
+  }
+  
+  .logo {
+    color: var(--color-white);
     font-size: 30px;
-    color: #fff;
-    cursor: pointer;
-    border: 2.5px solid #9fc13152;
-    border-radius: 7px;
-    padding: 7px;
-    padding-top: 1px;
-    padding-bottom: 1px;
-    margin-right: 10px;
-}
-
-.hamburger-menu:hover {
-    background-color: #9fc13152;
-}
-
-/* Estilos del menú desplegable */
-.navbar-links {
-    font-size: 16px;
-    font-weight: 200;
-    display: none;
-    position: absolute;
-    top: calc(100%);
-    right: 0px;
-    background-color: #003b36;
-    z-index: 999;
-    border-radius: 5px;
-    transition: height 0.3s;
-    width: auto;
-    height: auto;
-}
-
-/* Estilos de la lista de elementos del menú */
-.navbar-links ul {
-    list-style: none;
-    flex-direction: column;
+  }
+  
+  .logo span {
+    color: var(--color-primary);
+  }
+  
+  .menu-bar {
+    background-color: var(--color-black);
+    height: 80px;
     width: 100%;
-    padding-top: 10px;
-    text-align: center;
-}
-
-/* Estilos de los elementos de la lista */
-.navbar-links ul li {
-    text-align: center;
-    padding: 10px;
-}
-
-/* Estilos de los enlaces en la lista */
-.navbar-links ul li a {
-    color: #fff;
-    text-decoration: none;
-    padding: 5px 10px;
-    display: block;
-    text-align: center;
-}
-
-/* Estilos al pasar el mouse sobre los enlaces */
-.navbar-links ul li a:hover {
-    color: #fff;
-    background-color: #015e569c;
-    border-radius: 5px;
-}
-
-/* Estilos del menú desplegable del elemento de menú */
-.nav-item.dropdown .dropdown-menu {
-    display: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+  
     position: relative;
-    background-color: #9fc13152;
-    border: none;
-    margin-top: 10px;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-}
-
-/* Mostrar el menú desplegable cuando se pasa el mouse sobre el elemento de menú */
-.nav-item.dropdown:hover .dropdown-menu {
+  }
+  
+  .menu-bar ul {
+    list-style: none;
+    display: flex;
+  }
+  
+  .menu-bar ul li {
+    /* width: 120px; */
+    padding: 10px 30px;
+    /* text-align: center; */
+  
+    position: relative;
+  }
+  
+  .menu-bar ul li a {
+    font-size: 20px;
+    color: var(--color-white);
+    text-decoration: none;
+  
+    transition: all 0.3s;
+  }
+  
+  .menu-bar ul li a:hover {
+    color: var(--color-primary);
+  }
+  
+  .fas {
+    float: right;
+    margin-left: 10px;
+    padding-top: 3px;
+  }
+  
+  /* dropdown menu style */
+  .dropdown-menu {
+    display: none;
+  }
+  
+  .menu-bar ul li:hover .dropdown-menu {
     display: block;
-    max-height: 200px;
-}
-
-/* Ajustes para dispositivos móviles */
-@media (max-width: 768px) {
-    .navbar-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        top: 60px;
-        left: 0;
-        right: 0;
-        background-color: #003b36;
-        position: absolute;
-        z-index: 999;
-    }
-
-    .navbar-links ul {
-        width: 100%;
-    }
-
-    .navbar-links ul li {
-        padding: 10px 0;
-    }
-
-    .navbar-links.expanded {
-        display: flex;
-    }
-
-    .nav-item.dropdown .dropdown-menu {
-        position: relative;
-        margin-top: 0;
-    }
-
-    .nav-item.dropdown:hover .dropdown-menu {
-        max-height: 200px;
-        margin-top: 0;
-    }
-}
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background-color: var(--color-black);
+  }
+  
+  .menu-bar ul li:hover .dropdown-menu ul {
+    display: block;
+    margin: 10px;
+  }
+  
+  .menu-bar ul li:hover .dropdown-menu ul li {
+    width: 250px;
+    padding: 10px;
+  }
+  
+  .dropdown-menu-1 {
+    display: none;
+  }
+  
+  .dropdown-menu ul li:hover .dropdown-menu-1 {
+    display: block;
+    position: absolute;
+    left: 150px;
+    top: 0;
+    background-color: var(--color-black);
+  }
+  

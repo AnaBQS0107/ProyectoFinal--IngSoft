@@ -16,8 +16,7 @@
     <header>
         <?php include 'header.php'; ?>
     </header>
-    <br><br><br>
-    <br><br>
+ 
     
     <section class="hero">
     <div class="hero-text">
@@ -27,7 +26,7 @@
        <center> <p>Pasa más rápido, vive más</p></center>
       </div>
       <div class="hero-image">
-        <img src="../img/fondo.svg" alt="Ilustración">
+        <img src="../img/Fondo1.svg" alt="Ilustración">
       </div>
     </section>
     <?php include 'Footer.php'; ?>

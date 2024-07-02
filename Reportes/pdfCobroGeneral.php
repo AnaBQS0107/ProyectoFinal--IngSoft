@@ -11,7 +11,6 @@ if (isset($resultadoTotal) && is_numeric($resultadoTotal)) {
 
     // Configurar PDF
     $pdf = new FPDF();
-    $pdf->Image('../img/icono.png', 10, 10, 15);
     $pdf->AddPage();
     $pdf->SetFont('Arial', 'B', 16);
     $pdf->Cell(0, 10, 'Monto Total Recaudado por los Cinco Puestos de Peaje', 0, 1, 'C');
