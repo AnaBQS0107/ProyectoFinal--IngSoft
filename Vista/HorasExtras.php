@@ -1,10 +1,3 @@
-<?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-require_once '../Controlador/HorasExtrasMensuales.php';
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -26,6 +19,7 @@ require_once '../Controlador/HorasExtrasMensuales.php';
         <h1>Contador de horas extras</h1>
         <button id="start-overtime">Inicio Horas Extra</button>
         <button id="end-overtime" disabled>Fin Horas Extra</button>
+        <input type="text" id="overtime-description" placeholder="Descripción de las horas extras" disabled>
         <h2>Total Mensual: <span id="monthly-total">0</span> colones</h2>
         <table>
             <thead>
@@ -34,6 +28,7 @@ require_once '../Controlador/HorasExtrasMensuales.php';
                     <th>Hora de inicio</th>
                     <th>Hora de finalización</th>
                     <th>Monto</th>
+                    <th>Descripción</th>
                 </tr>
             </thead>
             <tbody id="overtime-data">
@@ -61,6 +56,7 @@ require_once '../Controlador/HorasExtrasMensuales.php';
                 Swal.fire('Inicio Horas Extra', response.message, 'success');
                 $('#start-overtime').prop('disabled', true);
                 $('#end-overtime').prop('disabled', false);
+                $('#overtime-description').prop('disabled', false);
                 fetchOvertimeData();
             }
             fetchMonthlyTotal();
@@ -71,13 +67,15 @@ require_once '../Controlador/HorasExtrasMensuales.php';
     });
 
     $('#end-overtime').click(function() {
-        $.post('../Controlador/FinHorasExtras.php', { user_id: userId }, function(response) {
+        const description = $('#overtime-description').val();
+        $.post('../Controlador/FinHorasExtras.php', { user_id: userId, description: description }, function(response) {
             if (response.error) {
                 Swal.fire('Error', response.message, 'error');
             } else {
                 Swal.fire('Fin Horas Extra', response.message, 'success');
                 $('#start-overtime').prop('disabled', false);
                 $('#end-overtime').prop('disabled', true);
+                $('#overtime-description').prop('disabled', true).val('');
                 fetchOvertimeData();
             }
             fetchMonthlyTotal();
@@ -111,6 +109,7 @@ require_once '../Controlador/HorasExtrasMensuales.php';
                             <td>${entry.Hora_Inicio}</td>
                             <td>${entry.Hora_Salida ? entry.Hora_Salida.split(' ')[1] : '-'}</td>
                             <td>${entry.Monto ? entry.Monto : '-'}</td>
+                            <td>${entry.Descripcion ? entry.Descripcion : '-'}</td>
                         </tr>
                     `);
                 });
