@@ -5,27 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="../img/icono.png">
     <title>Consulta de Monto Total Cobrado por Mes</title>
-    <style>
-        table {
-            width: 50%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        table, th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+    <link rel="stylesheet" href="Estilos/ConsultaMontoAlMes.css">
 </head>
+
+
+
 <body>
 <header>
     <?php include 'Header.php'; ?>
 </header>
-<br><br><br><br><br><br><br><br>
+<br><br><br><br>
    <center><h1>Consulta de Monto Total Cobrado por Mes</h1>
 
     <?php
