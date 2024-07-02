@@ -12,18 +12,20 @@ if (isset($resultados) && (is_array($resultados) || is_object($resultados))) {
     $pdf->AddPage();
 
     // Configurar la fuente y tamaño para el título
+    $pdf->Image('../img/icono.png', 10, 10, 15);
     $pdf->SetFont('Arial', 'B', 12);
-    $pdf->Cell(0, 10, 'Monto Total Cobrado por Estación', 0, 1, 'C');
+    $pdf->Cell(0, 10, 'Monto Total Cobrado por Estacion', 0, 1, 'C');
 
+    $pdf->Ln(10);
     // Encabezados de tabla
     $pdf->SetFont('Arial', 'B', 10);
-    $pdf->Cell(80, 10, 'Estación de Peaje', 1);
+    $pdf->Cell(80, 10, 'Estacion de Peaje', 1);
     $pdf->Cell(80, 10, 'Monto Total Cobrado', 1, 1);
 
     // Contenido de la tabla
     $pdf->SetFont('Arial', '', 10);
     foreach ($resultados as $row) {
-        $pdf->Cell(80, 10, $row['NombreEstacion'], 1);
+        $pdf->Cell(80, 10, $row['Nombre'], 1);
         $pdf->Cell(80, 10, '$ ' . number_format($row['MontoTotalCobrado'], 2), 1, 1, 'R');
     }
 

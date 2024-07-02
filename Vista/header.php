@@ -47,14 +47,13 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
                         Acciones
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownAcciones">
-<<<<<<< HEAD
+
                     <a class="dropdown-item" href="../Vista/ConsultaCobrosporTrabajador.php">Cobros por Trabajador</a>
                     <a class="dropdown-item" href="../Vista/ConsultaTrabajadoresporEstacion.php">Trabajadores por Estacion</a>
                     <a class="dropdown-item" href="../Vista/IngresarUsuario.php">Ingresar Usuario</a>
-=======
                         <a class="dropdown-item" href="../Vista/ConsultaTrabajadoresporEstacion.php">Trabajadores por Estacion</a>
                         <a class="dropdown-item" href="../Vista/IngresarUsuario.php">Ingresar Usuario</a>
->>>>>>> fac245a3aa26f22268ca31411b4ad96cfe4c8f80
+
                         <a class="dropdown-item" href="../Vista/EditarCobro.php">Editar Cobro</a>
                         <a class="dropdown-item" href="../Vista/CobrosPeaje.php">Gestionar Cobros</a>
                         <a class="dropdown-item" href="../Vista/Liquidaciones.php">Calcular Liquidaciones</a>
@@ -70,10 +69,11 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
                         <i class="far fa-file-alt"></i> Reportes
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownReportes">
-                        <a class="dropdown-item" href="../Vista/ReporteCobroMes.php">Cobro Tipo de Vehículo por mes</a>
+                        <a class="dropdown-item" href="../Vista/ReporteCobroMes.php">Cobro Tipo de Vehículo</a>
                         <a class="dropdown-item" href="../Vista/ReporteCobroporEstacion.php">Cobro por estación</a>
-                        <a class="dropdown-item" href="#">Reporte 3</a>
-                        <!-- Agrega aquí más opciones de reportes según tus necesidades -->
+                        <a class="dropdown-item" href="../Vista/ReporteCobradoGeneral.php">Monto total recaudado</a>
+                        <a class="dropdown-item" href="../Vista/ReporteTotalporMes.php">Monto total por mes</a>
+               
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -84,11 +84,8 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownConsultas">
                         <a class="dropdown-item" href="../Vista/ConsultaTipoyEstacion.php">Tipo y Estación</a>
                         <a class="dropdown-item" href="../Vista/ConsultaTrabajadoresporEstacion.php">Trabajadores por Estacion</a>
-<<<<<<< HEAD
-=======
                         <a class="dropdown-item" href="../Vista/ConsultaCobrosporTrabajador.php">Cobros por trabajador</a>
                         <a class="dropdown-item" href="../Vista/ConsultaMontoAlMes.php">Monto cobrado por mes</a>
->>>>>>> 18ddf5f3b17e841cd6486f802f87f735ca51b9ed
                     </div>
                 </li>
                 <li class="nav-item dropdown">

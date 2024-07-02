@@ -1,20 +1,26 @@
 <?php
-require_once '../Config/config.php';
+session_start();
+$user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
 
-$query = "SELECT tv.Tipo AS TipoVehiculo, SUM(cp.TipoVehiculo_Tarifa) AS MontoTotalCobrado
-          FROM CobrosPeaje cp
-          INNER JOIN TipoVehiculo tv ON cp.TipoVehiculo_idTipoVehiculo = tv.idTipoVehiculo
-          GROUP BY tv.Tipo";
 
-$database = new Database1();
+require_once '../Config/config.php'; 
+
+$query = "SELECT MONTH(Fecha) AS Mes, SUM(TipoVehiculo_Tarifa) AS MontoTotal
+          FROM CobrosPeaje
+          GROUP BY MONTH(Fecha)";
+
+$database = new Database1(); 
 $conn = $database->getConnection();
+
+$resultados = []; 
 
 if ($conn) {
     try {
         $stmt = $conn->prepare($query);
         $stmt->execute();
         $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        $conn = null;  
+        $conn = null;
+
     } catch (PDOException $e) {
         echo "Error al obtener datos: " . $e->getMessage();
     }
