@@ -45,7 +45,6 @@ if ($resultadoTotal > 0) {
 
 <?php
 } else {
-    // Manejar el caso donde no se encontraron resultados válidos
     echo "No se encontraron resultados válidos para generar el reporte.";
 }
 ?>

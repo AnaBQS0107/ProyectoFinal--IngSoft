@@ -1,5 +1,5 @@
 <?php
-require_once '../Config/config.php'; // Asegúrate de que este archivo contiene las variables de configuración necesarias
+require_once '../Config/config.php'; 
 
 if (isset($_GET['idRoles'])) {
     $idRoles = $_GET['idRoles'];
@@ -13,7 +13,7 @@ if (isset($_GET['idRoles'])) {
         $stmt_roles->bindParam(':idRoles', $idRoles);
         $stmt_roles->execute();
 
-        echo "success"; // Devuelve 'success' si se eliminó correctamente
+        echo "success"; 
     } catch (PDOException $exception) {
         echo "Error al eliminar el rol: " . $exception->getMessage();
     }

@@ -2,7 +2,7 @@
 session_start();
 $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
 
-require_once '../Modelo/ReporteCobradoporTipo.php'; // Asegúrate de que esta línea está incluyendo correctamente el archivo del modelo
+require_once '../Modelo/ReporteCobradoporTipo.php';
 
 if (isset($resultados) && (is_array($resultados) || is_object($resultados))) {
 ?>
@@ -46,7 +46,7 @@ if (isset($resultados) && (is_array($resultados) || is_object($resultados))) {
         </form>
     </div>
 
-    <!-- Scripts de Bootstrap -->
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -58,7 +58,7 @@ if (isset($resultados) && (is_array($resultados) || is_object($resultados))) {
 
 <?php
 } else {
-    // Si $resultados no está definido o es null, muestra un mensaje de error o redirige a una página de error
+   
     echo "No se encontraron resultados.";
 }
 ?>

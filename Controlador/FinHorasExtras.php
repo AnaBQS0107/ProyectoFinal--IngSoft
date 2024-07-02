@@ -14,7 +14,7 @@ if (isset($_POST['user_id'])) {
         $conn = getConnection();
         $end_time = date('Y-m-d H:i:s');
         
-        // Query to get the ongoing overtime entry
+
         $sql = "SELECT idExtras, Hora_Inicio FROM extras WHERE Empleados_Persona_Cedula = ? AND Hora_Salida IS NULL ORDER BY Hora_Inicio DESC LIMIT 1";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$user_id]);
@@ -24,7 +24,7 @@ if (isset($_POST['user_id'])) {
             $idExtras = $extra['idExtras'];
             $horaInicio = $extra['Hora_Inicio'];
 
-            // Calculate the duration
+
             $horaInicioDateTime = new DateTime($horaInicio);
             $horaFinDateTime = new DateTime($end_time);
             $interval = $horaInicioDateTime->diff($horaFinDateTime);
@@ -32,7 +32,6 @@ if (isset($_POST['user_id'])) {
 
             $horasCumplidas = ($minutos >= 45) ? ceil($minutos / 60) : 0;
 
-            // Calculate the amount
             $sql = "SELECT SalarioBase FROM empleados WHERE Persona_Cedula = ?";
             $stmt = $conn->prepare($sql);
             $stmt->execute([$user_id]);
@@ -43,7 +42,7 @@ if (isset($_POST['user_id'])) {
             $porHoraExtra = $horaOrdinaria + $mitadHoraOrdinaria;
             $monto = ($horasCumplidas * $porHoraExtra);
 
-            // Update the ongoing overtime entry
+
             $sql = "UPDATE extras SET Hora_Salida = ?, Monto = ? WHERE idExtras = ?";
             $stmt = $conn->prepare($sql);
             $stmt->execute([$end_time, $monto, $idExtras]);

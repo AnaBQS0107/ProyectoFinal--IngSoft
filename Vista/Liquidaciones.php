@@ -98,10 +98,10 @@
             hamburgerMenu.addEventListener("click", function () {
                 if (navbarLinks.classList.contains("active")) {
                     navbarLinks.classList.remove("active");
-                    document.body.style.overflow = "auto"; // Restaurar desplazamiento del cuerpo
+                    document.body.style.overflow = "auto"; 
                 } else {
                     navbarLinks.classList.add("active");
-                    document.body.style.overflow = "hidden"; // Ocultar desplazamiento del cuerpo
+                    document.body.style.overflow = "hidden"; 
                 }
             });
 

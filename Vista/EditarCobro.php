@@ -62,13 +62,12 @@ if (isset($_GET['id'])) {
             <label for="EstacionesPeaje_idEstacionesPeaje">Estación de Peaje:</label>
             <select id="EstacionesPeaje_idEstacionesPeaje" name="EstacionesPeaje_idEstacionesPeaje">
                 <?php
-                // Obtener las estaciones de peaje disponibles
+              
                 $queryEstaciones = "SELECT idEstacionesPeaje, Nombre FROM EstacionesPeaje";
                 $stmtEstaciones = $conn->prepare($queryEstaciones);
                 $stmtEstaciones->execute();
                 $estaciones = $stmtEstaciones->fetchAll(PDO::FETCH_ASSOC);
 
-                // Iterar sobre las estaciones y crear las opciones del select
                 foreach ($estaciones as $estacion) {
                     $selected = ($estacion['idEstacionesPeaje'] == $cobro['EstacionesPeaje_idEstacionesPeaje']) ? 'selected' : '';
                     echo '<option value="' . $estacion['idEstacionesPeaje'] . '" ' . $selected . '>' . $estacion['Nombre'] . '</option>';
@@ -80,13 +79,12 @@ if (isset($_GET['id'])) {
             <label for="TipoVehiculo_idTipoVehiculo">Tipo de Vehiculo:</label>
             <select id="TipoVehiculo_idTipoVehiculo" name="TipoVehiculo_idTipoVehiculo">
                 <?php
-                // Obtener los tipos de vehículo disponibles
+          
                 $queryTiposVehiculo = "SELECT idTipoVehiculo, Tipo FROM TipoVehiculo";
                 $stmtTiposVehiculo = $conn->prepare($queryTiposVehiculo);
                 $stmtTiposVehiculo->execute();
                 $tiposVehiculo = $stmtTiposVehiculo->fetchAll(PDO::FETCH_ASSOC);
 
-                // Iterar sobre los tipos de vehículo y crear las opciones del select
                 foreach ($tiposVehiculo as $tipoVehiculo) {
                     $selected = ($tipoVehiculo['idTipoVehiculo'] == $cobro['TipoVehiculo_idTipoVehiculo']) ? 'selected' : '';
                     echo '<option value="' . $tipoVehiculo['idTipoVehiculo'] . '" ' . $selected . '>' . $tipoVehiculo['Tipo'] . '</option>';
@@ -96,13 +94,12 @@ if (isset($_GET['id'])) {
             <label for="TipoVehiculo_idTipoVehiculo">Tipo de Vehiculo:</label>
             <select id="TipoVehiculo_idTipoVehiculo" name="TipoVehiculo_idTipoVehiculo">
                 <?php
-                // Obtener los tipos de vehículo disponibles
+             
                 $queryTiposVehiculo = "SELECT idTipoVehiculo, Tipo, Codigo FROM TipoVehiculo";
                 $stmtTiposVehiculo = $conn->prepare($queryTiposVehiculo);
                 $stmtTiposVehiculo->execute();
                 $tiposVehiculo = $stmtTiposVehiculo->fetchAll(PDO::FETCH_ASSOC);
 
-                // Iterar sobre los tipos de vehículo y crear las opciones del select
                 foreach ($tiposVehiculo as $tipoVehiculo) {
                     $selected = ($tipoVehiculo['idTipoVehiculo'] == $cobro['TipoVehiculo_idTipoVehiculo']) ? 'selected' : '';
                     echo '<option value="' . $tipoVehiculo['idTipoVehiculo'] . '" ' . $selected . '>' . $tipoVehiculo['Codigo'] . '</option>';

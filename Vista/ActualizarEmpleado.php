@@ -72,8 +72,6 @@ require_once '../Controlador/EditarUsuario.php';
     </form>
     <br><br>
 
-
-    <!-- Script de SweetAlert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
     document.getElementById('submitBtn').addEventListener('click', function(event) {

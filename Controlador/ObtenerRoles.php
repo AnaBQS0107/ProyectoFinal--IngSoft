@@ -6,14 +6,14 @@ class RolesController {
     protected $db;
 
     public function __construct() {
-        // Establecer la conexión a la base de datos
+    
         try {
             $this->db = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASSWORD);
             $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->db->exec("set names utf8");
         } catch (PDOException $e) {
             echo "Error de conexión: " . $e->getMessage();
-            exit; // Detener la ejecución si hay un error de conexión
+            exit; 
         }
     }
 
@@ -31,7 +31,7 @@ class RolesController {
     }
 }
 
-// Ejemplo de uso del controlador
+
 $controller = new RolesController();
 $roles = $controller->obtenerRoles();
 ?>

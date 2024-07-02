@@ -28,16 +28,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $apellido1 = $_POST['Apellido1'];
     $apellido2 = $_POST['Apellido2'];
     $email = $_POST['Correo_Electronico'];
-    $estacion_id = $_POST['Estacion_ID']; // ID de la estación seleccionada
+    $estacion_id = $_POST['Estacion_ID']; 
     $rol_id = $_POST['Rol_ID'];
     $fechaIngreso = $_POST['Fecha'];
     $salarioBase = $_POST['SalarioBase'];
 
     try {
-        // Iniciar transacción
+
         $conn->beginTransaction();
 
-        // Insertar en tabla persona
         $sql_persona = "INSERT INTO persona (Cedula, Nombre, Primer_Apellido, Segundo_Apellido)
                         VALUES (:cedula, :nombre, :apellido1, :apellido2)";
         $stmt_persona = $conn->prepare($sql_persona);
@@ -47,7 +46,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt_persona->bindParam(':apellido2', $apellido2);
         $stmt_persona->execute();
 
-        // Insertar en tabla empleados
         $sql_empleados = "INSERT INTO empleados (Fecha_Ingreso, Persona_Cedula, Roles_idRoles, SalarioBase, EstacionesPeaje_idEstacionesPeaje, Correo_Electronico)
                           VALUES (:fechaIngreso, :cedula, :rol_id, :salarioBase, :estacion_id, :email)";
         $stmt_empleados = $conn->prepare($sql_empleados);
@@ -59,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt_empleados->bindParam(':email', $email);
         $stmt_empleados->execute();
 
-        // Insertar en tabla usuarios
+ 
         $sql_usuarios = "INSERT INTO usuarios (Contraseña, Empleados_Persona_Cedula)
                          VALUES (:contrasena, :cedula)";
         $stmt_usuarios = $conn->prepare($sql_usuarios);
@@ -67,12 +65,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt_usuarios->bindParam(':cedula', $cedula);
         $stmt_usuarios->execute();
 
-        // Confirmar transacción
+  
         $conn->commit();
 
         echo json_encode(['status' => 'success', 'message' => 'Registro exitoso']);
     } catch(PDOException $e) {
-        // Revertir transacción en caso de error
+       
         $conn->rollBack();
         echo json_encode(['status' => 'error', 'message' => "Error al insertar registro: " . $e->getMessage()]);
     }

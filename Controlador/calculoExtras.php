@@ -1,8 +1,5 @@
 
 <?php
-//
-//
-//Borrar este archivo si lo de Horas extras funciona!!!! Esto era solo la calculadora
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $salario = $_POST['salario'];

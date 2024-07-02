@@ -27,10 +27,10 @@ class ValidarCredenciales {
 
             if ($stmt->rowCount() > 0) {
                 $result = $stmt->fetch(PDO::FETCH_ASSOC);
-                error_log("Login result: " . print_r($result, true)); // Depuración
+                error_log("Login result: " . print_r($result, true)); 
                 return $result;
             } else {
-                error_log("No rows found for login query."); // Depuración
+                error_log("No rows found for login query."); 
                 return false;
             }
         } catch (PDOException $e) {
@@ -88,7 +88,7 @@ class ValidarCredenciales {
             if ($stmt->rowCount() > 0) {
                 return $stmt->fetch(PDO::FETCH_ASSOC);
             } else {
-                return null; // Retornar null si no se encontraron resultados
+                return null; 
             }
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();

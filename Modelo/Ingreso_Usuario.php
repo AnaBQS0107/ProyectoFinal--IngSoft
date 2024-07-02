@@ -98,10 +98,10 @@ class TrabajadoresTabla {
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
-        // Manejo del caso en que la clave 'Contrasena' no existe
+      
         $result = array_map(function($row) {
             if (!isset($row['Contrasena'])) {
-                $row['Contrasena'] = ''; // O algún valor predeterminado
+                $row['Contrasena'] = '';
             }
             return $row;
         }, $result);
@@ -144,9 +144,9 @@ class Rol {
     }
     
     public function obtenerRolPorID($rolID) {
-        $query = "SELECT * FROM " . $this->table_name . " WHERE idRoles = :idRoles"; // Corregido aquí
+        $query = "SELECT * FROM " . $this->table_name . " WHERE idRoles = :idRoles";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':idRoles', $rolID); // Corregido aquí
+        $stmt->bindParam(':idRoles', $rolID); 
         $stmt->execute();
         return $stmt;
     }

@@ -65,7 +65,6 @@ $roles = $controller->obtenerRoles();
         <br><br>
         <div class="div_btn">
             <center>
-                <!-- Enlace para añadir nuevo rol, ajusta según necesites -->
                 <button type="button" class="btn_asignar" onclick="location.href='../Vista/IngresarRoles.php'">Agregar un nuevo rol</button>
             </center>
         </div>

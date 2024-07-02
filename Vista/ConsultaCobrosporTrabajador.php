@@ -29,13 +29,11 @@
         try {
             $whereClause = '';
 
-            // Verificar si se ha enviado una búsqueda
             if (isset($_GET['search']) && !empty(trim($_GET['search']))) {
                 $search = $_GET['search'];
                 $whereClause = "WHERE p.Nombre LIKE :search OR p.Cedula LIKE :search";
             }
 
-            // Consulta SQL para obtener todos los trabajadores y sus totales de cobros y recaudación
             $query = "SELECT 
                         p.Cedula,
                         p.Nombre,
@@ -50,7 +48,6 @@
 
             $stmt = $conn->prepare($query);
 
-            // Bind de parámetros si se ha enviado una búsqueda
             if (!empty($whereClause)) {
                 $searchParam = "%$search%";
                 $stmt->bindParam(':search', $searchParam, PDO::PARAM_STR);

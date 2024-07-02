@@ -17,7 +17,6 @@ class AuthController {
             $Persona_Cedula = $_POST['Persona_Cedula'];
             $contrasena = $_POST['contrasena'];
 
-            // Depuración
             error_log("Cedula: " . $Persona_Cedula);
             error_log("Contraseña: " . $contrasena);
 
@@ -32,7 +31,7 @@ class AuthController {
                     'Persona_Cedula' => $user['Persona_Cedula']
                 ];
 
-                // Redirigir a la página de inicio después de un login exitoso
+              
                 header("Location: ../Vista/Inicio.php");
                 exit();
             } else {
@@ -58,7 +57,7 @@ class AuthController {
         if (isset($_SESSION['user'])) {
             $user = $_SESSION['user'];
 
-            // Mostrar información del usuario para depuración
+         
             echo "Usuario: " . htmlspecialchars($user['Nombre']) . "<br>";
             echo "Cédula: " . htmlspecialchars($user['Persona_Cedula']) . "<br>";
             echo "Rol: " . htmlspecialchars($user['Nombre_Rol']) . "<br>";

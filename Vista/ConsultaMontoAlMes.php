@@ -25,7 +25,6 @@
 
     if ($conn) {
         try {
-            // Consulta SQL para obtener el monto total cobrado por mes
             $query = "SELECT 
                         DATE_FORMAT(cp.Fecha, '%Y-%m') AS Mes,
                         SUM(cp.TipoVehiculo_Tarifa) AS MontoTotal
