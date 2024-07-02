@@ -12,6 +12,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
     <link rel="stylesheet" href="Estilos/header.css">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 </head>
 <body>
 <header>
@@ -45,6 +46,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
                         Acciones
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownAcciones">
+                    <a class="dropdown-item" href="../Vista/ConsultaCobrosporTrabajador.php">Cobros por Trabajador</a>
                     <a class="dropdown-item" href="../Vista/ConsultaTrabajadoresporEstacion.php">Trabajadores por Estacion</a>
                     <a class="dropdown-item" href="../Vista/IngresarUsuario.php">Ingresar Usuario</a>
                         <a class="dropdown-item" href="../Vista/EditarCobro.php">Editar Cobro</a>
@@ -65,7 +67,6 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownConsultas">
                         <a class="dropdown-item" href="../Vista/ConsultaTipoyEstacion.php">Tipo y Estación</a>
                         <a class="dropdown-item" href="../Vista/ConsultaTrabajadoresporEstacion.php">Trabajadores por Estacion</a>
-                        <a class="dropdown-item" href="../Vista/ConsultaCobrosporTrabajador.php">Cobros por trabajador</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
