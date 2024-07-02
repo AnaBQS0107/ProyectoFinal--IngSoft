@@ -58,6 +58,13 @@ class TrabajadoresTabla {
         $database = new Database1();
         $this->db = $database->getConnection();
     }
+    public function obtenerEstaciones() {
+        $query = "SELECT idEstacionesPeaje, Nombre FROM estacionespeaje";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function obtenerTodosLosTrabajadores() {
         $query = "SELECT p.Cedula, p.Nombre, p.Primer_Apellido AS Apellido1, p.Segundo_Apellido AS Apellido2, 
                          e.Fecha_Ingreso, e.Roles_idRoles AS Rol_ID, e.SalarioBase, e.EstacionesPeaje_idEstacionesPeaje AS Estacion_ID,
@@ -73,7 +80,34 @@ class TrabajadoresTabla {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function obtenerTrabajadoresPorEstacion($estacionID) {
+        $query = "SELECT p.Cedula, p.Nombre, p.Primer_Apellido AS Apellido1, p.Segundo_Apellido AS Apellido2, 
+                         e.Fecha_Ingreso, e.Roles_idRoles AS Rol_ID, e.SalarioBase, e.EstacionesPeaje_idEstacionesPeaje AS Estacion_ID,
+                         r.Nombre_Rol AS Nombre_Rol, est.Nombre AS Nombre_Estacion,
+                         e.Correo_Electronico AS Correo_Electronico
+                  FROM empleados e
+                  LEFT JOIN persona p ON e.Persona_Cedula = p.Cedula
+                  LEFT JOIN roles r ON e.Roles_idRoles = r.idRoles
+                  LEFT JOIN estacionespeaje est ON e.EstacionesPeaje_idEstacionesPeaje = est.idEstacionesPeaje
+                  LEFT JOIN usuarios u ON e.Persona_Cedula = u.Empleados_Persona_Cedula
+                  WHERE e.EstacionesPeaje_idEstacionesPeaje = :estacionID";
     
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':estacionID', $estacionID, PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+        // Manejo del caso en que la clave 'Contrasena' no existe
+        $result = array_map(function($row) {
+            if (!isset($row['Contrasena'])) {
+                $row['Contrasena'] = ''; // O algún valor predeterminado
+            }
+            return $row;
+        }, $result);
+    
+        return $result;
+    }
     
     
 
@@ -162,23 +196,6 @@ class TrabajadoresInfo {
         return $this->rol->obtenerRoles();
     }
 
-    public function procesarFormulario($data) {
-        $sql = "INSERT INTO trabajadores (Cedula, Contrasena, Nombre, Apellido1, Apellido2, Correo_Electronico, Estacion_ID, Rol_ID) 
-                VALUES (:cedula, :contrasena, :nombre, :apellido1, :apellido2, :correo_electronico, :estacion_id, :rol_id)";
-        $stmt = $this->db->prepare($sql);
-    
-        $stmt->bindParam(':cedula', $data['Cedula']);
-        $stmt->bindParam(':contrasena', password_hash($data['Contrasena'], PASSWORD_BCRYPT));
-        $stmt->bindParam(':nombre', $data['Nombre']);
-        $stmt->bindParam(':apellido1', $data['Apellido1']);
-        $stmt->bindParam(':apellido2', $data['Apellido2']);
-        $stmt->bindParam(':correo_electronico', $data['Correo_Electronico']); // Corregido aquí
-        $stmt->bindParam(':estacion_id', $data['Estacion_ID']);
-        $stmt->bindParam(':rol_id', $data['Rol_ID']);
-    
-
-    }
-    
 }
 
 $trabajadoresInfo = new TrabajadoresInfo();
@@ -186,7 +203,5 @@ $trabajadoresInfo = new TrabajadoresInfo();
 $resultEstaciones = $trabajadoresInfo->obtenerEstaciones();
 $resultRoles = $trabajadoresInfo->obtenerRoles();
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $trabajadoresInfo->procesarFormulario($_POST);
-}
+
 ?>

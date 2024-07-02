@@ -1,7 +1,6 @@
 <?php
 include_once '../Config/config.php';
 
-// Establecer conexión a la base de datos
 $host = "localhost:3307";
 $db_name = "servicio_autobuses";
 $username = "root";
@@ -9,19 +8,19 @@ $password = "";
 $conn = new PDO("mysql:host=$host;dbname=$db_name", $username, $password);
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-// Consultar roles
+
 $sql_roles = "SELECT idRoles, Nombre_Rol FROM roles";
 $stmt_roles = $conn->prepare($sql_roles);
 $stmt_roles->execute();
 $resultRoles = $stmt_roles->fetchAll(PDO::FETCH_ASSOC);
 
-// Consultar estaciones
+
 $sql_estaciones = "SELECT idEstacionesPeaje, Nombre FROM estacionespeaje";
 $stmt_estaciones = $conn->prepare($sql_estaciones);
 $stmt_estaciones->execute();
 $resultEstaciones = $stmt_estaciones->fetchAll(PDO::FETCH_ASSOC);
 
-// Procesamiento del formulario POST
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $cedula = $_POST['Cedula'];
     $contrasena = $_POST['Contrasena'];
