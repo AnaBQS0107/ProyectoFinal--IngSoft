@@ -13,9 +13,8 @@ if (isset($_POST['user_id']) && isset($_POST['description'])) {
 
     try {
         $conn = getConnection();
-        $end_time = date('Y-m-d H:i:s');
 
-        // Query to get the ongoing overtime entry
+
         $sql = "SELECT idExtras, Hora_Inicio FROM extras WHERE Empleados_Persona_Cedula = ? AND Hora_Salida IS NULL ORDER BY Hora_Inicio DESC LIMIT 1";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$user_id]);
@@ -25,15 +24,19 @@ if (isset($_POST['user_id']) && isset($_POST['description'])) {
             $idExtras = $extra['idExtras'];
             $horaInicio = $extra['Hora_Inicio'];
 
-            // Calculate the duration
+       
+            $randomHours = rand(1, 8);
             $horaInicioDateTime = new DateTime($horaInicio);
-            $horaFinDateTime = new DateTime($end_time);
-            $interval = $horaInicioDateTime->diff($horaFinDateTime);
+            $horaInicioDateTime->add(new DateInterval('PT' . $randomHours . 'H'));
+            $horaFinDateTime = $horaInicioDateTime->format('Y-m-d H:i:s');
+
+
+            $interval = (new DateTime($horaInicio))->diff(new DateTime($horaFinDateTime));
             $minutos = ($interval->h * 60) + $interval->i;
 
             $horasCumplidas = ($minutos >= 45) ? ceil($minutos / 60) : 0;
 
-            // Calculate the amount
+
             $sql = "SELECT SalarioBase FROM empleados WHERE Persona_Cedula = ?";
             $stmt = $conn->prepare($sql);
             $stmt->execute([$user_id]);
@@ -44,10 +47,9 @@ if (isset($_POST['user_id']) && isset($_POST['description'])) {
             $porHoraExtra = $horaOrdinaria + $mitadHoraOrdinaria;
             $monto = ($horasCumplidas * $porHoraExtra);
 
-            // Update the ongoing overtime entry
             $sql = "UPDATE extras SET Hora_Salida = ?, Monto = ?, Descripcion = ? WHERE idExtras = ?";
             $stmt = $conn->prepare($sql);
-            $stmt->execute([$end_time, $monto, $description, $idExtras]);
+            $stmt->execute([$horaFinDateTime, $monto, $description, $idExtras]);
             echo json_encode(["message" => "Fin de horas extra registrado correctamente"]);
         } else {
             echo json_encode(["error" => true, "message" => "No se encontró un registro de horas extras en progreso"]);
