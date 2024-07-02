@@ -25,7 +25,7 @@ $resultEstaciones = $trabajadoresTabla->obtenerEstaciones();
     <link rel="icon" type="image/png" href="../img/icono.png">
     <br><br><br><br> <br><br><br><br>
     <center><title>Buscar Trabajadores por Estación</title>
-    <link rel="stylesheet" href="Estilos/estilo.css">
+    <link rel="stylesheet" href="Estilos/TrabajadoresporEstacion.css">
 </head>
 <body>
     <h1>Buscar Trabajadores por Estación de Peaje</h1>
