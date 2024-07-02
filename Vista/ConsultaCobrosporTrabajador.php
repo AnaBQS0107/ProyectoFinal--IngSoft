@@ -6,6 +6,23 @@
     <link rel="stylesheet" href="Estilos/CobrosTrabajador.css">
     <br><br><br><br><br><br><br>
     <title>Consulta de Cobros por Trabajador</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <header>
     <?php include 'Header.php'; ?>
