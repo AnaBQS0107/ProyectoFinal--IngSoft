@@ -1,5 +1,6 @@
 <?php 
 require_once '../Controlador/TrabajadoresInfo.php';
+
 ?>
 
 <!DOCTYPE html>
