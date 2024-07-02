@@ -47,21 +47,21 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
                         Acciones
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownAcciones">
-<<<<<<< HEAD
+
                     <a class="dropdown-item" href="../Vista/ConsultaCobrosporTrabajador.php">Cobros por Trabajador</a>
                     <a class="dropdown-item" href="../Vista/ConsultaTrabajadoresporEstacion.php">Trabajadores por Estacion</a>
+                    <a class="dropdown-item" href="../Vista/ConsultaMontoAlMes.php">Monto al Mes</a>
                     <a class="dropdown-item" href="../Vista/IngresarUsuario.php">Ingresar Usuario</a>
-=======
-                        <a class="dropdown-item" href="../Vista/ConsultaTrabajadoresporEstacion.php">Trabajadores por Estacion</a>
-                        <a class="dropdown-item" href="../Vista/IngresarUsuario.php">Ingresar Usuario</a>
->>>>>>> fac245a3aa26f22268ca31411b4ad96cfe4c8f80
-                        <a class="dropdown-item" href="../Vista/EditarCobro.php">Editar Cobro</a>
-                        <a class="dropdown-item" href="../Vista/CobrosPeaje.php">Gestionar Cobros</a>
-                        <a class="dropdown-item" href="../Vista/Liquidaciones.php">Calcular Liquidaciones</a>
-                        <a class="dropdown-item" href="../Vista/HorasExtras.php">Calcular Extras</a>
-                        <a class="dropdown-item" href="../Vista/ActualizarMonto.php">Actualizar Monto</a>
-                        <a class="dropdown-item" href="../Vista/ActualizarEmpleado.php">Actualizar Empleado</a>
-                        <a class="dropdown-item" href="../Vista/IngresarNuevoMonto.php">Nuevo Vehículo</a>
+                    <a class="dropdown-item" href="../Vista/ConsultaTrabajadoresporEstacion.php">Trabajadores por Estacion</a>
+                    <a class="dropdown-item" href="../Vista/IngresarUsuario.php">Ingresar Usuario</a>
+                    <a class="dropdown-item" href="../Vista/EditarCobro.php">Editar Cobro</a>
+                    <a class="dropdown-item" href="../Vista/CobrosPeaje.php">Gestionar Cobros</a>
+                    <a class="dropdown-item" href="../Vista/Liquidaciones.php">Calcular Liquidaciones</a>
+                    <a class="dropdown-item" href="../Vista/HorasExtras.php">Calcular Extras</a>
+                    <a class="dropdown-item" href="../Vista/ActualizarMonto.php">Actualizar Monto</a>
+                    <a class="dropdown-item" href="../Vista/ActualizarEmpleado.php">Actualizar Empleado</a>
+                    <a class="dropdown-item" href="../Vista/IngresarNuevoMonto.php">Nuevo Vehículo</a>
+                       
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -84,11 +84,9 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownConsultas">
                         <a class="dropdown-item" href="../Vista/ConsultaTipoyEstacion.php">Tipo y Estación</a>
                         <a class="dropdown-item" href="../Vista/ConsultaTrabajadoresporEstacion.php">Trabajadores por Estacion</a>
-<<<<<<< HEAD
-=======
                         <a class="dropdown-item" href="../Vista/ConsultaCobrosporTrabajador.php">Cobros por trabajador</a>
                         <a class="dropdown-item" href="../Vista/ConsultaMontoAlMes.php">Monto cobrado por mes</a>
->>>>>>> 18ddf5f3b17e841cd6486f802f87f735ca51b9ed
+
                     </div>
                 </li>
                 <li class="nav-item dropdown">
