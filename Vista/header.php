@@ -65,6 +65,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownConsultas">
                         <a class="dropdown-item" href="../Vista/ConsultaTipoyEstacion.php">Tipo y Estación</a>
                         <a class="dropdown-item" href="../Vista/ConsultaTrabajadoresporEstacion.php">Trabajadores por Estacion</a>
+                        <a class="dropdown-item" href="../Vista/ConsultaCobrosporTrabajador.php">Cobros por trabajador</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
