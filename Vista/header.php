@@ -18,7 +18,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
     <nav class="navbar">
         <div class="navbar-container">
             <a class="navbar-brand" href="../Vista/Inicio.php">
-                <img src="../img/icono.png" alt="IconoPassWize" width="85" height="55">
+                <img src="../img/icono.png" alt="Icono PassWize" width="85" height="55">
             </a>
             <a class="navbar-title">Servicio de Peajes PassWize</a>
             
@@ -26,17 +26,18 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
                 &#9776;
             </div>
         </div>
+
         <div class="navbar-links" id="navbarLinks">
             <ul>
                 <?php if ($user && isset($user['Nombre'], $user['Nombre_Rol'])) : ?>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button">
-                            <?php echo htmlspecialchars($user['Nombre']); ?> (<?php echo htmlspecialchars($user['Nombre_Rol']); ?>)
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="../Controlador/Login.php?action=logout">Cerrar sesión</a></li>
-                        </ul>
-                    </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button">
+                        <?php echo htmlspecialchars($user['Nombre']); ?> (<?php echo htmlspecialchars($user['Nombre_Rol']); ?>)
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="../Controlador/Login.php?action=logout">Cerrar sesión</a></li>
+                    </ul>
+                </li>
                 <?php endif; ?>
                 <li class="nav-item"><a class="nav-link" href="../Vista/Inicio.php">Página Principal</a></li>
                 <li class="nav-item dropdown">
@@ -45,8 +46,8 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
                         Acciones
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownAcciones">
-                    <a class="dropdown-item" href="../Vista/ConsultaTrabajadoresporEstacion.php">Trabajadores por Estacion</a>
-                    <a class="dropdown-item" href="../Vista/IngresarUsuario.php">Ingresar Usuario</a>
+                        <a class="dropdown-item" href="../Vista/ConsultaTrabajadoresporEstacion.php">Trabajadores por Estacion</a>
+                        <a class="dropdown-item" href="../Vista/IngresarUsuario.php">Ingresar Usuario</a>
                         <a class="dropdown-item" href="../Vista/EditarCobro.php">Editar Cobro</a>
                         <a class="dropdown-item" href="../Vista/CobrosPeaje.php">Gestionar Cobros</a>
                         <a class="dropdown-item" href="../Vista/Liquidaciones.php">Calcular Liquidaciones</a>
@@ -54,18 +55,19 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
                         <a class="dropdown-item" href="../Vista/ActualizarMonto.php">Actualizar Monto</a>
                         <a class="dropdown-item" href="../Vista/ActualizarEmpleado.php">Actualizar Empleado</a>
                         <a class="dropdown-item" href="../Vista/IngresarNuevoMonto.php">Nuevo Vehículo</a>
-                        
                     </div>
+                </li>
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownReportes" role="button"
-   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <i class="far fa-file-alt"></i> Reportes
-</a>
-<div class="dropdown-menu" aria-labelledby="navbarDropdownReportes">
-    <a class="dropdown-item" href="#">Reporte 1</a>
-    <a class="dropdown-item" href="#">Reporte 2</a>
-    <a class="dropdown-item" href="#">Reporte 3</a>
-    <!-- Agrega aquí más opciones de reportes según tus necesidades -->
-</div>
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="far fa-file-alt"></i> Reportes
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownReportes">
+                        <a class="dropdown-item" href="../Vista/ReporteCobroMes.php">Cobro Tipo de Vehículo por mes</a>
+                        <a class="dropdown-item" href="#">Reporte 2</a>
+                        <a class="dropdown-item" href="#">Reporte 3</a>
+                        <!-- Agrega aquí más opciones de reportes según tus necesidades -->
+                    </div>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownConsultas" role="button"
