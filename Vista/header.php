@@ -1,3 +1,9 @@
+<?php
+session_start();
+$user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,6 +23,7 @@
         </a>
         <h1 class="logo">Pass<span>Wize.</span></h1>
         <ul>
+            
             <li><a href="#">Acciones<i class="fas fa-caret-down"></i></a>
                 <div class="dropdown-menu">
                     <ul>
