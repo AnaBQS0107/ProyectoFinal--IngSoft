@@ -16,7 +16,7 @@
     <header>
         <?php include 'header.php'; ?>
     </header>
-    <br><br><br><br><br><br><br><br>
+    <br>
     <center>
         <h5>¿Cuál tipo de vehiculo pasará por la estación?</h5>
     </center>

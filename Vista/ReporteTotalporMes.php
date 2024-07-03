@@ -1,6 +1,4 @@
 <?php
-session_start();
-$user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
 require_once '../Modelo/MontoTotalporMES.php';
 
 if (isset($resultados) && (is_array($resultados) || is_object($resultados))) {
@@ -43,6 +41,7 @@ if (isset($resultados) && (is_array($resultados) || is_object($resultados))) {
         <center><form action="../Reportes/pdfCobroporMes.php" method="post" target="_blank">
             <button type="submit" class="btn btn-primary">Exportar a PDF</button>
         </form></center>
+        <br><br><br><br>
     <?php else: ?>
         <div class="alert alert-warning" role="alert">
             No se encontraron resultados para generar el reporte.

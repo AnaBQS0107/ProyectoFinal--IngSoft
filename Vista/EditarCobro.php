@@ -36,6 +36,9 @@ if (isset($_GET['id'])) {
 }
 ?>
 
+<header>
+    <?php include 'Header.php'; ?>
+</header>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -46,12 +49,10 @@ if (isset($_GET['id'])) {
     <link rel="icon" type="image/png" href="../img/icono.png">
 </head>
 
-<header>
-    <?php include 'Header.php'; ?>
-</header>
+
 
 <body>
-    <br><br><br><br><br><br><br><br>
+  
     <div>
         <h1>Editar Cobro</h1>
         <form action="../Controlador/ActualizarCobro.php" method="POST">

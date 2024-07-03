@@ -1,6 +1,4 @@
 <?php
-session_start();
-$user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
 require_once '../Modelo/MontoCobradoGeneral.php';
 
 if ($resultadoTotal > 0) {
@@ -31,6 +29,7 @@ if ($resultadoTotal > 0) {
         <input type="hidden" name="tipo_reporte" value="monto_total_cinco_puestos">
         <button type="submit" class="btn btn-primary">Exportar a PDF</button>
     </form></center>
+    <br><br><br>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

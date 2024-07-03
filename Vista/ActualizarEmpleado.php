@@ -18,7 +18,6 @@ require_once '../Controlador/EditarUsuario.php';
 
 <body>
     <?php include_once '../Vista/header.php'; ?>
-    <br> <br> <br>
     <form id="form" method="post">
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre"
@@ -101,10 +100,10 @@ require_once '../Controlador/EditarUsuario.php';
     </script>
     <br>
 
-    <footer>
-    <?php include 'Footer.php'; ?>
-    </footer>
+  
 
 </body>
-
+  <footer>
+    <?php include 'Footer.php'; ?>
+    </footer>
 </html>

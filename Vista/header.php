@@ -1,8 +1,3 @@
-<?php
-session_start();
-$user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +5,7 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
-    <link rel="stylesheet" href="Estilos/header.css">
+    <link rel="stylesheet" href="Estilos/header2.css">
     <title>Dropdown Menu</title>
 </head>
 

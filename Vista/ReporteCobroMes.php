@@ -1,6 +1,5 @@
 <?php
-session_start();
-$user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
+
 
 require_once '../Modelo/ReporteCobradoporTipo.php';
 
@@ -44,6 +43,7 @@ if (isset($resultados) && (is_array($resultados) || is_object($resultados))) {
             <input type="hidden" name="tipo_reporte" value="monto_por_tipo_vehiculo">
             <center><button type="submit" class="btn btn-primary">Exportar a PDF</button></center>
         </form>
+        <br><br><br>
     </div>
 
 

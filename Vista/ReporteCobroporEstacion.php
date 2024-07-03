@@ -1,6 +1,4 @@
 <?php
-session_start();
-$user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
 require_once '../Modelo/ReporteCobradoporEstacion.php';
 
 if (isset($resultados) && (is_array($resultados) || is_object($resultados))) {
@@ -46,6 +44,7 @@ if (isset($resultados) && (is_array($resultados) || is_object($resultados))) {
             <input type="hidden" name="tipo_reporte" value="monto_por_estacion">
             <button type="submit" class="btn btn-primary">Exportar a PDF</button>
         </form></center>
+        <br><br><br>
     <?php else: ?>
         <div class="alert alert-warning" role="alert">
             No se encontraron resultados para generar el reporte.
