@@ -1,28 +1,26 @@
-<html>
-    <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="Estilos/Footer.css">
-    </head>
-    <body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+</head>
+<body>
     <footer>
-    
-    <div class="container-footer">
-        <div class="footer-content">
-            <div class="column">
-                <h3>Sobre nosotros</h3>
-                <p>PassWize es un servicio de gestión de peajes diseñado para facilitar tu viaje.</p>
-            </div>
-            <div class="column">
-                <h3>Contacto</h3>
-                <p><i class="fas fa-phone"></i> 123456789</p>
-                <p><i class="fas fa-envelope"></i>Email: soporte@passwize.com</p>
-            </div>
+    <div class="footerContainer">
+        <div class="footerNav">
+            <ul><li><a href="">Página Principal</a></li>
+                <li><a href="">Acerca de nosotros</a></li>
+                <li><a href="">Contactenos</a></li>
+            </ul>
         </div>
-        <div class="footer-bottom text-center">
-            <p>&copy; <?php echo date('Y'); ?> PassWize. Todos los derechos reservados.</p>
-        </div>
+        
     </div>
-</footer>        
+    <div class="footerBottom">
+        <p>Copyright &copy;2024; Diseñado por <span class="designer">PassWize</span></p>
+    </div>
+</footer>
 </body>
 </html>
-
