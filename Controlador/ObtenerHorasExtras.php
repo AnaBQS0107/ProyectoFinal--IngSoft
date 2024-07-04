@@ -8,10 +8,9 @@ if (isset($_GET['user_id'])) {
 
     try {
         $conn = getConnection();
-<<<<<<< HEAD
-=======
+
         // Incluimos idExtras en la consulta
->>>>>>> 5ffa53bd6b38853fe57420fd0b435cdd118b1db1
+
         $sql = "SELECT idExtras, Fecha, Hora_Inicio, Hora_Salida, Monto, Descripcion FROM extras WHERE Empleados_Persona_Cedula = ? ORDER BY Hora_Inicio DESC";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$user_id]);
