@@ -8,7 +8,8 @@ if (isset($_GET['user_id'])) {
 
     try {
         $conn = getConnection();
-        $sql = "SELECT Fecha, Hora_Inicio, Hora_Salida, Monto, Descripcion FROM extras WHERE Empleados_Persona_Cedula = ? ORDER BY Hora_Inicio DESC";
+        // Incluimos idExtras en la consulta
+        $sql = "SELECT idExtras, Fecha, Hora_Inicio, Hora_Salida, Monto, Descripcion FROM extras WHERE Empleados_Persona_Cedula = ? ORDER BY Hora_Inicio DESC";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$user_id]);
         $extras = $stmt->fetchAll(PDO::FETCH_ASSOC);
