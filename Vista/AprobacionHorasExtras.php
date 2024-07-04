@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aprobación Horas Extras</title>
-    <link rel="stylesheet" href="Estilos/HorasExtras.css">
+    <link rel="stylesheet" href="Estilos/AprobacionHorasExtras.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
@@ -14,7 +14,7 @@
     <header>
         <?php include 'header.php'; ?>
     </header>
-
+    <br><br><br>
     <div class="container-AprobacionHorasExtras">
         <h1>Aprobación de Horas Extras</h1>
         <input type="text" id="search-persona-cedula" placeholder="Buscar por Persona_Cedula">
@@ -42,10 +42,6 @@
             <button id="submit-decision">Enviar</button>
         </div>
     </div>
-
-    <footer class="footer-Calc-Extras">
-        <?php include 'Footer.php'; ?>
-    </footer>
 
     <script>
     let selectedExtraId = null;
@@ -111,6 +107,9 @@
         }
     });
     </script>
+<br><br><br>
+        <?php include 'Footer.php'; ?>
+    
 </body>
 
 </html>
