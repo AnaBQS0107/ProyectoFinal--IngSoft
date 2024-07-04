@@ -27,6 +27,9 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
             <li><a href="#">Acciones<i class="fas fa-caret-down"></i></a>
                 <div class="dropdown-menu">
                     <ul>
+                        <li>    <a class="nav-link" href="#" role="button">
+                        <?php echo htmlspecialchars($user['Nombre']); ?> (<?php echo htmlspecialchars($user['Nombre_Rol']); ?>)
+                    </a></li>
                     <li><a href="../Vista/IngresarUsuario.php">Ingresar Usuario</a></li>
                     <li><a href="../Vista/CobrosPeaje.php">Gestionar Cobros</a></li>
                         <li><a href="../Vista/Liquidaciones.php">Calcular Liquidaciones</a></li>
