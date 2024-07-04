@@ -41,7 +41,7 @@ if (isset($_GET['submit'])) {
     </header>
     <br><br>
     <div class="container mt-5">
-        <br><br><br><br>
+        <br><br>
         <center>
             <h1>Consulta de Cobros por Tipo y Estación</h1>
         </center>
@@ -130,12 +130,13 @@ if (isset($_GET['submit'])) {
         <?php endif; ?>
 
     </div>
+    <br><br><br><br>
     <script src="../JS/CobrosCRUD.js"></script>
 
-    <footer>
-    <?php include 'Footer.php'; ?>
-    </footer>
+
     
 </body>
-
+<footer>
+    <?php include 'Footer.php'; ?>
+    </footer>
 </html>

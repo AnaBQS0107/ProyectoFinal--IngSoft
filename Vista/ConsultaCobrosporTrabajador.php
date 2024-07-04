@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Estilos/CobrosTrabajador.css">
-    <br><br><br><br>
     <title>Consulta de Cobros por Trabajador</title>
 </head>
+
+<body>
 <header>
     <?php include 'Header.php'; ?>
 </header>
-<body>
-    
+<br><br>
    <center><h1>Consulta de Cobros por Trabajador</h1>
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="GET">
         <label for="search">Buscar por Nombre o Cédula:</label>

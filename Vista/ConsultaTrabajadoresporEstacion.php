@@ -23,7 +23,7 @@ $resultEstaciones = $trabajadoresTabla->obtenerEstaciones();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="../img/icono.png">
-    <br><br><br><br> <br><br><br><br>
+    <br><br>
     <center><title>Buscar Trabajadores por Estación</title>
     <link rel="stylesheet" href="Estilos/TrabajadoresporEstacion.css">
 </head>
@@ -46,9 +46,9 @@ $resultEstaciones = $trabajadoresTabla->obtenerEstaciones();
     </form>
 
     <?php if ($_SERVER['REQUEST_METHOD'] === 'POST' && count($trabajadores) > 0): ?>
-    <br><br>
+ 
         <h2>Trabajadores asignados a la estación seleccionada:</h2>
-        <br><br>
+    
         <table>
             <thead>
                 <tr>
@@ -77,6 +77,7 @@ $resultEstaciones = $trabajadoresTabla->obtenerEstaciones();
                 <?php endforeach; ?>
             </tbody>
         </table>
+        <br><br>
     <?php elseif ($_SERVER['REQUEST_METHOD'] === 'POST'): ?>
         <p>No hay trabajadores asignados a esta estación de peaje.</p>
     <?php endif; ?></center>
