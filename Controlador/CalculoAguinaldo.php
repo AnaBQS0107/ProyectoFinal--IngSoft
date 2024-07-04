@@ -21,7 +21,7 @@ $user_id = $_SESSION['user'];
 function calcularAguinaldo($salarios, $Empleados_Persona_Cedula, $salarioEnEspecie, $esPorcentaje, $montoMensual) {
     // Suma de todos los salarios
     $sumaSalarios = array_sum($salarios);
-    
+
     // Añadir salario en especie si aplica
     if ($salarioEnEspecie) {
         if ($esPorcentaje) {
@@ -30,28 +30,18 @@ function calcularAguinaldo($salarios, $Empleados_Persona_Cedula, $salarioEnEspec
             $sumaSalarios += $montoMensual * count($salarios);
         }
     }
-    
+
     // Calcular el aguinaldo
     $aguinaldo = $sumaSalarios / 12;
 
     try {
-        // Conectar a la base de datos y verificar si el empleado existe
+        // Conectar a la base de datos y preparar la consulta SQL para insertar el aguinaldo
         $db = Database1::getInstance()->getConnection();
-        $stmt = $db->prepare("SELECT COUNT(*) FROM empleados WHERE Persona_Cedula = :cedula");
-        $stmt->bindParam(':cedula', $Empleados_Persona_Cedula);
-        $stmt->execute();
-        $count = $stmt->fetchColumn();
-
-        if ($count == 0) {
-            return "Error: El empleado con cédula $Empleados_Persona_Cedula no existe.";
-        }
-
-        // Preparar la consulta SQL para insertar el aguinaldo
         $stmt = $db->prepare("INSERT INTO aguinaldo (Meses, Monto_A_Pagar, Empleados_Persona_Cedula1) VALUES (NOW(), :monto, :cedula)");
         $stmt->bindParam(':monto', $aguinaldo);
         $stmt->bindParam(':cedula', $Empleados_Persona_Cedula);
         $stmt->execute();
-        
+
         // Devolver un mensaje de éxito
         return "Aguinaldo calculado y guardado correctamente.";
     } catch (PDOException $e) {
@@ -65,19 +55,19 @@ if (isset($_POST['salarios']) && isset($_POST['Empleados_Persona_Cedula'])) {
     // Sanitizar los datos recibidos
     $salarios = array_map('intval', $_POST['salarios']);
     $Empleados_Persona_Cedula = htmlspecialchars($_POST['Empleados_Persona_Cedula']);
-    
+
     // Verificar si hay salario en especie y obtener los detalles
     $salarioEnEspecie = isset($_POST['salarioEspecie']) ? intval($_POST['salarioEspecie']) : 0;
     $esPorcentaje = isset($_POST['esPorcentaje']) ? true : false;
     $montoMensual = isset($_POST['montoMensual']) ? floatval($_POST['montoMensual']) : 0;
-    
+
     // Calcular y guardar el aguinaldo
     $resultado = calcularAguinaldo($salarios, $Empleados_Persona_Cedula, $salarioEnEspecie, $esPorcentaje, $montoMensual);
-    
+
     // Devolver el resultado como JSON
     echo json_encode(array('message' => $resultado));
 } else {
     // Devolver un mensaje de error si faltan datos
     echo json_encode(array('error' => 'Faltan datos necesarios para calcular el aguinaldo.'));
-}
+} 
 ?>
