@@ -1,6 +1,13 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+    $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
+
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,7 +32,6 @@
         });
     </script>
 </head>
-
 <body>
     <header>
         <?php include 'header.php'; ?>
@@ -122,8 +128,8 @@
                     </div>
                     <div class="clear"></div>
                 </div>
-                <!-- Aquí puedes incluir un campo hidden para el ID del empleado si lo necesitas -->
-                <!-- <input type="hidden" name="Empleados_Persona_Cedula" value="12345678"> -->
+                <!-- Aquí se incluye un campo hidden para el ID del empleado -->
+                <input type="hidden" name="Empleados_Persona_Cedula" value="<?php echo htmlspecialchars($_SESSION['user']['Persona_Cedula']); ?>">
                 <input type="submit" value="Calcular" class="btn btn-primary marginCenter">
                 <hr>
             </form>
@@ -134,5 +140,4 @@
         <?php include 'Footer.php'; ?>
     </footer>
 </body>
-
 </html>
