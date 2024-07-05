@@ -90,8 +90,11 @@ if (session_status() == PHP_SESSION_NONE) {
                         <li><a href="#">Tabla de pago de salarios</a></li>
                         <li><a href="#">Tabla de pago de liquidaciones</a></li>
                     </ul>
+                  
                 </div>
+               
             </li>
+            <li><a href="../Controlador/Login.php?action=logout"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
         </ul>
     </div>
 </body>

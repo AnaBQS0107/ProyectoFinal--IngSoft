@@ -1,6 +1,8 @@
 <?php
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
+    $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
+
 }
 require_once '../Controlador/ObtenerRoles.php';
 $controller = new RolesController();

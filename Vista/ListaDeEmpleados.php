@@ -1,8 +1,9 @@
 <?php
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
-}
+    $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
 
+}
 require_once '../Controlador/Empleados.php';
 require_once '../Modelo/Ingreso_Usuario.php';
 
@@ -45,7 +46,6 @@ $trabajadoresTabla = new TrabajadoresTabla();
             <thead>
                 <tr>
                     <th scope="col">Cédula</th>
-                    <th scope="col">Contraseña</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Apellido 1</th>
                     <th scope="col">Apellido 2</th>
@@ -60,7 +60,6 @@ $trabajadoresTabla = new TrabajadoresTabla();
                 <?php foreach ($controller->resultTrabajadores as $usuario) : ?>
                 <tr>
                     <td><?php echo $usuario['Cedula']; ?></td>
-                    <td><?php echo $usuario['Contrasena']; ?></td>
                     <td><?php echo $usuario['Nombre']; ?></td>
                     <td><?php echo $usuario['Apellido1']; ?></td>
                     <td><?php echo $usuario['Apellido2']; ?></td>
@@ -86,7 +85,7 @@ $trabajadoresTabla = new TrabajadoresTabla();
         <div class="div_btn">
             <center>
                 <button type="button" class="btn_asignar"
-                    onclick="location.href='../Vista/IngresarUsuario.php'">Generar reporte</button>
+                    onclick="location.href='../Vista/IngresarUsuario.php'">Agregar un nuevo reporte</button>
             </center>
         </div>
 

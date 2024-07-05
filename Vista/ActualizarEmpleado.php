@@ -63,11 +63,6 @@ require_once '../Controlador/EditarUsuario.php';
             </select>
         </div>
 
-        <label for="Contrasena">Contraseña:</label>
-        <input type="password" id="Contrasena" name="Contrasena"
-            value="<?php echo isset($empleado['Contraseña']) ? htmlspecialchars($empleado['Contraseña']) : ''; ?>"
-            required><br><br>
-
         <center><button type="submit" id="submitBtn">Guardar Cambios</button></center>
     </form>
 

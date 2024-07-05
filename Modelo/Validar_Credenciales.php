@@ -85,7 +85,7 @@ class ValidarCredenciales {
 
     public function getEstacionesPeaje($Nombre) {
         try {
-            $stmt = $this->db->prepare("
+            $stmt = $this->conn->prepare("
                 SELECT e.EstacionesPeaje_idEstacionesPeaje, ep.Nombre AS Nombre_Estacion, p.Nombre AS Nombre_Empleado
                 FROM Empleados e
                 LEFT JOIN EstacionesPeaje ep ON e.EstacionesPeaje_idEstacionesPeaje = ep.idEstacionesPeaje

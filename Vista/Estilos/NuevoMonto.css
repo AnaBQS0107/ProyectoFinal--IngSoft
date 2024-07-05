@@ -5,11 +5,6 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    padding: 20px;
-}
 
 /* Estilos del formulario */
 form {
@@ -56,26 +51,3 @@ button:hover {
     background-color: #45a049;
 }
 
-/* Estilos del encabezado */
-header {
-    background-color: #005c53;
-    padding: 10px;
-    color: white;
-    text-align: center;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-}
-
-/* Ajustes para centrar y separar el contenido */
-h1 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-center {
-    margin-top: 60px; /* Espacio entre el header y el contenido */
-}
