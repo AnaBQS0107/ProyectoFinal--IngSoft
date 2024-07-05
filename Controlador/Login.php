@@ -16,25 +16,21 @@ class AuthController {
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['Persona_Cedula'], $_POST['contrasena'])) {
             $Persona_Cedula = $_POST['Persona_Cedula'];
             $contrasena = $_POST['contrasena'];
-
-            error_log("Cedula: " . $Persona_Cedula);
-            error_log("Contraseña: " . $contrasena);
-
+    
             $user = $this->Validar_Credenciales->login($Persona_Cedula, $contrasena);
-
+    
             if ($user) {
-                error_log("User found: " . print_r($user, true));
-
+                // Usuario encontrado, iniciar sesión
                 $_SESSION['user'] = [
                     'Nombre' => $user['Nombre'],
                     'Nombre_Rol' => $user['Nombre_Rol'],
                     'Persona_Cedula' => $user['Persona_Cedula']
                 ];
-
-              
+    
                 header("Location: ../Vista/Inicio.php");
                 exit();
             } else {
+                // Contraseña incorrecta o usuario no encontrado
                 $_SESSION['error'] = "Credenciales inválidas. Acceso denegado.";
                 header("Location: ../Vista/Index.php");
                 exit();
@@ -45,6 +41,7 @@ class AuthController {
             exit();
         }
     }
+    
 
     public function logout() {
         session_unset();
@@ -57,7 +54,6 @@ class AuthController {
         if (isset($_SESSION['user'])) {
             $user = $_SESSION['user'];
 
-         
             echo "Usuario: " . htmlspecialchars($user['Nombre']) . "<br>";
             echo "Cédula: " . htmlspecialchars($user['Persona_Cedula']) . "<br>";
             echo "Rol: " . htmlspecialchars($user['Nombre_Rol']) . "<br>";

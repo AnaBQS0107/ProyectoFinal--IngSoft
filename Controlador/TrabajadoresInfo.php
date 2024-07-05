@@ -57,20 +57,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt_empleados->bindParam(':email', $email);
         $stmt_empleados->execute();
 
- 
-        $sql_usuarios = "INSERT INTO usuarios (Contraseña, Empleados_Persona_Cedula)
-                         VALUES (:contrasena, :cedula)";
-        $stmt_usuarios = $conn->prepare($sql_usuarios);
-        $stmt_usuarios->bindParam(':contrasena', $contrasena);
-        $stmt_usuarios->bindParam(':cedula', $cedula);
-        $stmt_usuarios->execute();
+// Hashear la contraseña
+$contrasena_hasheada = password_hash($contrasena, PASSWORD_DEFAULT);
 
-  
+$sql_usuarios = "INSERT INTO usuarios (Contraseña, Empleados_Persona_Cedula)
+                 VALUES (:contrasena, :cedula)";
+$stmt_usuarios = $conn->prepare($sql_usuarios);
+$stmt_usuarios->bindParam(':contrasena', $contrasena_hasheada); // Usar $contrasena_hasheada aquí
+$stmt_usuarios->bindParam(':cedula', $cedula);
+$stmt_usuarios->execute();
+
+
         $conn->commit();
 
         echo json_encode(['status' => 'success', 'message' => 'Registro exitoso']);
     } catch(PDOException $e) {
-       
         $conn->rollBack();
         echo json_encode(['status' => 'error', 'message' => "Error al insertar registro: " . $e->getMessage()]);
     }

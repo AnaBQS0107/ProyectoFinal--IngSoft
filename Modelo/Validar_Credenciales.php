@@ -1,42 +1,52 @@
 <?php
-require_once '../Config/config.php';
-
 class ValidarCredenciales {
-    private $db;
+    private $conn;
 
     public function __construct() {
-        $database = new Database1();
-        $this->db = $database->getConnection();
+        $host = "localhost:3307";
+        $db_name = "servicio_autobuses";
+        $username = "root";
+        $password = "";
+        try {
+            $this->conn = new PDO("mysql:host=$host;dbname=$db_name", $username, $password);
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
     }
 
-    function login($Persona_Cedula, $contrasena) {
-        try {
-            error_log("Executing login with Cedula: $Persona_Cedula and Contraseña: $contrasena");
-
-            $stmt = $this->db->prepare("
-                SELECT p.Nombre AS Nombre, r.Nombre_Rol AS Nombre_Rol, p.Cedula AS Persona_Cedula
-                FROM Empleados e 
-                INNER JOIN persona p ON e.Persona_Cedula = p.Cedula 
-                INNER JOIN Usuarios u ON p.Cedula = u.Empleados_Persona_Cedula 
-                INNER JOIN Roles r ON e.Roles_idRoles = r.idRoles
-                WHERE u.Contraseña = :contrasena AND e.Persona_Cedula = :Persona_Cedula
-            ");
-            $stmt->bindParam(':Persona_Cedula', $Persona_Cedula);
-            $stmt->bindParam(':contrasena', $contrasena);
-            $stmt->execute();
-
-            if ($stmt->rowCount() > 0) {
-                $result = $stmt->fetch(PDO::FETCH_ASSOC);
-                error_log("Login result: " . print_r($result, true)); 
-                return $result;
-            } else {
-                error_log("No rows found for login query."); 
-                return false;
-            }
-        } catch (PDOException $e) {
-            error_log("Error: " . $e->getMessage());
+    public function login($Persona_Cedula, $contrasena) {
+        $sql = "SELECT p.Nombre, r.Nombre_Rol, u.Contraseña, p.Cedula AS Persona_Cedula 
+                FROM usuarios u
+                JOIN empleados e ON u.Empleados_Persona_Cedula = e.Persona_Cedula
+                JOIN persona p ON e.Persona_Cedula = p.Cedula
+                JOIN roles r ON e.Roles_idRoles = r.idRoles
+                WHERE p.Cedula = :Persona_Cedula";
+        
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':Persona_Cedula', $Persona_Cedula);
+        $stmt->execute();
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        if ($user) {
+            return $user; // Retornar todos los datos del usuario
+        } else {
+            // Usuario no encontrado
+            error_log("No se encontró ningún usuario con la cédula: " . $Persona_Cedula);
             return false;
         }
+    }
+    
+
+    // Método para obtener la contraseña hasheada
+    public function getHashedPassword($Persona_Cedula) {
+        $sql = "SELECT Contraseña FROM usuarios WHERE Empleados_Persona_Cedula = :Persona_Cedula";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':Persona_Cedula', $Persona_Cedula);
+        $stmt->execute();
+        $hashedPassword = $stmt->fetchColumn();
+        
+        return $hashedPassword;
     }
 
     public function getRoleName($idRoles) {
