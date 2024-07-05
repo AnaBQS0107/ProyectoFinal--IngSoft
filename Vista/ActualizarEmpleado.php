@@ -12,13 +12,13 @@ require_once '../Controlador/EditarUsuario.php';
     <title>PassWize - Actualizar Usuario</title>
     <link rel="icon" type="image/png" href="../img/icono.png">
     <link rel="stylesheet" href="Estilos/ActualizarEmpleado.css">
-
-
 </head>
 
 <body>
     <?php include_once '../Vista/header.php'; ?>
+
     <form id="form" method="post">
+        <!-- Aquí va tu formulario -->
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre"
             value="<?php echo isset($empleado['Nombre']) ? htmlspecialchars($empleado['Nombre']) : ''; ?>"
@@ -41,7 +41,7 @@ require_once '../Controlador/EditarUsuario.php';
 
         <div class="col-md-3 position-relative">
             <label for="estacion">Estación de Peaje:</label>
-            <select class="form-select select_registro"  id="estacion"  type="text" name="Estacion_ID" required>
+            <select class="form-select select_registro" id="estacion" type="text" name="Estacion_ID" required>
                 <?php foreach ($resultEstaciones as $rowEstacion) : ?>
                 <?php $selectedEstacion = ($rowEstacion['idEstacionesPeaje'] == $empleado['EstacionesPeaje_idEstacionesPeaje']) ? 'selected' : ''; ?>
                 <option value="<?php echo $rowEstacion['idEstacionesPeaje']; ?>" <?php echo $selectedEstacion; ?>>
@@ -49,18 +49,19 @@ require_once '../Controlador/EditarUsuario.php';
                 </option>
                 <?php endforeach; ?>
             </select>
+        </div>
 
-            <div class="col-md-3 position-relative">
+        <div class="col-md-3 position-relative">
             <label for="rol">Rol:</label>
             <select class="form-select select_registro" id="rol" name="Rol_ID" required>
-        <?php foreach ($resultRoles as $rowRol) : ?>
-            <?php $selectedRol = ($rowRol['idRoles'] == $empleado['Roles_idRoles']) ? 'selected' : ''; ?>
-            <option value="<?php echo $rowRol['idRoles']; ?>" <?php echo $selectedRol; ?>>
-                <?php echo htmlspecialchars($rowRol['Nombre_Rol']); ?>
-            </option>
-        <?php endforeach; ?>
-    </select>
-</div>
+                <?php foreach ($resultRoles as $rowRol) : ?>
+                <?php $selectedRol = ($rowRol['idRoles'] == $empleado['Roles_idRoles']) ? 'selected' : ''; ?>
+                <option value="<?php echo $rowRol['idRoles']; ?>" <?php echo $selectedRol; ?>>
+                    <?php echo htmlspecialchars($rowRol['Nombre_Rol']); ?>
+                </option>
+                <?php endforeach; ?>
+            </select>
+        </div>
 
         <label for="Contrasena">Contraseña:</label>
         <input type="password" id="Contrasena" name="Contrasena"
@@ -69,41 +70,39 @@ require_once '../Controlador/EditarUsuario.php';
 
         <center><button type="submit" id="submitBtn">Guardar Cambios</button></center>
     </form>
-    <br><br>
+
+    <footer class="footer-Act-Monto">
+        <?php include 'Footer.php'; ?>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
-    document.getElementById('submitBtn').addEventListener('click', function(event) {
-        event.preventDefault();
-        const updated = true;
+        document.getElementById('submitBtn').addEventListener('click', function(event) {
+            event.preventDefault();
+            const updated = true;
 
-        if (updated) {
-            Swal.fire({
-                icon: 'success',
-                title: '¡Actualización exitosa!',
-                text: 'Los datos del empleado fueron actualizados correctamente.',
-                confirmButtonText: 'OK'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    document.getElementById('form').submit();
-                }
-            });
-        } else {
-            Swal.fire({
-                icon: 'error',
-                title: '¡Error!',
-                text: 'Hubo un problema al actualizar los datos del empleado.',
-                confirmButtonText: 'OK'
-            });
-        }
-    });
+            if (updated) {
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Actualización exitosa!',
+                    text: 'Los datos del empleado fueron actualizados correctamente.',
+                    confirmButtonText: 'OK'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById('form').submit();
+                    }
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: '¡Error!',
+                    text: 'Hubo un problema al actualizar los datos del empleado.',
+                    confirmButtonText: 'OK'
+                });
+            }
+        });
     </script>
-    <br>
-
-  
 
 </body>
-  <footer>
-    <?php include 'Footer.php'; ?>
-    </footer>
+
 </html>
