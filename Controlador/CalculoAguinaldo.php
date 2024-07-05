@@ -6,18 +6,13 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-header('Content-Type: application/json');
-
 // Verifica si el usuario está autenticado en la sesión
 if (!isset($_SESSION['user'])) {
     echo json_encode(array('error' => 'Usuario no autenticado. Por favor, inicia sesión para continuar.'));
     exit;
 }
 
-// Recoge el ID del usuario desde la sesión
-$user_id = $_SESSION['user'];
-
-// Función para calcular el aguinaldo
+// Función para calcular el aguinaldo y guardar en la base de datos
 function calcularAguinaldo($salarios, $Empleados_Persona_Cedula, $salarioEnEspecie, $esPorcentaje, $montoMensual) {
     // Suma de todos los salarios
     $sumaSalarios = array_sum($salarios);
@@ -42,11 +37,11 @@ function calcularAguinaldo($salarios, $Empleados_Persona_Cedula, $salarioEnEspec
         $stmt->bindParam(':cedula', $Empleados_Persona_Cedula);
         $stmt->execute();
 
-        // Devolver un mensaje de éxito
-        return "Aguinaldo calculado y guardado correctamente.";
+        // Devolver un mensaje de éxito junto con el aguinaldo calculado
+        return array('success' => true, 'message' => 'Aguinaldo calculado y guardado correctamente.', 'aguinaldo' => $aguinaldo);
     } catch (PDOException $e) {
         // Devolver un mensaje de error si falla la consulta
-        return "Error al calcular y guardar el aguinaldo: " . $e->getMessage();
+        return array('success' => false, 'message' => 'Error al calcular y guardar el aguinaldo: ' . $e->getMessage());
     }
 }
 
@@ -64,10 +59,10 @@ if (isset($_POST['salarios']) && isset($_POST['Empleados_Persona_Cedula'])) {
     // Calcular y guardar el aguinaldo
     $resultado = calcularAguinaldo($salarios, $Empleados_Persona_Cedula, $salarioEnEspecie, $esPorcentaje, $montoMensual);
 
-    // Devolver el resultado como JSON
-    echo json_encode(array('message' => $resultado));
+    // Mostrar el resultado como JSON
+    echo json_encode($resultado);
 } else {
     // Devolver un mensaje de error si faltan datos
-    echo json_encode(array('error' => 'Faltan datos necesarios para calcular el aguinaldo.'));
-} 
+    echo json_encode(array('success' => false, 'message' => 'Faltan datos necesarios para calcular el aguinaldo.'));
+}
 ?>

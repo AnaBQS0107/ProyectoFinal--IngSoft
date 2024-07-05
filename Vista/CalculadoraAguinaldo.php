@@ -2,7 +2,6 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
     $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
-
 }
 ?>
 
@@ -17,6 +16,45 @@ if (session_status() == PHP_SESSION_NONE) {
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
         $(document).ready(function() {
+            $('form').submit(function(event) {
+                event.preventDefault(); // Evita el envío estándar del formulario
+
+                // Realiza la solicitud AJAX al script de cálculo
+                $.ajax({
+                    url: $(this).attr('action'),
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.success) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: '¡Éxito!',
+                                text: response.message
+                            }).then((result) => {
+                                // Redirige o realiza alguna acción adicional si es necesario
+                                // window.location.href = 'nueva_pagina.php'; // Ejemplo de redirección
+                                // Puedes colocar aquí el código para redirigir o realizar otra acción
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: '¡Error!',
+                                text: response.message
+                            });
+                        }
+                    },
+                    error: function() {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error del servidor',
+                            text: 'Hubo un problema al procesar tu solicitud. Inténtalo de nuevo más tarde.'
+                        });
+                    }
+                });
+            });
+
+            // Mostrar u ocultar campos según selección de salario en especie
             $('input[name="salarioEspecie"]').change(function() {
                 if ($(this).val() == '1') {
                     $('#PorcentajeEspecieTextBox').show();
@@ -128,7 +166,7 @@ if (session_status() == PHP_SESSION_NONE) {
                     </div>
                     <div class="clear"></div>
                 </div>
-                <!-- Aquí se incluye un campo hidden para el ID del empleado -->
+                <!-- Campo oculto para el ID del empleado -->
                 <input type="hidden" name="Empleados_Persona_Cedula" value="<?php echo htmlspecialchars($_SESSION['user']['Persona_Cedula']); ?>">
                 <input type="submit" value="Calcular" class="btn btn-primary marginCenter">
                 <hr>
