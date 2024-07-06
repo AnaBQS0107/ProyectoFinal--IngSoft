@@ -57,6 +57,20 @@ class TrabajadoresTabla {
         $this->db = $database->getConnection();
     }
 
+    public function obtenerHorarios() {
+        try {
+            $query = "SELECT IdHorario, CONCAT(Tipo, ' (', Entrada, ' - ', Salida, ')') AS Horario FROM horario_trabajo";
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $exception) {
+            echo "Error al obtener los horarios: " . $exception->getMessage();
+            return [];
+        }
+    }
+    
+    
+    
     function obtenerHorarioPorId($horarioID) {
         require_once '../Config/config.php';
     
@@ -96,13 +110,13 @@ class TrabajadoresTabla {
                          e.Fecha_Ingreso, e.Roles_idRoles AS Rol_ID, e.SalarioBase, e.EstacionesPeaje_idEstacionesPeaje AS Estacion_ID,
                          r.Nombre_Rol AS Nombre_Rol, est.Nombre AS Nombre_Estacion,
                          e.Correo_Electronico AS Correo_Electronico, u.Contraseña AS Contrasena,
-                         ht.idHorario AS Horario_ID
+                         ht.idHorario AS Horario_ID, CONCAT(ht.Tipo, ' (', ht.Entrada, ' - ', ht.Salida, ')') AS Horario
                   FROM empleados e
                   LEFT JOIN persona p ON e.Persona_Cedula = p.Cedula
                   LEFT JOIN roles r ON e.Roles_idRoles = r.idRoles
                   LEFT JOIN estacionespeaje est ON e.EstacionesPeaje_idEstacionesPeaje = est.idEstacionesPeaje
                   LEFT JOIN usuarios u ON e.Persona_Cedula = u.Empleados_Persona_Cedula
-                  LEFT JOIN horario_trabajo ht ON e.Horario_idHorario = ht.idHorario"; // Asumiendo que Horario_ID es el campo que relaciona empleados con horario_trabajo
+                  LEFT JOIN horario_trabajo ht ON e.Horario_idHorario = ht.idHorario"; // Asumiendo que Horario_idHorario es el campo que relaciona empleados con horario_trabajo
     
         $stmt = $this->db->prepare($query);
         $stmt->execute();
