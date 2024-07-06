@@ -31,17 +31,51 @@ require_once '../Controlador/TrabajadoresInfo.php';
         }
     }
 
-    function validarFormulario() {
+    function validarFormulario(event) {
         var form = document.getElementById('registroForm');
         if (form.checkValidity()) {
-            // Aquí puedes añadir cualquier lógica adicional antes de enviar el formulario
-            form.submit();
+            const formData = new FormData(form);
+            fetch('../Controlador/TrabajadoresInfo.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    Swal.fire({
+                        title: '¡Registro exitoso!',
+                        text: data.message,
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        location.reload();
+                    });
+                } else {
+                    Swal.fire({
+                        title: 'Error',
+                        text: data.message,
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                }
+            })
+            .catch(error => {
+                Swal.fire({
+                    title: 'Error',
+                    text: 'Error al enviar los datos',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+                console.error('Error:', error);
+            });
         } else {
-            event.preventDefault();
-            event.stopPropagation();
+            event.preventDefault(); // Evita que se envíe el formulario
+            event.stopPropagation(); // Detiene la propagación del evento
+            form.classList.add('was-validated'); // Agrega la clase para mostrar los estilos de validación
         }
-        form.classList.add('was-validated');
     }
+
+    
     </script>
 </head>
 
@@ -133,12 +167,18 @@ require_once '../Controlador/TrabajadoresInfo.php';
 
             <div class="col-md-3 position-relative">
                 <label for="horario" class="form-label">Horario del empleado</label>
-                <select class="select_registro form-select select-grande" id="horario" name="Horario_ID" required>
+                <select class="select_registro form-select" id="horario" name="Horario_ID" required>
                     <?php if ($resultHorarios && count($resultHorarios) > 0) : ?>
                     <?php foreach ($resultHorarios as $row) : ?>
-                    <?php $selected = ($row['idHorario'] == $empleado['Horario_ID']) ? 'selected' : ''; ?>
-                    <option value="<?php echo $row["idHorario"]; ?>" <?php echo $selected; ?>>
-                        <?php echo $row["Tipo"]; ?> (<?php echo $row["Entrada"]; ?> - <?php echo $row["Salida"]; ?>)
+                    <?php 
+                // Verificar si $empleado está definido y tiene 'Horario_ID'
+                $selected = '';
+                if (isset($empleado) && isset($empleado['Horario_ID'])) {
+                    $selected = ($row['IdHorario'] == $empleado['Horario_ID']) ? 'selected' : '';
+                }
+                ?>
+                    <option value="<?php echo $row["IdHorario"]; ?>" <?php echo $selected; ?>>
+                        <?php echo $row["Horario"]; ?>
                     </option>
                     <?php endforeach; ?>
                     <?php else : ?>
