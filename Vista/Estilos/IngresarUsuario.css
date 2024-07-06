@@ -27,6 +27,12 @@ form label {
     gap: 20px;
 }
 
+.select-grande {
+    width: 1500px;
+
+    font-size: 16px;
+}
+
 .input_registro[type="text"],
 .input_registro[type="password"],
 .input_registro[type="number"],

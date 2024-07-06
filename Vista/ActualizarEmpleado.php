@@ -63,6 +63,19 @@ require_once '../Controlador/EditarUsuario.php';
             </select>
         </div>
 
+        <select class="form-select select_registro" id="horario" name="Horario_ID" required>
+            <?php if ($resultHorarios && count($resultHorarios) > 0) : ?>
+            <?php foreach ($resultHorarios as $row) : ?>
+            <?php $selectedHorario = ($row['idHorario'] == $empleado['Horario_ID']) ? 'selected' : ''; ?>
+            <option value="<?php echo $row['idHorario']; ?>" <?php echo $selectedHorario; ?>>
+                <?php echo htmlspecialchars($row['Tipo']) . ' (' . htmlspecialchars($row['Entrada']) . ' - ' . htmlspecialchars($row['Salida']) . ')'; ?>
+            </option>
+            <?php endforeach; ?>
+            <?php else : ?>
+            <option disabled>No hay horarios disponibles</option>
+            <?php endif; ?>
+        </select>
+
         <center><button type="submit" id="submitBtn">Guardar Cambios</button></center>
     </form>
 
@@ -72,30 +85,30 @@ require_once '../Controlador/EditarUsuario.php';
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
-        document.getElementById('submitBtn').addEventListener('click', function(event) {
-            event.preventDefault();
-            const updated = true;
+    document.getElementById('submitBtn').addEventListener('click', function(event) {
+        event.preventDefault();
+        const updated = true;
 
-            if (updated) {
-                Swal.fire({
-                    icon: 'success',
-                    title: '¡Actualización exitosa!',
-                    text: 'Los datos del empleado fueron actualizados correctamente.',
-                    confirmButtonText: 'OK'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        document.getElementById('form').submit();
-                    }
-                });
-            } else {
-                Swal.fire({
-                    icon: 'error',
-                    title: '¡Error!',
-                    text: 'Hubo un problema al actualizar los datos del empleado.',
-                    confirmButtonText: 'OK'
-                });
-            }
-        });
+        if (updated) {
+            Swal.fire({
+                icon: 'success',
+                title: '¡Actualización exitosa!',
+                text: 'Los datos del empleado fueron actualizados correctamente.',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('form').submit();
+                }
+            });
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: '¡Error!',
+                text: 'Hubo un problema al actualizar los datos del empleado.',
+                confirmButtonText: 'OK'
+            });
+        }
+    });
     </script>
 
 </body>
