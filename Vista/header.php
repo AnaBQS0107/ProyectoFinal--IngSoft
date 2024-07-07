@@ -37,6 +37,7 @@ if (session_status() == PHP_SESSION_NONE) {
                     <li><a href="../Vista/IngresarUsuario.php">Ingresar Usuario</a></li>
                     <li><a href="../Vista/CobrosPeaje.php">Gestionar Cobros</a></li>
                         <li><a href="../Vista/CalcularVacaciones.php">Calcular Vacaciones</a></li>
+                        <li><a href="../Vista/AprobacionHorasExtras.php">Aprobar Horas Extras</a></li>
                         <li><a href="../Vista/HorasExtras.php">Calcular Extras</a></li>
                         <li><a href="../Vista/CalculadoraAguinaldo.php">Calcular Aguinaldos</a></li>
                         <li><a href="#">Calcular Incapacidades</a></li>
