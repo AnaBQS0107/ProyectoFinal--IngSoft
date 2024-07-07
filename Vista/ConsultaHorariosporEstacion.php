@@ -15,17 +15,15 @@ try {
 
 $horarios = []; 
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    try {
-        // Consulta para obtener todos los horarios
-        $queryHorarios = "SELECT Entrada, Salida FROM horario_trabajo ORDER BY Entrada";
-        $stmtHorarios = $conn->prepare($queryHorarios);
-        $stmtHorarios->execute();
-        $horarios = $stmtHorarios->fetchAll(PDO::FETCH_ASSOC);
+try {
+    // Consulta para obtener todos los horarios sin filtro de estación
+    $queryHorarios = "SELECT Entrada, Salida FROM horario_trabajo ORDER BY Entrada";
+    $stmtHorarios = $conn->prepare($queryHorarios);
+    $stmtHorarios->execute();
+    $horarios = $stmtHorarios->fetchAll(PDO::FETCH_ASSOC);
 
-    } catch(PDOException $e) {
-        echo "Error al obtener los horarios: " . $e->getMessage();
-    }
+} catch(PDOException $e) {
+    echo "Error al obtener los horarios: " . $e->getMessage();
 }
 ?>
 
@@ -107,6 +105,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <footer>
     <?php include 'Footer.php'; ?>
-    </footer>
+</footer>
 </body>
 </html>
