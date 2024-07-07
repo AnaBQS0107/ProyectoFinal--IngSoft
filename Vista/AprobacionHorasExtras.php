@@ -17,8 +17,26 @@
     <br><br><br>
     <div class="container-AprobacionHorasExtras">
         <h1>Aprobación de Horas Extras</h1>
-        <input type="text" id="search-persona-cedula" placeholder="Buscar por Persona_Cedula">
-        <button id="search-extras">Buscar</button>
+        <select id="select-empleado" name="select-empleado">
+            <option value="">Seleccione un Empleado</option>
+            <?php
+            require_once '../Config/config.php';
+
+            try {
+                $conn = getConnection();
+                $sql = "SELECT DISTINCT Empleados_Persona_Cedula FROM extras";
+                $stmt = $conn->query($sql);
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    echo "<option value='{$row['Empleados_Persona_Cedula']}'>{$row['Empleados_Persona_Cedula']}</option>";
+                }
+            } catch (PDOException $e) {
+                echo "<option value=''>Error al cargar empleados</option>";
+            } finally {
+                $conn = null;
+            }
+            ?>
+        </select>
+        <button id="select-extras">Seleccionar</button>
 
         <table id="extras-table" style="display:none;">
             <thead>
@@ -51,11 +69,11 @@
             let selectedExtraId = null;
             let action = '';
 
-            $('#search-extras').click(function() {
-                const personaCedula = $('#search-persona-cedula').val();
-                if (personaCedula) {
+            $('#select-extras').click(function() {
+                const empleadoCedula = $('#select-empleado').val();
+                if (empleadoCedula) {
                     $.get('../Controlador/ObtenerHorasExtras.php', {
-                        user_id: personaCedula
+                        user_id: empleadoCedula
                     }, function(data) {
                         $('#extras-data').empty();
                         if (Array.isArray(data) && data.length > 0) {
@@ -86,8 +104,8 @@
                                         }
 
                                         // Construir la fila de la tabla con los botones apropiadamente habilitados o deshabilitados
-                                        $('#extras-data').append(`
-                                            <tr>
+                                        $('#extras-data').append(
+                                            `<tr>
                                                 <td>${entry.Fecha}</td>
                                                 <td>${entry.Hora_Inicio}</td>
                                                 <td>${entry.Hora_Salida ? entry.Hora_Salida.split(' ')[1] : '-'}</td>
@@ -95,8 +113,8 @@
                                                 <td>${entry.Descripcion ? entry.Descripcion : '-'}</td>
                                                 <td>${approveButton}</td>
                                                 <td>${rejectButton}</td>
-                                            </tr>
-                                        `);
+                                            </tr>`
+                                        );
                                     },
                                     error: function(jqXHR, textStatus, errorThrown) {
                                         console.error("Error en la solicitud AJAX:", textStatus, errorThrown);
@@ -113,7 +131,7 @@
                         Swal.fire('Error', 'Error en la solicitud AJAX', 'error');
                     });
                 } else {
-                    Swal.fire('Error', 'Por favor, ingrese una Cedula', 'error');
+                    Swal.fire('Error', 'Por favor, seleccione un Empleado', 'error');
                 }
             });
 
@@ -137,7 +155,7 @@
                             Swal.fire('Éxito', response.message, 'success');
                             $('#motivo-section').hide();
                             $('#motivo').val('');
-                            $('#search-extras').click(); // Refresh the table
+                            $('#select-extras').click(); // Refresh the table
                         }
                     }, 'json').fail(function(jqXHR, textStatus, errorThrown) {
                         console.error("Error en la solicitud AJAX:", textStatus, errorThrown);
