@@ -1,0 +1,131 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header, footer {
+    background-color: #333;
+    color: white;
+    padding: 0px 0;
+    text-align: center;
+}
+
+.MainContentPlaceDiv {
+    margin: px;
+    padding: 20px;
+    background-color: #fff;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 20px 0;
+}
+
+/* Estilos para formularios */
+form {
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+input[type="text"], input[type="number"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos específicos */
+.Left {
+    float: left;
+}
+
+.clear {
+    clear: both;
+}
+
+.SalarioEspecieContainer {
+    margin-top: 20px;
+}
+
+.SalarioEspecieContainer .form-group {
+    margin-top: 10px;
+}
+
+.salarioEspecioRadio {
+    margin-right: 5px;
+}
+
+.marginCenter {
+    margin: 0 auto;
+    display: block;
+}
+
+/* Estilos para columnas */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col-xs-12, .col-lg-6 {
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.col-xs-12 {
+    width: 100%;
+}
+
+.col-lg-6 {
+    width: 50%;
+    float: left; /* Asegura que las columnas estén una a la izquierda y otra a la derecha */
+}
+
+@media (max-width: 768px) {
+    .col-lg-6 {
+        width: 100%;
+        float: none; /* Elimina el float para pantallas pequeñas */
+    }
+}
+
+.footer-Calc-Extras {
+    margin-top: 20px;
+    padding: 10px 0;
+    background-color: #333;
+    color: white;
+    text-align: center;
+}
