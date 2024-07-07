@@ -5,10 +5,12 @@
   }
   footer{
     background-color: black;
+    position: fixed !important;
+    bottom: 0 !important;
+    width: 100% !important;
   }
   .footerContainer{
     width: 100%;
-    padding: 70px 30px 20px ;
   }
   .socialIcons{
     display: flex;
