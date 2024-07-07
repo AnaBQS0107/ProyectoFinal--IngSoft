@@ -258,12 +258,12 @@ body {
   
   /* Estilo específico para el botón "Calcular" */
   .btn_calcular {
-    background-color: #9fc131; /* Verde */
+    background-color: #28a745; /* Verde */
     color: rgb(0, 0, 0);
   }
   
   .btn_calcular:hover {
-    background-color: #baed2e;
+    background-color: #45a049;
     color: rgb(0, 0, 0);
     /*Verdemásoscuro*/transform: scale(1.05)  ;    -webkit-transform: scale(1.05);
     -moz-transform: scale(1.05);
@@ -273,12 +273,12 @@ body {
   
   /* Estilo específico para el botón "Continuar" */
   .btn_continuar {
-    background-color: #9fc131; /* Azul */
+    background-color: #28a745; /* Azul */
     color: rgb(0, 0, 0);
   }
   
   .btn_continuar:hover {
-    background-color:  #baed2e; /* Azul más oscuro */
+    background-color:  #45a049; /* Azul más oscuro */
     transform: scale(1.05);
     color: rgb(0, 0, 0);
   }
