@@ -36,11 +36,12 @@ if (session_status() == PHP_SESSION_NONE) {
                     </a></li>
                     <li><a href="../Vista/IngresarUsuario.php">Ingresar Usuario</a></li>
                     <li><a href="../Vista/CobrosPeaje.php">Gestionar Cobros</a></li>
-                        <li><a href="../Vista/Liquidaciones.php">Calcular Liquidaciones</a></li>
                         <li><a href="../Vista/CalcularVacaciones.php">Calcular Vacaciones</a></li>
                         <li><a href="../Vista/HorasExtras.php">Calcular Extras</a></li>
                         <li><a href="../Vista/CalculadoraAguinaldo.php">Calcular Aguinaldos</a></li>
                         <li><a href="#">Calcular Incapacidades</a></li>
+                        <li><a href="../Vista/Liquidaciones.php">Calcular Liquidaciones</a></li>
+                        <li><a href="#">Calcular Salario</a></li>
                     </ul>
                 </div>
             </li>
@@ -54,8 +55,8 @@ if (session_status() == PHP_SESSION_NONE) {
                         <li><a href="../Vista/ReporteTipoVehiculoEstacion.php">Tipo de vehiculo por estación</a></li>
                         <li><a href="../Vista/ReportePromedioDiario.php">Promedio diario de vehiculos por estación</a></li>
                         <li><a href="../Vista/ReporteporHora.php">Cantidad de vehiculos por hora</a></li>
-                        <li><a href="#">Cantidad de vehiculo por tipo y estación</a></li>
-                        <li><a href="#">Historial cobros diarios</a></li>
+                        <li><a href="../Vista/ReporteporTipoyEstacion.php">Cantidad de vehiculo por tipo y estación</a></li>
+                        <li><a href="../Vista/ReporteCobrosDiarios.php">Historial cobros diarios</a></li>
                         <li><a href="#">Control de pago a trabajadores</a></li>
           
                     
@@ -69,11 +70,11 @@ if (session_status() == PHP_SESSION_NONE) {
                         <li><a href="../Vista/ConsultaTrabajadoresporEstacion.php">Trabajadores por Estacion</a></li>
                         <li><a href="../Vista/ConsultaCobrosporTrabajador.php">Cobros por trabajador</a></li>
                         <li><a href="../Vista/ConsultaMontoAlMes.php">Monto cobrado por mes</a></li>
-                        <li><a href="#">Horarios de operacion por estación</a></li>
-                        <li><a href="#">Tarifas de peaje vigentes</a></li>
-                        <li><a href="#">Histórico de cobros por estación de peaje</a></li>
-                        <li><a href="#">Horarios de trabajo de los trabajadores del peaje</a></li>
-                        <li><a href="#">Cobros por hora del dia</a></li>
+                        <li><a href="../Vista/ConsultaHorariosporEstacion.php">Horarios de operacion por estación</a></li>
+                        <li><a href="../Vista/ConsultaTarifasVigentes.php">Tarifas de peaje vigentes</a></li>
+                        <li><a href="../Vista/ConsultaHistoricoCobros.php">Histórico de cobros por estación de peaje</a></li>
+                        <li><a href="../Vista/ConsultaHorarioTrabajador.php">Horarios de trabajo de los trabajadores del peaje</a></li>
+                        <li><a href="../Vista/ConsultaCobroporHora.php">Cobros por hora del dia</a></li>
                         <li><a href="#">Ingresos por periodo de tiempo</a></li>
 
                     </ul>
