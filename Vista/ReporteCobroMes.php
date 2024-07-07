@@ -49,10 +49,12 @@ if (isset($resultados) && (is_array($resultados) || is_object($resultados))) {
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
-</body>
-<footer>
+<br>
+    <footer>
     <?php include 'Footer.php'; ?>
     </footer>
+</body>
+
 </html>
 
 <?php
