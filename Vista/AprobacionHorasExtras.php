@@ -35,14 +35,14 @@
             <tbody id="extras-data">
             </tbody>
         </table>
-
+        <br><br><br>
         <div id="motivo-section" style="display:none;">
             <h2>Motivo</h2>
             <textarea id="motivo" placeholder="Ingrese el motivo de la aprobación o rechazo"></textarea>
             <button id="submit-decision">Enviar</button>
         </div>
     </div>
-
+    <br><br><br>
     <script>
     let selectedExtraId = null;
     let action = '';
@@ -75,7 +75,7 @@
                 Swal.fire('Error', 'Error en la solicitud AJAX', 'error');
             });
         } else {
-            Swal.fire('Error', 'Por favor, ingrese una Persona_Cedula', 'error');
+            Swal.fire('Error', 'Por favor, ingrese una Cedula', 'error');
         }
     });
 
