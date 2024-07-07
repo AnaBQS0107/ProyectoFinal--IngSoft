@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
@@ -63,3 +64,19 @@ th, td {
 th {
     background-color: #f2f2f2;
 }
+=======
+.edit-input {
+    width: 100%;
+    padding: 5px;
+    margin: 0;
+}
+
+.save-description {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+>>>>>>> 29959c38629aac7dcdce06fe98b4368eb1052eb7

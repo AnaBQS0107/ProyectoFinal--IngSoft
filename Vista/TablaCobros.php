@@ -35,7 +35,7 @@ if (isset($_GET['eliminarCobro'])) {
     </header>
     <br><br>
     <div class="container mt-5">
-        <br><br><br><br>
+        <br><br>
         <center>
             <h1>Lista de Cobros</h1>
         </center>
@@ -83,7 +83,7 @@ if (isset($_GET['eliminarCobro'])) {
 
             <br>
             <div class="div_btn">
-                <center> <button type="submit" class="btn_registrar">Exportar PDF</button></center>
+                <center> <button type="submit" class="btn_registrar" onclick="location.href='../Vista/CobrosPeaje.php'">Agregar nuevo cobro</button></center>
             </div>
         </div>
     </div>

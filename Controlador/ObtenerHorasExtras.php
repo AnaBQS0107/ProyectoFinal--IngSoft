@@ -1,4 +1,8 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
 header('Content-Type: application/json');
 
 require_once '../Config/config.php';
@@ -9,20 +13,15 @@ if (isset($_GET['user_id'])) {
     try {
         $conn = getConnection();
 
-
-        // Incluimos idExtras en la consulta
-
-
-        // Incluimos idExtras en la consulta
-
-        $sql = "SELECT idExtras, Fecha, Hora_Inicio, Hora_Salida, Monto, Descripcion FROM extras WHERE Empleados_Persona_Cedula = ? ORDER BY Hora_Inicio DESC";
+        $sql = "SELECT idExtras, Fecha, Hora_Inicio, Hora_Salida, Monto, Descripcion FROM extras WHERE Empleados_Persona_Cedula = ?";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$user_id]);
+
         $extras = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         echo json_encode($extras);
     } catch (PDOException $e) {
-        echo json_encode(["error" => true, "message" => "Error al obtener horas extras: " . $e->getMessage()]);
+        echo json_encode(["error" => true, "message" => "Error al obtener horas extra: " . $e->getMessage()]);
     } finally {
         $conn = null;
     }

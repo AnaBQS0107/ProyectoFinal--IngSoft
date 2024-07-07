@@ -1,6 +1,8 @@
 <?php
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
+    $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
+
 }
 require_once '../Modelo/ObtenerMontosPeaje.php';
 
@@ -40,7 +42,7 @@ if (isset($_GET['idTipoVehiculo'])) {
     <header>
         <?php include 'header.php'; ?>
     </header>
-    <br><br><br><br>
+    <br><br>
     <center>
         <h1><?php echo $idTipoVehiculo ? 'Editar Tipo de Vehículo' : 'Ingresar Nuevo Tipo de Vehículo'; ?></h1>
     </center>

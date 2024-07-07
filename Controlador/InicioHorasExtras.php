@@ -8,7 +8,7 @@ header('Content-Type: application/json');
 require_once '../Config/config.php';
 
 if (isset($_POST['user_id'])) {
-    $user_id = $_POST['user_id'];
+    $user_id = $_POST['user_id']; 
 
     try {
         $conn = getConnection();

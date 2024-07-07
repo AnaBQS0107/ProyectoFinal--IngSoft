@@ -1,6 +1,7 @@
 <?php
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
+    $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
 }
 
 require_once '../Controlador/Empleados.php';
@@ -31,25 +32,26 @@ $trabajadoresTabla = new TrabajadoresTabla();
     </header>
     <br><br><br><br>
     <center>
-            <h1>Lista de Empleados</h1>
-        </center>
-        <br>
+        <h1>Lista de Empleados</h1>
+    </center>
+    <br>
     <center>
         <div class="search-container">
-    <input type="text" id="searchInput" placeholder="Buscar empleado...">
-    <button type="button" id="searchButton">Buscar</button></center>
-</div>
+            <input type="text" id="searchInput" placeholder="Buscar empleado...">
+            <button type="button" id="searchButton">Buscar</button>
+        </div>
+    </center>
 
     <div class="table-container">
         <table class="table">
             <thead>
                 <tr>
                     <th scope="col">Cédula</th>
-                    <th scope="col">Contraseña</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Apellido 1</th>
                     <th scope="col">Apellido 2</th>
                     <th scope="col">Correo Electrónico</th>
+                    <th scope="col">Horario</th>
                     <th scope="col">Estación ID</th>
                     <th scope="col">Rol ID</th>
                     <th scope="col">Acciones</th>
@@ -57,50 +59,54 @@ $trabajadoresTabla = new TrabajadoresTabla();
             </thead>
             <tbody>
                 <?php if (isset($controller->resultTrabajadores)) : ?>
-                <?php foreach ($controller->resultTrabajadores as $usuario) : ?>
-                <tr>
-                    <td><?php echo $usuario['Cedula']; ?></td>
-                    <td><?php echo $usuario['Contrasena']; ?></td>
-                    <td><?php echo $usuario['Nombre']; ?></td>
-                    <td><?php echo $usuario['Apellido1']; ?></td>
-                    <td><?php echo $usuario['Apellido2']; ?></td>
-                    <td><?php echo $usuario['Correo_Electronico']; ?></td>
-                    <td><?php echo $trabajadoresTabla->obtenerNombreEstacion($usuario['Estacion_ID']); ?></td>
-                    <td><?php echo $trabajadoresTabla->obtenerTipoDeRol($usuario['Rol_ID']); ?></td>
-                    <td>
-                        <div class="button-container">
-                        <a href="ActualizarEmpleado.php?id=<?php echo  $usuario['Cedula']; ?>"  class="btn-edit">Editar</a>
-                            <a href="#" data-Cedula="<?php echo $usuario['Cedula']; ?>" class="btn-delete">Eliminar</a>
-                        </div>
-                    </td>
-                </tr>
-                <?php endforeach; ?>
+                    <?php foreach ($controller->resultTrabajadores as $usuario) : ?>
+                        <tr>
+                            <td><?php echo $usuario['Cedula']; ?></td>
+                            <td><?php echo $usuario['Nombre']; ?></td>
+                            <td><?php echo $usuario['Apellido1']; ?></td>
+                            <td><?php echo $usuario['Apellido2']; ?></td>
+                            <td><?php echo $usuario['Correo_Electronico']; ?></td>
+                            <td>
+                                <?php
+                                if (isset($usuario['Horario_ID'])) {
+                                    echo $trabajadoresTabla->obtenerHorarioPorId($usuario['Horario_ID']);
+                                } else {
+                                    echo 'Horario no asignado';
+                                }
+                                ?>
+                            </td>
+                            <td><?php echo $trabajadoresTabla->obtenerNombreEstacion($usuario['Estacion_ID']); ?></td>
+                            <td><?php echo $trabajadoresTabla->obtenerTipoDeRol($usuario['Rol_ID']); ?></td>
+                            <td>
+                                <div class="button-container">
+                                    <a href="ActualizarEmpleado.php?id=<?php echo  $usuario['Cedula']; ?>" class="btn-edit">Editar</a>
+                                    <a href="#" data-Cedula="<?php echo $usuario['Cedula']; ?>" class="btn-delete">Eliminar</a>
+                                </div>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
                 <?php else : ?>
-                <tr>
-                    <td colspan="9">No hay datos disponibles</td>
-                </tr>
+                    <tr>
+                        <td colspan="9">No hay datos disponibles</td>
+                    </tr>
                 <?php endif; ?>
             </tbody>
         </table>
         <br><br>
         <div class="div_btn">
             <center>
-                <button type="button" class="btn_asignar"
-                    onclick="location.href='../Vista/IngresarUsuario.php'">Generar reporte</button>
+                <button type="button" class="btn_asignar" onclick="location.href='../Vista/IngresarUsuario.php'">Agregar un nuevo reporte</button>
             </center>
         </div>
 
         <br><br><br><br>
     </div>
 
-
     <script src="../JS/EmpleadosCRUD.js"></script>
-
 
     <footer>
         <?php include 'Footer.php'; ?>
-    </footer>    
-    
+    </footer>
 
 </body>
 

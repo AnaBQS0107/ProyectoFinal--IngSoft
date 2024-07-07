@@ -259,23 +259,28 @@ body {
   /* Estilo específico para el botón "Calcular" */
   .btn_calcular {
     background-color: #9fc131; /* Verde */
-    color: white;
+    color: rgb(0, 0, 0);
   }
   
   .btn_calcular:hover {
-    background-color: #baed2e; /* Verde más oscuro */
-    transform: scale(1.05)
-  }
+    background-color: #baed2e;
+    color: rgb(0, 0, 0);
+    /*Verdemásoscuro*/transform: scale(1.05)  ;    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
+}
   
   /* Estilo específico para el botón "Continuar" */
   .btn_continuar {
     background-color: #9fc131; /* Azul */
-    color: white;
+    color: rgb(0, 0, 0);
   }
   
   .btn_continuar:hover {
     background-color:  #baed2e; /* Azul más oscuro */
     transform: scale(1.05);
+    color: rgb(0, 0, 0);
   }
 
 

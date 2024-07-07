@@ -13,13 +13,14 @@ body {
     border-radius: 10px; /* Bordes redondeados */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
     text-align: center; /* Centra el contenido dentro del contenedor */
+    margin: 50px auto 45px; 
 }
 
 
-form {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
+
+
+.footer-Act-Monto {
+    margin-top: 45px; /* Añade margen superior al footer */
 }
 
 form label {

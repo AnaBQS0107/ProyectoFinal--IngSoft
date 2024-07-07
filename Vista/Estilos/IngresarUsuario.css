@@ -27,8 +27,16 @@ form label {
     gap: 20px;
 }
 
+.select-grande {
+    width: 1500px;
+
+    font-size: 16px;
+}
+
+
 .input_registro[type="text"],
 .input_registro[type="password"],
+.input_registro[type="number"],
 .input_registro[type="email"] {
     width: 100%;
     padding: 10px;
@@ -43,6 +51,7 @@ form label {
 /* Estilos para resaltar el borde y el fondo cuando están seleccionados */
 .input_registro[type="text"]:focus,
 .input_registro[type="password"]:focus,
+.input_registro[type="number"]:focus,
 .input_registro[type="email"]:focus {
     border-bottom-color: #005c53bd; /* Cambia el color del borde inferior cuando se selecciona */
     background-color: #f4f4f4; /* Cambia el color de fondo cuando se selecciona */
@@ -52,7 +61,8 @@ form label {
 /* Estilo para el placeholder */
 .input_registro[type="text"]::placeholder,
 .input_registro[type="password"]::placeholder,
-.input_registro[type="email"]::placeholder {
+.input_registro[type="email"]::placeholder,
+.input_registro[type="number"]::placeholder {
     color: #999; /* Color del texto del placeholder */
 }
 
@@ -113,7 +123,7 @@ form label {
     width: auto;
     padding: 10px;
     background-color: #9fc131;
-    color: white;
+    color: rgb(0, 0, 0);
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -122,6 +132,7 @@ form label {
 
 .btn_registrar:hover {
     background-color: #bdf227;
+    color: rgb(0, 0, 0);
 }
 
 .invalid-tooltip {

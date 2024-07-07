@@ -13,7 +13,7 @@
     <?php
         require_once '../Vista/header.php';
     ?>
-    <br><br><br><br>
+
     <div class="container">
         <h1>Agregar Nuevo Rol</h1><br>
         <form action="../Modelo/Ingresar_Rol.php" method="post">
@@ -23,8 +23,10 @@
             </div>
             <input type="submit" value="Agregar Rol" class="btn_registrar">
         </form>
+        <br><br><br>
     </div>
     <script src="../JS/Roles.js"></script>
+    <br><br><br><br>
     <?php include 'Footer.php'; ?>
 </body>
 </html>

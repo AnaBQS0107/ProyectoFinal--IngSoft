@@ -16,7 +16,6 @@ class Database {
         }
     }
 
-
     public static function getInstance() {
         if (self::$instance == null) {
             self::$instance = new Database();
@@ -28,7 +27,6 @@ class Database {
         return $this->conn;
     }
 }
-
 
 class Cobro {
     private $conn;
@@ -55,9 +53,51 @@ class TrabajadoresTabla {
     private $db;
 
     public function __construct() {
-        $database = new Database1();
+        $database = Database::getInstance();
         $this->db = $database->getConnection();
     }
+
+    public function obtenerHorarios() {
+        try {
+            $query = "SELECT IdHorario, CONCAT(Tipo, ' (', Entrada, ' - ', Salida, ')') AS Horario FROM horario_trabajo";
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $exception) {
+            echo "Error al obtener los horarios: " . $exception->getMessage();
+            return [];
+        }
+    }
+    
+    
+    
+    function obtenerHorarioPorId($horarioID) {
+        require_once '../Config/config.php';
+    
+        try {
+            $conn = new PDO("mysql:host=localhost:3307;dbname=servicio_autobuses", "root", "");
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+            $sql = "SELECT CONCAT(Tipo, ' (', Entrada, ' - ', Salida, ')') AS Horario 
+                    FROM horario_trabajo 
+                    WHERE IdHorario = :horarioID";
+    
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':horarioID', $horarioID);
+            $stmt->execute();
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+            // Verificar si se encontró un horario
+            if ($row) {
+                return $row['Horario'];
+            } else {
+                return 'Horario no encontrado';
+            }
+        } catch(PDOException $e) {
+            return 'Error al obtener el horario: ' . $e->getMessage();
+        }
+    }    
+
     public function obtenerEstaciones() {
         $query = "SELECT idEstacionesPeaje, Nombre FROM estacionespeaje";
         $stmt = $this->db->prepare($query);
@@ -69,17 +109,20 @@ class TrabajadoresTabla {
         $query = "SELECT p.Cedula, p.Nombre, p.Primer_Apellido AS Apellido1, p.Segundo_Apellido AS Apellido2, 
                          e.Fecha_Ingreso, e.Roles_idRoles AS Rol_ID, e.SalarioBase, e.EstacionesPeaje_idEstacionesPeaje AS Estacion_ID,
                          r.Nombre_Rol AS Nombre_Rol, est.Nombre AS Nombre_Estacion,
-                         e.Correo_Electronico AS Correo_Electronico, u.Contraseña AS Contrasena
+                         e.Correo_Electronico AS Correo_Electronico, u.Contraseña AS Contrasena,
+                         ht.idHorario AS Horario_ID, CONCAT(ht.Tipo, ' (', ht.Entrada, ' - ', ht.Salida, ')') AS Horario
                   FROM empleados e
                   LEFT JOIN persona p ON e.Persona_Cedula = p.Cedula
                   LEFT JOIN roles r ON e.Roles_idRoles = r.idRoles
                   LEFT JOIN estacionespeaje est ON e.EstacionesPeaje_idEstacionesPeaje = est.idEstacionesPeaje
-                 LEFT JOIN usuarios u ON e.Persona_Cedula = u.Empleados_Persona_Cedula";
-        
+                  LEFT JOIN usuarios u ON e.Persona_Cedula = u.Empleados_Persona_Cedula
+                  LEFT JOIN horario_trabajo ht ON e.Horario_idHorario = ht.idHorario"; // Asumiendo que Horario_idHorario es el campo que relaciona empleados con horario_trabajo
+    
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    
 
     public function obtenerTrabajadoresPorEstacion($estacionID) {
         $query = "SELECT p.Cedula, p.Nombre, p.Primer_Apellido AS Apellido1, p.Segundo_Apellido AS Apellido2, 
@@ -108,8 +151,6 @@ class TrabajadoresTabla {
     
         return $result;
     }
-    
-    
 
     public function obtenerNombreEstacion($estacionID) {
         $estacion = new Estacion($this->db);
@@ -125,7 +166,7 @@ class TrabajadoresTabla {
         return $row['Nombre_Rol'];
     }
 }
-    
+
 
 
 class Rol {
@@ -195,13 +236,10 @@ class TrabajadoresInfo {
     public function obtenerRoles() {
         return $this->rol->obtenerRoles();
     }
-
 }
 
 $trabajadoresInfo = new TrabajadoresInfo();
 
 $resultEstaciones = $trabajadoresInfo->obtenerEstaciones();
 $resultRoles = $trabajadoresInfo->obtenerRoles();
-
-
 ?>
