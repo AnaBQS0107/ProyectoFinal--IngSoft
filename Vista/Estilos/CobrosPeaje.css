@@ -1,100 +1,99 @@
 /* Estilos generales */
 body {
-    background-color: #f8f9fa;
     font-family: Arial, sans-serif;
-    padding-top: 20px;
-    
-}
-
-h5 {
-    margin-bottom: 20px;
-    color: #d1ecf1;
-}
-
-.container {
     background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    color: rgb(0, 0, 0);
+    margin: 0;
+    padding: 0;
 }
 
-/* Estilos para las tarjetas */
+h2 {
+    color: #333;
+}
+
 .card {
-    margin: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
-}
-
-.card:hover {
-    transform: scale(1.05);
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    flex: 1; /* Allows cards to grow and shrink equally */
+    display: flex;
+    flex-direction: column;
 }
 
 .card-header {
-
-    color: rgb(0, 0, 0);
-    text-align: center;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
 }
 
 .card-body {
-    text-align: center;
+    padding: 15px;
+    flex: 1; /* Makes the body grow to fill the available space */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .card-title {
-    color: #28a745;
+    font-size: 1.25rem;
+    margin-bottom: 10px;
 }
 
-/* Estilos para los botones */
+.card-text {
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
 .btn {
-
-    margin-top: 10px;
-    transition: background-color 0.2s, border-color 0.2s;
-}
-
-.btn-success {
     background-color: #9fc131;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
-.btn-success:hover {
-    background-color:  #bdf227;
-    border-color: #bdf227;
+.btn:hover {
+    background-color: #bdf227;
 }
 
-/* Estilos para la tabla */
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: stretch; /* Makes all children stretch to the same height */
+    flex-wrap: wrap;
+}
+
 .table {
-    margin-top: 20px;
-    background-color: white;
-    color: rgb(0, 0, 0);
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+    width: 100%;
+    max-width: 1000px;
+    margin: 20px auto;
+    background-color: #fff;
+    border-collapse: collapse;
 }
 
 .table th, .table td {
-    text-align: center;
-    vertical-align: middle;
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
 }
 
 .table th {
-    background-color: #005c53;
-    color: rgb(0, 0, 0);
+    background-color: #f8f8f8;
 }
 
-.table tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
-    color: rgb(0, 0, 0);
-}
-
-.table tbody tr:hover {
-    background-color: #d1ecf1;
+.table-group-divider {
+    background-color: #f8f8f8;
 }
 
 .center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
 }
 
-.center button {
-    margin-top: 20px;
+.margin-center {
+    margin: 0 auto;
+    display: block;
 }
+
