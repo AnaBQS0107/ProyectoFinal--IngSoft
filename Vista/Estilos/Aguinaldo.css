@@ -1,43 +1,49 @@
-/* Estilos generales */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-}
-
-
-.MainContentPlaceDiv {
-    padding:60px;
-    background-color: #fff;
-}
-
-h1, h2 {
-    color: #333;
-}
-
-hr {
-    border: 0;
-    border-top: 1px solid #eee;
-    margin: 20px 0;
-}
-
 /* Estilos para formularios */
 form {
     margin-top: 20px;
 }
 
-.form-group {
-    margin-bottom: 15px;
+.btn-calcularA {
+    background-color: #005c53;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
 }
 
-label {
+.btn-eliminarA {
+    background-color: #c00404;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn-eliminarA:disabled {
+    background-color: #d3d3d3; /* Gris claro */
+    color: #808080; /* Gris oscuro para el texto */
+    cursor: not-allowed;
+}
+
+.btn-calcularA:hover, .btn-eliminarA:hover:not(:disabled) {
+    background-color: #9fc131;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.form-group label {
     display: block;
     margin-bottom: 5px;
     color: #555;
 }
 
-input[type="text"], input[type="number"] {
+.form-group input[type="text"],
+.form-group input[type="number"] {
     width: calc(100% - 20px);
     padding: 10px;
     border: 1px solid #ccc;
@@ -45,47 +51,37 @@ input[type="text"], input[type="number"] {
     box-sizing: border-box;
 }
 
-input[type="submit"] {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #9fc131;
-    border: none;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 4px;
+.form-group input[type="radio"] {
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+/* Estilos específicos para salario en especie */
+.salarioEspecieContainer {
     margin-top: 20px;
 }
 
-input[type="submit"]:hover {
-    background-color: #bdf227;
-}
-
-/* Estilos específicos */
-.Left {
-    float: left;
-}
-
-.clear {
-    clear: both;
-}
-
-.SalarioEspecieContainer {
-    margin-top: 20px;
-}
-
-.SalarioEspecieContainer .form-group {
+.salarioEspecieContainer .form-group {
     margin-top: 10px;
 }
 
-.salarioEspecioRadio {
-    margin-right: 5px;
+.salarioEspecieContainer .form-group label {
+    color: #333;
+    font-weight: bold;
 }
 
-.marginCenter {
-    margin: 0 auto;
-    display: block;
+.salarioEspecieContainer .form-group input[type="text"],
+.salarioEspecieContainer .form-group input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.salarioEspecieContainer .form-group input[type="radio"] {
+    margin-right: 5px;
+    vertical-align: middle;
 }
 
 /* Estilos para columnas */
@@ -114,4 +110,3 @@ input[type="submit"]:hover {
         float: none; /* Elimina el float para pantallas pequeñas */
     }
 }
-

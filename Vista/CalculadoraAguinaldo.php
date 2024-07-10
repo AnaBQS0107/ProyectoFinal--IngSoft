@@ -198,7 +198,7 @@ $aguinaldoExistente = $stmt->fetchColumn() > 0;
                     <hr>
                     <div class="Left">
                         <h2>Salario en especie</h2>
-                        (Si aplica)
+                        <h4>(Si aplica)</h4>
                     </div>
                     <div class="Left">
                         <div class="form-group">
@@ -224,8 +224,8 @@ $aguinaldoExistente = $stmt->fetchColumn() > 0;
                     </div>
                 </div>
                 <div class="form-group col-xs-12">
-                    <button type="submit" class="btn btn-primary">Calcular Aguinaldo</button>
-                    <button type="button" id="eliminarAguinaldo" class="btn btn-danger">Eliminar Aguinaldo</button>
+                    <button type="submit" class="btn-calcularA">Calcular Aguinaldo</button>
+                    <button type="button" id="eliminarAguinaldo" class="btn-eliminarA">Eliminar Aguinaldo</button>
                 </div>
                 <div class="form-group col-xs-12">
                     <div id="resultadoAguinaldo"></div>
