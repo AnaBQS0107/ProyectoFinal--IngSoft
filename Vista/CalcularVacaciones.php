@@ -10,18 +10,16 @@ if (session_status() == PHP_SESSION_NONE) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calcular Salario de Vacaciones</title>
-    <link rel="stylesheet" href="Estilos/CalcularVacaciones.css">
+    <title>Salario de Vacaciones</title>
+    <link rel="stylesheet" href="Estilos/CalculodeVacaciones.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
 
     <script>
         $(document).ready(function() {
             $('form').submit(function(event) {
-                event.preventDefault(); // Evita el envío estándar del formulario
+                event.preventDefault(); 
 
-                // Realiza la solicitud AJAX al script de cálculo
                 $.ajax({
                     url: $(this).attr('action'),
                     type: 'POST',
@@ -64,7 +62,7 @@ if (session_status() == PHP_SESSION_NONE) {
 <br><br>
     <div class="MainContentPlaceDiv">
         <br>
-        <h1>Calculo de Salario de Vacaciones</h1>
+        <h1>Calcular Salario de Vacaciones</h1>
         <br>
         <form action="../Controlador/CalcularSalario_Vacaciones.php" method="post">
             <div class="form-group">
@@ -80,9 +78,7 @@ if (session_status() == PHP_SESSION_NONE) {
             <input type="submit" value="Calcular Salario Vacacional" class="btn btn-primary">
         </form>
     </div>
-<br><br>
-    <footer class="footer-Calc-Extras">
+    
         <?php include 'Footer.php'; ?>
-    </footer>
 </body>
 </html>

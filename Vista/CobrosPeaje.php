@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cobros -- PassWize</title>
     <link rel="icon" type="image/png" href="../img/icono.png">
-    <link rel="stylesheet" href="/Estilos/CobrosPeaje.css">
-    <link rel="stylesheet" href="/Estilos/Footer.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="Estilos/CobrosPeaje.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 
@@ -18,7 +16,7 @@
     </header>
     <br>
     <center>
-        <h5>¿Cuál tipo de vehiculo pasará por la estación?</h5>
+        <h2>¿Cuál tipo de vehiculo pasará por la estación?</h2>
     </center>
     <br>
     <div class="row justify-content-center gap-3">
@@ -121,6 +119,6 @@
     <footer>
         <?php include 'Footer.php'; ?>
     </footer>
-    
 </body>
+
 </html>
