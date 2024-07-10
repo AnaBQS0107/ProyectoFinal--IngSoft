@@ -173,9 +173,7 @@ if (session_status() == PHP_SESSION_NONE) {
         </form>
     </div>
 </div>
-
-    <footer class="footer-Calc-Extras">
+<br><br><br>
         <?php include 'Footer.php'; ?>
-    </footer>
 </body>
 </html>
