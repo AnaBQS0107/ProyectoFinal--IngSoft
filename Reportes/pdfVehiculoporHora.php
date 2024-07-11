@@ -19,7 +19,7 @@ if (isset($resultados) && (is_array($resultados) || is_object($resultados))) {
     $pdf->Ln(10);
     $pdf->SetFont('Arial', 'B', 10);
     $pdf->Cell(80, 10, 'Hora del Dia', 1);
-    $pdf->Cell(80, 10, 'Cantidad de Vehículos', 1, 1);
+    $pdf->Cell(80, 10, 'Cantidad de Vehiculos', 1, 1);
 
     $pdf->SetFont('Arial', '', 10);
     foreach ($resultados as $row) {
