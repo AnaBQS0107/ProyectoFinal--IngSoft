@@ -6,15 +6,19 @@ body {
     padding: 0;
 }
 
-.MainContentPlaceDiv {
+.container {
     max-width: 900px;
     margin: 20px auto;
     padding: 20px;
+    background-color: #f9f9f9; /* Fondo ligeramente gris para el contenedor */
+    border: 1px solid #ccc; /* Borde del contenedor */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Sombra ligera */
 }
 
 h1, h2, h4 {
     text-align: center;
-    color: #000; /* Cambiar el color a negro */
+    color: #000; /* Color de texto negro para los títulos */
 }
 
 ul {
@@ -38,7 +42,7 @@ ul {
     font-size: 14px;
 }
 
-.btn-calcularA, .btn-eliminarA {
+.btn-calcularA, .btn-eliminarA, .btn-GuardarA {
     display: inline-block;
     padding: 10px 20px;
     font-size: 16px;
@@ -54,7 +58,7 @@ ul {
     background-color: #f44336;
 }
 
-.btn-calcularA:hover, .btn-eliminarA:hover {
+.btn-calcularA:hover, .btn-eliminarA:hover, .btn-GuardarA:hover {
     opacity: 0.8;
 }
 
@@ -103,4 +107,11 @@ ul {
 
 .columna {
     flex: 0 0 48%;
+}
+
+/* Estilo para botones deshabilitados */
+.btn-calcularA:disabled, .btn-eliminarA:disabled, .btn-GuardarA:disabled {
+    background-color: #ddd; /* Gris claro para botones deshabilitados */
+    cursor: not-allowed; /* Cursor no permitido */
+    opacity: 0.6; /* Opacidad reducida para indicar deshabilitado */
 }

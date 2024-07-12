@@ -3,44 +3,47 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// Conexión a la base de datos
 require_once '../Config/config.php';
-$db = Database1::getInstance()->getConnection();
 
-$Empleados_Persona_Cedula = htmlspecialchars($_SESSION['user']['Persona_Cedula']);
+$response = ['success' => false, 'message' => ''];
 
-if (isset($_POST['salarios']) && is_array($_POST['salarios'])) {
-    $salarios = array_map('floatval', $_POST['salarios']);
-    $totalSalarios = array_sum($salarios);
-    $promedioMensual = $totalSalarios / count($salarios);
-    $aguinaldo = $promedioMensual;
-    $meses = implode(',', array_keys($_POST['salarios'])); // Convertir las claves de los salarios en una lista de meses separados por comas
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $salarios = isset($_POST['salarios']) ? $_POST['salarios'] : [];
+    $Empleados_Persona_Cedula = htmlspecialchars($_SESSION['user']['Persona_Cedula']);
+    $salarioEspecie = isset($_POST['salarioEspecie']) ? $_POST['salarioEspecie'] : '0';
+    $porcentajeEspecie = isset($_POST['PorcentajeEspecie']) ? $_POST['PorcentajeEspecie'] : 0;
+    $montoMensualEspecie = isset($_POST['MontoMensualEspecie']) ? $_POST['MontoMensualEspecie'] : 0;
 
-    // Calculo del salario en especie
-    if (isset($_POST['salarioEspecie'])) {
-        $salarioEspecie = intval($_POST['salarioEspecie']);
-        if ($salarioEspecie == 1 && isset($_POST['PorcentajeEspecie'])) {
-            $porcentajeEspecie = floatval($_POST['PorcentajeEspecie']);
-            $aguinaldo += $promedioMensual * ($porcentajeEspecie / 100);
-        } elseif ($salarioEspecie == 2 && isset($_POST['MontoMensualEspecie'])) {
-            $montoEspecie = floatval($_POST['MontoMensualEspecie']);
-            $aguinaldo += $montoEspecie;
-        }
-    }
-
-    // Guardar el aguinaldo en la base de datos
     try {
-        $stmt = $db->prepare("INSERT INTO aguinaldo (Empleados_Persona_Cedula1, Monto_A_Pagar, Meses) VALUES (:cedula, :monto, :meses) ON DUPLICATE KEY UPDATE Monto_A_Pagar = :monto, Meses = :meses");
-        $stmt->bindParam(':cedula', $Empleados_Persona_Cedula);
-        $stmt->bindParam(':monto', $aguinaldo);
-        $stmt->bindParam(':meses', $meses);
-        $stmt->execute();
+        $db = Database1::getInstance()->getConnection();
+        $totalSalarios = 0;
 
-        echo json_encode(['success' => true, 'message' => 'Aguinaldo calculado y guardado exitosamente.', 'aguinaldo' => $aguinaldo]);
+        foreach ($salarios as $salario) {
+            $totalSalarios += floatval(str_replace(',', '', $salario));
+        }
+
+        if ($salarioEspecie == '1') {
+            $totalSalarios += $totalSalarios * ($porcentajeEspecie / 100);
+        } elseif ($salarioEspecie == '2') {
+            $totalSalarios += $montoMensualEspecie * 12 / 12;
+        }
+
+        $aguinaldo = $totalSalarios / 12;
+
+        // Guardar el aguinaldo en la sesión en lugar de la base de datos
+        $_SESSION['aguinaldo_calculado'] = $aguinaldo;
+
+        $response['success'] = true;
+        $response['message'] = 'Aguinaldo calculado exitosamente.';
+        $response['aguinaldo'] = number_format($aguinaldo, 2);
+
     } catch (Exception $e) {
-        echo json_encode(['success' => false, 'message' => 'Error al guardar el aguinaldo: ' . $e->getMessage()]);
+        $response['message'] = 'Error al calcular el aguinaldo: ' . $e->getMessage();
     }
 } else {
-    echo json_encode(['success' => false, 'message' => 'Faltan datos necesarios para calcular el aguinaldo.']);
+    $response['message'] = 'Método no permitido.';
 }
+
+header('Content-Type: application/json');
+echo json_encode($response);
 ?>

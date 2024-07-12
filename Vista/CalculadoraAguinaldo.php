@@ -27,15 +27,36 @@ $aguinaldoExistente = $stmt->fetchColumn() > 0;
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
         $(document).ready(function() {
-            // Habilitar/deshabilitar el botón de eliminar
+            // Habilitar/deshabilitar el botón de eliminar y guardar
             var aguinaldoExistente = <?php echo json_encode($aguinaldoExistente); ?>;
             if (!aguinaldoExistente) {
-                $('#eliminarAguinaldo').prop('disabled', true);
+                $('#eliminarAguinaldo, #guardarAguinaldo').prop('disabled', true);
             }
 
             $('form').submit(function(event) {
                 event.preventDefault(); // Evita el envío estándar del formulario
 
+        // Validar que al menos un campo de salario tenga un valor numérico válido
+        var salariosValidos = false;
+        $('input[name="salarios[]"]').each(function() {
+            var salario = $(this).val().trim();
+            if (salario !== '' && !isNaN(parseFloat(salario))) {
+                salariosValidos = true;
+                return false; // Sale del bucle si encuentra un valor válido
+            }
+        });
+
+        if (!salariosValidos) {
+            // Mostrar alerta de SweetAlert2 si ningún salario es válido
+            Swal.fire({
+                icon: 'warning',
+                title: '¡Atención!',
+                text: 'Por favor, completa al menos un campo de salario con un valor numérico válido.'
+            });
+            return; // Sale de la función si no hay salarios válidos
+        }
+
+                
                 // Realiza la solicitud AJAX al script de cálculo
                 $.ajax({
                     url: $(this).attr('action'),
@@ -44,14 +65,14 @@ $aguinaldoExistente = $stmt->fetchColumn() > 0;
                     dataType: 'json',
                     success: function(response) {
                         if (response.success) {
-                            $('#resultadoAguinaldo').text('Aguinaldo Calculado: ' + response.aguinaldo);
+                            $('#resultadoAguinaldo').text('Aguinaldo Calculado: ¢' + response.aguinaldo);
                             Swal.fire({
                                 icon: 'success',
                                 title: '¡Éxito!',
                                 text: response.message
                             }).then((result) => {
-                                // Habilitar el botón de eliminar si se ha calculado el aguinaldo
-                                $('#eliminarAguinaldo').prop('disabled', false);
+                                // Habilitar los botones de eliminar y guardar si se ha calculado el aguinaldo
+                                $('#eliminarAguinaldo, #guardarAguinaldo').prop('disabled', false);
                             });
                         } else {
                             Swal.fire({
@@ -99,9 +120,41 @@ $aguinaldoExistente = $stmt->fetchColumn() > 0;
                                 title: '¡Éxito!',
                                 text: response.message
                             }).then((result) => {
-                                // Deshabilitar el botón de eliminar y limpiar el resultado del aguinaldo
-                                $('#eliminarAguinaldo').prop('disabled', true);
+                                // Deshabilitar los botones de eliminar y guardar y limpiar el resultado del aguinaldo
+                                $('#eliminarAguinaldo, #guardarAguinaldo').prop('disabled', true);
                                 $('#resultadoAguinaldo').text('');
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: '¡Error!',
+                                text: response.message
+                            });
+                        }
+                    },
+                    error: function() {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error del servidor',
+                            text: 'Hubo un problema al procesar tu solicitud. Inténtalo de nuevo más tarde.'
+                        });
+                    }
+                });
+            });
+
+            // Guardar aguinaldo
+            $('#guardarAguinaldo').click(function() {
+                $.ajax({
+                    url: '../Controlador/GuardarAguinaldo.php',
+                    type: 'POST',
+                    data: { Empleados_Persona_Cedula: '<?php echo $Empleados_Persona_Cedula; ?>' },
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.success) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: '¡Éxito!',
+                                text: response.message
                             });
                         } else {
                             Swal.fire({
@@ -127,22 +180,11 @@ $aguinaldoExistente = $stmt->fetchColumn() > 0;
     <header>
         <?php include 'header.php'; ?>
     </header>
-
-    <div class="MainContentPlaceDiv">
-        <br>
-        <h1>Calculadora de Aguinaldo</h1>
+    <div class="container">
         <div class="row">
-            <div class="col-xs-12">
-                
-                <h2 class="Left">Salario bruto de los últimos meses</h2>
-                <br><br>
-                <ul>
-                    <li>En cada una de las siguientes casillas se debe digitar el salario bruto devengado en cada mes según corresponda (Salario Bruto: Salario que incluye horas extras, comisiones, bonificaciones, sin rebajas de cargas sociales ni renta). <br><br></li>
-                </ul>
-                
-            </div>
             <form action="../Controlador/CalculoAguinaldo.php" method="POST">
-                <div class="col-lg-6 col-xs-12">
+                <div class="col-xs-12">
+                    <h2>Calculadora de Aguinaldo</h2>
                     <div class="form-group">
                         <label for="diciembre">Diciembre (2023):</label>
                         <input name="salarios[]" type="text" id="diciembre" class="form-control numeroConFormato">
@@ -167,8 +209,6 @@ $aguinaldoExistente = $stmt->fetchColumn() > 0;
                         <label for="mayo">Mayo:</label>
                         <input name="salarios[]" type="text" id="mayo" class="form-control numeroConFormato">
                     </div>
-                </div>
-                <div class="col-lg-6 col-xs-12">
                     <div class="form-group">
                         <label for="junio">Junio:</label>
                         <input name="salarios[]" type="text" id="junio" class="form-control numeroConFormato">
@@ -182,8 +222,8 @@ $aguinaldoExistente = $stmt->fetchColumn() > 0;
                         <input name="salarios[]" type="text" id="agosto" class="form-control numeroConFormato">
                     </div>
                     <div class="form-group">
-                        <label for="setiembre">Setiembre:</label>
-                        <input name="salarios[]" type="text" id="setiembre" class="form-control numeroConFormato">
+                        <label for="septiembre">Septiembre:</label>
+                        <input name="salarios[]" type="text" id="septiembre" class="form-control numeroConFormato">
                     </div>
                     <div class="form-group">
                         <label for="octubre">Octubre:</label>
@@ -194,48 +234,49 @@ $aguinaldoExistente = $stmt->fetchColumn() > 0;
                         <input name="salarios[]" type="text" id="noviembre" class="form-control numeroConFormato">
                     </div>
                 </div>
+
                 <div class="col-xs-12 SalarioEspecieContainer">
-                    
-                    <div class="Left">
-                        <h2>Salario en especie</h2>
-                        <h4>(Si aplica)</h4>
+                    <ul>
+                        <li><h2 for="salarioEspecie">Salario en especie</h2></li>
+                        <li><h4 for="salarioEspecie">(Si aplica)</h4></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <input type="radio" name="salarioEspecie" value="0" checked> No Incluir (No se incluye Salario en Especie).
                     </div>
-                    <div class="Left">
-                        <div class="form-group">
-                            <input type="radio" name="salarioEspecie" value="0" class="salarioEspecieRadio">
-                            Sin salario en especie<br>
-                        </div>
-                        <div class="form-group">
-                            <input type="radio" name="salarioEspecie" value="1" class="salarioEspecieRadio">
-                            Con salario en especie que corresponde a un porcentaje del salario base<br>
-                        </div>
-                        <div class="form-group">
-                            <input type="radio" name="salarioEspecie" value="2" class="salarioEspecieRadio">
-                            Con salario en especie que corresponde a un monto mensual específico<br>
-                        </div>
-                        <div class="form-group" id="PorcentajeEspecieTextBox" style="display:none">
-                            <label for="PorcentajeEspecie">Porcentaje (%)</label>
-                            <input name="PorcentajeEspecie" type="text" id="PorcentajeEspecie" class="form-control numeroConFormato">
-                        </div>
-                        <div class="form-group" id="MontoMensualEspecieTextBox" style="display:none">
-                            <label for="MontoMensualEspecie">Monto mensual en especie (¢)</label>
-                            <input name="MontoMensualEspecie" type="text" id="MontoMensualEspecie" class="form-control numeroConFormato">
-                        </div>
+                    <div class="form-group">
+                        <input type="radio" name="salarioEspecie" value="1"> Con salario en especie (corresponde a un porcentaje del salario base).
+                    </div>
+                    <div class="form-group">
+                        <input type="radio" name="salarioEspecie" value="2"> Con salario en especie (corresponde a un monto mensual específico).
+                    </div>
+
+                    <div class="form-group" id="PorcentajeEspecieTextBox" style="display:none;">
+                        <label for="PorcentajeEspecie">Porcentaje Especie: (%)</label>
+                        <input name="PorcentajeEspecie" type="text" id="PorcentajeEspecie" class="form-control">
+                    </div>
+                    <div class="form-group" id="MontoMensualEspecieTextBox" style="display:none;">
+                        <label for="MontoMensualEspecie">Monto Mensual Especie: (¢)</label>
+                        <input name="MontoMensualEspecie" type="text" id="MontoMensualEspecie" class="form-control">
                     </div>
                 </div>
-                <div class="form-group col-xs-12">
+
+                <div class="col-xs-12">
                     <button type="submit" class="btn-calcularA">Calcular Aguinaldo</button>
-                    <button type="button" id="eliminarAguinaldo" class="btn-eliminarA">Eliminar Aguinaldo</button>
-                </div>
-                <div class="form-group col-xs-12">
-                    <div id="resultadoAguinaldo"></div>
                 </div>
             </form>
+            <div class="col-xs-12">
+                <p id="resultadoAguinaldo"></p>
+            </div>
+            <div class="col-xs-12">
+                <button id="eliminarAguinaldo" class="btn-eliminarA" <?php echo !$aguinaldoExistente ? 'disabled' : ''; ?>>Eliminar Aguinaldo</button>
+                <button id="guardarAguinaldo" class="btn-GuardarA">Guardar Aguinaldo</button>
+            </div>
         </div>
     </div>
     <br><br><br><br><br><br><br><br>
-        <?php include 'Footer.php'; ?>
+    <footer><?php include 'Footer.php'; ?></footer>
+    
 </body>
 </html>
-
-
