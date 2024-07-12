@@ -270,8 +270,8 @@ $aguinaldoExistente = $stmt->fetchColumn() > 0;
                 <p id="resultadoAguinaldo"></p>
             </div>
             <div class="col-xs-12">
-                <button id="eliminarAguinaldo" class="btn-eliminarA" <?php echo !$aguinaldoExistente ? 'disabled' : ''; ?>>Eliminar Aguinaldo</button>
                 <button id="guardarAguinaldo" class="btn-GuardarA">Guardar Aguinaldo</button>
+                <button id="eliminarAguinaldo" class="btn-eliminarA" >Eliminar Aguinaldo</button>
             </div>
         </div>
     </div>
