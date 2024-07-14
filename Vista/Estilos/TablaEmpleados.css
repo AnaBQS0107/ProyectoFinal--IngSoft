@@ -53,7 +53,7 @@ body {
 }
 
 .btn-edit {
-    background-color: #005B52;
+    background-color: #9fc131;
     color: white;
 }
 
@@ -110,7 +110,7 @@ body {
 }
 
 .btn_asignar {
-    background-color: #004d40;
+    background-color: #9fc131;
     color: white;
     border: none;
     border-radius: 4px;
@@ -134,7 +134,7 @@ body {
 
 .search-container button {
     padding: 10px 20px;
-    background-color: #005B52;
+    background-color: #9fc131;
     color: rgb(255, 255, 255);
     border: none;
     border-radius: 4px;
