@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de liquidaciones</title>
     <link rel="stylesheet" href="Estilos/Liquidaciones.css">
-    <link rel="stylesheet" href="Estilos/Footer.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -65,16 +63,16 @@
                 </div>
             </div>
 
-            <div class="row mt-3">
-                <div class="row mt-3 justify-content-center">
+           <div class="row mt-3">
+                <div class="row mt-3">
                     <div class="col-auto">
                         <div class="div_btn">
-                            <button type="submit" class="btn_calcular">Calcular</button>
+                        <button type="submit" class="btn_calcular">Calcular</button>  
                         </div>
                     </div>
                     <div class="col-auto">
                         <div class="div_btn">
-                            <button type="submit" class="btn_continuar">Crear reporte</button>
+                        <button type="submit" class="btn_continuar">Crear reporte</button>
                         </div>
                 </div>
             </div>
