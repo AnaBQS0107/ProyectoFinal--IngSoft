@@ -18,10 +18,10 @@
 
     <div class="container-HorasExtras">
         <h1>Contador de horas extras</h1>
-        <button id="start-overtime">Inicio Horas Extra</button>
-        <button id="end-overtime" disabled>Fin Horas Extra</button>
+       <center> <button id="start-overtime">Inicio Horas Extra</button></center> 
+       <center><button id="end-overtime" disabled>Fin Horas Extra</button></center>
         <input type="text" id="overtime-description" placeholder="Descripción de las horas extras" disabled>
-        <button id="delete-overtime" disabled>Eliminar Horas Extra</button>
+        <center><button id="delete-overtime" disabled>Eliminar Horas Extra</button></center>
         <h2>Total Mensual: <span id="monthly-total">0</span> colones</h2>
         <table>
             <thead>
