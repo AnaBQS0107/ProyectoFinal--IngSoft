@@ -1,7 +1,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: white;
     color: #333;
     margin: 0;
     padding: 0;
@@ -18,7 +18,7 @@ body {
 
 .container-HorasExtras h1, .container-HorasExtras h2 {
     text-align: center;
-    color: #4CAF50;
+    color: #000000;
 }
 
 button {
@@ -35,7 +35,7 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #bdf227;
 }
 
 input[type="text"] {
@@ -64,7 +64,7 @@ th, td {
 th {
     background-color: #f2f2f2;
 }
-=======
+
 .edit-input {
     width: 100%;
     padding: 5px;

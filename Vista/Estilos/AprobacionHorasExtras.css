@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: white;
     color: #333;
     margin: 0;
     padding: 0;
@@ -24,7 +24,7 @@ select, input[type="text"], textarea {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
-    border: 1px solid #ccc;
+    border: 1px solid white;
     border-radius: 4px;
 }
 
@@ -42,7 +42,7 @@ button {
 }
 
 button:hover {
-    background-color: #9fc131;
+    background-color: #bdf227;
 }
 
 table {
