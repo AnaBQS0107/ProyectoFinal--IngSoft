@@ -10,19 +10,19 @@ body {
     max-width: 31%;
     margin: 20px auto;
     padding: 20px;
-    background-color: #f9f9f9; /* Fondo ligeramente gris para el contenedor */
-    border: 1px solid #ccc; /* Borde del contenedor */
-    border-radius: 8px; /* Bordes redondeados */
-    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Sombra ligera */
+    background-color: white; 
+    border: 1px solid #ccc; 
+    border-radius: 8px; 
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); 
 }
 
 h1, h2, h4 {
     text-align: center;
-    color: #000; /* Color de texto negro para los títulos */
+    color: #000; 
 }
 
 ul {
-    list-style-type: none; /* Quitar el punto antes del texto en li */
+    list-style-type: none; 
 }
 
 .form-group {
@@ -65,7 +65,7 @@ ul {
 #resultadoAguinaldo {
     margin-top: 20px;
     font-size: 18px;
-    color: #4CAF50;
+    color: black;
 }
 
 .SalarioEspecieContainer {
