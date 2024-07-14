@@ -258,12 +258,12 @@ body {
   
   /* Estilo específico para el botón "Calcular" */
   .btn_calcular {
-    background-color: #28a745; /* Verde */
-    color: rgb(0, 0, 0);
+    background-color: #9fc131; /* Verde */
+    color: rgb(255, 255, 255);
   }
   
   .btn_calcular:hover {
-    background-color: #45a049;
+    background-color: #9fc131;
     color: rgb(0, 0, 0);
     /*Verdemásoscuro*/transform: scale(1.05)  ;    -webkit-transform: scale(1.05);
     -moz-transform: scale(1.05);

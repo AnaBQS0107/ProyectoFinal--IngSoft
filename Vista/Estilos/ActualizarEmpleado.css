@@ -45,7 +45,7 @@ input[type="password"] {
 }
 
 button {
-    background-color: #4CAF50;
+    background-color: #9fc131;
     color: white;
     padding: 12px 20px;
     border: none;
@@ -55,6 +55,6 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #9fc131;
 }
 

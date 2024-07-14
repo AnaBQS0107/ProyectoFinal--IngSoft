@@ -32,7 +32,7 @@ form {
 
 /* Estilo del botón */
 .styled-button {
-    background-color: #4CAF50; /* Verde */
+    background-color: #9fc131; /* Verde */
     border: none;
     color: white;
     padding: 15px 32px;
@@ -47,7 +47,7 @@ form {
 }
 
 .styled-button:hover {
-    background-color: #45a049; /* Verde más oscuro al pasar el cursor */
+    background-color: #9fc131; /* Verde más oscuro al pasar el cursor */
 }
 
 /* Estilo del título */

@@ -61,19 +61,19 @@ h2 {
 }
 
 .btn-primary {
-    background-color: #28a745;
+    background-color: #9fc131;
     color: white;
     padding: 10px 20px;
     font-size: 16px; 
-    border: 2px solid #28a745;
+    border: 2px solid #9fc131;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .btn-primary:hover {
-    background-color: #45a049;
-    border-color: #45a049;
+    background-color: #9fc131;
+    border-color: #9fc131;
 }
 
 .mt-5 {
