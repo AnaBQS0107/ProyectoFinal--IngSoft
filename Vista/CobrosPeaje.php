@@ -84,6 +84,16 @@
         }
 
         function confirmarPago() {
+            var filas = document.querySelectorAll("#tabla tbody tr").length;
+            if (filas === 0) {
+                Swal.fire({
+                    title: 'No hay datos',
+                    text: "No hay datos en la tabla para procesar el pago.",
+                    icon: 'error'
+                });
+                return;
+            }
+
             Swal.fire({
                 title: '¿Estás seguro?',
                 text: "¿Deseas proceder con el pago?",

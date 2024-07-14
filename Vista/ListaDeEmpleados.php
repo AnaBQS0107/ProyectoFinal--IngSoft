@@ -8,7 +8,6 @@ require_once '../Controlador/Empleados.php';
 require_once '../Modelo/Ingreso_Usuario.php';
 
 $controller = new EmpleadoController1();
-
 $controller->mostrarEmpleados();
 $trabajadoresTabla = new TrabajadoresTabla();
 ?>
@@ -30,7 +29,7 @@ $trabajadoresTabla = new TrabajadoresTabla();
     <header>
         <?php include 'header.php'; ?>
     </header>
-    <br><br><br><br>
+    <div class="header-space"></div>
     <center>
         <h1>Lista de Empleados</h1>
     </center>
@@ -92,22 +91,21 @@ $trabajadoresTabla = new TrabajadoresTabla();
                 <?php endif; ?>
             </tbody>
         </table>
-        <br><br>
+        <div class="footer-space"></div>
         <div class="div_btn">
+            <br><br>
             <center>
                 <button type="button" class="btn_asignar" onclick="location.href='../Vista/IngresarUsuario.php'">Agregar un nuevo reporte</button>
             </center>
         </div>
-
-        <br><br><br><br>
     </div>
 
     <script src="../JS/EmpleadosCRUD.js"></script>
 
-    <footer>
-        <?php include 'Footer.php'; ?>
-    </footer>
-
 </body>
+
+<footer>
+    <?php include 'Footer.php'; ?>
+</footer>
 
 </html>

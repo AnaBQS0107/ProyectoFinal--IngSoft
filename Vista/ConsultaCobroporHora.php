@@ -24,10 +24,12 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cobros por Hora del Día</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="icon" type="image/png" href="../img/icono.png">
 </head>
 <body>
 <header>
     <?php include 'Header.php'; ?>
+
 </header>
 <div class="container mt-5">
     <h2>Cobros por Hora del Día</h2>

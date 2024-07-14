@@ -6,9 +6,7 @@ $cobros = $cobroController->getAllCobros();
 $tiposVehiculo = $cobroController->getTiposVehiculo();
 $estacionesPeaje = $cobroController->getEstacionesPeaje();
 
-
 $sumasPorTipoYEstacion = [];
-
 if (isset($_GET['submit'])) {
     $tipoVehiculoId = $_GET['tipoVehiculo'];
     $estacionPeajeId = $_GET['estacionPeaje'];
@@ -17,10 +15,12 @@ if (isset($_GET['submit'])) {
         $sumasPorTipoYEstacion = $cobroController->getSumaTarifasPorTipoVehiculoYEstacion($tipoVehiculoId, $estacionPeajeId);
     } elseif (!empty($tipoVehiculoId)) {
         $cobros = $cobroController->getCobrosPorTipoVehiculo($tipoVehiculoId);
+        // Aquí manejas la lógica según tus necesidades si no hay una estación de peaje seleccionada
     } elseif (!empty($estacionPeajeId)) {
         $cobros = $cobroController->getCobrosPorEstacion($estacionPeajeId);
     }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -84,15 +84,15 @@ if (isset($_GET['submit'])) {
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($cobros as $cobros): ?>
+                    <?php foreach ($cobros as $cobro): ?>
                     <tr>
-                        <td><?php echo $cobros['idCobrosPeaje']; ?></td>
-                        <td><?php echo $cobros['Fecha']; ?></td>
-                        <td><?php echo $cobros['EstacionPeaje']; ?></td>
-                        <td><?php echo $cobros['Empleados_Persona_Cedula']; ?></td>
-                        <td><?php echo $cobros['TipoVehiculo']; ?></td>
-                        <td><?php echo $cobros['TipoVehiculo_Codigo']; ?></td>
-                        <td><?php echo $cobros['TipoVehiculo_Tarifa']; ?></td>
+                        <td><?php echo $cobro['idCobrosPeaje']; ?></td>
+                        <td><?php echo $cobro['Fecha']; ?></td>
+                        <td><?php echo $cobro['EstacionPeaje']; ?></td>
+                        <td><?php echo $cobro['Empleados_Persona_Cedula']; ?></td>
+                        <td><?php echo $cobro['TipoVehiculo']; ?></td>
+                        <td><?php echo $cobro['TipoVehiculo_Codigo']; ?></td>
+                        <td><?php echo $cobro['TipoVehiculo_Tarifa']; ?></td>
                     </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -132,7 +132,6 @@ if (isset($_GET['submit'])) {
     </div>
     <br><br><br><br>
     <script src="../JS/CobrosCRUD.js"></script>
-
 
     <footer>
     <?php include 'Footer.php'; ?>

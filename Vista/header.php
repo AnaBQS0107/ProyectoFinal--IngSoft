@@ -16,7 +16,7 @@ if (session_status() == PHP_SESSION_NONE) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
     <link rel="stylesheet" href="Estilos/header2.css">
-    <title>Dropdown Menu</title>
+    <link rel="icon" type="image/png" href="../img/icono.png">
 </head>
 
 <body>
@@ -76,7 +76,7 @@ if (session_status() == PHP_SESSION_NONE) {
                         <li><a href="../Vista/ConsultaHistoricoCobros.php">Histórico de cobros por estación de peaje</a></li>
                         <li><a href="../Vista/ConsultaHorarioTrabajador.php">Horarios de trabajo de los trabajadores del peaje</a></li>
                         <li><a href="../Vista/ConsultaCobroporHora.php">Cobros por hora del dia</a></li>
-                        <li><a href="#">Ingresos por periodo de tiempo</a></li>
+                        <li><a href="../Vista/ConsultaVehiculosLivianos.php">Vehiculos Livianos que utilizaron el peaje</a></li>
 
                     </ul>
                 </div>

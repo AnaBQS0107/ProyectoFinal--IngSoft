@@ -52,7 +52,75 @@ class Cobro {
         }
     }
     
+    public function getCobrosPorTipoVehiculo($tipoVehiculoId) {
+        try {
+            $query = "SELECT 
+                        cp.idCobrosPeaje, 
+                        cp.Fecha, 
+                        ep.Nombre AS EstacionPeaje, 
+                        cp.Empleados_Persona_Cedula, 
+                        tv.Tipo AS TipoVehiculo, 
+                        cp.TipoVehiculo_Codigo, 
+                        cp.TipoVehiculo_Tarifa 
+                      FROM 
+                        CobrosPeaje cp
+                        INNER JOIN TipoVehiculo tv ON cp.TipoVehiculo_idTipoVehiculo = tv.idTipoVehiculo
+                        INNER JOIN EstacionesPeaje ep ON cp.EstacionesPeaje_idEstacionesPeaje = ep.idEstacionesPeaje
+                      WHERE 
+                        cp.TipoVehiculo_idTipoVehiculo = :tipoVehiculoId";
     
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':tipoVehiculoId', $tipoVehiculoId, PDO::PARAM_INT);
+            $stmt->execute();
+    
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return [];
+        }
+    }
+    
+    public function getCobrosPorEstacion($estacionPeajeId) {
+        try {
+            $query = "SELECT 
+                        cp.idCobrosPeaje, 
+                        cp.Fecha, 
+                        ep.Nombre AS EstacionPeaje, 
+                        cp.Empleados_Persona_Cedula, 
+                        tv.Tipo AS TipoVehiculo, 
+                        cp.TipoVehiculo_Codigo, 
+                        cp.TipoVehiculo_Tarifa 
+                      FROM 
+                        CobrosPeaje cp
+                        INNER JOIN TipoVehiculo tv ON cp.TipoVehiculo_idTipoVehiculo = tv.idTipoVehiculo
+                        INNER JOIN EstacionesPeaje ep ON cp.EstacionesPeaje_idEstacionesPeaje = ep.idEstacionesPeaje
+                      WHERE 
+                        cp.EstacionesPeaje_idEstacionesPeaje = :estacionPeajeId";
+    
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':estacionPeajeId', $estacionPeajeId, PDO::PARAM_INT);
+            $stmt->execute();
+    
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return [];
+        }
+    }
+    
+    public function getTotalVehiculosPorTipo($tipoVehiculoId)
+    {
+        try {
+            $stmt = $this->conn->prepare("SELECT COUNT(*) AS TotalVehiculos FROM CobrosPeaje WHERE TipoVehiculo_idTipoVehiculo = ?");
+            $stmt->bindParam(1, $tipoVehiculoId, PDO::PARAM_INT);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result['TotalVehiculos'];
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return 0;
+        }
+    }
     
     public function getTiposVehiculo() {
         $sql = "SELECT idTipoVehiculo, Tipo FROM TipoVehiculo";
