@@ -2,7 +2,7 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-
+//Stu probando 1..2..3..
 header('Content-Type: application/json');
 
 require_once '../Config/config.php';
