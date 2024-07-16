@@ -19,31 +19,8 @@
         <h2>¿Cuál tipo de vehiculo pasará por la estación?</h2>
     </center>
     <br>
-    <div class="row justify-content-center gap-3">
-        <div class="card border-success mb-3" style="max-width: 18rem;">
-            <div class="card-header">Código: L</div>
-            <div class="card-body text-success">
-                <h5 class="card-title">Automoviles livianos</h5>
-                <p class="card-text">Monto: 340</p>
-                <center><button type="button" class="btn btn-success" onclick="seleccionar('L')">Seleccionar</button></center>
-            </div>
-        </div>
-        <div class="card border-success mb-3" style="max-width: 18rem;">
-            <div class="card-header">Código: A</div>
-            <div class="card-body text-success">
-                <h5 class="card-title">Autobuses</h5>
-                <p class="card-text">Monto: 680</p>
-                <center><button type="button" class="btn btn-success" onclick="seleccionar('A')">Seleccionar</button></center>
-            </div>
-        </div>
-        <div class="card border-success mb-3" style="max-width: 18rem;">
-            <div class="card-header">Código: O</div>
-            <div class="card-body text-success">
-                <h5 class="card-title">Otros</h5>
-                <p class="card-text">Monto: 850</p>
-                <center><button type="button" class="btn btn-success" onclick="seleccionar('O')">Seleccionar</button></center>
-            </div>
-        </div>
+    <div class="row justify-content-center gap-3" id="cards-container">
+        <!-- Las cards se cargarán aquí -->
     </div>
 
     <form id="pagoForm">
@@ -69,6 +46,39 @@
     </form>
 
     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            cargarTiposVehiculos();
+        });
+
+        function cargarTiposVehiculos() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "../Modelo/ObtenerTiposVehiculos.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var tiposVehiculos = JSON.parse(xhr.responseText);
+                    var container = document.getElementById("cards-container");
+                    container.innerHTML = ""; // Asegúrate de limpiar el contenedor antes de agregar nuevos elementos
+                    tiposVehiculos.forEach(function(tipo) {
+                        var card = document.createElement("div");
+                        card.className = "card border-success mb-3";
+                        card.style.maxWidth = "18rem";
+
+                        card.innerHTML = `
+                            <div class="card-header">Código: ${tipo.Codigo}</div>
+                            <div class="card-body text-success">
+                                <h5 class="card-title">${tipo.Tipo}</h5>
+                                <p class="card-text">Monto: ${tipo.Tarifa}</p>
+                                <center><button type="button" class="btn btn-success" onclick="seleccionar('${tipo.Codigo}')">Seleccionar</button></center>
+                            </div>
+                        `;
+                        container.appendChild(card);
+                    });
+                }
+            };
+            xhr.send();
+        }
+
         function seleccionar(codigo) {
             document.getElementById('codigo').value = codigo;
 

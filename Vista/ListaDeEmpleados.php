@@ -95,7 +95,7 @@ $trabajadoresTabla = new TrabajadoresTabla();
         <div class="div_btn">
             <br><br>
             <center>
-                <button type="button" class="btn_asignar" onclick="location.href='../Vista/IngresarUsuario.php'">Agregar un nuevo reporte</button>
+                <button type="button" class="btn_asignar" onclick="location.href='../Vista/IngresarUsuario.php'">Agregar un nuevo usuario</button>
             </center>
         </div>
     </div>
