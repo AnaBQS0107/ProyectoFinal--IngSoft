@@ -55,7 +55,6 @@ if (session_status() == PHP_SESSION_NONE) {
                         <li><a href="../Vista/ReporteTotalporMes.php">Monto total por mes</a></li>
                         <li><a href="../Vista/ReportePromedioDiario.php">Promedio diario de vehiculos por estación</a></li>
                         <li><a href="../Vista/ReporteporHora.php">Cantidad de vehiculos por hora</a></li>
-                        <li><a href="../Vista/ReporteporTipoyEstacion.php">Cantidad de vehiculo por tipo y estación</a></li>
                         <li><a href="../Vista/ReporteCobrosDiarios.php">Historial cobros diarios</a></li>
                         <li><a href="#">Control de pago a trabajadores</a></li>
           
