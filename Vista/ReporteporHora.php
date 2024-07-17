@@ -3,27 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Reporte de Cantidad de Vehículos por Hora del Día</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="icon" type="image/png" href="../img/icono.png">
-    <style>
-        .table-header {
-            background-color: #f2f2f2;
-        }
-    </style>
+    <link rel="stylesheet" href="Estilos/ReporteVehiculosPorHora.css">
 </head>
-<body>
-
-    <header>
+<header>
         <?php include 'Header.php'; ?>
     </header>
+<body>
+
 
     <div class="container mt-5">
         <div class="row">
             <div class="col-12">
-                <h1 class="text-center mb-4">Reporte de Cantidad de Vehículos por Hora del Día</h1>
+               <center> <h1 class="text-center mb-4">Reporte de Cantidad de Vehículos por Hora del Día</h1></center> 
 
                 <table class="table table-bordered">
-                    <thead class="table-header">
+                    <thead>
                         <tr>
                             <th>Hora del Día</th>
                             <th>Cantidad de Vehículos</th>
@@ -49,21 +44,24 @@
                         ?>
                     </tbody>
                 </table>
-<center><form action="../Reportes/pdfVehiculoporHora.php" method="post">
-                    <button type="submit" class="btn btn-primary">Generar PDF</button>
-                </form></center>
+
+                <center>
+                    <form action="../Reportes/pdfVehiculoporHora.php" method="post">
+                        <button type="submit" class="btn btn-primary">Generar PDF</button>
+                    </form>
+                </center>
                 
             </div>
         </div>
     </div>
-<br><br><br>
+
+    <br><br><br>
     <footer>
         <?php include 'Footer.php'; ?>
     </footer>
 
-    <!-- Incluir Bootstrap JS y jQuery (opcional) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+

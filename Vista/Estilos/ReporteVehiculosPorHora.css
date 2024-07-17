@@ -1,13 +1,8 @@
-/* General styles for the body and container */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: white;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
 }
 
 .container {
@@ -32,11 +27,6 @@ h1 {
 
 .table-bordered {
     border: 1px solid #dee2e6;
-}
-
-.table thead th {
-    vertical-align: bottom;
-    border-bottom: 2px solid #dee2e6;
 }
 
 .table td, .table th {
