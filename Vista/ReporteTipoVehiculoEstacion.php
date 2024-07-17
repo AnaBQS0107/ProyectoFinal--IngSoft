@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Generar Reporte de Vehículos por Tipo</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Estilos/ReporteTipoVehiculoEstacion.css">
     <link rel="icon" type="image/png" href="../img/icono.png">
     <style>
         .table-header {
@@ -20,10 +20,9 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-12">
-                <h1 class="text-center mb-4">Generar Reporte de Vehículos por Tipo</h1>
+            <center> <h1 class="mb-4">Generar Reporte de Vehículos por Tipo</h1>
 
                 <table class="table table-bordered">
-                    <thead class="table-header">
                         <tr>
                             <th>Estación de Peaje</th>
                             <th>Tipo de Vehículo</th>
@@ -74,7 +73,7 @@
                 </table>
 
                 <div class="text-center">
-                    <form action="../Reportes/pdfTipodeVehiculoporEstacion.php" method="post">
+                <center> <form action="../Reportes/pdfTipodeVehiculoporEstacion.php" method="post">
                         <button type="submit" class="btn btn-primary">Generar PDF</button>
                     </form>
                     <br><br><br>
