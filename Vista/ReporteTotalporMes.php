@@ -33,7 +33,7 @@ if (isset($resultados) && (is_array($resultados) || is_object($resultados))) {
                 <?php foreach ($resultados as $row): ?>
                     <tr>
                         <td><?php echo htmlspecialchars($row['Mes']); ?></td>
-                        <td>$ <?php echo number_format($row['MontoTotal'], 2); ?></td>
+                        <td>₡ <?php echo number_format($row['MontoTotal'], 2); ?></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
