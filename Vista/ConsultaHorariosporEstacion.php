@@ -32,30 +32,39 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <center><title>Mostrar Horarios por Estación</title></center>
+    <title>Mostrar Horarios por Estación</title>
     <link rel="icon" type="image/png" href="../img/icono.png">
-    <link rel="stylesheet" href="Estilos/Horarioestacion.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Estilo para ocultar la tabla por defecto */
+        #tablaHorarios {
+            display: none;
+        }
+    </style>
 </head>
 <body>
 <header>
     <?php include 'Header.php'; ?>
 </header>
-<br><br><br><br><br><br>
 <div class="container mt-5">
-    <h1>Mostrar Horarios por Estación</h1>
-<br><br>
+    <h2>Mostrar Horarios por Estación</h2>
+
     <!-- Formulario para seleccionar una estación -->
     <form id="formEstacion" method="post">
         <div class="form-group">
+            <label for="estacion">Selecciona una Estación:</label>
             <select class="form-control" id="estacion" name="estacion">
-                <option value="">Seleccione una estación...</option>
+                <option value="">Selecciona una estación...</option>
                 <?php foreach ($estaciones as $estacion): ?>
                     <option value="<?php echo $estacion['idEstacionesPeaje']; ?>"><?php echo htmlspecialchars($estacion['Nombre']); ?></option>
                 <?php endforeach; ?>
             </select>
         </div>
-        <center><button type="submit" class="btn btn-primary">Mostrar Horarios</button></center>
+        <button type="submit" class="btn btn-primary">Mostrar Horarios</button>
     </form>
+
+    <hr>
+
     <!-- Tabla de Horarios -->
     <div id="tablaHorarios">
         <?php if (!empty($horarios)): ?>
@@ -84,6 +93,7 @@ try {
     </div>
 </div>
 
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
     // Script para mostrar la tabla de horarios al enviar el formulario
     document.getElementById('formEstacion').addEventListener('submit', function(event) {
@@ -94,8 +104,8 @@ try {
     });
 </script>
 
-</body>
-</html>
 <footer>
     <?php include 'Footer.php'; ?>
 </footer>
+</body>
+</html>

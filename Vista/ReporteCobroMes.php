@@ -23,7 +23,6 @@ if (isset($resultados) && (is_array($resultados) || is_object($resultados))) {
        <center><h2 class="mb-4">Monto Total Cobrado por Cada Tipo de Vehículo</h2></center> 
 
         <table class="table table-bordered">
-            <thead>
                 <tr>
                     <th scope="col">Tipo de Vehículo</th>
                     <th scope="col">Monto Total Cobrado</th>
