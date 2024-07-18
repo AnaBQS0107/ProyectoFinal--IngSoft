@@ -21,9 +21,41 @@ body {
     color: #000000;
 }
 
-button {
-    display: block;
+.container-HorasExtras .button-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Para que los botones se ajusten si hay varios en una línea */
+}
+
+.start-overtime, .end-overtime, .delete-overtime {
+    display: block; /* Asegura que los botones sean elementos de bloque */
     width: 40%;
+    padding: 10px;
+    margin: 10px;
+    background-color: #9fc131;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, color 0.3s; /* Añade una transición para suavizar el cambio de color */
+}
+
+.start-overtime:disabled, .end-overtime:disabled, .delete-overtime:disabled {
+    background-color: #ddd; /* Color gris claro para los botones deshabilitados */
+    color: #666; /* Color del texto en los botones deshabilitados */
+    cursor: not-allowed; /* Cursor no permitido para botones deshabilitados */
+}
+
+
+
+button:hover {
+    background-color: #bdf227;
+    color: #000000;
+}
+
+.btn-edit-description {
+    display: block;
     padding: 10px;
     margin: 10px 0;
     background-color:#9fc131 ;
@@ -32,11 +64,6 @@ button {
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-}
-
-button:hover {
-    background-color: #bdf227;
-    color: #000000;
 }
 
 input[type="text"] {
