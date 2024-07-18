@@ -24,7 +24,6 @@ if (isset($resultados) && (is_array($resultados) || is_object($resultados))) {
 <br>
     <?php if (!empty($resultados)): ?>
         <table class="table table-bordered">
-            <thead>
                 <tr>
                     <th scope="col">Mes</th>
                     <th scope="col">Monto Total Recaudado</th>

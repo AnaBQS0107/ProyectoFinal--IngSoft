@@ -14,7 +14,7 @@ if (isset($resultados) && (is_array($resultados) || is_object($resultados))) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Historial de Cobros Diarios</title>
     <link rel="icon" type="image/png" href="../img/icono.png">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Estilos/ReporteCobroDiarios.css">
 </head>
 <header>
     <?php include 'Header.php'; ?>
@@ -22,8 +22,8 @@ if (isset($resultados) && (is_array($resultados) || is_object($resultados))) {
 <body>
 <div class="container mt-5">
     <br><br>
-    <h2 class="mb-4">Historial de Cobros Diarios</h2>
-
+    <center> <h2 class="mb-4">Historial de Cobros Diarios</h2><center>
+    <br>
     <?php if (!empty($resultados)): ?>
         <table class="table table-bordered">
             <thead>

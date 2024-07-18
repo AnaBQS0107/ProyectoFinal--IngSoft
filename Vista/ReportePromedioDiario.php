@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Promedio Diario de Vehículos por Estación</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Estilos/ReporteTotalPorMes.css">
     <link rel="icon" type="image/png" href="../img/icono.png">
     <style>
     .table-header {
@@ -22,10 +22,9 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-12">
-                <h1 class="text-center mb-4">Promedio Diario de Vehículos por Estación</h1>
-
+            <center><h1 class="text-center mb-4">Promedio Diario de Vehículos por Estación</h1>
+            <br>
                 <table class="table table-bordered">
-                    <thead class="table-header">
                         <tr>
                             <th>Estación de Peaje</th>
                             <th>Promedio Diario de Vehículos (%)</th>

@@ -16,9 +16,8 @@
         <div class="row">
             <div class="col-12">
                <center> <h1 class="text-center mb-4">Reporte de Cantidad de Vehículos por Hora del Día</h1></center> 
-
+               <br>
                 <table class="table table-bordered">
-                    <thead>
                         <tr>
                             <th>Hora del Día</th>
                             <th>Cantidad de Vehículos</th>
