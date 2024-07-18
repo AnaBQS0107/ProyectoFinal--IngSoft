@@ -162,9 +162,7 @@ require_once '../Controlador/TrabajadoresInfo.php';
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../JS/EmpleadosCRUD.js"></script>
-
-
+    <br><br> <br><br>
+    <?php include 'Footer.php'; ?>
 </body>
-<?php include 'Footer.php'; ?>
-
 </html>
