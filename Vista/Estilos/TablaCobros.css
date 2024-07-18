@@ -13,12 +13,15 @@ body {
     margin: 20px auto;
     padding: 0 15px;
     overflow-x: auto; /* Habilita el scroll horizontal */
+    overflow-y: auto; /* Habilita el desplazamiento vertical */
+    height: calc(100vh - 200px); /* Ajusta la altura según sea necesario */
 }
 
 .table {
     width: 100%;
     background-color: white;
     border-collapse: collapse;
+    border: 1px solid #dee2e6; /* Bordes exteriores de la tabla */
 }
 
 .table thead th {
@@ -26,14 +29,33 @@ body {
     color: white;
     text-align: center;
     padding: 10px;
+    border: 1px solid #dee2e6; /* Bordes entre las celdas del encabezado */
 }
 
 .table tbody tr {
     text-align: center;
 }
 
-.table tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
+.table tbody tr:nth-child(even),
+.table tbody tr:nth-child(odd) {
+    background-color: #ffffff; /* Asegura que todas las filas tengan fondo blanco */
+}
+
+.table th,
+.table td {
+    border: 1px solid #dee2e6; /* Bordes entre las celdas del cuerpo de la tabla */
+    padding: 8px;
+}
+
+.table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #004d40;
+    color: white;
+}
+
+.table td {
+    color: black;
 }
 
 .button-container {
@@ -53,7 +75,7 @@ body {
 }
 
 .btn-edit {
-    background-color: #005B52;
+    background-color: #9fc131;
     color: white;
 }
 
@@ -72,23 +94,6 @@ body {
     margin: 20px auto;
 }
 
-.table th,
-.table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-}
-
-.table th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    background-color: #004d40;
-    color: white;
-}
-
-.table td {
-    color: black;
-}
-
 .actions {
     display: flex;
     justify-content: center;
@@ -99,24 +104,29 @@ body {
     width: auto;
     padding: 10px;
     background-color: #9fc131;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 
-.btn_registrar:hover {
-    background-color: #bdf227;
-}
-
 .btn_asignar {
-    background-color: #004d40;
+    background-color: #9fc131;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     width: auto;
     padding: 10px;
+}
+
+.btn_registrar:hover,
+.btn-edit:hover,
+.btn-success:hover,
+.btn_asignar:hover,
+.search-container button:hover {
+    background-color: #bdf227;
+    color: black;
 }
 
 .search-container {
@@ -126,7 +136,7 @@ body {
 .search-container input[type=text] {
     padding: 15px;
     margin-right: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #ffffff;
     border-radius: 4px;
     box-sizing: border-box;
     width: 300px;
@@ -134,19 +144,9 @@ body {
 
 .search-container button {
     padding: 10px 20px;
-    background-color: #005B52;
+    background-color: #9fc131;
     color: rgb(255, 255, 255);
     border: none;
     border-radius: 4px;
     cursor: pointer;
-}
-
-.search-container button:hover {
-    background-color: #bdf227;
-    color: black;
-}
-
-.table-container {
-    overflow-y: auto; /* Habilita el desplazamiento vertical */
-    height: calc(100vh - 200px); /* Ajusta la altura según sea necesario */
 }
