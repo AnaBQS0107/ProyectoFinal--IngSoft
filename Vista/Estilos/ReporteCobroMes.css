@@ -22,17 +22,20 @@ h2 {
 
 .table {
     width: 100%;
-    margin-bottom: 1rem;
-    color: #212529;
-    background-color: #fff;
+    margin-top: 20px;
     border-collapse: collapse;
 }
 
-.table th,
 .table td {
-    padding: 0.75rem;
-    vertical-align: top;
-    border-top: 1px solid #dee2e6;
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table th {
+    padding: 12px;
+    color: #fff;
+    background-color: #005c53;
 }
 
 .table thead th {
@@ -68,6 +71,7 @@ h2 {
 .btn-primary:hover {
     background-color: #9fc131;
     border-color: #9fc131;
+    color: #000000;
 }
 
 .mt-5 {

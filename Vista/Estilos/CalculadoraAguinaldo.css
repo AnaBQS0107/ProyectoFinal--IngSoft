@@ -59,6 +59,7 @@ ul {
 
 .btn-calcularA:hover, .btn-eliminarA:hover, .btn-GuardarA:hover {
     opacity: 0.8;
+    color: #000;
 }
 
 #resultadoAguinaldo {

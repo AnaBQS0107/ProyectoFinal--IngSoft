@@ -87,6 +87,7 @@ if (isset($_GET['eliminarCobro'])) {
             </div>
         </div>
     </div>
+    <br><br><br>
     <script src="../JS/CobrosCRUD.js">
         
     </script>

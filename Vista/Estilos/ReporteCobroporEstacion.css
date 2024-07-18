@@ -34,6 +34,24 @@ h2 {
     border-top: 1px solid #dee2e6;
 }
 
+.table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+.table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table th {
+    padding: 12px;
+    color: #fff;
+    background-color: #005c53;
+}
+
 .table thead th {
     vertical-align: bottom;
     border-bottom: 2px solid #dee2e6;
@@ -70,4 +88,5 @@ h2 {
 
 .btn-primary:hover {
     background-color: #9fc131;
+    color: #000000;
 }

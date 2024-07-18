@@ -68,6 +68,7 @@ form .btn_continuar {
 form .btn_calcular:hover,
 form .btn_continuar:hover {
     background-color: #bdf227;
+    color: #000000;
 }
 
 

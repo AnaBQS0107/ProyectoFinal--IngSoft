@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de liquidaciones</title>
+    <link rel="icon" type="image/png" href="../img/icono.png">
     <link rel="stylesheet" href="Estilos/Liquidaciones.css">
 </head>
 
@@ -63,17 +64,13 @@
                 </div>
             </div>
 
-           <div class="row mt-3">
+          <div class="row mt-3">
                 <div class="row mt-3">
                     <div class="col-auto">
                         <div class="div_btn">
-                        <button type="submit" class="btn_calcular">Calcular</button>  
+                       <center><button type="submit" class="btn_calcular">Calcular</button>  </center> 
                         </div>
                     </div>
-                    <div class="col-auto">
-                        <div class="div_btn">
-                        <button type="submit" class="btn_continuar">Crear reporte</button>
-                        </div>
                 </div>
             </div>
         </form>

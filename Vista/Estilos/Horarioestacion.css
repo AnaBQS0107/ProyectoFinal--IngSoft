@@ -48,11 +48,18 @@ h1 {
     border-collapse: collapse;
 }
 
-.table th, .table td {
+.table td {
     padding: 12px;
     border: 1px solid #ddd;
     text-align: left;
 }
+
+table th {
+    padding: 12px;
+    color: #fff;
+    background-color: #005c53;
+}
+
 
 .alert-warning {
     background-color: #fff3cd;
