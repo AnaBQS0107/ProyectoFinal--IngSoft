@@ -186,6 +186,7 @@ $aguinaldoExistente = $stmt->fetchColumn() > 0;
             <form action="../Controlador/CalculoAguinaldo.php" method="POST">
                 <div class="col-xs-12">
                     <h2>Calculadora de Aguinaldo</h2>
+                    <br>
                     <div class="form-group">
                         <label for="diciembre">Diciembre (2023):</label>
                         <input name="salarios[]" type="text" id="diciembre" class="form-control numeroConFormato">

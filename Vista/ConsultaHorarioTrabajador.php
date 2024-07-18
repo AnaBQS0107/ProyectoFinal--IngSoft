@@ -23,15 +23,16 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Estilos/HorarioTrabajador.css">
     <title>Horarios de Trabajo de los Empleados del Peaje</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
 <header>
         <?php include 'header.php'; ?>
     </header>
+    <br><br>
 <div class="container mt-5">
-    <h2>Horarios de Trabajo de los Empleados del Peaje</h2>
+    <center><h1>Horarios de Trabajo de los Empleados del Peaje</h1></center>
 
     <?php if (!empty($empleadosHorarios)): ?>
         <table class="table">
@@ -67,7 +68,6 @@ try {
     <?php endif; ?>
 </div>
 <br><br><br>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <footer>
     <?php include 'Footer.php'; ?>
     </footer>

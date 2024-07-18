@@ -1,4 +1,4 @@
-/* Archivo: Estilos/tarifasvigentes.css */
+/* Archivo: Estilos/CobroshoraPordia.css */
 
 body {
     font-family: Arial, sans-serif;
@@ -6,6 +6,7 @@ body {
     margin: 0;
     padding: 0;
 }
+
 
 .container {
     max-width: 800px;
@@ -17,11 +18,12 @@ body {
 h1 {
     color: #000000;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .table {
     width: 100%;
-    margin-top: 20px;
+    max-width: 100%;
     border-collapse: collapse;
 }
 
@@ -32,10 +34,13 @@ h1 {
 }
 
 .table th {
-    background-color: #ffffff;
-    color: rgb(0, 0, 0);
+    background-color: white;
+    color: black;
 }
 
+.table tr:nth-child(even) {
+    background-color: #ffffff;
+}
 
 .alert-warning {
     background-color: #fff3cd;
@@ -44,5 +49,7 @@ h1 {
     border: 1px solid #ffeeba;
     border-radius: 4px;
     margin-top: 20px;
+    text-align: center;
 }
+
 

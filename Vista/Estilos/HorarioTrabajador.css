@@ -1,4 +1,4 @@
-/* Archivo: Estilos/tarifasvigentes.css */
+/* Archivo: Estilos/horariosEmpleados.css */
 
 body {
     font-family: Arial, sans-serif;
@@ -6,6 +6,7 @@ body {
     margin: 0;
     padding: 0;
 }
+
 
 .container {
     max-width: 800px;
@@ -15,7 +16,7 @@ body {
 }
 
 h1 {
-    color: #000000;
+    color: #333;
     margin-bottom: 20px;
 }
 
@@ -32,9 +33,10 @@ h1 {
 }
 
 .table th {
-    background-color: #ffffff;
-    color: rgb(0, 0, 0);
+    background-color: white;
+    color: black;
 }
+
 
 
 .alert-warning {

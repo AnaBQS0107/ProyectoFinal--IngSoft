@@ -33,7 +33,7 @@ try {
     <br><br>
 <div class="container mt-5">
    <center> <h1>Histórico de Cobros por Estación de Peaje</h1></center>
-
+<br>
     <?php if (!empty($cobros)): ?>
         <table class="table">
             <thead>

@@ -30,9 +30,7 @@ table th {
     color: rgb(0, 0, 0);
 }
 
-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
+
 
 table tr:hover {
     background-color: #f1f1f1;

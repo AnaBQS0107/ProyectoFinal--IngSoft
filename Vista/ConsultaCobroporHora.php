@@ -23,7 +23,7 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cobros por Hora del Día</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Estilos/CobroshoraPordia.css">
     <link rel="icon" type="image/png" href="../img/icono.png">
 </head>
 <body>
@@ -31,8 +31,9 @@ try {
     <?php include 'Header.php'; ?>
 
 </header>
-<div class="container mt-5">
-    <h2>Cobros por Hora del Día</h2>
+<br>
+<center><div class="container mt-5"></center>
+    <h1>Cobros por Hora del Día</h1>
 
     <?php if (!empty($cobrosPorHora)): ?>
         <table class="table">
@@ -66,6 +67,5 @@ try {
 <footer>
     <?php include 'Footer.php'; ?>
     </footer>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

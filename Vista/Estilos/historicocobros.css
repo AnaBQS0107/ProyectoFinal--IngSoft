@@ -37,9 +37,7 @@ h1 {
     color: black;
 }
 
-.table tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
+
 
 .alert-warning {
     background-color: #fff3cd;
