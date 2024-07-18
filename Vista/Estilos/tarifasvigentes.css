@@ -1,0 +1,51 @@
+/* Archivo: Estilos/tarifasvigentes.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+h1 {
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+.table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.table th {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+}
+
+.table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.alert-warning {
+    background-color: #fff3cd;
+    color: #cd573a;
+    padding: 10px;
+    border: 1px solid #ffeeba;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+

@@ -24,14 +24,15 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Histórico de Cobros por Estación de Peaje</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Estilos/historicocobros.css">
 </head>
 <body>
 <header>
         <?php include 'header.php'; ?>
     </header>
+    <br><br>
 <div class="container mt-5">
-    <h2>Histórico de Cobros por Estación de Peaje</h2>
+   <center> <h1>Histórico de Cobros por Estación de Peaje</h1></center>
 
     <?php if (!empty($cobros)): ?>
         <table class="table">
@@ -65,7 +66,6 @@ try {
     <?php endif; ?>
 </div>
 
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <footer>
     <?php include 'Footer.php'; ?>
     </footer>
