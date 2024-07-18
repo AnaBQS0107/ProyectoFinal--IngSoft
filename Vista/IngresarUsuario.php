@@ -57,8 +57,8 @@ require_once '../Controlador/TrabajadoresInfo.php';
         <?php include 'header.php'; ?>
     </header>
 
-    <div class="container">
-        <form id="registroForm" method="post" class="row g-3 needs-validation" novalidate style="margin-left: 250px;">
+    <center><div class="container">
+        <form id="registroForm" method="post" class="row g-3 needs-validation">
             <div class="col-md-3 position-relative">
                 <label for="nombre" class="form-label">Nombre</label>
                 <input type="text" class="input_registro form-control" id="nombre" name="Nombre" required
@@ -167,7 +167,7 @@ require_once '../Controlador/TrabajadoresInfo.php';
    
             <br><br>
         </form>
-    </div>
+    </div></center>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../JS/EmpleadosCRUD.js"></script>
