@@ -24,7 +24,7 @@ if ($resultadoTotal > 0) {
     <h2 class="mb-4">Monto Total Recaudado por los Cinco Puestos de Peaje</h2>
 <br>
     <div class="alert alert-info" role="alert">
-        Monto total recaudado: $ <?php echo number_format($resultadoTotal, 2); ?>
+        Monto total recaudado: ₡ <?php echo number_format($resultadoTotal, 2); ?>
     </div>
 <br><br>
     <center><form action="../Reportes/pdfCobroGeneral.php" method="post" target="_blank">

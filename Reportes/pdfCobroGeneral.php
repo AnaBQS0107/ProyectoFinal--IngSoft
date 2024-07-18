@@ -18,7 +18,7 @@ if (isset($resultadoTotal) && is_numeric($resultadoTotal)) {
     // Mostrar el monto total
     $pdf->Image('../img/icono.png', 10, 10, 15);
     $pdf->SetFont('Arial', '', 14);
-    $pdf->Cell(0, 10, 'Monto total: $ ' . number_format($resultadoTotal, 2), 0, 1, 'C');
+    $pdf->Cell(0, 10, 'Monto total:  ' . number_format($resultadoTotal, 2), 0, 1, 'C');
 
     // Nombre del archivo para descarga
     $fileName = 'reporte_monto_total_cinco_puestos.pdf';
