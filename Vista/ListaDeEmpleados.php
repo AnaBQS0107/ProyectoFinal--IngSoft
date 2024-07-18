@@ -29,6 +29,7 @@ $trabajadoresTabla = new TrabajadoresTabla();
     <header>
         <?php include 'header.php'; ?>
     </header>
+    <br>
     <div class="header-space"></div>
     <center>
         <h1>Lista de Empleados</h1>
@@ -91,9 +92,11 @@ $trabajadoresTabla = new TrabajadoresTabla();
                 <?php endif; ?>
             </tbody>
         </table>
-        <div class="footer-space"></div>
+        <br>
+
+       <div class="footer-space"></div>
         <div class="div_btn">
-            <br><br>
+            
             <center>
                 <button type="button" class="btn_asignar" onclick="location.href='../Vista/IngresarUsuario.php'">Agregar un nuevo usuario</button>
             </center>
