@@ -37,7 +37,6 @@ if (session_status() == PHP_SESSION_NONE) {
                     <li><a href="../Vista/IngresarUsuario.php">Ingresar Usuario</a></li>
                     <li><a href="../Vista/CobrosPeaje.php">Gestionar Cobros</a></li>
                         <li><a href="../Vista/CalcularVacaciones.php">Calcular Vacaciones</a></li>
-                        <li><a href="../Vista/AprobacionHorasExtras.php">Aprobar Horas Extras</a></li>
                         <li><a href="../Vista/HorasExtras.php">Calcular Extras</a></li>
                         <li><a href="../Vista/CalculadoraAguinaldo.php">Calcular Aguinaldos</a></li>
                         <li><a href="#">Calcular Incapacidades</a></li>
@@ -86,7 +85,7 @@ if (session_status() == PHP_SESSION_NONE) {
                         <li><a href="../Vista/TablaCobros.php">Tabla Cobros de Peaje</a></li>
                         <li><a href="../Vista/TablaRoles.php">Tabla Roles</a></li>
                         <li><a href="../Vista/TablaMontoVehiculos.php">Tabla Montos</a></li>
-                        <li><a href="#">Tabla de pagos por extra automaticos</a></li>
+                        <li><a href="../Vista/AprobacionHorasExtras.php">Tabla de pagos por extra automaticos</a></li>
                         <li><a href="#">Tabla de aprobación de extras</a></li>
                         <li><a href="#">Tabla de pagos de incapacidades</a></li>
                         <li><a href="#">Tabla de pagos de aguinaldo autómatico</a></li>
