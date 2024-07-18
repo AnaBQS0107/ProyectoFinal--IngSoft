@@ -32,9 +32,10 @@ h1 {
     text-align: left;
 }
 
-.table th {
-    background-color: white;
-    color: black;
+table th {
+    padding: 12px;
+    color: #fff;
+    background-color: #005c53;
 }
 
 

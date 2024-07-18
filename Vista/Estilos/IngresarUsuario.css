@@ -6,17 +6,22 @@ body {
 }
 
 .container {
-    max-width: 90%;
-    margin: 100px auto 0;
+    max-width: 80%;
     padding: 20px;
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center;     /* Centra el contenido verticalmente */
+    min-height: calc(100vh - 100px); /* Asegura que el contenedor tenga una altura mínima */
 }
 
 form {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 10px;
+    align-items: center;
+    width: 100%; /* Asegura que el formulario ocupe todo el ancho disponible dentro del contenedor */
+    max-width: 800px; /* Ajusta el ancho máximo del formulario */
 }
-
 form label {
     font-weight: bold;
 }
@@ -42,7 +47,7 @@ form label {
     padding: 10px;
     margin-bottom: 15px;
     border: none;
-    border-bottom: 2px solid #9fc13148;
+    border-bottom: 2px solid #bdf227;
     background-color: transparent; /* Hace que el fondo sea transparente */
     transition: border-bottom-color 0.3s; /* Transición suave para el color del borde */
     box-sizing: border-box;
@@ -53,7 +58,7 @@ form label {
 .input_registro[type="password"]:focus,
 .input_registro[type="number"]:focus,
 .input_registro[type="email"]:focus {
-    border-bottom-color: #005c53bd; /* Cambia el color del borde inferior cuando se selecciona */
+    border-bottom-color: #bdf227; /* Cambia el color del borde inferior cuando se selecciona */
     background-color: #f4f4f4; /* Cambia el color de fondo cuando se selecciona */
     outline: none; /* Eliminar el contorno predeterminado en algunos navegadores */
 }
@@ -84,7 +89,7 @@ form label {
 
 /* Estilos para resaltar el borde cuando está enfocado */
 .select_registro:focus {
-    border-color: #005c53bd;
+    border-color: #bdf227;
     box-shadow: 0 0 5px rgba(0, 92, 83, 0.3);
     outline: none;
 }

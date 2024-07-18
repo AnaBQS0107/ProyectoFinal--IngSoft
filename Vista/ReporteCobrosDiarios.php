@@ -40,7 +40,7 @@ if (isset($resultados) && (is_array($resultados) || is_object($resultados))) {
                         <td><?php echo htmlspecialchars($row['Fecha']); ?></td>
                         <td><?php echo htmlspecialchars($row['Estacion']); ?></td>
                         <td><?php echo htmlspecialchars($row['TipoVehiculo']); ?></td>
-                        <td>$ <?php echo number_format($row['MontoCobrado'], 2); ?></td>
+                        <td>₡ <?php echo number_format($row['MontoCobrado'], 2); ?></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

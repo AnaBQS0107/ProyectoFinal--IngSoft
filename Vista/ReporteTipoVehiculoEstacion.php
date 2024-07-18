@@ -5,11 +5,7 @@
     <title>Generar Reporte de Vehículos por Tipo</title>
     <link rel="stylesheet" href="Estilos/ReporteTipoVehiculoEstacion.css">
     <link rel="icon" type="image/png" href="../img/icono.png">
-    <style>
-        .table-header {
-            background-color: #f2f2f2;
-        }
-    </style>
+
 </head>
 <body>
 
@@ -20,8 +16,9 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-12">
+                <br><br>
             <center> <h1 class="mb-4">Generar Reporte de Vehículos por Tipo</h1>
-
+            <br><br>
                 <table class="table table-bordered">
                         <tr>
                             <th>Estación de Peaje</th>

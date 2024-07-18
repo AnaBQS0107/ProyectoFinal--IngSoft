@@ -32,7 +32,7 @@ if (isset($resultados) && (is_array($resultados) || is_object($resultados))) {
                 <?php foreach ($resultados as $row): ?>
                 <tr>
                     <td><?php echo htmlspecialchars($row['TipoVehiculo']); ?></td>
-                    <td>$ <?php echo number_format($row['MontoTotalCobrado'], 2); ?></td>
+                    <td>₡ <?php echo number_format($row['MontoTotalCobrado'], 2); ?></td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>

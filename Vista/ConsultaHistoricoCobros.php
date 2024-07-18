@@ -25,6 +25,7 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Histórico de Cobros por Estación de Peaje</title>
     <link rel="stylesheet" href="Estilos/historicocobros.css">
+    <link rel="icon" type="image/png" href="../img/icono.png">
 </head>
 <body>
 <header>
@@ -65,6 +66,7 @@ try {
         </div>
     <?php endif; ?>
 </div>
+<br><br><br>
 
 <footer>
     <?php include 'Footer.php'; ?>

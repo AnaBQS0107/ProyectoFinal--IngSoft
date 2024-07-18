@@ -1,44 +1,55 @@
+/* Estilos/ReporteCobradoPorEstacion.css */
+
 body {
     font-family: Arial, sans-serif;
-    background-color: white;
     margin: 0;
     padding: 0;
+    background-color: white;
 }
 
-
-
 .container {
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 60%;
+    margin: auto;
     padding: 20px;
-    background-color: #ffffff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
 
 h2 {
-    color: #343a40;
+    text-align: center;
+    color: #000000;
 }
 
+
+.table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+.table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table th {
+    padding: 12px;
+    color: #fff;
+    background-color: #005c53;
+}
 .table {
     width: 100%;
     margin-bottom: 1rem;
     color: #212529;
+    background-color: #fff;
     border-collapse: collapse;
 }
 
-.table th, .table td {
+.table th,
+.table td {
     padding: 0.75rem;
     vertical-align: top;
     border-top: 1px solid #dee2e6;
-}
-
-.table-bordered {
-    border: 1px solid #dee2e6;
-}
-
-.table-bordered th, .table-bordered td {
-    border: 1px solid #dee2e6;
 }
 
 .table thead th {
@@ -46,25 +57,36 @@ h2 {
     border-bottom: 2px solid #dee2e6;
 }
 
-.alert-warning {
-    color: #cd573a;
-    background-color: #fff3cd;
-    border-color: #ffeeba;
-    text-align: center;
+.table tbody + tbody {
+    border-top: 2px solid #dee2e6;
+}
+
+.table-bordered {
+    border: 1px solid #dee2e6;
+}
+
+.table-bordered th,
+.table-bordered td {
+    border: 1px solid #dee2e6;
+}
+
+.table-bordered thead th,
+.table-bordered thead td {
+    border-bottom-width: 2px;
 }
 
 .btn-primary {
-    background-color: #9fc131;
-    border: none;
-    color: #ffffff;
-    border-radius: 4px;
+    background-color:#9fc131 ;
+    color: white;
     padding: 10px 20px;
-    font-size: 1em;
+    font-size: 16px; 
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-
 }
 
 .btn-primary:hover {
-    background-color: #bdf227;
+    background-color: #9fc131;
+    color: #000000;
 }

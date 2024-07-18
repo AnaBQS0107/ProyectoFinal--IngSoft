@@ -43,6 +43,7 @@ button {
 
 button:hover {
     background-color: #bdf227;
+    color: #000;
 }
 
 table {

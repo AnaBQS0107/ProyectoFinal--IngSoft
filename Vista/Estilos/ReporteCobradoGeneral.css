@@ -16,6 +16,7 @@ body {
     border-radius: 8px;
 }
 
+
 h2 {
     color: #343a40;
     text-align: center;
@@ -39,6 +40,7 @@ h2 {
 
 .btn-primary:hover {
     background-color: #bdf227;
+    color: #000000;
 }
 
 

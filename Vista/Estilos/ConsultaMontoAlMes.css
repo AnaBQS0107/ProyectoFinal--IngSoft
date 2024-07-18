@@ -27,8 +27,10 @@ table th, table td {
 }
 
 table th {
-    color: rgb(0, 0, 0);
+    color: #fff;
+    background-color: #005c53;
 }
+
 
 
 

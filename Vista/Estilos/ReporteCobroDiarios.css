@@ -21,6 +21,24 @@ h2 {
 
 .table {
     width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+.table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table th {
+    padding: 12px;
+    color: #fff;
+    background-color: #005c53;
+}
+
+.table {
+    width: 100%;
     margin-bottom: 1rem;
     color: #212529;
     border-collapse: collapse;
@@ -66,4 +84,5 @@ h2 {
 
 .btn-primary:hover {
     background-color: #bdf227;
+    color: #000000;
 }

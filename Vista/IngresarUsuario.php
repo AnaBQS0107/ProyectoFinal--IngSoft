@@ -32,7 +32,17 @@ require_once '../Controlador/TrabajadoresInfo.php';
         function validarFormulario() {
             var form = document.getElementById('registroForm');
             if (form.checkValidity()) {
-                form.submit();
+                // Aquí puedes añadir cualquier lógica adicional antes de enviar el formulario
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Registro Exitoso!',
+                    text: 'El empleado se ha registrado correctamente.',
+                    showConfirmButton: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                });
             } else {
                 event.preventDefault();
                 event.stopPropagation();
@@ -47,8 +57,8 @@ require_once '../Controlador/TrabajadoresInfo.php';
         <?php include 'header.php'; ?>
     </header>
 
-    <div class="container">
-        <form id="registroForm" method="post" class="row g-3 needs-validation" novalidate style="margin-left: 250px;">
+    <center><div class="container">
+        <form id="registroForm" method="post" class="row g-3 needs-validation">
             <div class="col-md-3 position-relative">
                 <label for="nombre" class="form-label">Nombre</label>
                 <input type="text" class="input_registro form-control" id="nombre" name="Nombre" required
@@ -133,6 +143,7 @@ require_once '../Controlador/TrabajadoresInfo.php';
                     <?php if ($resultHorarios && count($resultHorarios) > 0) : ?>
                     <?php foreach ($resultHorarios as $row) : ?>
                     <?php 
+                // Verificar si $empleado está definido y tiene 'Horario_ID'
                 $selected = '';
                 if (isset($empleado) && isset($empleado['Horario_ID'])) {
                     $selected = ($row['IdHorario'] == $empleado['Horario_ID']) ? 'selected' : '';
@@ -148,21 +159,20 @@ require_once '../Controlador/TrabajadoresInfo.php';
                 </select>
             </div>
 
- 
-             
-   
-            <br><br>    <br><br>  
-            <br>   
-        </form>
-        <div class="invalid-tooltip"></div>
+            <div class="invalid-tooltip"></div>
           <center>   <div class="div_btn">
                     <button type="submit" class="btn_registrar" onclick="validarFormulario()">Registrar un nuevo usuario</button>
                 </div></center>
-    </div>
+             
+   
+            <br><br>
+        </form>
+    </div></center>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../JS/EmpleadosCRUD.js"></script>
-    <br><br> <br><br>
+
     <?php include 'Footer.php'; ?>
 </body>
+
 </html>

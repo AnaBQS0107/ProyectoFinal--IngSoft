@@ -18,10 +18,12 @@
 
     <div class="container-HorasExtras">
         <h1>Contador de horas extras</h1>
-       <center> <button id="start-overtime">Inicio Horas Extra</button></center> 
-       <center><button id="end-overtime" disabled>Fin Horas Extra</button></center>
-        <input type="text" id="overtime-description" placeholder="Descripción de las horas extras" disabled>
-        <center><button id="delete-overtime" disabled>Eliminar Horas Extra</button></center>
+        <div class="button-container">
+            <button id="start-overtime" class="start-overtime">Inicio Horas Extra</button> 
+            <button id="end-overtime" class="end-overtime" disabled>Fin Horas Extra</button>
+            <input type="text" id="overtime-description" placeholder="Descripción de las horas extras" disabled>
+            <button id="delete-overtime" class="delete-overtime" disabled>Eliminar Horas Extra</button>
+        </div>
         <h2>Total Mensual: <span id="monthly-total">0</span> colones</h2>
         <table>
             <thead>
@@ -179,7 +181,7 @@
                             <td>${entry.Hora_Salida ? entry.Hora_Salida.split(' ')[1] : '-'}</td>
                             <td>${entry.Monto ? entry.Monto : '-'}</td>
                             <td class="description-cell">${entry.Descripcion ? entry.Descripcion : '-'}</td>
-                            <td><button class="edit-description">Editar Descripción</button></td>
+                            <td><button class="btn-edit-description">Editar Descripción</button></td>
                         </tr>
                     `);
                 });
