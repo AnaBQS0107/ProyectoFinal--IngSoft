@@ -54,10 +54,11 @@ button {
     border: none;
     cursor: pointer;
     margin-top: 10px;
+    border-radius: 4px;
 }
 
 button:hover {
-    background-color: #9fc131;
+    background-color: #bdf227;
 }
 
 select, input[type="text"] {

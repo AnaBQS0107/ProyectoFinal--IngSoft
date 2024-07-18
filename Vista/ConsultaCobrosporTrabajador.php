@@ -82,7 +82,7 @@
         echo "No se pudo establecer la conexión.";
     }
     ?>
-
+<br><br>
 <footer>
     <?php include 'Footer.php'; ?>
     </footer>
