@@ -14,10 +14,8 @@ h1 {
 form {
     max-width: 600px;
     margin: 0 auto;
-    background: #005c53;
     padding: 20px;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     color: white;
 }
@@ -26,6 +24,7 @@ label {
     display: block;
     margin-bottom: 10px;
     font-weight: bold;
+    color: black;
 }
 
 input[type="text"] {
@@ -38,12 +37,12 @@ input[type="text"] {
 
 button {
     display: inline-block;
-    width: 100%;
+    width: 40%;
     padding: 10px;
     background-color: #9fc131;
     color: rgb(255, 255, 255);
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
 }
