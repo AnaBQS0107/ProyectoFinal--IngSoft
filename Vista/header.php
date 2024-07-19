@@ -3,9 +3,7 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
     $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
 }
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -30,10 +28,9 @@ if (session_status() == PHP_SESSION_NONE) {
             <li><a href="#">Acciones<i class="fas fa-caret-down"></i></a>
                 <div class="dropdown-menu">
                     <ul>
-                    <!--<li><a class="nav-link" href="#" role="button"><?php //echo htmlspecialchars($user['Nombre']); ?> (<?php //echo htmlspecialchars($user['Nombre_Rol']); ?>)</a></li>-->  
                         <li><a href="../Vista/IngresarUsuario.php">Ingresar Empleado</a></li>
                         <li><a href="../Vista/CobrosPeaje.php">Gestionar Cobros</a></li>
-                        <li><a href="../Vista/CalcularVacaciones.php">Calcular Vacaciones</a></li> 
+                        <li><a href="../Vista/CalcularVacaciones.php">Calcular Vacaciones</a></li>
                         <li><a href="../Vista/HorasExtras.php">Calcular Extras</a></li>
                         <li><a href="../Vista/CalculadoraAguinaldo.php">Calcular Aguinaldos</a></li>
                         <li><a href="#">Calcular Incapacidades</a></li>
@@ -54,8 +51,6 @@ if (session_status() == PHP_SESSION_NONE) {
                         <li><a href="../Vista/ReporteCobrosDiarios.php">Historial cobros diarios</a></li>
                         <li><a href="../Vista/ReporteTipoVehiculoEstacion.php">Tipo de vehiculo por estación</a></li>
                         <li><a href="#">Control de pago a trabajadores</a></li>
-
-
                     </ul>
                 </div>
             </li>
@@ -72,7 +67,6 @@ if (session_status() == PHP_SESSION_NONE) {
                         <li><a href="../Vista/ConsultaHorarioTrabajador.php">Horarios de trabajo de los trabajadores del peaje</a></li>
                         <li><a href="../Vista/ConsultaCobroporHora.php">Cobros por hora del dia</a></li>
                         <li><a href="../Vista/ConsultaVehiculosLivianos.php">Vehiculos Livianos que utilizaron el peaje</a></li>
-
                     </ul>
                 </div>
             </li>
@@ -90,13 +84,21 @@ if (session_status() == PHP_SESSION_NONE) {
                         <li><a href="#">Tabla de pago de salarios</a></li>
                         <li><a href="#">Tabla de pago de liquidaciones</a></li>
                     </ul>
-
                 </div>
-
             </li>
-            <li><a href="../Controlador/Login.php?action=logout"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+            <li class="profile-menu">
+                <a href="#" class="user-profile">
+                    <img src="../img/FotoPerfil.jpg" alt="User Image">
+                    <span class="fas fa-caret-down"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                    <li><a href="Profile">Perfil</a></li>
+                    <li><a href="../Controlador/Login.php?action=logout">  Cerrar sesión</a></li>
+                </ul>
+            </li>
         </ul>
     </div>
+
 </body>
 
 </html>

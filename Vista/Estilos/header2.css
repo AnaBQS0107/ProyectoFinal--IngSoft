@@ -15,7 +15,40 @@
     font-family: sans-serif;
    
   }
-  
+
+.profile-menu {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.profile-menu a {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.profile-menu img {
+  border-radius: 50%;
+  margin-right: 10px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.profile-menu .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.profile-menu:hover .dropdown-menu {
+  display: block;
+}
   .logo {
     color: var(--color-white);
     font-size: 30px;
