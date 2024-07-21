@@ -35,19 +35,5 @@
 
             </form>
 
-<?php
-session_start();
-if (isset($_SESSION['error'])) {
-    $error = $_SESSION['error'];
-    unset($_SESSION['error']);
-    echo "<script>
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: '$error',
-        });
-    </script>";
-}
-?>
 </body>
 </html>
