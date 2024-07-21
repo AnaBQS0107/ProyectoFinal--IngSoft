@@ -1,92 +1,72 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
+session_start();
+require_once '../Modelo/Validar_Credenciales.php'; // Asegúrate de que la ruta sea correcta
 
-require_once '../Modelo/Validar_Credenciales.php';
-
-class AuthController {
+class LoginController {
     private $validarCredenciales;
 
     public function __construct() {
         $this->validarCredenciales = new ValidarCredenciales();
     }
 
-    public function login() {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['Persona_Cedula'], $_POST['contrasena'])) {
-            $Persona_Cedula = $_POST['Persona_Cedula'];
-            $contrasena = $_POST['contrasena'];
-    
-            $user = $this->validarCredenciales->login($Persona_Cedula, $contrasena);
-    
-            if ($user) {
-                // Usuario encontrado
-                if ($contrasena === '1234') {
-                    // Redirigir a la página de cambio de contraseña
-                    $_SESSION['user'] = [
-                        'Nombre' => $user['Nombre'],
-                        'Nombre_Rol' => $user['Nombre_Rol'],
-                        'Persona_Cedula' => $user['Persona_Cedula']
-                    ];
-                    header("Location: ../Vista/cambiar_contrasena.php");
+    public function login($Persona_Cedula, $contrasena) {
+        // Primero, obtenemos los datos del usuario usando la cédula
+        $user = $this->validarCredenciales->login($Persona_Cedula);
+
+        if ($user) {
+            // Verificamos la contraseña
+            $hashedPassword = $this->validarCredenciales->getHashedPassword($Persona_Cedula);
+            
+            // Logs para depuración
+            error_log("Contraseña proporcionada: " . $contrasena);
+            error_log("Contraseña hasheada: " . $hashedPassword);
+
+            // Verificar si la contraseña está hasheada o no
+            if (strpos($hashedPassword, '$2y$') === 0) {  // Indica que es un hash de bcrypt
+                if (password_verify($contrasena, $hashedPassword)) {
+                    $_SESSION['Persona_Cedula'] = $user['Persona_Cedula'];
+                    $_SESSION['Nombre'] = $user['Nombre'];
+                    $_SESSION['Nombre_Rol'] = $user['Nombre_Rol'];
+
+                    header("Location: ../vista/Inicio.php");
                     exit();
                 } else {
-                    // Contraseña válida, iniciar sesión normalmente
-                    $_SESSION['user'] = [
-                        'Nombre' => $user['Nombre'],
-                        'Nombre_Rol' => $user['Nombre_Rol'],
-                        'Persona_Cedula' => $user['Persona_Cedula']
-                    ];
-                    header("Location: ../Vista/Inicio.php");
+                    $_SESSION['error'] = "La contraseña es incorrecta.";
+                    header("Location: ../vista/index.php");
                     exit();
                 }
-            } else {
-                // Contraseña incorrecta o usuario no encontrado
-                $_SESSION['error'] = "Credenciales inválidas. Acceso denegado.";
-                header("Location: ../Vista/Index.php");
-                exit();
+            } else {  // Contraseña no hasheada
+                if ($contrasena === $hashedPassword) {
+                    $_SESSION['Persona_Cedula'] = $user['Persona_Cedula'];
+                    $_SESSION['Nombre'] = $user['Nombre'];
+                    $_SESSION['Nombre_Rol'] = $user['Nombre_Rol'];
+
+                    header("Location: ../vista/Inicio.php");
+                    exit();
+                } else {
+                    $_SESSION['error'] = "La contraseña es incorrecta.";
+                    header("Location: ../vista/index.php");
+                    exit();
+                }
             }
         } else {
-            $_SESSION['error'] = "Error: No se recibieron los datos del formulario.";
-            header("Location: ../Vista/Index.php");
+            $_SESSION['error'] = "El usuario no existe.";
+            header("Location: ../vista/index.php");
             exit();
-        }
-    }
-
-    public function logout() {
-        session_unset();
-        session_destroy();
-        header("Location: ../Vista/Index.php");
-        exit();
-    }
-
-    public function checkSession() {
-        if (isset($_SESSION['user'])) {
-            $user = $_SESSION['user'];
-
-            echo "Usuario: " . htmlspecialchars($user['Nombre']) . "<br>";
-            echo "Cédula: " . htmlspecialchars($user['Persona_Cedula']) . "<br>";
-            echo "Rol: " . htmlspecialchars($user['Nombre_Rol']) . "<br>";
-        } else {
-            echo "No hay usuario conectado.";
         }
     }
 }
 
-if (isset($_GET['action'])) {
-    $action = $_GET['action'];
-    $authController = new AuthController();
+// Verificamos si se envió el formulario de login
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
+    $Persona_Cedula = $_POST['Persona_Cedula'];
+    $contrasena = $_POST['contrasena'];
 
-    if ($action == 'login') {
-        $authController->login();
-    } elseif ($action == 'logout') {
-        $authController->logout();
-    } elseif ($action == 'checkSession') {
-        $authController->checkSession();
-    } else {
-        echo "Acción no válida.";
-    }
+    $loginController = new LoginController();
+    $loginController->login($Persona_Cedula, $contrasena);
 } else {
-    echo "No se recibió ninguna acción.";
+    // Redirigir si el acceso no es por POST
+    header("Location: ../vista/login.php");
+    exit();
 }
 ?>
