@@ -1,14 +1,14 @@
 document.querySelector('footer').innerHTML += 
-`<div class="wrapper">
+`<div class="wrapper-footer">
     <p>Pass <span class="designer">Wize</span></p>
-    <div class="container">
+    <div class="container-footer">
         <h3 id="f-navegate">Navegar</h3>
         <ul>
-            <li><a id="f-home" href="#">Inicio</a></li>
+            <li><a id="f-home" href="/ProyectoFinal--IngSoft/Vista/Inicio.php">Inicio</a></li>
             <li><a id="f-about-us" href="#">Nosotros</a></li> 
         </ul>
     </div>
-    <div class="container">
+    <div class="container-footer">
         <h3 id="f-contact">Contacto</h3>
         <ul>
             <li><a target="_blanck" href="mailto:info@passwize.com">info@passwize.com</a></li>

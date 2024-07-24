@@ -18,7 +18,7 @@ if (isset($resultados) && (is_array($resultados) || is_object($resultados))) {
     <?php include 'Header.php'; ?>
 </header>
 </head>
-<br><br><br>
+
 <body>
 <div class="container mt-5">
    <center><h2 class="mb-4">Monto Total Recaudado por Mes</h2></center> 

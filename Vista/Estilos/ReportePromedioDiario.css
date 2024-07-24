@@ -10,6 +10,8 @@ body {
 .container {
     max-width: 800px;
     margin: 0 auto;
+    margin-top: 75px;
+    margin-bottom: 251px;
     padding: 20px;
     background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -25,6 +27,12 @@ h2 {
     margin-bottom: 1rem;
     color: #212529;
     border-collapse: collapse;
+}
+
+table th {
+    padding: 12px;
+    color: #fff;
+    background-color: #005c53;
 }
 
 .table th, .table td {

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Promedio Diario de Vehículos por Estación</title>
-    <link rel="stylesheet" href="Estilos/ReporteTotalPorMes.css">
+    <link rel="stylesheet" href="Estilos/ReportePromedioDiario.css">
     <link rel="icon" type="image/png" href="../img/icono.png">
     <link rel="stylesheet" href="Estilos/Footer2.css">
     <style>
@@ -85,7 +85,6 @@ ORDER BY vehiculos_por_dia.EstacionPeaje";
         </div>
     </div>
 
-<br><br><br><br><br>
 <footer id="footer"></footer>
 <script src="../JS/footer.js"></script>
 

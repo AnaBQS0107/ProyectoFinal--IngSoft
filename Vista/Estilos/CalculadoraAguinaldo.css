@@ -6,7 +6,7 @@ body {
     padding: 0;
 }
 
-.container {
+.container-CalculadoraAguinaldo {
     max-width: 31%;
     margin: 20px auto;
     padding: 20px;
@@ -20,8 +20,10 @@ h1, h2, h4 {
     color: #000; 
 }
 
-ul {
+.col-xs-12-SalarioEspecieContainer ul {
     list-style-type: none; 
+    margin: 15px;
+    padding: 10px;
 }
 
 .form-group {

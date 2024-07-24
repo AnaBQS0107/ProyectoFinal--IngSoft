@@ -9,7 +9,7 @@ body {
 
 .container-HorasExtras {
     max-width: 800px;
-    margin: 2em auto;
+    margin: 65px auto;
     padding: 2em;
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -50,7 +50,7 @@ body {
 
 
 button:hover {
-    background-color: #bdf227;
+    background-color: #bdf227; 
     color: #000000;
 }
 

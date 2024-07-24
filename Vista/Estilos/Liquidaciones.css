@@ -15,7 +15,9 @@ h1 {
 /* Container */
 .container {
     max-width: 900px;
-    margin: 20px auto;
+    margin: 0 auto;
+    margin-top: 70px;
+    margin-bottom: 150px;
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

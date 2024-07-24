@@ -182,7 +182,7 @@ $aguinaldoExistente = $stmt->fetchColumn() > 0;
     <header>
         <?php include 'header.php'; ?>
     </header>
-    <div class="container">
+    <div class="container-CalculadoraAguinaldo">
         <div class="row">
             <form action="../Controlador/CalculoAguinaldo.php" method="POST">
                 <div class="col-xs-12">
@@ -238,7 +238,7 @@ $aguinaldoExistente = $stmt->fetchColumn() > 0;
                     </div>
                 </div>
 
-                <div class="col-xs-12 SalarioEspecieContainer">
+                <div class="col-xs-12-SalarioEspecieContainer">
                     <ul>
                         <li><h2 for="salarioEspecie">Salario en especie</h2></li>
                         <li><h4 for="salarioEspecie">(Si aplica)</h4></li>
@@ -278,7 +278,7 @@ $aguinaldoExistente = $stmt->fetchColumn() > 0;
             </div>
         </div>
     </div>
-    <br><br><br><br><br><br><br><br>
+    
     <footer id="footer"></footer>
     <script src="../JS/footer.js"></script>
     

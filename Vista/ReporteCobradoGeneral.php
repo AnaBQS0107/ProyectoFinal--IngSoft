@@ -18,7 +18,7 @@ if ($resultadoTotal > 0) {
 <header>
     <?php include 'Header.php'; ?>
 </header>
-<br><br><br><br>
+
 <body>
 <div class="container mt-5">
     <br><br>
