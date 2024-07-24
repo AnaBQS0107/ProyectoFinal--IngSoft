@@ -24,7 +24,7 @@
         <!-- Las cards se cargarán aquí -->
     </div>
 
-    <form id="pagoForm">
+    <form id="pagoForm" class="pagoForm">
         <input type="hidden" name="codigo" id="codigo">
         <table id="tabla" class="table">
             <thead>
