@@ -13,6 +13,7 @@ if ($resultadoTotal > 0) {
     <title>Reporte - Monto Total Recaudado por Puestos</title>
     <link rel="stylesheet" href="Estilos/ReporteCobradoGeneral.css">
     <link rel="icon" type="image/png" href="../img/icono.png">
+    <link rel="stylesheet" href="Estilos/Footer2.css">
 </head>
 <header>
     <?php include 'Header.php'; ?>

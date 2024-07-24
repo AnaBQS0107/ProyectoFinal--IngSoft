@@ -13,6 +13,7 @@ if (isset($resultados) && (is_array($resultados) || is_object($resultados))) {
     <title>Reporte - Monto Total Cobrado por Estación</title>
     <link rel="icon" type="image/png" href="../img/icono.png">
     <link rel="stylesheet" href="Estilos/ReporteCobroporEstacion.css">
+    <link rel="stylesheet" href="Estilos/Footer2.css">
 </head>
 
 <header>

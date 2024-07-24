@@ -24,8 +24,7 @@ $resultEstaciones = $trabajadoresTabla->obtenerEstaciones();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="../img/icono.png">
     <link rel="stylesheet" href="Estilos/TrabajadoresporEstacion.css">
-    <link rel="icon" type="image/png" href="../img/icono.png">
-    <br><br>
+    <link rel="stylesheet" href="Estilos/Footer2.css">
     <center><title>Buscar Trabajadores por Estación</title>
 </head>
 <body>

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de Horas Extras</title>
     <link rel="stylesheet" href="Estilos/HorasExtras.css">
+    <link rel="stylesheet" href="Estilos/Footer2.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <link rel="icon" type="image/png" href="../img/icono.png">

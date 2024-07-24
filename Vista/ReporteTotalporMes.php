@@ -12,6 +12,7 @@ if (isset($resultados) && (is_array($resultados) || is_object($resultados))) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reporte - Monto Total Recaudado por Mes</title>
     <link rel="stylesheet" href="Estilos/ReporteTotalPorMes.css">
+    <link rel="stylesheet" href="Estilos/Footer2.css">
     <link rel="icon" type="image/png" href="../img/icono.png">
     <header>
     <?php include 'Header.php'; ?>

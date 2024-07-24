@@ -15,6 +15,7 @@ if (isset($resultados) && (is_array($resultados) || is_object($resultados))) {
     <title>Historial de Cobros Diarios</title>
     <link rel="icon" type="image/png" href="../img/icono.png">
     <link rel="stylesheet" href="Estilos/ReporteCobroDiarios.css">
+    <link rel="stylesheet" href="Estilos/Footer2.css">
 </head>
 <header>
     <?php include 'Header.php'; ?>

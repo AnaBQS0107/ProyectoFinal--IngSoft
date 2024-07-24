@@ -6,10 +6,8 @@
     <link rel="icon" type="image/png" href="../img/icono.png">
     <title>Consulta de Monto Total Cobrado por Mes</title>
     <link rel="stylesheet" href="Estilos/ConsultaMontoAlMes.css">
+    <link rel="stylesheet" href="Estilos/Footer2.css">
 </head>
-
-
-
 <body>
 <header>
     <?php include 'Header.php'; ?>

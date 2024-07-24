@@ -47,6 +47,7 @@ if (isset($_GET['id'])) {
     <title>Editar Cobro</title>
     <link rel="stylesheet" href="Estilos/EditarCobro.css">
     <link rel="icon" type="image/png" href="../img/icono.png">
+    <link rel="stylesheet" href="Estilos/Footer2.css">
 </head>
 
 

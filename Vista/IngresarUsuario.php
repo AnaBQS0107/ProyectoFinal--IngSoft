@@ -10,7 +10,7 @@ require_once '../Controlador/TrabajadoresInfo.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PassWize - Registro</title>
     <link rel="stylesheet" href="Estilos/IngresarUsuario.css">
-    <link rel="stylesheet" href="Estilos/Footer.css">
+    <link rel="stylesheet" href="Estilos/Footer2.css">
     <link rel="icon" type="image/png" href="../img/icono.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

@@ -6,6 +6,7 @@
     <title>PassWize -- Ingresa nuevo rol</title>
     <link rel="icon" type="image/png" href="../img/icono.png">
     <link rel="stylesheet" href="Estilos/IngresarRol.css">
+    <link rel="stylesheet" href="Estilos/Footer2.css">
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>

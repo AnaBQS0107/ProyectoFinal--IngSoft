@@ -35,6 +35,7 @@ try {
     <title>Mostrar Horarios por Estación</title>
     <link rel="icon" type="image/png" href="../img/icono.png">
     <link rel="stylesheet" href="Estilos/Horarioestacion.css">
+    <link rel="stylesheet" href="Estilos/Footer2.css">
     
     </style>
 </head>

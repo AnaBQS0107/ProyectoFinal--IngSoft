@@ -25,6 +25,7 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Estilos/HorarioTrabajador.css">
     <link rel="icon" type="image/png" href="../img/icono.png">
+    <link rel="stylesheet" href="Estilos/Footer2.css">
     <title>Horarios de Trabajo de los Empleados del Peaje</title>
 </head>
 <body>

@@ -5,6 +5,7 @@
     <title>Reporte de Cantidad de Vehículos por Hora del Día</title>
     <link rel="icon" type="image/png" href="../img/icono.png">
     <link rel="stylesheet" href="Estilos/ReporteVehiculosPorHora.css">
+    <link rel="stylesheet" href="Estilos/Footer2.css">
 </head>
 <header>
         <?php include 'Header.php'; ?>

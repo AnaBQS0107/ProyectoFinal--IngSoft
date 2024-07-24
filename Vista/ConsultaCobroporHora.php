@@ -25,6 +25,7 @@ try {
     <title>Cobros por Hora del Día</title>
     <link rel="stylesheet" href="Estilos/CobroshoraPordia.css">
     <link rel="icon" type="image/png" href="../img/icono.png">
+    <link rel="stylesheet" href="Estilos/Footer2.css">
 </head>
 <body>
 <header>

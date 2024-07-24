@@ -6,6 +6,7 @@
     <title>Promedio Diario de Vehículos por Estación</title>
     <link rel="stylesheet" href="Estilos/ReporteTotalPorMes.css">
     <link rel="icon" type="image/png" href="../img/icono.png">
+    <link rel="stylesheet" href="Estilos/Footer2.css">
     <style>
     .table-header {
         background-color: #f2f2f2;

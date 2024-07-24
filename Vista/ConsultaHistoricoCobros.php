@@ -26,6 +26,7 @@ try {
     <title>Histórico de Cobros por Estación de Peaje</title>
     <link rel="stylesheet" href="Estilos/historicocobros.css">
     <link rel="icon" type="image/png" href="../img/icono.png">
+    <link rel="stylesheet" href="Estilos/Footer2.css">
 </head>
 <body>
 <header>

@@ -25,7 +25,7 @@ if (isset($_GET['eliminarCobro'])) {
     <title>Lista de Cobros</title>
     <link rel="icon" type="image/png" href="../img/icono.png">
     <link rel="stylesheet" href="Estilos/TablaCobros.css">
-    <link rel="stylesheet" href="Estilos/Footer.css">
+    <link rel="stylesheet" href="Estilos/Footer2.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 

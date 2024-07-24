@@ -21,7 +21,7 @@ $trabajadoresTabla = new TrabajadoresTabla();
     <title>PassWize - Registro</title>
     <link rel="icon" type="image/png" href="../img/icono.png">
     <link rel="stylesheet" href="Estilos/TablaEmpleados.css">
-    <link rel="stylesheet" href="Estilos/Footer.css">
+    <link rel="stylesheet" href="Estilos/Footer2.css">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 

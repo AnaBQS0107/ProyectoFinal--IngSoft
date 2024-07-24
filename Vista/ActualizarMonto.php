@@ -28,6 +28,7 @@ if (isset($_GET['idTipoVehiculo'])) {
     <title>PassWize - Actualizar Monto</title>
     <link rel="icon" type="image/png" href="../img/icono.png">
     <link rel="stylesheet" href="Estilos/ActualizarMonto.css">
+    <link rel="stylesheet" href="Estilos/Footer2.css">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 

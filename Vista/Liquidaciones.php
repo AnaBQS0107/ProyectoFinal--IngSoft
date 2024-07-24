@@ -7,6 +7,7 @@
     <title>Calculadora de liquidaciones</title>
     <link rel="icon" type="image/png" href="../img/icono.png">
     <link rel="stylesheet" href="Estilos/Liquidaciones.css">
+    <link rel="stylesheet" href="Estilos/Footer2.css">
 </head>
 
 <body>
