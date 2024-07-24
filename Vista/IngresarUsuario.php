@@ -60,7 +60,7 @@ require_once '../Controlador/TrabajadoresInfo.php';
     </header>
 
     <center>
-        <div class="container">
+        <div class="container-ingresarEmpleado">
             <form id="registroForm" method="post" class="row g-3 needs-validation">
                 <div class="col-md-3 position-relative">
                     <label for="nombre" class="form-label">Nombre</label>
