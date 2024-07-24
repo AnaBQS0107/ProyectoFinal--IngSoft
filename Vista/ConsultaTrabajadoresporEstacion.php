@@ -82,7 +82,10 @@ $resultEstaciones = $trabajadoresTabla->obtenerEstaciones();
     <?php elseif ($_SERVER['REQUEST_METHOD'] === 'POST'): ?>
         <p>No hay trabajadores asignados a esta estación de peaje.</p>
     <?php endif; ?></center>
+
+    <footer id="footer"></footer>
+    <script src="../JS/footer.js"></script>
 </body>
-<?php include_once 'footer.php'?>
+
 
 </html>

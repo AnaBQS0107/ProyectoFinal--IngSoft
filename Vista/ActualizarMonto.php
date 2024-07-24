@@ -53,9 +53,8 @@ if (isset($_GET['idTipoVehiculo'])) {
     </center>
     <br><br> <br><br>
 
-    <footer class= "footer-Act-Monto">
-        <?php include 'Footer.php'; ?>
-    </footer>
+    <footer id="footer"></footer>
+    <script src="../JS/footer.js"></script>
     
 </body>
 

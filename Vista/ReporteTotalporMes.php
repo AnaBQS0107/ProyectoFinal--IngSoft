@@ -55,9 +55,8 @@ if (isset($resultados) && (is_array($resultados) || is_object($resultados))) {
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
 
 
-<footer>
-    <?php include 'Footer.php'; ?>
-    </footer>
+<footer id="footer"></footer>
+<script src="../JS/footer.js"></script>
 </body>
 </html>
 

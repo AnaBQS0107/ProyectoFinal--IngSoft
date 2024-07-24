@@ -91,7 +91,8 @@ if (isset($_GET['eliminarCobro'])) {
     <script src="../JS/CobrosCRUD.js">
         
     </script>
-    <?php include 'Footer.php'; ?>
+    <footer id="footer"></footer>
+    <script src="../JS/footer.js"></script>
 </body>
 
 </html>

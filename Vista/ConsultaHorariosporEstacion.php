@@ -99,8 +99,7 @@ try {
     });
 </script>
 <br><br>
-<footer>
-    <?php include 'Footer.php'; ?>
-</footer>
+<footer id="footer"></footer>
+<script src="../JS/footer.js"></script>
 </body>
 </html>

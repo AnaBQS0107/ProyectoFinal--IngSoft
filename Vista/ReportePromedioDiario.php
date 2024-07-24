@@ -85,9 +85,8 @@ ORDER BY vehiculos_por_dia.EstacionPeaje";
     </div>
 
 <br><br><br><br><br>
-    <footer>
-        <?php include 'Footer.php'; ?>
-    </footer>
+<footer id="footer"></footer>
+<script src="../JS/footer.js"></script>
 
     <!-- Incluir Bootstrap JS y jQuery (opcional) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

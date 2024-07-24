@@ -63,9 +63,8 @@ if (isset($resultados) && (is_array($resultados) || is_object($resultados))) {
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
-<footer>
-    <?php include 'Footer.php'; ?>
-    </footer>
+<footer id="footer"></footer>
+<script src="../JS/footer.js"></script>
 </html>
 
 <?php

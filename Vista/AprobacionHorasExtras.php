@@ -63,7 +63,8 @@
     </div>
     <br><br><br>
 
-    <?php include 'Footer.php'; ?>
+    <footer id="footer"></footer>
+    <script src="../JS/footer.js"></script>
 
     <script>
         $(document).ready(function() {

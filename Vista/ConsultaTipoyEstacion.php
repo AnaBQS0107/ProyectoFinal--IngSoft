@@ -133,8 +133,7 @@ if (isset($_GET['submit'])) {
     <br><br><br><br>
     <script src="../JS/CobrosCRUD.js"></script>
 
-    <footer>
-    <?php include 'Footer.php'; ?>
-    </footer>
+    <footer id="footer"></footer>
+    <script src="../JS/footer.js"></script>
 </body>
 </html>

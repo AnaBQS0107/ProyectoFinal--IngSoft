@@ -80,6 +80,7 @@ if (session_status() == PHP_SESSION_NONE) {
         </form>
     </div>
     
-        <?php include 'Footer.php'; ?>
+    <footer id="footer"></footer>
+    <script src="../JS/footer.js"></script>
 </body>
 </html>

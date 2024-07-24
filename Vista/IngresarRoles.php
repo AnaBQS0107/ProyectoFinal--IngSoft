@@ -27,6 +27,7 @@
     </div>
     <script src="../JS/Roles.js"></script>
     <br><br><br><br>
-    <?php include 'Footer.php'; ?>
+    <footer id="footer"></footer>
+    <script src="../JS/footer.js"></script>
 </body>
 </html>

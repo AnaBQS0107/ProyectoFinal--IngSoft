@@ -42,9 +42,8 @@
         </table>
     </div>
 
-    <footer class="footer-Calc-Extras">
-        <?php include 'Footer.php'; ?>
-    </footer>
+    <footer id="footer"></footer>
+    <script src="../JS/footer.js"></script>
 
     <script>
     const userId = <?php echo isset($_SESSION['user']['Persona_Cedula']) ? $_SESSION['user']['Persona_Cedula'] : 'null'; ?>;
