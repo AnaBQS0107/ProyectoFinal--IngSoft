@@ -1,5 +1,5 @@
-body {
-  padding-bottom: 100px; /* Ajusta este valor a la altura de tu footer */
+/*body {
+  padding-bottom: 100px;
 }
 
 footer {
@@ -85,4 +85,55 @@ footer {
   letter-spacing: 1px;
   font-weight: 400;
   margin: 0px 5px;
+}
+*/
+
+
+footer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 149px;
+  padding: 50px 150px;
+  box-sizing: border-box;
+
+  background: linear-gradient(94deg, #212b38 0%, #141d28 100%);
+}
+footer p {
+  color: white;
+  display: flex;
+  font-size: 30px;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+footer p b {
+  font-family: 'sans-serif';
+}
+footer .wrapper {
+  display: flex;
+  align-items: start;
+}
+footer .container {
+  margin-left: 150px;
+  padding-left: 25px;
+  border-left: 2px solid rgba(255, 255, 255, 0.5);
+}
+footer h3 {
+  color: white;
+  margin: 15px 0;
+}
+footer ul {
+  list-style: none;
+  padding: 0;
+}
+footer ul li {
+  margin-bottom: 5px;
+}
+footer ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.designer {
+  color: #DBF226;
 }

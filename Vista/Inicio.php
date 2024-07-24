@@ -8,7 +8,7 @@
     <title>Página Principal</title>
     <link rel="icon" type="image/png" href="../img/icono.png"> 
     <link rel="stylesheet" href="Estilos/Inicio.css">
-    <link rel="stylesheet" href="Estilos/Footer.css">
+    <link rel="stylesheet" href="Estilos/Footer2.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
@@ -29,6 +29,7 @@
         <img src="../img/Fondo1.svg" alt="Ilustración">
       </div>
     </section>
-    <?php include 'Footer.php'; ?>
+    <footer id="footer"></footer>
+    <script src="../JS/footer.js"></script>
 </body>
 </html>
