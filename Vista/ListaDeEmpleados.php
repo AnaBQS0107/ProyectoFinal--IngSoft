@@ -11,7 +11,6 @@ $controller = new EmpleadoController1();
 $controller->mostrarEmpleados();
 $trabajadoresTabla = new TrabajadoresTabla();
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -32,7 +31,7 @@ $trabajadoresTabla = new TrabajadoresTabla();
     <br>
     <div class="header-space"></div>
     <center>
-        <h1>Lista de Empleados</h1>
+        <h1>Lista de Empleados Activos</h1>
     </center>
     <br>
     <center>
@@ -89,7 +88,7 @@ $trabajadoresTabla = new TrabajadoresTabla();
                     <?php endforeach; ?>
                 <?php else : ?>
                     <tr>
-                        <td colspan="9">No hay datos disponibles</td>
+                        <td colspan="10">No hay datos disponibles</td>
                     </tr>
                 <?php endif; ?>
             </tbody>

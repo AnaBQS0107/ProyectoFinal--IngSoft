@@ -33,6 +33,8 @@ $resultVacaciones = $stmt_vacaciones->fetchAll(PDO::FETCH_ASSOC);
 
 
 
+
+
 function calcularVacaciones($fechaEntrada) {
     $fechaEntradaDateTime = new DateTime($fechaEntrada);
     $fechaActualDateTime = new DateTime();

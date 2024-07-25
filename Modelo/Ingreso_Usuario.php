@@ -118,9 +118,9 @@ class TrabajadoresTabla {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
     public function obtenerTodosLosTrabajadores() {
         try {
+            // Modificación de la consulta SQL para incluir un filtro por estado activo
             $query = "SELECT p.Cedula, p.Nombre, p.Primer_Apellido AS Apellido1, p.Segundo_Apellido AS Apellido2, 
                              e.Fecha_Ingreso, e.Roles_idRoles AS Rol_ID, e.SalarioBase, e.EstacionesPeaje_idEstacionesPeaje AS Estacion_ID,
                              r.Nombre_Rol AS Nombre_Rol, est.Nombre AS Nombre_Estacion,
@@ -132,7 +132,8 @@ class TrabajadoresTabla {
                       LEFT JOIN roles r ON e.Roles_idRoles = r.idRoles
                       LEFT JOIN estacionespeaje est ON e.EstacionesPeaje_idEstacionesPeaje = est.idEstacionesPeaje
                       LEFT JOIN usuarios u ON e.Persona_Cedula = u.Empleados_Persona_Cedula
-                      LEFT JOIN horario_trabajo ht ON e.Horario_idHorario = ht.idHorario";
+                      LEFT JOIN horario_trabajo ht ON e.Horario_idHorario = ht.idHorario
+                      WHERE e.Estado = 'activo'";  // Filtro para empleados activos
     
             $stmt = $this->db->prepare($query);
             $stmt->execute();
@@ -142,6 +143,7 @@ class TrabajadoresTabla {
             return [];
         }
     }
+    
     
 
     public function obtenerTrabajadoresPorEstacion($estacionID) {
