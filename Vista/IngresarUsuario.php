@@ -51,6 +51,12 @@ require_once '../Controlador/TrabajadoresInfo.php';
             }
             form.classList.add('was-validated');
         }
+
+          // Establecer la fecha máxima permitida para el campo de fecha
+          document.addEventListener('DOMContentLoaded', function () {
+            var today = new Date().toISOString().split('T')[0];
+            document.getElementById('Fecha').setAttribute('max', today);
+        });
     </script>
 </head>
 
