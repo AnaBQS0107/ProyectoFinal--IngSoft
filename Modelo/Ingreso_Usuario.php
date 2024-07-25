@@ -68,6 +68,20 @@ class TrabajadoresTabla {
             return [];
         }
     }
+
+    public function obtenerDiasVacaciones($cedula) {
+        try {
+            $query = "SELECT dias_vacaciones FROM empleados WHERE Persona_Cedula = :cedula";
+            $stmt = $this->db->prepare($query);
+            $stmt->bindParam(':cedula', $cedula, PDO::PARAM_INT);
+            $stmt->execute();
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $row ? $row['dias_vacaciones'] : 0;
+        } catch (PDOException $exception) {
+            echo "Error al obtener los días de vacaciones: " . $exception->getMessage();
+            return 0;
+        }
+    }
     
     
     
@@ -106,21 +120,27 @@ class TrabajadoresTabla {
     }
 
     public function obtenerTodosLosTrabajadores() {
-        $query = "SELECT p.Cedula, p.Nombre, p.Primer_Apellido AS Apellido1, p.Segundo_Apellido AS Apellido2, 
-                         e.Fecha_Ingreso, e.Roles_idRoles AS Rol_ID, e.SalarioBase, e.EstacionesPeaje_idEstacionesPeaje AS Estacion_ID,
-                         r.Nombre_Rol AS Nombre_Rol, est.Nombre AS Nombre_Estacion,
-                         e.Correo_Electronico AS Correo_Electronico, u.Contraseña AS Contrasena,
-                         ht.idHorario AS Horario_ID, CONCAT(ht.Tipo, ' (', ht.Entrada, ' - ', ht.Salida, ')') AS Horario
-                  FROM empleados e
-                  LEFT JOIN persona p ON e.Persona_Cedula = p.Cedula
-                  LEFT JOIN roles r ON e.Roles_idRoles = r.idRoles
-                  LEFT JOIN estacionespeaje est ON e.EstacionesPeaje_idEstacionesPeaje = est.idEstacionesPeaje
-                  LEFT JOIN usuarios u ON e.Persona_Cedula = u.Empleados_Persona_Cedula
-                  LEFT JOIN horario_trabajo ht ON e.Horario_idHorario = ht.idHorario"; // Asumiendo que Horario_idHorario es el campo que relaciona empleados con horario_trabajo
+        try {
+            $query = "SELECT p.Cedula, p.Nombre, p.Primer_Apellido AS Apellido1, p.Segundo_Apellido AS Apellido2, 
+                             e.Fecha_Ingreso, e.Roles_idRoles AS Rol_ID, e.SalarioBase, e.EstacionesPeaje_idEstacionesPeaje AS Estacion_ID,
+                             r.Nombre_Rol AS Nombre_Rol, est.Nombre AS Nombre_Estacion,
+                             e.Correo_Electronico AS Correo_Electronico, u.Contraseña AS Contrasena,
+                             ht.idHorario AS Horario_ID, CONCAT(ht.Tipo, ' (', ht.Entrada, ' - ', ht.Salida, ')') AS Horario,
+                             e.VacacionesDisponibles
+                      FROM empleados e
+                      LEFT JOIN persona p ON e.Persona_Cedula = p.Cedula
+                      LEFT JOIN roles r ON e.Roles_idRoles = r.idRoles
+                      LEFT JOIN estacionespeaje est ON e.EstacionesPeaje_idEstacionesPeaje = est.idEstacionesPeaje
+                      LEFT JOIN usuarios u ON e.Persona_Cedula = u.Empleados_Persona_Cedula
+                      LEFT JOIN horario_trabajo ht ON e.Horario_idHorario = ht.idHorario";
     
-        $stmt = $this->db->prepare($query);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $exception) {
+            echo "Error al obtener los trabajadores: " . $exception->getMessage();
+            return [];
+        }
     }
     
 

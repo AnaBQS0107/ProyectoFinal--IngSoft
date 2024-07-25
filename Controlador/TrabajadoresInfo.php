@@ -26,18 +26,39 @@ $stmt_horarios = $conn->prepare($sql_horarios);
 $stmt_horarios->execute();
 $resultHorarios = $stmt_horarios->fetchAll(PDO::FETCH_ASSOC);
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $cedula = $_POST['Cedula'];
-    $contrasena = $_POST['Contrasena'];
+$sql_vacaciones = "SELECT Persona_Cedula, VacacionesDisponibles FROM empleados";
+$stmt_vacaciones = $conn->prepare($sql_vacaciones);
+$stmt_vacaciones->execute();
+$resultVacaciones = $stmt_vacaciones->fetchAll(PDO::FETCH_ASSOC);
+
+
+
+function calcularVacaciones($fechaEntrada) {
+    $fechaEntradaDateTime = new DateTime($fechaEntrada);
+    $fechaActualDateTime = new DateTime();
+    $interval = $fechaActualDateTime->diff($fechaEntradaDateTime);
+
+    // Calcular días de vacaciones: 1 día por cada mes completo trabajado
+    $mesesTrabajados = $interval->m + ($interval->y * 12); // Total de meses considerando años también
+    $diasVacaciones = $mesesTrabajados;
+
+    return $diasVacaciones;
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Recibir datos del formulario
     $nombre = $_POST['Nombre'];
     $apellido1 = $_POST['Apellido1'];
     $apellido2 = $_POST['Apellido2'];
+    $cedula = $_POST['Cedula'];
+    $contrasena = $_POST['Contrasena'];
     $email = $_POST['Correo_Electronico'];
-    $estacion_id = $_POST['Estacion_ID']; 
-    $rol_id = $_POST['Rol_ID'];
-    $fechaIngreso = $_POST['Fecha'];
     $salarioBase = $_POST['SalarioBase'];
-    $horario_id = $_POST['Horario_ID']; // Agregar el campo Horario_ID recibido desde el formulario
+    $fechaEntrada = $_POST['Fecha'];
+    $diasVacaciones = calcularVacaciones($fechaEntrada);
+    $estacionID = $_POST['Estacion_ID'];
+    $rolID = $_POST['Rol_ID'];
+    $horarioID = $_POST['Horario_ID'];
 
     try {
         $conn->beginTransaction();
@@ -53,16 +74,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt_persona->execute();
 
         // Insertar datos en la tabla empleados
-        $sql_empleados = "INSERT INTO empleados (Fecha_Ingreso, Persona_Cedula, Roles_idRoles, SalarioBase, EstacionesPeaje_idEstacionesPeaje, Correo_Electronico, Horario_idHorario)
-                          VALUES (:fechaIngreso, :cedula, :rol_id, :salarioBase, :estacion_id, :email, :horario_id)";
+        $sql_empleados = "INSERT INTO empleados (Fecha_Ingreso, Persona_Cedula, Roles_idRoles, SalarioBase, EstacionesPeaje_idEstacionesPeaje, Correo_Electronico, Horario_idHorario, VacacionesDisponibles)
+                          VALUES (:fechaIngreso, :cedula, :rol_id, :salarioBase, :estacion_id, :email, :horario_id, :vacaciones)";
         $stmt_empleados = $conn->prepare($sql_empleados);
-        $stmt_empleados->bindParam(':fechaIngreso', $fechaIngreso);
+        $stmt_empleados->bindParam(':fechaIngreso', $fechaEntrada);
         $stmt_empleados->bindParam(':cedula', $cedula);
-        $stmt_empleados->bindParam(':rol_id', $rol_id);
+        $stmt_empleados->bindParam(':rol_id', $rolID);
         $stmt_empleados->bindParam(':salarioBase', $salarioBase);
-        $stmt_empleados->bindParam(':estacion_id', $estacion_id);
+        $stmt_empleados->bindParam(':estacion_id', $estacionID);
         $stmt_empleados->bindParam(':email', $email);
-        $stmt_empleados->bindParam(':horario_id', $horario_id); // Vincular el parámetro :horario_id
+        $stmt_empleados->bindParam(':horario_id', $horarioID);
+        $stmt_empleados->bindParam(':vacaciones', $diasVacaciones);
         $stmt_empleados->execute();
 
         // Hashear la contraseña y insertar en la tabla usuarios
@@ -79,6 +101,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo json_encode(['status' => 'success', 'message' => 'Registro exitoso']);
     } catch(PDOException $e) {
         $conn->rollBack();
+        echo json_encode(['status' => 'error', 'message' => $e->getMessage()]);
     }
 }
+
+
 ?>

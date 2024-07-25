@@ -1,10 +1,14 @@
 <?php
 require_once '../Controlador/TrabajadoresInfo.php';
-?>
+$diasVacaciones = 0;
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $fechaEntrada = $_POST['Fecha'];
+    $diasVacaciones = calcularVacaciones($fechaEntrada);
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,7 +38,6 @@ require_once '../Controlador/TrabajadoresInfo.php';
         function validarFormulario() {
             var form = document.getElementById('registroForm');
             if (form.checkValidity()) {
-                // Aquí puedes añadir cualquier lógica adicional antes de enviar el formulario
                 Swal.fire({
                     icon: 'success',
                     title: '¡Registro Exitoso!',
@@ -52,14 +55,25 @@ require_once '../Controlador/TrabajadoresInfo.php';
             form.classList.add('was-validated');
         }
 
-          // Establecer la fecha máxima permitida para el campo de fecha
-          document.addEventListener('DOMContentLoaded', function () {
+        // Establecer la fecha máxima permitida para el campo de fecha
+        document.addEventListener('DOMContentLoaded', function () {
             var today = new Date().toISOString().split('T')[0];
             document.getElementById('Fecha').setAttribute('max', today);
         });
+
+        // Calcular días de vacaciones cuando se selecciona la fecha de entrada
+        function calcularVacaciones() {
+            var fechaEntrada = document.getElementById('Fecha').value;
+            if (fechaEntrada) {
+                var today = new Date();
+                var entrada = new Date(fechaEntrada);
+                var diff = today.getTime() - entrada.getTime();
+                var diasVacaciones = Math.floor(diff / (1000 * 60 * 60 * 24 * 30)); // 1 día de vacaciones por cada mes
+                document.getElementById('vacaciones').value = diasVacaciones;
+            }
+        }
     </script>
 </head>
-
 <body>
     <header>
         <?php include 'header.php'; ?>
@@ -106,9 +120,13 @@ require_once '../Controlador/TrabajadoresInfo.php';
                 </div>
                 <div class="col-md-3 position-relative">
                     <label for="Fecha" class="form-label">Fecha de Entrada</label>
-                    <input type="date" class="form-control" id="Fecha" name="Fecha" required>
+                    <input type="date" class="form-control" id="Fecha" name="Fecha" required onchange="calcularVacaciones()">
                 </div>
                 <br>
+                <div class="col-md-3 position-relative">
+                    <label for="vacaciones" class="form-label">Días de Vacaciones</label>
+                    <input type="number" class="input_registro form-control" id="vacaciones" name="Vacaciones" readonly value="<?php echo $diasVacaciones; ?>">
+                </div>
                 <div class="col-md-3 position-relative">
                     <label for="estacion" class="form-label">Estación a la que pertenece</label>
                     <select class="select_registro form-select" id="estacion" name="Estacion_ID" required>
@@ -168,18 +186,9 @@ require_once '../Controlador/TrabajadoresInfo.php';
                         <button type="submit" class="btn_registrar" onclick="validarFormulario()">Registrar nuevo empleado</button>
                     </div>
                 </center>
-
-
-                <br><br>
+                <br>
             </form>
         </div>
     </center>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../JS/EmpleadosCRUD.js"></script>
-
-    <footer id="footer"></footer>
-    <script src="../JS/footer.js"></script>
 </body>
-
 </html>

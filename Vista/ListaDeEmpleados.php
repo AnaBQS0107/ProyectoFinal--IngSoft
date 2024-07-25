@@ -54,6 +54,7 @@ $trabajadoresTabla = new TrabajadoresTabla();
                     <th scope="col">Horario</th>
                     <th scope="col">Estación ID</th>
                     <th scope="col">Rol ID</th>
+                    <th scope="col">Vacaciones</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
@@ -77,6 +78,7 @@ $trabajadoresTabla = new TrabajadoresTabla();
                             </td>
                             <td><?php echo $trabajadoresTabla->obtenerNombreEstacion($usuario['Estacion_ID']); ?></td>
                             <td><?php echo $trabajadoresTabla->obtenerTipoDeRol($usuario['Rol_ID']); ?></td>
+                            <td><?php echo $usuario['VacacionesDisponibles']; ?></td>
                             <td>
                                 <div class="button-container">
                                     <a href="ActualizarEmpleado.php?id=<?php echo  $usuario['Cedula']; ?>" class="btn-edit">Editar</a>
