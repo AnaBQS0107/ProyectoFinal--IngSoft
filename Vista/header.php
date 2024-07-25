@@ -92,7 +92,7 @@ if (session_status() == PHP_SESSION_NONE) {
                     <span class="fas fa-caret-down"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="Profile">Perfil</a></li>
+                    <li><a href="../Vista/cambiar_contrasena.php">Cambiar Contraseña</a></li>
                     <li><a href="../Controlador/Login.php?action=logout">  Cerrar sesión</a></li>
                 </ul>
             </li>

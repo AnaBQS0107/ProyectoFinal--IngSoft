@@ -24,13 +24,28 @@ if (!isset($_SESSION['user'])) {
 }
 
 // Verificar si el formulario fue enviado
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['nueva_contrasena'])) {
-    $nueva_contrasena = $_POST['nueva_contrasena'];
-    $persona_cedula = $_SESSION['user']['Persona_Cedula'];
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $nueva_contrasena = isset($_POST['nueva_contrasena']) ? $_POST['nueva_contrasena'] : null;
+    $confirmar_contrasena = isset($_POST['confirmar_contrasena']) ? $_POST['confirmar_contrasena'] : null;
+    $persona_cedula = isset($_SESSION['user']['Persona_Cedula']) ? $_SESSION['user']['Persona_Cedula'] : null;
+
+    // Mostrar los valores recibidos para depuración
+    echo "<pre>";
+    echo "Nueva Contraseña: " . htmlspecialchars($nueva_contrasena) . "<br>";
+    echo "Confirmar Contraseña: " . htmlspecialchars($confirmar_contrasena) . "<br>";
+    echo "Persona Cedula: " . htmlspecialchars($persona_cedula) . "<br>";
+    echo "</pre>";
 
     // Validar la nueva contraseña
     if (strlen($nueva_contrasena) < 6) {
         $_SESSION['error'] = "La nueva contraseña debe tener al menos 6 caracteres.";
+        header("Location: ../Vista/cambiar_contrasena.php");
+        exit();
+    }
+
+    // Validar que ambas contraseñas coincidan
+    if ($nueva_contrasena !== $confirmar_contrasena) {
+        $_SESSION['error'] = "Las contraseñas no coinciden.";
         header("Location: ../Vista/cambiar_contrasena.php");
         exit();
     }
@@ -40,23 +55,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['nueva_contrasena'])) {
 
     // Actualizar la contraseña en la base de datos
     try {
-        // Consulta SQL
-        $sql = "UPDATE usuarios SET Contraseña = '$hashedPassword' WHERE Empleados_Persona_Cedula = '$persona_cedula'";
-        
-        // Depuración: Mostrar consulta SQL
-        echo "Consulta SQL: " . $sql . "<br>";
+        $sql = "UPDATE usuarios SET Contraseña = :contrasena WHERE Empleados_Persona_Cedula = :persona_cedula";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':contrasena', $hashedPassword);
+        $stmt->bindParam(':persona_cedula', $persona_cedula);
+        $stmt->execute();
 
-        // Ejecutar la consulta
-        $pdo->exec($sql);
-
-        // Mensaje de éxito
         $_SESSION['success'] = "Contraseña cambiada exitosamente.";
         header("Location: ../Vista/Inicio.php");
         exit();
     } catch (PDOException $e) {
-        // Mensaje de error
         $_SESSION['error'] = "Error al cambiar la contraseña: " . $e->getMessage();
-        echo "Error al cambiar la contraseña: " . $e->getMessage() . "<br>";
         header("Location: ../Vista/cambiar_contrasena.php");
         exit();
     }

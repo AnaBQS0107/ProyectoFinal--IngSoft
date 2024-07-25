@@ -21,8 +21,11 @@ $result = $conn->query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <center><title>Panel de Aprobación de Vacaciones</title></center>
-    <link rel="stylesheet" href="Estilos/PanelAprobacion.css">
+    <link rel="icon" type="image/png" href="../img/icono.png">
+
+    <link rel="stylesheet" href="Estilos/Footer2.css">
     <link rel="stylesheet" href="Estilos/AprobacionHorasExtras.css">
+ 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
@@ -131,7 +134,8 @@ $result = $conn->query($sql);
         </div>
 
 
-    <footer id="footer"></footer>
+        <footer id="footer"></footer>
+        <script src="../JS/footer.js"></script>
     <?php $conn->close(); ?>
 </body>
 </html>
