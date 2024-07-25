@@ -11,8 +11,8 @@
     line-height: 1.6;
     background-color: #f4f4f4;
     color: #333;
+    align-items: center;
   }
-  
 
   a {
     text-decoration: none;
@@ -59,7 +59,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 40px;
+    margin: 75px 75px 0 150px;
+  
   }
   
   .hero-text {
