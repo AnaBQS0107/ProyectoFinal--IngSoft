@@ -1,0 +1,76 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+.header-space {
+    height: 50px;
+}
+
+h1.titulo-listaEmpleados {
+    text-align: center;
+    margin: 20px 0;
+}
+
+select#select-empleado {
+    display: block;
+    margin: 0 auto 20px auto;
+    padding: 10px;
+    font-size: 16px;
+    width: 80%;
+    max-width: 400px;
+}
+
+button#select-aguinaldo {
+    display: block;
+    margin: 0 auto 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+button#select-aguinaldo:hover {
+    background-color: #555;
+}
+
+table#tabla-aguinaldo {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+table#tabla-aguinaldo th, table#tabla-aguinaldo td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+table#tabla-aguinaldo th {
+    background-color: #333;
+    color: white;
+}
+
+table#tabla-aguinaldo tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table#tabla-aguinaldo tr:hover {
+    background-color: #f1f1f1;
+}
+
+.footer-space {
+    height: 50px;
+}
