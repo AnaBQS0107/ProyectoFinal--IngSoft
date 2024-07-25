@@ -30,16 +30,13 @@ $trabajadoresTabla = new TrabajadoresTabla();
     </header>
     <br>
     <div class="header-space"></div>
-    <center>
-        <h1>Lista de Empleados Activos</h1>
-    </center>
+        <h1 class="titulo-listaEmpleados">Lista de Empleados Activos</h1>
     <br>
-    <center>
+    
         <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Buscar empleado...">
+            <input type="text" id="searchInput" class="searchInput" placeholder="Buscar empleado...">
             <button type="button" id="searchButton">Buscar</button>
         </div>
-    </center>
 
     <div class="table-container">
         <table class="table">

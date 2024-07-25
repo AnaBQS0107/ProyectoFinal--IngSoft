@@ -1,14 +1,13 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+
+
+.titulo-listaEmpleados{
+    margin: 25px 0 25px 0;
+    text-align: center;
 }
 
-
-
 .table-container {
-    max-width: 1000px;
-    margin: 20px auto;
+    align-items: center;
+    margin: 50px 220px 0 220px;
     padding: 0 15px;
     overflow-x: auto; /* Habilita el scroll horizontal */
     overflow-y: auto; /* Habilita el desplazamiento vertical */
@@ -130,16 +129,20 @@ body {
 }
 
 .search-container {
-    margin-bottom: 20px;
+    margin: 25px 0 25px 0;
+    text-align: center;
 }
 
 .search-container input[type=text] {
     padding: 15px;
     margin-right: 10px;
-    border: 1px solid #ffffff;
     border-radius: 4px;
     box-sizing: border-box;
     width: 300px;
+}
+
+.searchInput{
+    border: 1px solid #ccc;
 }
 
 .search-container button {
