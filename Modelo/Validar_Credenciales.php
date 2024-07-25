@@ -14,7 +14,6 @@ class ValidarCredenciales {
             echo "Error: " . $e->getMessage();
         }
     }
-
     public function login($Persona_Cedula, $contrasena) {
         $sql = "SELECT p.Nombre, r.Nombre_Rol, u.Contraseña, p.Cedula AS Persona_Cedula 
                 FROM usuarios u
@@ -29,13 +28,21 @@ class ValidarCredenciales {
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
     
         if ($user) {
-            return $user; // Retornar todos los datos del usuario
+            // Comprobar si la contraseña proporcionada coincide con la almacenada en texto plano
+            if ($contrasena === $user['Contraseña']) {
+                return $user;
+            } else {
+                // Contraseña incorrecta
+                error_log("Contraseña incorrecta para el usuario con cédula: " . $Persona_Cedula);
+                return false;
+            }
         } else {
             // Usuario no encontrado
             error_log("No se encontró ningún usuario con la cédula: " . $Persona_Cedula);
             return false;
         }
     }
+    
     
 
     // Método para obtener la contraseña hasheada

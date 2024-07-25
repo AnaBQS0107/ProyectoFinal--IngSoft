@@ -7,6 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $diasVacaciones = calcularVacaciones($fechaEntrada);
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -20,85 +21,84 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-  function soloLetras(event) {
-        var inputValue = event.charCode;
-        if (!(inputValue >= 65 && inputValue <= 122) && !(inputValue >= 192 && inputValue <= 255) && (inputValue != 32 && inputValue != 0)) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Entrada no válida',
-                text: 'Este campo solo acepta letras.'
-            });
-            event.preventDefault();
+        function soloLetras(event) {
+            var inputValue = event.charCode;
+            if (!(inputValue >= 65 && inputValue <= 122) && !(inputValue >= 192 && inputValue <= 255) && (inputValue != 32 && inputValue != 0)) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Entrada no válida',
+                    text: 'Este campo solo acepta letras.'
+                });
+                event.preventDefault();
+            }
         }
-    }
 
-    function validarCedula(input) {
-        var cedula = input.value.trim();
-        if (cedula.length !== 9 || !/^\d{9}$/.test(cedula)) {
-            input.setCustomValidity('La cédula debe contener exactamente 9 dígitos numéricos.');
-        } else {
-            input.setCustomValidity('');
+        function validarCedula(input) {
+            var cedula = input.value.trim();
+            if (cedula.length !== 9 || !/^\d{9}$/.test(cedula)) {
+                input.setCustomValidity('La cédula debe contener exactamente 9 dígitos numéricos.');
+            } else {
+                input.setCustomValidity('');
+            }
         }
-    }
 
-    function validarFormulario() {
-        var form = document.getElementById('registroForm');
-        if (form.checkValidity()) {
-            Swal.fire({
-                icon: 'success',
-                title: '¡Registro Exitoso!',
-                text: 'El empleado se ha registrado correctamente.',
-                showConfirmButton: true
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    form.submit();
-                }
-            });
-        } else {
-            event.preventDefault();
-            event.stopPropagation();
+        function validarFormulario(event) {
+            var form = document.getElementById('registroForm');
+            if (form.checkValidity()) {
+                event.preventDefault(); // Evitar el envío del formulario por defecto
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Registro Exitoso!',
+                    text: 'El empleado se ha registrado correctamente.',
+                    showConfirmButton: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit(); // Enviar el formulario después de la confirmación
+                    }
+                });
+            } else {
+                event.preventDefault(); // Evitar el envío del formulario si hay errores
+                event.stopPropagation(); // Detener la propagación del evento
+            }
+            form.classList.add('was-validated');
         }
-        form.classList.add('was-validated');
-    }
 
-    // Establecer la fecha máxima permitida para el campo de fecha
-    document.addEventListener('DOMContentLoaded', function () {
-        var today = new Date().toISOString().split('T')[0];
-        document.getElementById('Fecha').setAttribute('max', today);
-    });
+        document.addEventListener('DOMContentLoaded', function () {
+            var today = new Date().toISOString().split('T')[0];
+            document.getElementById('Fecha').setAttribute('max', today);
 
-    // Calcular días de vacaciones cuando se selecciona la fecha de entrada
-    function calcularVacaciones() {
-        var fechaEntrada = document.getElementById('Fecha').value;
-        if (fechaEntrada) {
-            var today = new Date();
-            var entrada = new Date(fechaEntrada);
-            var diff = today.getTime() - entrada.getTime();
-            var diasVacaciones = Math.floor(diff / (1000 * 60 * 60 * 24 * 30)); // 1 día de vacaciones por cada mes
-            document.getElementById('vacaciones').value = diasVacaciones;
-        }
-    }
-
-    // Validar entradas numéricas para evitar letras
-    function validarNumeros(event) {
-        var inputValue = event.charCode;
-        if (inputValue >= 65 && inputValue <= 122) { // Letras
-            Swal.fire({
-                icon: 'error',
-                title: 'Entrada no válida',
-                text: 'Este campo solo acepta números.'
-            });
-            event.preventDefault();
-        }
-    }
-
-    // Añadir evento de validación a los campos numéricos
-    document.addEventListener('DOMContentLoaded', function () {
-        document.querySelectorAll('input[type="number"]').forEach(function (input) {
-            input.addEventListener('keypress', validarNumeros);
+            document.querySelector('form').addEventListener('submit', validarFormulario);
         });
-    });
-</script>
+
+        function calcularVacaciones() {
+            var fechaEntrada = document.getElementById('Fecha').value;
+            if (fechaEntrada) {
+                var today = new Date();
+                var entrada = new Date(fechaEntrada);
+                var diff = today.getTime() - entrada.getTime();
+                var diasVacaciones = Math.floor(diff / (1000 * 60 * 60 * 24 * 30)); // 1 día de vacaciones por cada mes
+                document.getElementById('vacaciones').value = diasVacaciones;
+            }
+        }
+
+        function validarNumeros(event) {
+            var inputValue = event.charCode;
+            if (inputValue >= 65 && inputValue <= 122) { // Letras
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Entrada no válida',
+                    text: 'Este campo solo acepta números.'
+                });
+                event.preventDefault();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('input[type="number"]').forEach(function (input) {
+                input.addEventListener('keypress', validarNumeros);
+            });
+        });
+    </script>
 
 </head>
 
@@ -114,7 +114,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label for="nombre" class="form-label">Nombre</label>
                     <input type="text" class="input_registro form-control" id="nombre" name="Nombre" required
                         pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+" onkeypress="soloLetras(event)">
-                    <div class="valid-tooltip"></div>
                 </div>
                 <div class="col-md-3 position-relative">
                     <label for="apellido1" class="form-label">Primer Apellido</label>
@@ -125,7 +124,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label for="segundo_apellido" class="form-label">Segundo Apellido</label>
                     <input type="text" class="input_registro form-control" id="segundo_apellido" name="Apellido2"
                         required pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+" onkeypress="soloLetras(event)">
-                    <div class="valid-tooltip"></div>
                 </div>
 
                 <div class="col-md-3 position-relative">
@@ -133,13 +131,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <input type="number" class="input_registro form-control" placeholder="104120845" id="cedula"
                         name="Cedula" required minlength="9" maxlength="9" pattern="\d{9}"
                         oninput="validarCedula(this)">
-                    <div class="valid-tooltip"></div>
-                </div>
-                <div class="col-md-3 position-relative">
-                    <label for="contrasena" class="form-label">Contraseña</label>
-                    <input type="password" class="input_registro form-control" placeholder="********" id="contrasena"
-                        name="Contrasena" required>
-                    <div class="valid-tooltip"></div>
                 </div>
                 <div class="col-md-3 position-relative">
                     <label for="email" class="form-label">Correo Electrónico</label>
@@ -152,7 +143,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label for="SalarioBase" class="form-label">Salario Base</label>
                     <input type="number" class="input_registro form-control" id="SalarioBase" name="SalarioBase"
                         required>
-                    <div class="valid-tooltip"></div>
                 </div>
                 <div class="col-md-3 position-relative">
                     <label for="Fecha" class="form-label">Fecha de Entrada</label>
@@ -170,8 +160,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <select class="select_registro form-select" id="estacion" name="Estacion_ID" required>
                         <?php if ($resultEstaciones && count($resultEstaciones) > 0) : ?>
                         <?php foreach ($resultEstaciones as $row) : ?>
-                        <?php $selected = ($row['idEstacionesPeaje'] == $empleado['Estacion_ID']) ? 'selected' : ''; ?>
-                        <option value="<?php echo $row["idEstacionesPeaje"]; ?>" <?php echo $selected; ?>>
+                        <option value="<?php echo $row["idEstacionesPeaje"]; ?>">
                             <?php echo $row["Nombre"]; ?>
                         </option>
                         <?php endforeach; ?>
@@ -186,8 +175,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <select class="select_registro form-select" id="rol" name="Rol_ID" required>
                         <?php if ($resultRoles && count($resultRoles) > 0) : ?>
                         <?php foreach ($resultRoles as $row) : ?>
-                        <?php $selected = ($row['idRoles'] == $empleado['Rol_ID']) ? 'selected' : ''; ?>
-                        <option value="<?php echo $row["idRoles"]; ?>" <?php echo $selected; ?>>
+                        <option value="<?php echo $row["idRoles"]; ?>">
                             <?php echo $row["Nombre_Rol"]; ?>
                         </option>
                         <?php endforeach; ?>
@@ -201,14 +189,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <select class="select_registro form-select" id="horario" name="Horario_ID" required>
                         <?php if ($resultHorarios && count($resultHorarios) > 0) : ?>
                         <?php foreach ($resultHorarios as $row) : ?>
-                        <?php
-                                // Verificar si $empleado está definido y tiene 'Horario_ID'
-                                $selected = '';
-                                if (isset($empleado) && isset($empleado['Horario_ID'])) {
-                                    $selected = ($row['IdHorario'] == $empleado['Horario_ID']) ? 'selected' : '';
-                                }
-                                ?>
-                        <option value="<?php echo $row["IdHorario"]; ?>" <?php echo $selected; ?>>
+                        <option value="<?php echo $row["IdHorario"]; ?>">
                             <?php echo $row["Horario"]; ?>
                         </option>
                         <?php endforeach; ?>
@@ -221,8 +202,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="invalid-tooltip"></div>
                 <center>
                     <div class="div_btn">
-                        <button type="submit" class="btn_registrar" onclick="validarFormulario()">Registrar nuevo
-                            empleado</button>
+                        <button type="submit" class="btn_registrar">Registrar nuevo empleado</button>
                     </div>
                 </center>
                 <br>

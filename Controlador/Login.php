@@ -6,10 +6,10 @@ if (session_status() == PHP_SESSION_NONE) {
 require_once '../Modelo/Validar_Credenciales.php';
 
 class AuthController {
-    private $validarCredenciales;
+    private $Validar_Credenciales;
 
     public function __construct() {
-        $this->validarCredenciales = new ValidarCredenciales();
+        $this->Validar_Credenciales = new ValidarCredenciales();
     }
 
     public function login() {
@@ -17,31 +17,37 @@ class AuthController {
             $Persona_Cedula = $_POST['Persona_Cedula'];
             $contrasena = $_POST['contrasena'];
     
-            $user = $this->validarCredenciales->login($Persona_Cedula, $contrasena);
+            error_log("Cedula: " . $Persona_Cedula);
+            error_log("Contraseña: " . $contrasena);
+    
+            $user = $this->Validar_Credenciales->login($Persona_Cedula, $contrasena);
     
             if ($user) {
-                // Usuario encontrado
+                error_log("User found: " . print_r($user, true));
+    
+                // Verifica si la contraseña es '1234'
                 if ($contrasena === '1234') {
-                    // Redirigir a la página de cambio de contraseña
                     $_SESSION['user'] = [
                         'Nombre' => $user['Nombre'],
                         'Nombre_Rol' => $user['Nombre_Rol'],
                         'Persona_Cedula' => $user['Persona_Cedula']
                     ];
-                    header("Location: ../Vista/cambiar_contrasena.php");
+                    
+                    // Redirige a la página de cambio de contraseña
+                    header("Location: ../Vista/cambio.php");
                     exit();
                 } else {
-                    // Contraseña válida, iniciar sesión normalmente
                     $_SESSION['user'] = [
                         'Nombre' => $user['Nombre'],
                         'Nombre_Rol' => $user['Nombre_Rol'],
                         'Persona_Cedula' => $user['Persona_Cedula']
                     ];
+                    
+                    // Redirige a la página de inicio
                     header("Location: ../Vista/Inicio.php");
                     exit();
                 }
             } else {
-                // Contraseña incorrecta o usuario no encontrado
                 $_SESSION['error'] = "Credenciales inválidas. Acceso denegado.";
                 header("Location: ../Vista/Index.php");
                 exit();
@@ -52,6 +58,7 @@ class AuthController {
             exit();
         }
     }
+    
 
     public function logout() {
         session_unset();
@@ -64,6 +71,7 @@ class AuthController {
         if (isset($_SESSION['user'])) {
             $user = $_SESSION['user'];
 
+         
             echo "Usuario: " . htmlspecialchars($user['Nombre']) . "<br>";
             echo "Cédula: " . htmlspecialchars($user['Persona_Cedula']) . "<br>";
             echo "Rol: " . htmlspecialchars($user['Nombre_Rol']) . "<br>";

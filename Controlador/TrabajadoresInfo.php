@@ -31,10 +31,6 @@ $stmt_vacaciones = $conn->prepare($sql_vacaciones);
 $stmt_vacaciones->execute();
 $resultVacaciones = $stmt_vacaciones->fetchAll(PDO::FETCH_ASSOC);
 
-
-
-
-
 function calcularVacaciones($fechaEntrada) {
     $fechaEntradaDateTime = new DateTime($fechaEntrada);
     $fechaActualDateTime = new DateTime();
@@ -53,7 +49,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $apellido1 = $_POST['Apellido1'];
     $apellido2 = $_POST['Apellido2'];
     $cedula = $_POST['Cedula'];
-    $contrasena = $_POST['Contrasena'];
     $email = $_POST['Correo_Electronico'];
     $salarioBase = $_POST['SalarioBase'];
     $fechaEntrada = $_POST['Fecha'];
@@ -61,6 +56,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $estacionID = $_POST['Estacion_ID'];
     $rolID = $_POST['Rol_ID'];
     $horarioID = $_POST['Horario_ID'];
+
+    // Asignar una contraseña predeterminada
+    $defaultPassword = '1234';
 
     try {
         $conn->beginTransaction();
@@ -89,23 +87,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt_empleados->bindParam(':vacaciones', $diasVacaciones);
         $stmt_empleados->execute();
 
-        // Hashear la contraseña y insertar en la tabla usuarios
-        $contrasena_hasheada = password_hash($contrasena, PASSWORD_DEFAULT);
+        // Insertar la contraseña en la tabla usuarios
         $sql_usuarios = "INSERT INTO usuarios (Contraseña, Empleados_Persona_Cedula)
-                         VALUES (:contrasena, :cedula)";
+        VALUES (:contrasena, :cedula)";
         $stmt_usuarios = $conn->prepare($sql_usuarios);
-        $stmt_usuarios->bindParam(':contrasena', $contrasena_hasheada);
+        $stmt_usuarios->bindParam(':contrasena', $defaultPassword);
         $stmt_usuarios->bindParam(':cedula', $cedula);
         $stmt_usuarios->execute();
 
         $conn->commit();
 
-        echo json_encode(['status' => 'success', 'message' => 'Registro exitoso']);
+        header('Location: ../Vista/ListaDeEmpleados.php?status=success&message=' . urlencode('Registro exitoso'));
+        exit();
     } catch(PDOException $e) {
         $conn->rollBack();
         echo json_encode(['status' => 'error', 'message' => $e->getMessage()]);
     }
 }
-
-
 ?>
