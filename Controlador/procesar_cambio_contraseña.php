@@ -36,16 +36,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     echo "Persona Cedula: " . htmlspecialchars($persona_cedula) . "<br>";
     echo "</pre>";
 
+    // Inicializar el mensaje de error
+    $error_messages = [];
+
     // Validar la nueva contraseña
-    if (strlen($nueva_contrasena) < 6) {
-        $_SESSION['error'] = "La nueva contraseña debe tener al menos 6 caracteres.";
-        header("Location: ../Vista/cambiar_contrasena.php");
-        exit();
+    if (strlen($nueva_contrasena) < 8) {
+        $error_messages[] = "La nueva contraseña debe tener al menos 8 caracteres.";
+    }
+
+    // Validar que la contraseña contenga al menos una mayúscula
+    if (!preg_match('/[A-Z]/', $nueva_contrasena)) {
+        $error_messages[] = "La nueva contraseña debe contener al menos una letra mayúscula.";
+    }
+
+    // Validar que la contraseña contenga al menos un número
+    if (!preg_match('/\d/', $nueva_contrasena)) {
+        $error_messages[] = "La nueva contraseña debe contener al menos un número.";
     }
 
     // Validar que ambas contraseñas coincidan
     if ($nueva_contrasena !== $confirmar_contrasena) {
-        $_SESSION['error'] = "Las contraseñas no coinciden.";
+        $error_messages[] = "Las contraseñas no coinciden.";
+    }
+
+    // Si hay mensajes de error, redirigir con todos los mensajes
+    if (!empty($error_messages)) {
+        $_SESSION['error'] = implode("", $error_messages);
         header("Location: ../Vista/cambiar_contrasena.php");
         exit();
     }
