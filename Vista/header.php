@@ -79,8 +79,8 @@ if (session_status() == PHP_SESSION_NONE) {
                         <li><a href="../Vista/TablaMontoVehiculos.php">Tabla Montos</a></li>
                         <li><a href="../Vista/AprobacionHorasExtras.php">Tabla de aprobación de extras</a></li>
                         <li><a href="../Vista/AprobarVacaciones.php">Tabla aprobación de vacaciones</a></li>
+                        <li><a href="../Vista/TablaPagoAguinaldo.php">Tabla de pagos de aguinaldo</a></li>
                         <li><a href="#">Tabla de pagos por extra</a></li>
-                        <li><a href="#">Tabla de pagos de aguinaldo</a></li>
                         <li><a href="#">Tabla de pago de salarios</a></li>
                         <li><a href="#">Tabla de pago de liquidaciones</a></li>
                     </ul>
