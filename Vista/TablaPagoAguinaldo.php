@@ -91,10 +91,9 @@ require_once '../Config/config.php';
                             data.forEach(row => {
                                 const tr = document.createElement('tr');
                                 tr.innerHTML = `
-                                    <td>${row.idAguinaldo}</td>
+                                    <td>${row.Empleados_Persona_Cedula1}</td>
                                     <td>${row.Meses}</td>
                                     <td>₡ ${row.Monto_A_Pagar}</td>
-                                    <td>${row.Empleados_Persona_Cedula1}</td>
                                 `;
                                 tbody.appendChild(tr);
                             });
