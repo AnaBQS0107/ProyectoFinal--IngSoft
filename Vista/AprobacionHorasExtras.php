@@ -18,9 +18,9 @@
     </header>
     <br><br><br>
     <div class="container-AprobacionHorasExtras">
-        <h1>Aprobación de Horas Extras</h1>
+       <center> <h1>Aprobación de Horas Extras</h1> </center>
         <select id="select-empleado" name="select-empleado">
-            <option value="">Seleccione un Empleado</option>
+        <option value="">Seleccione un Empleado</option>
             <?php
             require_once '../Config/config.php';
 
@@ -63,9 +63,6 @@
         </div>
     </div>
     <br><br><br>
-
-    <footer id="footer"></footer>
-    <script src="../JS/footer.js"></script>
 
     <script>
         $(document).ready(function() {
@@ -170,7 +167,8 @@
             });
         });
     </script>
-
+<footer id="footer"></footer>
+<script src="../JS/footer.js"></script>
 </body>
 
 </html>

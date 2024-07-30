@@ -1,126 +1,114 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: white;
-    color: #333;
-    margin: 0;
-    padding: 0;
-}
 
 .container-AprobacionHorasExtras {
-    max-width: 900px;
-    margin: 32px 500px 120px 500px;
-    padding: 2em;
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    margin: auto;
+    padding: 20px;
     border-radius: 8px;
-    text-align: center;
+    align-items: center;
 }
 
-.container-AprobacionHorasExtras h1, .container-AprobacionHorasExtras h2 {
-    text-align: center;
-    color: #020202;
+
+h1, h2 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
 }
 
-select#select-empleado {
+
+#select-empleado {
     padding: 10px;
-    margin: 20px 10px 20px;
-    border-radius: 4px;
-    box-sizing: border-box;
-    width: 300px;
-    border: 1px solid #ccc;
-}
-
-input[type="text"]{
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid white;
-    border-radius: 4px;
-}
-
-textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
+    width: 30%;
+    margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+
 }
 
-button#select-extras, #submit-decision {
-    display: block;
-    width: 300;
-    padding: 10px;
-    margin: 10px 250px 0 365px;
+/* Estilos para el botón de selección */
+#select-extras {
+    padding: 10px 15px;
+    border: none;
     background-color: #9fc131;
     color: white;
-    border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
-    
 }
 
-
-
-button#select-extras:hover, #submit-decision:hover {
+#select-extras:hover {
     background-color: #bdf227;
-    color: #000;
 }
 
+/* Estilos para la tabla */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
-table, th, td {
-    border: 1px solid #ddd;
-}
-
-td {
-    padding: 10px;
-    text-align: center;
-}
-
-
-th {
-    background-color: #004d40;
+/* Estilos para las cabeceras de la tabla */
+thead th {
+    background-color: #005c53;
     color: white;
-    text-align: center;
     padding: 10px;
+    text-align: left;
 }
 
-button.approve-extra {
-    background-color: #4CAF50;
-    display: block;
-    width: 100%;
+/* Estilos para las celdas de la tabla */
+tbody td {
     padding: 10px;
-    margin: 10px 0;
-    color: white;
+    border-bottom: 1px solid #ddd;
+}
+
+
+
+/* Estilos para los botones */
+button {
+    padding: 10px 15px;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
 }
 
-
-button.reject-extra {
-    background-color: #f44336;
-    display: block;
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
+/* Estilos para el botón de aprobar */
+.approve-extra {
+    background-color: #9fc131;
     color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
 }
 
+/* Estilos para el botón de rechazar */
+.reject-extra {
+    background-color: #ff0000;
+    color: white;
+}
+
+/* Estilos para los botones en hover */
+button:hover {
+    opacity: 0.8;
+}
+
+/* Estilos para la sección de motivo */
 #motivo-section {
     margin-top: 20px;
 }
 
 #motivo {
-    height: 100px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+/* Estilos para el botón de enviar */
+#submit-decision {
+    padding: 10px 15px;
+    border: none;
+    background-color: #9fc131;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#submit-decision:hover {
+    background-color: #bdf227;
 }
