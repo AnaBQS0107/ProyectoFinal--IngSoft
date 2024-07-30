@@ -1,0 +1,62 @@
+
+.container-AprobacionHorasExtras {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+}
+
+
+h1 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+
+thead th {
+    background-color: #005c53;
+    color: white;
+    padding: 10px;
+    text-align: left;
+}
+
+
+tbody td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+
+tbody tr:nth-child(odd) {
+    background-color: white;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.approve-extra {
+    background-color: #9fc131;
+    color: white;
+}
+
+
+.reject-extra {
+    background-color: #ff0000;
+    color: white;
+}
+
+button:hover {
+    opacity: 0.8;
+}
