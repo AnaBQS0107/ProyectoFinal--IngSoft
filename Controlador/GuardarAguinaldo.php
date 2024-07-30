@@ -16,15 +16,26 @@ if (isset($_POST['Empleados_Persona_Cedula'])) {
         $db = Database1::getInstance()->getConnection();
 
         try {
-            // Guardar el aguinaldo en la base de datos
-            $stmt = $db->prepare("INSERT INTO aguinaldo (Empleados_Persona_Cedula1, Monto_A_Pagar, Meses) VALUES (:cedula, :aguinaldo, NOW())");
+            // Verificar si ya existe un aguinaldo para esta cédula
+            $stmt = $db->prepare("SELECT COUNT(*) FROM aguinaldo WHERE Empleados_Persona_Cedula1 = :cedula");
             $stmt->bindParam(':cedula', $Empleados_Persona_Cedula);
-            $stmt->bindParam(':aguinaldo', $aguinaldo);
             $stmt->execute();
+            $existe = $stmt->fetchColumn() > 0;
 
-            // Responder con éxito
-            $response['success'] = true;
-            $response['message'] = 'Aguinaldo guardado correctamente.';
+            if ($existe) {
+                // Ya existe un aguinaldo para esta cédula
+                $response['message'] = 'Ya existe un aguinaldo registrado para esta cédula. Puede seleccionar "Eliminar Aguinaldo", para borrar el aguinaldo existente.';
+            } else {
+                // Guardar el aguinaldo en la base de datos
+                $stmt = $db->prepare("INSERT INTO aguinaldo (Empleados_Persona_Cedula1, Monto_A_Pagar, Meses) VALUES (:cedula, :aguinaldo, NOW())");
+                $stmt->bindParam(':cedula', $Empleados_Persona_Cedula);
+                $stmt->bindParam(':aguinaldo', $aguinaldo);
+                $stmt->execute();
+
+                // Responder con éxito
+                $response['success'] = true;
+                $response['message'] = 'Aguinaldo guardado correctamente.';
+            }
         } catch (Exception $e) {
             // Error al ejecutar la consulta
             $response['message'] = 'Error al guardar el aguinaldo: ' . $e->getMessage();
