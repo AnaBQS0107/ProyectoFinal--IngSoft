@@ -28,9 +28,9 @@ $resultEstaciones = $trabajadoresTabla->obtenerEstaciones();
     <center><title>Buscar Trabajadores por Estación</title>
 </head>
 <body>
+    <br> <br> <br>
     <h1>Buscar Trabajadores por Estación de Peaje</h1>
     <form method="post" action="">
-        <br><br>
         <label for="estacion_id">Estación de Peaje:</label>
         <select id="estacion_id" name="estacion_id" required>
             <option value="">Seleccione una estación</option>
