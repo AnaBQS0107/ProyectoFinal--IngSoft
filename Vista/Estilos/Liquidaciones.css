@@ -1,57 +1,152 @@
+/* Liquidaciones.css */
+
+/* Estilos generales del formulario */
+/* Estilos generales del formulario */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Arial, sans-serif;
     background-color: white;
+    color: #333;
     margin: 0;
     padding: 0;
 }
 
-h1 {
-    color: #000000;
-    font-size: 2.5em;
+.container-CalculadoraAguinaldo {
+    max-width: 31%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white; 
+    border-radius: 8px; 
+
+}
+
+h1, h2, h4 {
+    text-align: center;
+    color: #000; 
+}
+
+.col-xs-12-SalarioEspecieContainer ul {
+    list-style-type: none; 
+    margin: 15px;
+    padding: 10px;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.btn-calcularA, .btn-eliminarA, .btn-GuardarA {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #9fc131;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.btn-eliminarA {
+    background-color: #f44336;
+}
+
+.btn-calcularA:hover, .btn-eliminarA:hover, .btn-GuardarA:hover {
+    opacity: 0.8;
+    color: #000;
+}
+
+#resultadoAguinaldo {
+    margin-top: 20px;
+    font-size: 18px;
+    color: black;
+}
+
+.SalarioEspecieContainer {
+    margin-top: 20px;
+}
+
+.SalarioEspecieContainer h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.SalarioEspecieContainer h4 {
+    font-size: 16px;
     margin-bottom: 20px;
 }
 
-/* Container */
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-    margin-top: 70px;
-    margin-bottom: 150px;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.salarioEspecieRadio {
+    margin-right: 10px;
 }
 
-/* Form styles */
-form .row {
+@media (min-width: 768px) {
+    .col-lg-6 {
+        width: 50%;
+        padding: 0 10px;
+    }
+}
+
+@media (max-width: 767px) {
+    .col-xs-12 {
+        width: 100%;
+        padding: 0 10px;
+    }
+}
+
+.form-group {
+    flex: 1 0 50%; /* Ocupa la mitad del ancho del contenedor */
+    padding: 0 10px; /* Espaciado interno para los campos */
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+.container-CalculadoraAguinaldo {
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 15px;
 }
 
-form .col-md-2 {
-    flex: 1;
-    min-width: 220px;
-    margin-right: 10px;
-    margin-bottom: 15px;
+
+.meses-container {
+    display: flex;
+    justify-content: space-between;
 }
 
-form label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: #000000;
+.columna {
+    flex: 0 0 48%;
 }
 
-form input,
-form select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-size: 1em;
+/* Estilo para botones deshabilitados */
+.btn-calcularA:disabled, .btn-eliminarA:disabled, .btn-GuardarA:disabled {
+    background-color: #ddd; /* Gris claro para botones deshabilitados */
+    cursor: not-allowed; /* Cursor no permitido */
+    opacity: 0.6; /* Opacidad reducida para indicar deshabilitado */
+}
+
+/* Estilos para los botones dentro del formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra todos los elementos hijos horizontalmente */
 }
 
 form .btn_calcular,
@@ -73,24 +168,117 @@ form .btn_continuar:hover {
     color: #000000;
 }
 
-
-.div_btn {
-    display: flex;
-    margin: 10px 0;
+/* Estilos para los campos del formulario */
+.form-label {
+    font-weight: bold;
 }
 
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
 
-/* Responsive styles */
-@media (max-width: 768px) {
-    form .row {
-        flex-direction: column;
-    }
+.select_registro {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
 
-    form .col-md-2 {
-        margin-right: 0;
-    }
+/* Estilos para las filas y columnas */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -10px;
+}
 
-    .div_btn {
-        margin-bottom: 10px;
-    }
+.col-md-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.position-relative {
+    position: relative;
+}
+
+/* Estilos para el botón de calcular */
+form .btn_calcular,
+form .btn_continuar {
+    background-color: #9fc131;
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+    border-radius: 4px;
+    margin: 10px;
+}
+
+form .btn_calcular:hover,
+form .btn_continuar:hover {
+    background-color: #bdf227;
+    color: #000000;
+}
+
+/* Estilos adicionales para los select que se ocultan y muestran */
+select[style="display:none;"] {
+    display: none;
+}
+
+select[style="display:block;"] {
+    display: block;
+}
+
+/* Estilos para el header y footer */
+header, footer {
+    background-color: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid #ddd;
+}
+
+footer {
+    border-top: none;
+}
+
+/* Estilos para el menú de navegación */
+.hamburger-menu {
+    cursor: pointer;
+}
+
+.navbar-links {
+    display: flex;
+    justify-content: center;
+}
+
+.navbar-links.active {
+    display: flex;
+}
+
+.nav-item.dropdown .dropdown-menu {
+    display: none;
+}
+
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    padding: 10px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
 }

@@ -6,14 +6,6 @@ body {
     padding: 0;
 }
 
-.container-CalculadoraAguinaldo {
-    max-width: 31%;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: white; 
-    border-radius: 8px; 
-
-}
 
 h1, h2, h4 {
     text-align: center;
