@@ -29,6 +29,7 @@ if (isset($_GET['id'])) {
     <title>PassWize - Actualizar Usuario</title>
     <link rel="icon" type="image/png" href="../img/icono.png">
     <link rel="stylesheet" href="Estilos/ActualizarEmpleado.css">
+    <link rel="stylesheet" href="Estilos/Footer2.css"> 
 </head>
 
 <body>
@@ -99,9 +100,7 @@ if (isset($_GET['id'])) {
         <center><button type="submit" id="submitBtn">Guardar Cambios</button></center>
     </form>
 
-    <footer class="footer-Act-Monto">
-        <?php include 'Footer.php'; ?>
-    </footer>
+    
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
@@ -130,7 +129,8 @@ if (isset($_GET['id'])) {
         }
     });
     </script>
-
+<footer id="footer"></footer> 
+<script src="../JS/footer.js"></script> 
 </body>
 
 </html>
