@@ -1,6 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
 
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+    
+}
+
+if (!isset($_SESSION['user'])) {
+    header("Location: login.php");
+    exit();
+}
+
+$user = $_SESSION['user'];
+$cedula = $user['Persona_Cedula'];
+?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
