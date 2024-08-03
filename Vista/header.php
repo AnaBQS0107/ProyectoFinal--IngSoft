@@ -3,6 +3,8 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
     $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
 }
+
+//$router = require '../Rutas/index.php';
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +37,7 @@ if (session_status() == PHP_SESSION_NONE) {
                         <li><a href="../Vista/CalculadoraAguinaldo.php">Calcular Aguinaldos</a></li>
                         <li><a href="#">Calcular Incapacidades</a></li>
                         <li><a href="../Vista/Liquidaciones.php">Calcular Liquidaciones</a></li>
-                        <li><a href="#">Calcular Salario</a></li>
+                        <li><a href="../Controlador/CalcularSalario.php">Calcular Salario</a></li>
                     </ul>
                 </div>
             </li>

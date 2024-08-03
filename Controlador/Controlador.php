@@ -1,0 +1,11 @@
+<?php
+
+class Controller
+{
+    protected function render($view, $data = [])
+    {
+        extract($data);
+
+        include "../Vista/$view.php";
+    }
+}
